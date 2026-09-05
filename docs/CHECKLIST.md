@@ -114,6 +114,7 @@
 - [ ] M3 Gate 退出评审
 - **阶段说明**：[NEXT_PHASE.md](NEXT_PHASE.md)
 - **记录**：2026-09-05 建立下一阶段；当前状态 Planned。先解决 C04/C07 标准难度与资产接入管线，再进入 M4 C09–C24。
+- **GitHub**：Private 仓库已创建并推送：<https://github.com/wjt0321/ashen-tides>；`main` 首个基线提交 `ae51920`，文档/忽略规则提交 `6d7c019`。
 
 ## 5. M4：全战役 Alpha（C09–C24）
 
