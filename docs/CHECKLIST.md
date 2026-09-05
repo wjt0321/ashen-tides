@@ -114,7 +114,7 @@
 - [ ] M3 Gate 退出评审（人工门禁，未做）
 - **阶段说明**：[NEXT_PHASE.md](NEXT_PHASE.md)
 - **记录**：2026-09-05 执行完成 P0 全部项 + P1 可自动化项，详见 [NEXT_PHASE_NOTES.md](NEXT_PHASE_NOTES.md)。剩余人工门禁：M3 Gate 退出评审、手柄实机、低端机性能、5–15 人盲测；正式音频/美术资产仍未宣称完成。
-- **GitHub**：Private 仓库已创建并推送：<https://github.com/wjt0321/ashen-tides>；`main` 首个基线提交 `ae51920`，文档/忽略规则提交 `6d7c019`。
+- **GitHub**：Public 仓库已创建并推送：<https://github.com/wjt0321/ashen-tides>；`main` 首个基线提交 `ae51920`，文档/忽略规则提交 `6d7c019`；2026-09-05 可见性改为 Public 并推送 `8e2855c`。
 
 ## 5. M4：全战役 Alpha（C09–C24）
 
