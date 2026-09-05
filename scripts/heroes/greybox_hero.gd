@@ -289,8 +289,13 @@ func _draw() -> void:
 	draw_rect(Rect2(Vector2(-bar_w / 2.0, -18.0), Vector2(bar_w * ratio, 3.0)), Color(0.4, 0.9, 0.9), true)
 
 
-## 英雄剪影：+x 为"前方"，由 _draw 按 facing 旋转。未知 id 回退现有菱形。
+## 英雄剪影：+x 为"前方"，由 _draw 按 facing 旋转。M4-A：正式精灵优先，缺失回退程序化剪影。
 func _draw_silhouette(body: Color, edge: Color) -> void:
+	if data != null:
+		var tex := ArtLibrary.hero_tex(data.id)
+		if tex != null:
+			draw_texture(tex, Vector2(-16.0, -16.0), Color(1, 1, 1) if not is_down else Color(0.4, 0.4, 0.45))
+			return
 	if data != null and data.id == &"hero_zhushou_muen":
 		_draw_muen_smith(body, edge)
 	elif data != null and data.id == &"hero_lanzhou_wei":

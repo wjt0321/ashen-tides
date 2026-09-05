@@ -16,3 +16,4 @@ out/
 # Agent/editor local settings
 .claude/settings.local.json
 M3_GATE_COMPLETION_TODO.md
+M4_A_ASSET_SLICE_TODO.md

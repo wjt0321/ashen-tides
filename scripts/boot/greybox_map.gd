@@ -134,11 +134,22 @@ func _draw() -> void:
 	var accent := UiPalette.apply(pal["accent"])
 	var glow := UiPalette.apply(pal["glow"])
 	var viewport := Rect2(Vector2.ZERO, VIEWPORT_SIZE)
+	# M4-A：正式地形 tile 优先（仅已生产关卡，如 C01），缺失回退纯色格
+	var sea_tex_a := ArtLibrary.terrain_tex(level_id, "sea_a")
+	var sea_tex_b := ArtLibrary.terrain_tex(level_id, "sea_b")
+	var land_tex_a := ArtLibrary.terrain_tex(level_id, "land_a")
+	var land_tex_b := ArtLibrary.terrain_tex(level_id, "land_b")
 	# 海底：双色 32px 格
 	for row: int in GRID_ROWS:
 		for col: int in GRID_COLS:
 			var cell := Rect2(Vector2(col * CELL, row * CELL), Vector2(CELL, CELL))
-			draw_rect(cell.intersection(viewport), sea_a if (row + col) % 2 == 0 else sea_b, true)
+			var clipped := cell.intersection(viewport)
+			var use_a := (row + col) % 2 == 0
+			var sea_tex := sea_tex_a if use_a else sea_tex_b
+			if sea_tex != null:
+				draw_texture(sea_tex, clipped.position)
+			else:
+				draw_rect(clipped, sea_a if use_a else sea_b, true)
 	# 淡网格线（alpha 0.03，只压海面；陆地稍后盖掉）
 	var grid := Color(1.0, 1.0, 1.0, GRID_ALPHA)
 	for col: int in GRID_COLS + 1:
@@ -154,9 +165,16 @@ func _draw() -> void:
 	var dot_col := Color(foam.r, foam.g, foam.b, 0.18)
 	for p: Vector2 in _sea_dots:
 		draw_circle(p, 1.0, dot_col)
-	# 陆地：land_a 底 + land_b 斑块 + 石砾点
+	# 陆地：land_a 底 + land_b 斑块 + 石砾点（M4-A：正式 land tile 优先）
 	for rect: Rect2 in ROCK_RECTS:
-		draw_rect(rect, land_a, true)
+		if land_tex_a != null:
+			var cols := int(rect.size.x) / CELL
+			var rows := int(rect.size.y) / CELL
+			for row: int in rows:
+				for col: int in cols:
+					draw_texture(land_tex_a, rect.position + Vector2(col * CELL, row * CELL))
+		else:
+			draw_rect(rect, land_a, true)
 	for patch: Rect2 in _land_patches:
 		draw_rect(patch, land_b, true)
 	var pebble_col := Color(accent.r, accent.g, accent.b, 0.16)

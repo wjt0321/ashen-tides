@@ -405,11 +405,34 @@ func _build_hud() -> void:
 	_res_label.add_theme_font_size_override("font_size", 12)
 	hud.add_child(_res_label)
 
+	# M4-A：HUD 资源图标（16×16，缺失时跳过、保留纯文本回退）
+	var res_icons: Array = ["icon_ember", "icon_integrity", "icon_becon"]
+	var icon_x := 8
+	for icon_name: String in res_icons:
+		var icon_tex := ArtLibrary.ui_icon(icon_name)
+		if icon_tex == null:
+			break
+		var tr := TextureRect.new()
+		tr.texture = icon_tex
+		tr.position = Vector2(icon_x, 42)
+		hud.add_child(tr)
+		icon_x += 18
+	if icon_x > 8:
+		_res_label.position.x = icon_x + 2
+
 	_state_label = Label.new()
 	_state_label.name = "StateLabel"
 	_state_label.position = Vector2(8, 58)
 	_state_label.add_theme_font_size_override("font_size", 12)
 	hud.add_child(_state_label)
+
+	var wave_tex := ArtLibrary.ui_icon("icon_wave")
+	if wave_tex != null:
+		var wave_tr := TextureRect.new()
+		wave_tr.texture = wave_tex
+		wave_tr.position = Vector2(8, 58)
+		hud.add_child(wave_tr)
+		_state_label.position.x = 28
 
 	_hero_label = Label.new()
 	_hero_label.name = "HeroLabel"

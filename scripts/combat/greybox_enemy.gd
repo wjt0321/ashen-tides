@@ -238,7 +238,18 @@ func _draw() -> void:
 	var edge := COLOR_ELITE_EDGE if data.elite else VisualTheme.OUTLINE
 	# 剪影（随 facing 旋转；生命条/状态环保持轴对齐，不旋转）
 	draw_set_transform(Vector2.ZERO, facing, Vector2.ONE)
-	_draw_silhouette(s, mid, light, dark, edge)
+	# M4-A：正式精灵优先（modulate 表达减速/受击闪白，缺失回退程序化剪影）
+	var tex := ArtLibrary.enemy_tex(data.id)
+	if tex != null:
+		var mod := Color(1.0, 1.0, 1.0)
+		if slow_seconds > 0.0:
+			mod = Color(0.62, 0.78, 1.05)
+		if _hit_flash > 0.0:
+			var f := _hit_flash / HIT_FLASH_TIME
+			mod = mod.lerp(Color(2.6, 2.6, 2.6), f)
+		draw_texture(tex, Vector2(-16.0, -16.0), mod)
+	else:
+		_draw_silhouette(s, mid, light, dark, edge)
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 	_draw_status_rings(s)
 	_draw_bars_glyph(s)

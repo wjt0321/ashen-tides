@@ -227,28 +227,39 @@ func _draw() -> void:
 		var ring_alpha := 0.10 if highlight_range else 0.05
 		var ring_width := 1.5 if highlight_range else 1.0
 		draw_arc(Vector2.ZERO, eff_range(), 0.0, TAU, 48, Color(body, ring_alpha), ring_width)
-	match data.id:
-		&"tower_needle_rail":
-			_draw_needle_rail(body)
-		&"tower_ember_well":
-			_draw_ember_well(body)
-		&"tower_echo_pile":
-			_draw_echo_pile(body)
-		&"tower_wind_nest":
-			_draw_wind_nest(body)
-		&"tower_tide_anvil":
-			_draw_tide_anvil(body)
-		&"tower_prism_grove":
-			_draw_prism_grove(body)
-		_:
-			_draw_legacy_block(body) # 未知 id：回退现状方块
+	# M4-A：正式精灵优先（docs/M4_ASSET_SPEC.md §6 程序化回退）
+	var tex := ArtLibrary.tower_tex(data.id)
+	if tex != null:
+		draw_texture(tex, Vector2(-16.0, -16.0))
+	else:
+		match data.id:
+			&"tower_needle_rail":
+				_draw_needle_rail(body)
+			&"tower_ember_well":
+				_draw_ember_well(body)
+			&"tower_echo_pile":
+				_draw_echo_pile(body)
+			&"tower_wind_nest":
+				_draw_wind_nest(body)
+			&"tower_tide_anvil":
+				_draw_tide_anvil(body)
+			&"tower_prism_grove":
+				_draw_prism_grove(body)
+			_:
+				_draw_legacy_block(body) # 未知 id：回退现状方块
 	_draw_tier_pips()
 	if _muzzle_flash > 0.0:
-		# 炮口/火口白色小闪光：半径与透明度随 flash 余量缩放
+		# M4-A：开火闪光优先用 3 帧条（16×16/帧），缺失回退程序化圆闪
+		var strip := ArtLibrary.vfx_tex("fx_muzzle_flash_strip3")
 		var mz := _muzzle_offset()
 		var k := clampf(_muzzle_flash / MUZZLE_FLASH_SECONDS, 0.0, 1.0)
-		draw_circle(mz, 2.0 + 40.0 * _muzzle_flash, Color(1.0, 1.0, 1.0, 0.30 * k))
-		draw_circle(mz, 1.0 + 26.0 * _muzzle_flash, Color(1.0, 1.0, 1.0, 0.90 * k))
+		if strip != null:
+			var frame := clampi(int((1.0 - k) * 3.0), 0, 2)
+			draw_texture_rect_region(strip, Rect2(mz - Vector2(8, 8), Vector2(16, 16)),
+				Rect2(frame * 16, 0, 16, 16), Color(1, 1, 1, 0.35 + 0.65 * k))
+		else:
+			draw_circle(mz, 2.0 + 40.0 * _muzzle_flash, Color(1.0, 1.0, 1.0, 0.30 * k))
+			draw_circle(mz, 1.0 + 26.0 * _muzzle_flash, Color(1.0, 1.0, 1.0, 0.90 * k))
 
 
 func _resolve_body_color() -> Color:

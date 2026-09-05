@@ -86,10 +86,17 @@ func _draw() -> void:
 		var color: Color = fx["color"]
 		match int(fx["kind"]):
 			KIND_HIT:
-				var len := 3.0 + 5.0 * k
-				var c := Color(color.r, color.g, color.b, 0.9 * fade)
-				for d: Vector2 in [Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN]:
-					draw_line(pos + d * 2.0, pos + d * len, c, 1.0)
+				# M4-A：命中火花优先 4 帧条（8×8/帧），缺失回退程序化十字线
+				var spark := ArtLibrary.vfx_tex("fx_hit_spark_strip4")
+				if spark != null:
+					var frame := clampi(int(k * 4.0), 0, 3)
+					draw_texture_rect_region(spark, Rect2(pos - Vector2(4, 4), Vector2(8, 8)),
+						Rect2(frame * 8, 0, 8, 8), Color(color.r, color.g, color.b, fade))
+				else:
+					var len := 3.0 + 5.0 * k
+					var c := Color(color.r, color.g, color.b, 0.9 * fade)
+					for d: Vector2 in [Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN]:
+						draw_line(pos + d * 2.0, pos + d * len, c, 1.0)
 			KIND_KILL:
 				draw_arc(pos, 4.0 + 10.0 * k, 0.0, TAU, 20,
 						Color(color.r, color.g, color.b, 0.8 * fade), 1.5)

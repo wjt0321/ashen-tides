@@ -25,8 +25,8 @@
 - [x] 锁定 640×360 逻辑分辨率和 32×32 Tile 基线
 - [x] 建立稳定 ID、术语表和数据 schema
 - [x] 建立 `ASSET_LICENSE_LEDGER.csv`
-- [ ] 锁定 CJK 字体与英文显示字体
-- [ ] 建立资产下载、原始许可证、hash、credits 归档流程
+- [x] 锁定 CJK 字体与英文显示字体（Ark Pixel 12px zh_cn 内含 ASCII；NEXT_PHASE 锁定，缩放验证通过）
+- [x] 建立资产下载、原始许可证、hash、credits 归档流程（NEXT_PHASE 管线验证 + M4-A docs/CREDITS.md）
 - [x] 完成 C01 灰盒地图
 - [x] 完成 C01 的 PathNetwork 与 BuildNode
 - [x] 完成 C01 的一波敌人、塔、投射物、伤害和出口扣除
@@ -116,6 +116,15 @@
 - **记录**：2026-09-05 执行完成 P0 全部项 + P1 可自动化项，并完成 M3 Gate 条件退出评审，详见 [NEXT_PHASE_NOTES.md](NEXT_PHASE_NOTES.md) 与 [M3_GATE_REVIEW.md](M3_GATE_REVIEW.md)。剩余人工门禁：手柄实机、低端机性能、5–15 人盲测；正式音频/美术资产仍未宣称完成。
 - **GitHub**：Public 仓库已创建并推送：<https://github.com/wjt0321/ashen-tides>；`main` 首个基线提交 `ae51920`，文档/忽略规则提交 `6d7c019`；2026-09-05 可见性改为 Public 并推送 `8e2855c`。
 
+## M4-A：C01 正式资产纵向切片（2026-09-05）
+
+- [x] 美术技术规范锁定（[M4_ASSET_SPEC.md](M4_ASSET_SPEC.md)：32×32/640×360/调色板/轮廓/帧/命名/导入/许可证）
+- [x] C01 切片资产 16 张（项目自有原创，`tools/gen_c01_sprites.py` 确定性生成）
+- [x] 运行时接入（`ArtLibrary` + 强制程序化回退：C01 地形、3 塔、2 敌、岚舟英雄、2 FX 帧条、4 HUD 图标）
+- [x] 台账 +16 行（Project-owned，含 sha256）与 [CREDITS.md](CREDITS.md)（仅真实接入项）
+- [x] 验证：导入 0 error / validate PASS / tests 117/117 / i18n missing=0 / C01 autoplay ticks=7017 与 steady 7080 均与基线一致 / perf 144fps avg
+- **记录**：[M4_ASSET_PIPELINE.md](M4_ASSET_PIPELINE.md)；未做项（其余塔/敌/Boss 精灵、正式音频、色弱贴图重映射、terrain_land_b 未接入）见该文 §6
+
 ## 5. M4：全战役 Alpha（C09–C24）
 
 - [ ] 24 关均可从新档进入和完成
@@ -181,3 +190,4 @@
 | 2026-09-05 | 新增 Polish 阶段记录（视觉主题/FX/HUD 增强），未勾任何 M3 正式门禁；M3_POLISH_TODO.md 移入 docs/ | 试玩反馈后的表现增强执行 | 项目主理人（agent 执行） |
 | 2026-09-05 | Polish 阶段完成：C01–C08 主题化地形、塔/敌/英雄辨识度、FX、HUD、录屏与回归证据已落地；正式资产/音频/字体/盲测/低端机仍未完成 | 用户试玩反馈“方向正确但太简陋” | 项目主理人（agent 执行） |
 | 2026-09-05 | NEXT_PHASE 执行：新增 StandardBuilds（C01–C08 × steady/economy/synergy，--build 标准模式与辅助报告分离）、平衡报告字段（fail_reason/leak_by_wave/tower_stats）；24/24 构筑 win（仅构筑迭代，未改数值）；C01/C04/C07 1×/3× tick 全等；Ark Pixel Font（OFL 1.1）接入并锁定为默认 UI 字体（12/15/18px 缩放验证通过）；AT-TER-001（CC0）C01 替换试验完成并决定 trial-only；台账 16 行含 hash/许可证原文。M3 Gate 退出评审等人工门禁保持未勾 | NEXT_PHASE P0/P1 执行 | 项目主理人（agent 执行） |
+| 2026-09-05 | M4-A：美术技术规范锁定（M4_ASSET_SPEC.md）；C01 切片 16 张项目自有原创精灵（tools/gen_c01_sprites.py）接入运行时并全部带程序化回退；台账 +16 行、新建 CREDITS.md（Godot MIT + Ark Pixel OFL）；M0 两项历史遗留（字体锁定/资产归档流程）勾销；验证全绿且战斗基线不变 | M4-A 执行（用户确认后） | 项目主理人（agent 执行） |
