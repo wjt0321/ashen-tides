@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/tower_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/data/tower_tier.gd" id="2"]
+[ext_resource type="Resource" path="res://data/modules/mod_wind_hunter.tres" id="m0"]
+[ext_resource type="Resource" path="res://data/modules/mod_wind_cruise.tres" id="m1"]
+[ext_resource type="Resource" path="res://data/modules/mod_wind_marker.tres" id="m2"]
+
+[sub_resource type="Resource" id="TowerTier_2"]
+script = ExtResource("2")
+tier = 2
+cost_to_upgrade = 85
+damage_min = 28
+damage_max = 32
+range_px = 160
+attack_period = 0.86
+module_choices = [ExtResource("m0"), ExtResource("m1"), ExtResource("m2")]
+
+[sub_resource type="Resource" id="TowerTier_3"]
+script = ExtResource("2")
+tier = 3
+cost_to_upgrade = 145
+damage_min = 38
+damage_max = 44
+range_px = 170
+attack_period = 0.78
+
+[sub_resource type="Resource" id="TowerTier_4"]
+script = ExtResource("2")
+tier = 4
+cost_to_upgrade = 235
+damage_min = 52
+damage_max = 60
+range_px = 180
+attack_period = 0.7
+
+[resource]
+script = ExtResource("1")
+id = &"tower_wind_nest"
+schema_version = 1
+enabled = true
+designer_note = "M3：风帆机巢：派出可重定向无人帆，作为跨路覆盖塔"
+introduced_in_level = &"level_c04"
+display_name_key = &"TOWER_WIND_NEST"
+base_cost = 135
+range_px = 150
+attack_period = 0.95
+damage_min = 20
+damage_max = 24
+damage_type = &"physical"
+projectile_speed = 360
+splash_radius = 0
+pierce = 1
+tiers = [SubResource("TowerTier_2"), SubResource("TowerTier_3"), SubResource("TowerTier_4")]

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModuleData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/module_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mod_prism_clear"
+schema_version = 1
+enabled = true
+designer_note = "M3：澄明：链接效果显形并净化"
+tower_id = &"tower_prism_grove"
+display_name_key = &"MOD_PRISM_CLEAR"
+description_key = &"MOD_PRISM_CLEAR_DESC"
+effect_op = &"link_silence"
+effect_value = 1
+tint = Color(0.55,1.00,0.85, 1.00)

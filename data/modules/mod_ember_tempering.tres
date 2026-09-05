@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModuleData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/module_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mod_ember_tempering"
+schema_version = 1
+enabled = true
+designer_note = "M2：回火：本塔击杀返还 2 航标充能"
+tower_id = &"tower_ember_well"
+display_name_key = &"MOD_EMBER_TEMPERING"
+description_key = &"MOD_EMBER_TEMPERING_DESC"
+effect_op = &"kill_becon"
+effect_value = 2.0
+tint = Color(0.85, 0.95, 0.55, 1.00)

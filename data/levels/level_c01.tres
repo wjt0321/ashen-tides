@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/level_data.gd" id="1"]
+[ext_resource type="Resource" path="res://data/waves/wave_c01_01.tres" id="w0"]
+[ext_resource type="Resource" path="res://data/waves/wave_c01_02.tres" id="w1"]
+[ext_resource type="Resource" path="res://data/waves/wave_c01_03.tres" id="w2"]
+[ext_resource type="Resource" path="res://data/waves/wave_c01_04.tres" id="w3"]
+[ext_resource type="Resource" path="res://data/waves/wave_c01_05.tres" id="w4"]
+[ext_resource type="Resource" path="res://data/waves/wave_c01_06.tres" id="w5"]
+
+[resource]
+script = ExtResource("1")
+id = &"level_c01"
+schema_version = 1
+enabled = true
+designer_note = "M2 纵向切片：C01「离港火线」——单路 / 8 BuildNode / 固定明潮 / 教学：建造、范围、开波、升级、暂停（PRD §5.3/§11.2）"
+display_name_key = &"LEVEL_C01"
+map_size_cells = Vector2i(20, 11)
+initial_ember = 400
+initial_fleet_integrity = 20
+allowed_towers = [&"tower_needle_rail"]
+route_ids = [&"route_c01_main", &"route_c01_tideflat"]
+route_points = [PackedVector2Array(0, 192, 320, 192, 320, 320, 640, 320), PackedVector2Array(0, 192, 480, 192, 480, 80, 640, 80)]
+default_active_route = &"route_c01_main"
+build_node_positions = [Vector2(160, 112), Vector2(352, 112), Vector2(512, 144), Vector2(96, 256), Vector2(256, 256), Vector2(416, 256), Vector2(544, 224), Vector2(64, 320)]
+waves = [ExtResource("w0"), ExtResource("w1"), ExtResource("w2"), ExtResource("w3"), ExtResource("w4"), ExtResource("w5")]
+allowed_heroes = []
+primary_objective_key = &"OBJ_PRIMARY_SURVIVE"
+strategy_objective_key = &"OBJ_C01_STRATEGY"
+strategy_objective_op = &"upgrade_any_tower"
+integrity_mark_threshold = 15
+tutorial_id = &"tutorial_c01"

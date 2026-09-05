@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/wave_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/data/wave_group.gd" id="2"]
+
+[sub_resource type="Resource" id="WaveGroup_1"]
+script = ExtResource("2")
+enemy_id = &"salt_shell_walker"
+count = 8
+interval_seconds = 1.1
+entrance_index = 0
+delay_after_prev_seconds = 0.0
+route_id = &"route_c03_main"
+
+[resource]
+script = ExtResource("1")
+id = &"wave_c03_01"
+schema_version = 1
+enabled = true
+designer_note = "M2：双路开局低压"
+introduced_in_level = &"level_c03"
+wave_index = 1
+pre_delay_seconds = 5.0
+groups = [SubResource("WaveGroup_1")]
+completion_reward_ember = 30
+completion_reward_becon = 8
+intent = &"economy"

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"lamp_leech"
+schema_version = 1
+enabled = true
+designer_note = "M2：灯寄生体，护盾标签（PRD §8.6）；护盾先于生命承伤，控制后集火反制"
+introduced_in_level = &"level_c03"
+display_name_key = &"ENEMY_LAMP_LEECH"
+max_hp = 140.0
+speed_px_per_sec = 45.0
+armor = 0.0
+glow_resist = 20.0
+leak_damage = 1
+kill_reward_ember = 14
+radius_px = 11.0
+tags = [&"shield"]
+elite = false
+shield_hp = 80.0
+aura_radius = 0.0
+aura_speed_mult = 1.0
+body_color = Color(0.65, 0.85, 0.95, 1.00)

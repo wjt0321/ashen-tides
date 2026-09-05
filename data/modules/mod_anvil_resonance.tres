@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModuleData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/module_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mod_anvil_resonance"
+schema_version = 1
+enabled = true
+designer_note = "M3：震砧：命中造成韧性伤害"
+tower_id = &"tower_tide_anvil"
+display_name_key = &"MOD_ANVIL_RESONANCE"
+description_key = &"MOD_ANVIL_RESONANCE_DESC"
+effect_op = &"link_chain"
+effect_value = 1
+tint = Color(0.75,0.55,0.95, 1.00)

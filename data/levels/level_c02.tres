@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/level_data.gd" id="1"]
+[ext_resource type="Resource" path="res://data/waves/wave_c02_01.tres" id="w0"]
+[ext_resource type="Resource" path="res://data/waves/wave_c02_02.tres" id="w1"]
+[ext_resource type="Resource" path="res://data/waves/wave_c02_03.tres" id="w2"]
+[ext_resource type="Resource" path="res://data/waves/wave_c02_04.tres" id="w3"]
+[ext_resource type="Resource" path="res://data/waves/wave_c02_05.tres" id="w4"]
+[ext_resource type="Resource" path="res://data/waves/wave_c02_06.tres" id="w5"]
+[ext_resource type="Resource" path="res://data/waves/wave_c02_07.tres" id="w6"]
+[ext_resource type="Resource" path="res://data/phase_events/phase_c02_tidegate.tres" id="pe0"]
+
+[resource]
+script = ExtResource("1")
+id = &"level_c02"
+schema_version = 1
+enabled = true
+designer_note = "M2 纵向切片：C02「潮门初启」——单路变双路 / 预告式改道相位模板 / 迅捷敌（PRD §5.3）；英雄按蓝图自 C03 起登场"
+display_name_key = &"LEVEL_C02"
+map_size_cells = Vector2i(20, 11)
+initial_ember = 450
+initial_fleet_integrity = 20
+allowed_towers = [&"tower_needle_rail", &"tower_ember_well"]
+route_ids = [&"route_c02_main", &"route_c02_tideflat"]
+route_points = [PackedVector2Array(0, 192, 320, 192, 320, 320, 640, 320), PackedVector2Array(0, 192, 480, 192, 480, 80, 640, 80)]
+default_active_route = &"route_c02_main"
+build_node_positions = [Vector2(160, 112), Vector2(352, 112), Vector2(512, 144), Vector2(96, 256), Vector2(256, 256), Vector2(416, 256), Vector2(544, 224), Vector2(64, 320), Vector2(224, 144), Vector2(384, 240)]
+waves = [ExtResource("w0"), ExtResource("w1"), ExtResource("w2"), ExtResource("w3"), ExtResource("w4"), ExtResource("w5"), ExtResource("w6")]
+phase_events = [ExtResource("pe0")]
+allowed_heroes = []
+primary_objective_key = &"OBJ_PRIMARY_SURVIVE"
+strategy_objective_key = &"OBJ_C02_STRATEGY"
+strategy_objective_op = &"use_tide_clock"
+integrity_mark_threshold = 14
+tutorial_id = &"tutorial_c02"

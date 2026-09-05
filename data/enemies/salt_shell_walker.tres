@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"salt_shell_walker"
+schema_version = 1
+enabled = true
+designer_note = "M0 灰盒：盐壳行者，标准参照单位 S（PRD §8.3/§8.6）"
+introduced_in_level = &"level_c01"
+display_name_key = &"ENEMY_SALT_SHELL_WALKER"
+max_hp = 100.0
+speed_px_per_sec = 55.0
+armor = 0.0
+glow_resist = 0.0
+leak_damage = 1
+kill_reward_ember = 10
+radius_px = 10.0
+tags = [&"basic"]
+body_color = Color(0.85, 0.72, 0.50, 1.00)

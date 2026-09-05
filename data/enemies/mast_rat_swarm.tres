@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mast_rat_swarm"
+schema_version = 1
+enabled = true
+designer_note = "M1 灰盒：桅鼠群，群聚弱个体（PRD §8.6 第一章）"
+introduced_in_level = &"level_c02"
+display_name_key = &"ENEMY_MAST_RAT_SWARM"
+max_hp = 40.0
+speed_px_per_sec = 78.0
+armor = 0.0
+glow_resist = 0.0
+leak_damage = 1
+kill_reward_ember = 6
+radius_px = 7.0
+tags = [&"swarm"]
+body_color = Color(0.65, 0.50, 0.35, 1.00)

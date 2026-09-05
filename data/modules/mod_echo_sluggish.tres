@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModuleData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/module_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mod_echo_sluggish"
+schema_version = 1
+enabled = true
+designer_note = "M2：迟滞弦：链路上敌人减速 30%"
+tower_id = &"tower_echo_pile"
+display_name_key = &"MOD_ECHO_SLUGGISH"
+description_key = &"MOD_ECHO_SLUGGISH_DESC"
+effect_op = &"link_slow"
+effect_value = 0.3
+tint = Color(0.65, 0.75, 1.00, 1.00)

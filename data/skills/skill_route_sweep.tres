@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/skill_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"skill_route_sweep"
+schema_version = 1
+enabled = true
+designer_note = "岚舟·苇终极技：航线扫掠（PRD §7.4，80 充能）；灰盒为全激活路线辉光伤害，单目标命中封顶由次数=1 体现"
+display_name_key = &"SKILL_ROUTE_SWEEP"
+effect = &"route_sweep"
+cooldown_seconds = 30.0
+becon_cost = 80
+damage = 60.0
+damage_type = &"glow"

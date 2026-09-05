@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DeviceData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/device_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"device_c03_lighthouse"
+schema_version = 1
+enabled = true
+designer_note = "M2：C03 失火灯塔装置——在线时每 3 秒辉光脉冲；暮潮事件令其离线，英雄驻守 3 秒修复（PRD §5.3）"
+display_name_key = &"DEVICE_C03_LIGHTHOUSE"
+position = Vector2(320, 48)
+radius_px = 110.0
+effect_op = &"glow_pulse"
+effect_value = 22.0
+interval_seconds = 3.0
+active_phase = &"both"
+repairable = true
+repair_seconds = 3.0

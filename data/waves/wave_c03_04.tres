@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/wave_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/data/wave_group.gd" id="2"]
+
+[sub_resource type="Resource" id="WaveGroup_1"]
+script = ExtResource("2")
+enemy_id = &"rust_armor_carrier"
+count = 3
+interval_seconds = 1.6
+entrance_index = 0
+delay_after_prev_seconds = 0.0
+route_id = &"route_c03_main"
+
+[sub_resource type="Resource" id="WaveGroup_2"]
+script = ExtResource("2")
+enemy_id = &"mast_rat_swarm"
+count = 10
+interval_seconds = 0.6
+entrance_index = 0
+delay_after_prev_seconds = 2.0
+route_id = &"route_c03_north"
+
+[resource]
+script = ExtResource("1")
+id = &"wave_c03_04"
+schema_version = 1
+enabled = true
+designer_note = "M2：重甲登场"
+introduced_in_level = &"level_c03"
+wave_index = 4
+pre_delay_seconds = 5.0
+groups = [SubResource("WaveGroup_1"), SubResource("WaveGroup_2")]
+completion_reward_ember = 45
+completion_reward_becon = 12
+intent = &"armor_check"

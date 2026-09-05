@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModuleData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/module_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mod_echo_resonance"
+schema_version = 1
+enabled = true
+designer_note = "M2：共振：链路伤害跳跃 +1 目标"
+tower_id = &"tower_echo_pile"
+display_name_key = &"MOD_ECHO_RESONANCE"
+description_key = &"MOD_ECHO_RESONANCE_DESC"
+effect_op = &"link_chain"
+effect_value = 1.0
+tint = Color(1.00, 0.90, 0.50, 1.00)

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/skill_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"skill_forge_line"
+schema_version = 1
+enabled = true
+designer_note = "M3：铸手·穆恩技能"
+display_name_key = &"SKILL_FORGE_LINE"
+effect = &"forge_wall"
+cooldown_seconds = 30.0
+becon_cost = 90
+damage = 75.0
+damage_type = &"glow"
+radius_px = 140.0
+duration_seconds = 10.0

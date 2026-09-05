@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModuleData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/module_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mod_needle_speed_wheel"
+schema_version = 1
+enabled = true
+designer_note = "M2：速轮：攻击周期 ×0.75"
+tower_id = &"tower_needle_rail"
+display_name_key = &"MOD_NEEDLE_SPEED_WHEEL"
+description_key = &"MOD_NEEDLE_SPEED_WHEEL_DESC"
+effect_op = &"fire_rate_mult"
+effect_value = 0.75
+tint = Color(0.70, 1.00, 0.70, 1.00)

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"splitfin_dasher"
+schema_version = 1
+enabled = true
+designer_note = "M1 灰盒：裂鳍快泳者，迅捷（PRD §8.6 第一章）"
+introduced_in_level = &"level_c02"
+display_name_key = &"ENEMY_SPLITFIN_DASHER"
+max_hp = 70.0
+speed_px_per_sec = 100.0
+armor = 0.0
+glow_resist = 0.0
+leak_damage = 1
+kill_reward_ember = 8
+radius_px = 8.0
+tags = [&"swift"]
+body_color = Color(0.45, 0.85, 0.90, 1.00)

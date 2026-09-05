@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModuleData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/module_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mod_wind_cruise"
+schema_version = 1
+enabled = true
+designer_note = "M3：巡航：跨路无人帆提高巡航频率"
+tower_id = &"tower_wind_nest"
+display_name_key = &"MOD_WIND_CRUISE"
+description_key = &"MOD_WIND_CRUISE_DESC"
+effect_op = &"fire_rate_mult"
+effect_value = 0.82
+tint = Color(0.45,0.90,0.75, 1.00)

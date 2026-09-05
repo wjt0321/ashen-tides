@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="PhaseEventData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/phase_event_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"phase_c03_beacon_failure"
+schema_version = 1
+enabled = true
+designer_note = "C03 失火灯塔：第 3 波明潮→暮潮，灯塔装置离线（相位模板 2：环境装置失效，PRD §4.1/§5.3）"
+level_id = &"level_c03"
+starts_at_wave = 3
+from_phase = &"mingchao"
+to_phase = &"muchao"
+activates_routes = []
+deactivates_routes = []
+environment_changes = [{"op": &"device_offline", "device_id": &"device_c03_lighthouse"}]
+warning_seconds = 20.0
+player_interruptible = true
+becon_cost = 40

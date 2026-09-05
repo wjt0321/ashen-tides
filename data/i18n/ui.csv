@@ -1,0 +1,209 @@
+keys,zh_CN,en
+GAME_TITLE,余烬潮汐 Ashen Tides,Ashen Tides
+MENU_CONTINUE,继续,Continue
+MENU_SETTINGS,设置,Settings
+MENU_RESTART,重开本关,Restart Level
+MENU_CLOSE,关闭,Close
+MENU_SKIP,跳过,Skip
+PAUSE_TITLE,暂停,Paused
+RESULT_WIN,防线守住了,Victory
+RESULT_LOSE,防线崩溃,Defeat
+RESULT_MARKS,航标印记,Beacon Marks
+RESULT_INTEGRITY,舰队完整度,Fleet Integrity
+RESULT_KILLS,击杀,Kills
+RESULT_LEAKS,漏怪,Leaks
+RESULT_TIME,用时,Time
+RESULT_REPORT,战报,Battle Report
+RESULT_LEAK_TOP,漏怪构成,Leak Breakdown
+RESULT_DAMAGE,伤害构成,Damage by Type
+RESULT_FIRST_BREACH,首次破防波次,First Breach Wave
+RESULT_UNCOVERED,未覆盖威胁标签,Uncovered Threat Tags
+RESULT_HINTS,复盘建议,Suggestions
+RESULT_RESTART_HINT,R 重开 / Esc 关闭,R Restart / Esc Close
+HINT_SPLASH,建议：群体敌人漏怪多，补溅射/穿透手段,Tip: swarm leaks — add splash/pierce coverage
+HINT_GLOW,建议：重甲漏怪多，补辉光伤害或削甲,Tip: heavy leaks — add glow damage or armor shred
+HINT_NONE,防线覆盖良好，无突出短板,Defense coverage looks solid
+SETTINGS_TITLE,设置,Settings
+SETTINGS_MASTER,主音量,Master Volume
+SETTINGS_MUSIC,音乐音量,Music Volume
+SETTINGS_SFX,音效音量,SFX Volume
+SETTINGS_AMBIENT,环境音量,Ambient Volume
+SETTINGS_UI_VOL,界面音量,UI Volume
+SETTINGS_UI_SCALE,界面缩放,UI Scale
+SETTINGS_COLOR_PRESET,色弱预设,Color Vision Preset
+SETTINGS_HIGH_CONTRAST,高对比度,High Contrast
+SETTINGS_LOW_FX,低特效,Reduced FX
+SETTINGS_AUTOCAST,自动施放辅助,Auto-cast Assist
+SETTINGS_LANGUAGE,语言,Language
+SETTINGS_KEYS,按键重绑定,Key Rebinding
+SETTINGS_RESET_KEYS,恢复默认按键,Reset Default Keys
+SETTINGS_PRESS_KEY,请按新按键…,Press a new key…
+SETTINGS_CONFLICT,按键冲突：已被占用,Conflict: key already bound
+CP_DEFAULT,默认,Default
+CP_PROTAN,红色弱,Protanopia
+CP_DEUTAN,绿色弱,Deuteranopia
+CP_TRITAN,蓝色弱,Tritanopia
+LANG_ZH,中文,Chinese
+LANG_EN,English,English
+TUT_STEP_BUILD,点击发光节点建造第一座塔（Tab 换塔）,Click a glowing node to build (Tab cycles)
+TUT_STEP_START,按空格开始第一波,Press Space to start wave 1
+TUT_STEP_RANGE,选中塔可查看射程；E 升级、G 出售,Select a tower: E upgrades, G sells
+TUT_STEP_UPGRADE,攒够火种后选塔按 E 升级并选模块,With enough ember, press E to upgrade & pick a module
+TUT_STEP_PAUSE,P 暂停，=/- 变速，R 重开,P pause, =/- speed, R restart
+TUT_DONE,教学完成，祝武运昌隆,Tutorial complete — good luck
+TUT_SKIP,F1 跳过教学,F1 skips tutorial
+HUD_HINT,左键建塔/选塔 Tab换塔 E升级 G出售 右键移英雄 1/2/3技能 空格开波 P暂停 Esc菜单 =/-变速 ,/.潮汐仪 R重开,LMB build/select Tab cycle E upgrade G sell RMB move hero 1/2/3 skills Space wave P pause Esc menu =/- speed ,/. tide R restart
+MODULE_CHOICE_TITLE,选择校准模块（7/8/9，Esc 取消）,Choose a calibration module (7/8/9, Esc cancels)
+DEVICE_REPAIR_HINT,英雄驻守装置旁可修复,Hero can repair by standing near the device
+HERO_DOWN,英雄倒地，等待复归…,Hero down — awaiting revival…
+NOTICE_SUSPEND_FOUND,检测到中断存档：C 继续 / X 放弃,Suspend save found: C resume / X discard
+NOTICE_NO_BEACON_ULT,航标充能不足：终极技需要 80,Not enough beacon charge: ultimate needs 80
+NOTICE_NO_BEACON_TIDE,航标充能不足：潮汐仪需要 40,Not enough beacon charge: tide clock needs 40
+NOTICE_NO_PENDING_PHASE,当前无待切换的相位事件,No pending phase event
+NOTICE_CANT_REACH,无法到达：目标在地图外,Cannot reach: target out of map
+NOTICE_COOLDOWN_A,钩索转移冷却中,Grapple on cooldown
+NOTICE_COOLDOWN_B,照明标记冷却中或无目标,Flare on cooldown or no target
+# M2：关卡/塔/敌/英雄/技能/模块/装置/目标的 display_name_key 翻译
+LEVEL_C01,C01 离港火线,C01 Departure Fireline
+LEVEL_C02,C02 潮门初启,C02 Tide Gate
+LEVEL_C03,C03 失火灯塔,C03 Lampfire Beacon
+TOWER_NEEDLE_RAIL,针轨弩台,Needle Rail
+TOWER_EMBER_WELL,余烬喷井,Ember Well
+TOWER_ECHO_PILE,回声桩阵,Echo Pile
+HERO_LANZHOU_WEI,岚舟·苇,Lanzhou Wei
+ENEMY_SALT_SHELL_WALKER,盐壳行者,Salt Shell Walker
+ENEMY_MAST_RAT_SWARM,桅鼠群,Mast Rat Swarm
+ENEMY_SPLITFIN_DASHER,裂鳍冲刺者,Splitfin Dasher
+ENEMY_RUST_ARMOR_CARRIER,锈甲搬运兽,Rust Armor Carrier
+ENEMY_LAMP_LEECH,灯寄生体,Lamp Leech
+ENEMY_TIDE_BACK_NAVIGATOR,潮背导航员,Tide Back Navigator
+MOD_NEEDLE_LONG_NEEDLE,长针,Long Needle
+MOD_NEEDLE_BARB,倒钩,Barb
+MOD_NEEDLE_SPEED_WHEEL,速轮,Speed Wheel
+MOD_EMBER_WIDE_NOZZLE,扩口,Wide Nozzle
+MOD_EMBER_CONDENSED,凝焰,Condensed
+MOD_EMBER_TEMPERING,回火,Tempering
+MOD_ECHO_SLUGGISH,迟滞弦,Sluggish Chord
+MOD_ECHO_BROKEN,断响,Broken Chord
+MOD_ECHO_RESONANCE,共振,Resonance
+SKILL_GRAPPLE_SHIFT,钩索转移,Grapple Shift
+SKILL_FLARE_MARK,照明标记,Flare Mark
+SKILL_ROUTE_SWEEP,航线扫掠,Route Sweep
+DEVICE_C03_LIGHTHOUSE,失火灯塔装置,Lampfire Lighthouse Device
+OBJ_PRIMARY_SURVIVE,守住舰队完整度,Protect Fleet Integrity
+OBJ_C01_STRATEGY,在 C01 内完成至少一次塔升级,Upgrade any tower at least once in C01
+OBJ_C02_STRATEGY,在 C02 内使用一次潮汐仪,Use the tide clock once in C02
+OBJ_C03_STRATEGY,在 C03 内修复一次失火灯塔装置,Repair the lighthouse device once in C03
+TUT_C02_STEP_ROUTE,关注顶中相位时间轴：第 3 波前明潮→暮潮,Watch the top phase axis: Phase switches at wave 3
+TUT_C02_STEP_TIDE,攒满 40 充能后按 , 提前相位切换,Gather 40 charge then press , to shift the phase earlier
+TUT_C02_DONE,相位教学完成,Phase tutorial complete
+TUT_C03_STEP_DEVICE,留意场景中的失火灯塔装置（菱形标记）,Mind the lighthouse device (diamond marker)
+TUT_C03_STEP_DOWN,暮潮会把装置离线，你需要驻守修复,Dusk phase takes the device offline — stand by to fix it
+TUT_C03_DONE,装置教学完成,Device tutorial complete
+# M2：战斗状态显示名（替换硬编码中文字符串）
+STATE_BUILD,部署中,Build
+STATE_PRE_DELAY,开波倒计时,Pre-delay
+STATE_SPAWNING,迎击中,Combat
+STATE_CLEARING,清场中,Clearing
+STATE_WIN,通关,Victory
+STATE_LOSE,失败,Defeat
+PHASE_MINGCHAO,明潮,Ming Tide
+PHASE_MUCHAO,暮潮,Mu Tide
+HUD_BEACON_INSUF_ULT,航标充能不足：终极技需要 80,Beacon charge low: ultimate needs 80
+HUD_BEACON_INSUF_TIDE,航标充能不足：潮汐仪需要 40,Beacon charge low: tide clock needs 40
+HUD_TIDE_NO_PENDING,当前无待切换的相位事件,No pending phase event
+HUD_PHASE_PENDING,下波相位→%s（潮汐仪：, 提前 / . 延后，%s 充能）,Next wave phase → %s (tide clock: , earlier / . later, %s)
+HUD_TOWER_INFO,选中 %s %s级 | 模块:%s | 击杀 %s | %s | G 出售(返 %s),Selected %s tier %s | module:%s | kills %s | %s | G sells (refund %s)
+HUD_TOWER_UPGRADE_FULL,已满级,Max tier reached
+HUD_TOWER_UPGRADE_COST,火种不足：升级需要 %s,Notem enough: upgrade needs %s
+HUD_PLACE_NO_FUNDS,火种不足：%s 需要 %s,Notem enough: %s needs %s
+HUD_PLACE_OCCUPIED,该建造点已占用,Build node already occupied
+HUD_TOWER_PLACE_HINT,左键建造 / Tab 换塔 / E 升级 / G 出售,LMB build / Tab cycle / E upgrade / G sell
+HUD_CYCLE_TOWER,选择塔：%s（%s 火种）,Tower: %s (%s ember)
+HUD_INJECT_EMBER,Debug 注资 +500 火种,Debug inject +500 ember
+HUD_INVINCIBLE_ON,无敌：开,Invincible: on
+HUD_INVINCIBLE_OFF,无敌：关,Invincible: off
+HUD_SUSPEND_FOUND,检测到中断存档：C 继续 / X 放弃,Suspend save found: C resume / X discard
+HUD_SUSPEND_RESUMED,已恢复：%s 第 %s 波之后,Resumed: %s after wave %s
+HUD_SUSPEND_CLEARED,已放弃中断存档,Suspend save discarded
+HUD_NO_SUSPEND,没有可恢复的中断存档,No suspend save to resume
+HUD_STRATEGY_DONE,策略目标达成,Strategy objective done
+HUD_WIN,%s 通关 — 印记 %s/3 | 完整度 %s/%s | 按 R 重开,%s cleared — marks %s/3 | integrity %s/%s | R restart
+HUD_LOSE,舰队完整度归零 — 防线崩溃 | 按 R 重开,Fleet integrity zero — defense broken | R restart
+HUD_TIDE_SHIFTED,潮汐仪：相位切换 → %s,Tide clock: phase → %s
+HUD_DEVICE_OFFLINE,暮潮：%s 离线！英雄驻守可修复,Dusk: %s offline! Hero can repair
+HUD_HERO_SKILL_A_FAIL,钩索转移冷却中,Grapple on cooldown
+HUD_HERO_SKILL_B_FAIL,照明标记冷却中或 200px 内无敌人,Flare on cooldown or no enemy in 200px
+HUD_HERO_CANT_REACH,无法到达：目标在地图外,Cannot reach: target out of map
+HUD_NOT_START,当前不能开波（需处于部署阶段且有剩余波次）,Cannot start wave (need BUILD state with remaining waves)
+HUD_SKIP_FAIL,当前状态不能跳波,Cannot skip wave in current state
+HUD_LEVEL_SUBTITLE,%s 灰盒 | 固定 BuildNode + 预制 PathNetwork | 固定 tick 60Hz,%s greybox | fixed BuildNode + PathNetwork | fixed tick 60Hz
+HUD_WIN_RESULT,%s 通关 — 印记 %s/3,%s cleared — marks %s/3
+HUD_INTEGRITY_SHORT,完整度 %s/%s,Integrity %s/%s
+HUD_RESTART,战斗已重开,Battle restarted
+HUD_PAUSE,暂停：开,Pause: on
+HUD_RESUME,暂停：关,Pause: off
+HUD_SPEED,游戏速度 → %sx,Game speed → %sx
+HUD_TUTORIAL_DONE,教程完成,Tutorial complete
+HUD_MODULE_CHOICE,II 级校准模块三选一（本局锁定）：%s | Esc 取消,Tier II module (locked this run): %s | Esc cancel
+HUD_MODULE_CANCEL,已取消升级,Upgrade cancelled
+HUD_MODULE_UPGRADE_FAIL,火种不足：升级需要 %s,Notem enough: upgrade needs %s
+HUD_RESULTS_TITLE,战报 — %s,Battle Report — %s
+HUD_RESULTS_LEAKED,漏怪构成：,Leak breakdown:
+HUD_RESULTS_DAMAGE,伤害构成：,Damage by type:
+HUD_RESULTS_HINT,建议：,Tip:
+HUD_RESULT_CLICK_CLOSE,Esc 关闭,Esc close
+# 模块描述（PRD §6.1 校准模块说明，未来在 II 级选择面板显示）
+MOD_NEEDLE_LONG_NEEDLE_DESC,长针：投射物穿透数 +1。,Long Needle: pierce +1.
+MOD_NEEDLE_BARB_DESC,倒钩：每次命中削减目标 12 物理抗性，持续 4 秒。,Barb: hit shreds 12 physical armor for 4s.
+MOD_NEEDLE_SPEED_WHEEL_DESC,速轮：攻击周期 ×0.75（高频）。,Speed Wheel: attack period ×0.75 (faster).
+MOD_EMBER_WIDE_NOZZLE_DESC,扩口：溅射半径 ×1.8。,Wide Nozzle: splash radius ×1.8.
+MOD_EMBER_CONDENSED_DESC,凝焰：伤害 ×1.4 但溅射归零（收束为单体）。,Condensed: damage ×1.4, splash becomes single-target.
+MOD_EMBER_TEMPERING_DESC,回火：本塔每次击杀返还 2 点航标充能。,Tempering: each kill refunds 2 beacon charge.
+MOD_ECHO_SLUGGISH_DESC,迟滞弦：链路上敌人减速 30%。,Sluggish Chord: enemies on link slow 30%.
+MOD_ECHO_BROKEN_DESC,断响：链路上敌人被沉默（无法施法）。,Broken Chord: enemies on link silenced.
+MOD_ECHO_RESONANCE_DESC,共振：链路伤害额外跳跃 1 个目标。,Resonance: link damage chains 1 extra target.
+# M3 第一章新增塔、英雄、敌人、关卡与模块
+TOWER_WIND_NEST,风帆机巢,Wind Nest
+TOWER_TIDE_ANVIL,铸潮砧塔,Tide Anvil
+TOWER_PRISM_GROVE,棱镜苗圃,Prism Grove
+HERO_ZHUSHOU_MUEN,铸手·穆恩,Artificer Muen
+SKILL_FOLD_BARRIER,折叠路障,Folded Barricade
+SKILL_SEISMIC_REPAIR,震地修复,Seismic Repair
+SKILL_FORGE_LINE,临时铸成防线,Forge Line
+LEVEL_C04,白盐岬,White Salt Cape
+LEVEL_C05,漂木渡口,Driftwood Crossing
+LEVEL_C06,锈帆滩,Rust Sail Beach
+LEVEL_C07,潮脊断桥,Tideback Broken Bridge
+LEVEL_C08,吞锚蟹巢,Anchor Crab Nest
+OBJ_C04_STRATEGY,在相位切换前后使用潮汐仪,Use the tide clock around the phase shift
+OBJ_C05_STRATEGY,完成一次塔升级,Complete a tower upgrade
+OBJ_C06_STRATEGY,在相位切换前后使用潮汐仪,Use the tide clock around the phase shift
+OBJ_C07_STRATEGY,完成一次塔升级,Complete a tower upgrade
+OBJ_C08_STRATEGY,完成一次塔升级,Complete a tower upgrade
+ENEMY_BRINE_SPITTER,盐沫喷吐者,Brine Spitter
+ENEMY_TIDEGLASS_RUNNER,潮玻快泳者,Tideglass Runner
+ENEMY_REEF_SAPPER,礁工爆破手,Reef Sapper
+ENEMY_SALT_MENDER,盐壳修补师,Salt Mender
+ENEMY_ANCHOR_CRAB_GUARDIAN,锚蟹守卫,Anchor Crab Guardian
+ENEMY_ANCHOR_CRAB_KING,吞锚蟹王,Anchor Crab King
+MOD_WIND_HUNTER,Wind Hunter,Wind Hunter
+MOD_WIND_HUNTER_DESC,Wind Hunter：M3 校准模块效果,Wind Hunter: M3 calibration effect
+MOD_WIND_CRUISE,Wind Cruise,Wind Cruise
+MOD_WIND_CRUISE_DESC,Wind Cruise：M3 校准模块效果,Wind Cruise: M3 calibration effect
+MOD_WIND_MARKER,Wind Marker,Wind Marker
+MOD_WIND_MARKER_DESC,Wind Marker：M3 校准模块效果,Wind Marker: M3 calibration effect
+MOD_ANVIL_SHRED,Anvil Shred,Anvil Shred
+MOD_ANVIL_SHRED_DESC,Anvil Shred：M3 校准模块效果,Anvil Shred: M3 calibration effect
+MOD_ANVIL_MAGNET,Anvil Magnet,Anvil Magnet
+MOD_ANVIL_MAGNET_DESC,Anvil Magnet：M3 校准模块效果,Anvil Magnet: M3 calibration effect
+MOD_ANVIL_RESONANCE,Anvil Resonance,Anvil Resonance
+MOD_ANVIL_RESONANCE_DESC,Anvil Resonance：M3 校准模块效果,Anvil Resonance: M3 calibration effect
+MOD_PRISM_AMP,Prism Amp,Prism Amp
+MOD_PRISM_AMP_DESC,Prism Amp：M3 校准模块效果,Prism Amp: M3 calibration effect
+MOD_PRISM_CLEAR,Prism Clear,Prism Clear
+MOD_PRISM_CLEAR_DESC,Prism Clear：M3 校准模块效果,Prism Clear: M3 calibration effect
+MOD_PRISM_CHARGE,Prism Charge,Prism Charge
+MOD_PRISM_CHARGE_DESC,Prism Charge：M3 校准模块效果,Prism Charge: M3 calibration effect
+HUD_HERO_DOWN,英雄倒地,Hero down
+HUD_WAVE_BANNER,第 %d/%d 波 · %s,Wave %d/%d · %s

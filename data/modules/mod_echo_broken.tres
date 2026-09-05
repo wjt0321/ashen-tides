@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModuleData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/module_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mod_echo_broken"
+schema_version = 1
+enabled = true
+designer_note = "M2：断响：链路上敌人被沉默（能力失效）"
+tower_id = &"tower_echo_pile"
+display_name_key = &"MOD_ECHO_BROKEN"
+description_key = &"MOD_ECHO_BROKEN_DESC"
+effect_op = &"link_silence"
+effect_value = 1.0
+tint = Color(0.80, 0.60, 1.00, 1.00)

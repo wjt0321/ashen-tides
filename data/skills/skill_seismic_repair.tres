@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/skill_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"skill_seismic_repair"
+schema_version = 1
+enabled = true
+designer_note = "M3：铸手·穆恩技能"
+display_name_key = &"SKILL_SEISMIC_REPAIR"
+effect = &"repair"
+cooldown_seconds = 18.0
+becon_cost = 0
+damage = 45.0
+damage_type = &"glow"
+radius_px = 96.0
+duration_seconds = 0.0

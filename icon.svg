@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <!-- 《余烬潮汐》原创占位图标（M0）：余烬菱形 + 潮汐弧线 -->
+  <rect width="128" height="128" rx="16" fill="#10181f"/>
+  <path d="M20 88 Q44 72 64 88 T108 88" fill="none" stroke="#3d6e8f" stroke-width="6" stroke-linecap="round"/>
+  <path d="M20 100 Q44 84 64 100 T108 100" fill="none" stroke="#2a4d66" stroke-width="6" stroke-linecap="round"/>
+  <path d="M64 20 L88 52 L64 72 L40 52 Z" fill="#e8862e"/>
+  <path d="M64 32 L78 52 L64 62 L50 52 Z" fill="#f5c04a"/>
+</svg>

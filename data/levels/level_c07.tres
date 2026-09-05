@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=15 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/level_data.gd" id="1"]
+[ext_resource type="Resource" path="res://data/waves/wave_c07_01.tres" id="w0"]
+[ext_resource type="Resource" path="res://data/waves/wave_c07_02.tres" id="w1"]
+[ext_resource type="Resource" path="res://data/waves/wave_c07_03.tres" id="w2"]
+[ext_resource type="Resource" path="res://data/waves/wave_c07_04.tres" id="w3"]
+[ext_resource type="Resource" path="res://data/waves/wave_c07_05.tres" id="w4"]
+[ext_resource type="Resource" path="res://data/waves/wave_c07_06.tres" id="w5"]
+[ext_resource type="Resource" path="res://data/waves/wave_c07_07.tres" id="w6"]
+[ext_resource type="Resource" path="res://data/waves/wave_c07_08.tres" id="w7"]
+[ext_resource type="Resource" path="res://data/waves/wave_c07_09.tres" id="w8"]
+[ext_resource type="Resource" path="res://data/waves/wave_c07_10.tres" id="w9"]
+[ext_resource type="Resource" path="res://data/waves/wave_c07_11.tres" id="w10"]
+[ext_resource type="Resource" path="res://data/waves/wave_c07_12.tres" id="w11"]
+[ext_resource type="Resource" path="res://data/phase_events/phase_c07_tide_shift.tres" id="pe0"]
+
+[resource]
+script = ExtResource("1")
+id = &"level_c07"
+schema_version = 1
+enabled = true
+designer_note = "M3 第一章：C07「潮脊断桥」——固定 BuildNode + PathNetwork"
+display_name_key = &"LEVEL_C07"
+map_size_cells = Vector2i(20, 11)
+initial_ember = 1050
+initial_fleet_integrity = 20
+allowed_towers = [&"tower_needle_rail", &"tower_ember_well", &"tower_echo_pile", &"tower_wind_nest", &"tower_tide_anvil", &"tower_prism_grove"]
+route_ids = [&"route_c07_upper", &"route_c07_lower"]
+route_points = [PackedVector2Array(0,80,224,80,320,160,640,160), PackedVector2Array(0,280,224,280,320,200,640,200)]
+default_active_route = &"route_c07_upper"
+initial_active_routes = [&"route_c07_upper", &"route_c07_lower"]
+build_node_positions = [Vector2(64, 40), Vector2(176, 40), Vector2(288, 40), Vector2(400, 40), Vector2(512, 40), Vector2(64, 320), Vector2(176, 320), Vector2(288, 320), Vector2(400, 320), Vector2(512, 320), Vector2(240, 132), Vector2(400, 240), Vector2(560, 120), Vector2(560, 280)]
+waves = [ExtResource("w0"), ExtResource("w1"), ExtResource("w2"), ExtResource("w3"), ExtResource("w4"), ExtResource("w5"), ExtResource("w6"), ExtResource("w7"), ExtResource("w8"), ExtResource("w9"), ExtResource("w10"), ExtResource("w11")]
+phase_events = [ExtResource("pe0")]
+allowed_heroes = [&"hero_lanzhou_wei", &"hero_zhushou_muen"]
+hero_spawn = Vector2(320, 180)
+primary_objective_key = &"OBJ_PRIMARY_SURVIVE"
+strategy_objective_key = &"OBJ_C07_STRATEGY"
+strategy_objective_op = &"upgrade_any_tower"
+integrity_mark_threshold = 12
+tutorial_id = &""
+chapter_index = 1
+target_tags = [&"route_pressure", &"heavy", &"shield"]
+boss_enemy_id = &"anchor_crab_king"

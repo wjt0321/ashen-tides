@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="PhaseEventData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/phase_event_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"phase_c07_tide_shift"
+schema_version = 1
+enabled = true
+designer_note = "M3 C07：预告式昼暮切换"
+level_id = &"level_c07"
+starts_at_wave = 6
+from_phase = &"mingchao"
+to_phase = &"muchao"
+activates_routes = [&"route_c07_lower"]
+deactivates_routes = []
+environment_changes = []
+warning_seconds = 20.0
+player_interruptible = true
+becon_cost = 40

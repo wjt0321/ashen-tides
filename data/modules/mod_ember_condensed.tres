@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModuleData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/module_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mod_ember_condensed"
+schema_version = 1
+enabled = true
+designer_note = "M2：凝焰：溅射归零，伤害 ×1.6"
+tower_id = &"tower_ember_well"
+display_name_key = &"MOD_EMBER_CONDENSED"
+description_key = &"MOD_EMBER_CONDENSED_DESC"
+effect_op = &"focus_damage_mult"
+effect_value = 1.6
+tint = Color(1.00, 0.55, 0.30, 1.00)

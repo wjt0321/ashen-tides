@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="HeroData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/hero_data.gd" id="1"]
+[ext_resource type="Resource" path="res://data/skills/skill_grapple_shift.tres" id="sa"]
+[ext_resource type="Resource" path="res://data/skills/skill_flare_mark.tres" id="sb"]
+[ext_resource type="Resource" path="res://data/skills/skill_route_sweep.tres" id="ult"]
+
+[resource]
+script = ExtResource("1")
+id = &"hero_lanzhou_wei"
+schema_version = 1
+enabled = true
+designer_note = "M1 灰盒：岚舟·苇，机动侦察（PRD §7.2）；倒地/复归机制 M2 启用"
+display_name_key = &"HERO_LANZHOU_WEI"
+max_hp = 300.0
+move_speed = 130.0
+attack_range = 110.0
+attack_period = 0.7
+damage = 12.0
+skill_a = ExtResource("sa")
+skill_b = ExtResource("sb")
+ultimate = ExtResource("ult")
+revive_seconds = 25.0

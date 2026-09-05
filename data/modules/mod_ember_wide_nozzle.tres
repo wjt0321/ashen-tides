@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModuleData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/module_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mod_ember_wide_nozzle"
+schema_version = 1
+enabled = true
+designer_note = "M2：扩口：溅射半径 ×1.5"
+tower_id = &"tower_ember_well"
+display_name_key = &"MOD_EMBER_WIDE_NOZZLE"
+description_key = &"MOD_EMBER_WIDE_NOZZLE_DESC"
+effect_op = &"splash_radius_mult"
+effect_value = 1.5
+tint = Color(1.00, 0.80, 0.45, 1.00)

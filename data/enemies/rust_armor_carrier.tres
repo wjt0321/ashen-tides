@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"rust_armor_carrier"
+schema_version = 1
+enabled = true
+designer_note = "M1 灰盒：锈甲搬运者，重甲（PRD §8.6 第一章）；辉光/破甲反制"
+introduced_in_level = &"level_c02"
+display_name_key = &"ENEMY_RUST_ARMOR_CARRIER"
+max_hp = 380.0
+speed_px_per_sec = 38.0
+armor = 70.0
+glow_resist = 10.0
+leak_damage = 2
+kill_reward_ember = 20
+radius_px = 13.0
+tags = [&"heavy"]
+body_color = Color(0.80, 0.45, 0.30, 1.00)

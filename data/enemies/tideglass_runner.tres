@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"tideglass_runner"
+schema_version = 1
+enabled = true
+designer_note = "M3 第一章新增：tideglass_runner"
+introduced_in_level = &"level_c04"
+display_name_key = &"ENEMY_TIDEGLASS_RUNNER"
+max_hp = 95.0
+speed_px_per_sec = 118.0
+armor = 0.0
+glow_resist = 35.0
+leak_damage = 1
+kill_reward_ember = 10
+radius_px = 8.0
+tags = [&"swift", &"glow"]
+elite = false
+boss = false
+shield_hp = 0.0
+aura_radius = 0.0
+aura_speed_mult = 1.0
+body_color = Color(0.35,0.90,0.95, 1.00)

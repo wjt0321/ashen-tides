@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModuleData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/module_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mod_needle_barb"
+schema_version = 1
+enabled = true
+designer_note = "M2：倒钩：命中削甲 15，持续 4 秒"
+tower_id = &"tower_needle_rail"
+display_name_key = &"MOD_NEEDLE_BARB"
+description_key = &"MOD_NEEDLE_BARB_DESC"
+effect_op = &"armor_shred"
+effect_value = 15.0
+tint = Color(0.95, 0.60, 0.40, 1.00)

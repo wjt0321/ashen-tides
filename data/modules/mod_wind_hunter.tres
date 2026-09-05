@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModuleData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/module_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mod_wind_hunter"
+schema_version = 1
+enabled = true
+designer_note = "M3：猎翼：无人帆优先空中目标并增加穿透"
+tower_id = &"tower_wind_nest"
+display_name_key = &"MOD_WIND_HUNTER"
+description_key = &"MOD_WIND_HUNTER_DESC"
+effect_op = &"pierce_bonus"
+effect_value = 1
+tint = Color(0.40,0.85,0.95, 1.00)

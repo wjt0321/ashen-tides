@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"salt_mender"
+schema_version = 1
+enabled = true
+designer_note = "M3 第一章新增：salt_mender"
+introduced_in_level = &"level_c04"
+display_name_key = &"ENEMY_SALT_MENDER"
+max_hp = 150.0
+speed_px_per_sec = 40.0
+armor = 5.0
+glow_resist = 25.0
+leak_damage = 1
+kill_reward_ember = 20
+radius_px = 10.0
+tags = [&"healer"]
+elite = false
+boss = false
+shield_hp = 0.0
+aura_radius = 70.0
+aura_speed_mult = 1.0
+body_color = Color(0.45,0.90,0.65, 1.00)

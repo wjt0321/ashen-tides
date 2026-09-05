@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/tower_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/data/tower_tier.gd" id="2"]
+[ext_resource type="Resource" path="res://data/modules/mod_prism_amp.tres" id="m0"]
+[ext_resource type="Resource" path="res://data/modules/mod_prism_clear.tres" id="m1"]
+[ext_resource type="Resource" path="res://data/modules/mod_prism_charge.tres" id="m2"]
+
+[sub_resource type="Resource" id="TowerTier_2"]
+script = ExtResource("2")
+tier = 2
+cost_to_upgrade = 75
+damage_min = 21
+damage_max = 26
+range_px = 138
+attack_period = 0.96
+module_choices = [ExtResource("m0"), ExtResource("m1"), ExtResource("m2")]
+
+[sub_resource type="Resource" id="TowerTier_3"]
+script = ExtResource("2")
+tier = 3
+cost_to_upgrade = 130
+damage_min = 30
+damage_max = 36
+range_px = 146
+attack_period = 0.88
+
+[sub_resource type="Resource" id="TowerTier_4"]
+script = ExtResource("2")
+tier = 4
+cost_to_upgrade = 210
+damage_min = 42
+damage_max = 50
+range_px = 154
+attack_period = 0.8
+
+[resource]
+script = ExtResource("1")
+id = &"tower_prism_grove"
+schema_version = 1
+enabled = true
+designer_note = "M3：棱镜苗圃：链接附近塔传递增益，独立输出较弱"
+introduced_in_level = &"level_c04"
+display_name_key = &"TOWER_PRISM_GROVE"
+base_cost = 110
+range_px = 128
+attack_period = 1.05
+damage_min = 14
+damage_max = 18
+damage_type = &"glow"
+projectile_speed = 340
+splash_radius = 36
+pierce = 2
+tiers = [SubResource("TowerTier_2"), SubResource("TowerTier_3"), SubResource("TowerTier_4")]

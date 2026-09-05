@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="HeroData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/hero_data.gd" id="1"]
+[ext_resource type="Resource" path="res://data/skills/skill_fold_barrier.tres" id="sa"]
+[ext_resource type="Resource" path="res://data/skills/skill_seismic_repair.tres" id="sb"]
+[ext_resource type="Resource" path="res://data/skills/skill_forge_line.tres" id="ult"]
+
+[resource]
+script = ExtResource("1")
+id = &"hero_zhushou_muen"
+schema_version = 1
+enabled = true
+designer_note = "M3：铸手·穆恩，前排与机关"
+display_name_key = &"HERO_ZHUSHOU_MUEN"
+max_hp = 420.0
+move_speed = 105.0
+attack_range = 96.0
+attack_period = 0.9
+damage = 18.0
+skill_a = ExtResource("sa")
+skill_b = ExtResource("sb")
+ultimate = ExtResource("ult")
+revive_seconds = 25.0

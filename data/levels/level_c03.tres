@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/level_data.gd" id="1"]
+[ext_resource type="Resource" path="res://data/waves/wave_c03_01.tres" id="w0"]
+[ext_resource type="Resource" path="res://data/waves/wave_c03_02.tres" id="w1"]
+[ext_resource type="Resource" path="res://data/waves/wave_c03_03.tres" id="w2"]
+[ext_resource type="Resource" path="res://data/waves/wave_c03_04.tres" id="w3"]
+[ext_resource type="Resource" path="res://data/waves/wave_c03_05.tres" id="w4"]
+[ext_resource type="Resource" path="res://data/waves/wave_c03_06.tres" id="w5"]
+[ext_resource type="Resource" path="res://data/waves/wave_c03_07.tres" id="w6"]
+[ext_resource type="Resource" path="res://data/waves/wave_c03_08.tres" id="w7"]
+[ext_resource type="Resource" path="res://data/phase_events/phase_c03_beacon_failure.tres" id="pe0"]
+[ext_resource type="Resource" path="res://data/devices/device_c03_lighthouse.tres" id="dv0"]
+
+[resource]
+script = ExtResource("1")
+id = &"level_c03"
+schema_version = 1
+enabled = true
+designer_note = "M2 纵向切片：C03「失火灯塔」——双路 / 12 BuildNode / 首英雄岚舟·苇 / 相位模板 2：暮潮装置失效、英雄修复（PRD §5.3）"
+display_name_key = &"LEVEL_C03"
+map_size_cells = Vector2i(20, 11)
+initial_ember = 550
+initial_fleet_integrity = 20
+allowed_towers = [&"tower_needle_rail", &"tower_ember_well", &"tower_echo_pile"]
+route_ids = [&"route_c03_main", &"route_c03_north"]
+route_points = [PackedVector2Array(0, 256, 352, 256, 352, 160, 640, 160), PackedVector2Array(0, 96, 448, 96, 448, 288, 640, 288)]
+default_active_route = &"route_c03_main"
+initial_active_routes = [&"route_c03_main", &"route_c03_north"]
+build_node_positions = [Vector2(64, 192), Vector2(128, 320), Vector2(160, 128), Vector2(224, 224), Vector2(256, 64), Vector2(320, 320), Vector2(384, 64), Vector2(416, 192), Vector2(480, 224), Vector2(496, 64), Vector2(544, 192), Vector2(544, 320)]
+waves = [ExtResource("w0"), ExtResource("w1"), ExtResource("w2"), ExtResource("w3"), ExtResource("w4"), ExtResource("w5"), ExtResource("w6"), ExtResource("w7")]
+phase_events = [ExtResource("pe0")]
+allowed_heroes = [&"hero_lanzhou_wei"]
+hero_spawn = Vector2(320, 304)
+primary_objective_key = &"OBJ_PRIMARY_SURVIVE"
+strategy_objective_key = &"OBJ_C03_STRATEGY"
+strategy_objective_op = &"repair_device"
+integrity_mark_threshold = 12
+tutorial_id = &"tutorial_c03"
+devices = [ExtResource("dv0")]

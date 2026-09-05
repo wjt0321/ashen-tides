@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModuleData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/module_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mod_prism_amp"
+schema_version = 1
+enabled = true
+designer_note = "M3：增幅：链接塔伤害增幅"
+tower_id = &"tower_prism_grove"
+display_name_key = &"MOD_PRISM_AMP"
+description_key = &"MOD_PRISM_AMP_DESC"
+effect_op = &"focus_damage_mult"
+effect_value = 1.12
+tint = Color(0.55,0.90,1.00, 1.00)

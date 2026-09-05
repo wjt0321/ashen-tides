@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModuleData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/module_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mod_anvil_magnet"
+schema_version = 1
+enabled = true
+designer_note = "M3：磁回：击杀返还航标充能"
+tower_id = &"tower_tide_anvil"
+display_name_key = &"MOD_ANVIL_MAGNET"
+description_key = &"MOD_ANVIL_MAGNET_DESC"
+effect_op = &"kill_becon"
+effect_value = 4
+tint = Color(0.95,0.75,0.35, 1.00)

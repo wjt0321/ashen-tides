@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ModuleData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/module_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mod_anvil_shred"
+schema_version = 1
+enabled = true
+designer_note = "M3：裂甲：重击削减护甲"
+tower_id = &"tower_tide_anvil"
+display_name_key = &"MOD_ANVIL_SHRED"
+description_key = &"MOD_ANVIL_SHRED_DESC"
+effect_op = &"armor_shred"
+effect_value = 25
+tint = Color(0.90,0.50,0.35, 1.00)

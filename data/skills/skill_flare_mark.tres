@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/skill_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"skill_flare_mark"
+schema_version = 1
+enabled = true
+designer_note = "岚舟·苇技能 B：照明标记（PRD §7.4，16 秒），目标承伤 +25% 持续 5 秒"
+display_name_key = &"SKILL_FLARE_MARK"
+effect = &"mark"
+cooldown_seconds = 16.0
+becon_cost = 0
+duration_seconds = 5.0
+mark_multiplier = 1.25

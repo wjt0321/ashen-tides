@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/tower_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/data/tower_tier.gd" id="2"]
+[ext_resource type="Resource" path="res://data/modules/mod_needle_long_needle.tres" id="m0"]
+[ext_resource type="Resource" path="res://data/modules/mod_needle_barb.tres" id="m1"]
+[ext_resource type="Resource" path="res://data/modules/mod_needle_speed_wheel.tres" id="m2"]
+
+[sub_resource type="Resource" id="TowerTier_2"]
+script = ExtResource("2")
+tier = 2
+cost_to_upgrade = 80
+damage_min = 24.0
+damage_max = 27.0
+range_px = 120.0
+attack_period = 0.8
+module_choices = [ExtResource("m0"), ExtResource("m1"), ExtResource("m2")]
+
+[sub_resource type="Resource" id="TowerTier_3"]
+script = ExtResource("2")
+tier = 3
+cost_to_upgrade = 140
+damage_min = 34.0
+damage_max = 38.0
+range_px = 120.0
+attack_period = 0.7
+
+[sub_resource type="Resource" id="TowerTier_4"]
+script = ExtResource("2")
+tier = 4
+cost_to_upgrade = 220
+damage_min = 48.0
+damage_max = 54.0
+range_px = 128.0
+attack_period = 0.65
+
+[resource]
+script = ExtResource("1")
+id = &"tower_needle_rail"
+schema_version = 1
+enabled = true
+designer_note = "M2：针轨弩台（直线穿透，方向重要，PRD §6.2）；II 级 3 选 1 校准模块，本局锁定"
+introduced_in_level = &"level_c01"
+display_name_key = &"TOWER_NEEDLE_RAIL"
+base_cost = 100
+range_px = 112.0
+attack_period = 0.8
+damage_min = 18.0
+damage_max = 20.0
+damage_type = &"physical"
+projectile_speed = 320.0
+splash_radius = 0.0
+pierce = 2
+tiers = [SubResource("TowerTier_2"), SubResource("TowerTier_3"), SubResource("TowerTier_4")]

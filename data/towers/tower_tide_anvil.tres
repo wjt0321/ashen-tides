@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/tower_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/data/tower_tier.gd" id="2"]
+[ext_resource type="Resource" path="res://data/modules/mod_anvil_shred.tres" id="m0"]
+[ext_resource type="Resource" path="res://data/modules/mod_anvil_magnet.tres" id="m1"]
+[ext_resource type="Resource" path="res://data/modules/mod_anvil_resonance.tres" id="m2"]
+
+[sub_resource type="Resource" id="TowerTier_2"]
+script = ExtResource("2")
+tier = 2
+cost_to_upgrade = 100
+damage_min = 52
+damage_max = 60
+range_px = 124
+attack_period = 1.25
+module_choices = [ExtResource("m0"), ExtResource("m1"), ExtResource("m2")]
+
+[sub_resource type="Resource" id="TowerTier_3"]
+script = ExtResource("2")
+tier = 3
+cost_to_upgrade = 175
+damage_min = 70
+damage_max = 82
+range_px = 130
+attack_period = 1.12
+
+[sub_resource type="Resource" id="TowerTier_4"]
+script = ExtResource("2")
+tier = 4
+cost_to_upgrade = 280
+damage_min = 94
+damage_max = 108
+range_px = 136
+attack_period = 1.0
+
+[resource]
+script = ExtResource("1")
+id = &"tower_tide_anvil"
+schema_version = 1
+enabled = true
+designer_note = "M3：铸潮砧塔：攻击产生碎片与韧性压力，慢而重"
+introduced_in_level = &"level_c04"
+display_name_key = &"TOWER_TIDE_ANVIL"
+base_cost = 155
+range_px = 118
+attack_period = 1.35
+damage_min = 38
+damage_max = 46
+damage_type = &"physical"
+projectile_speed = 300
+splash_radius = 28
+pierce = 1
+tiers = [SubResource("TowerTier_2"), SubResource("TowerTier_3"), SubResource("TowerTier_4")]

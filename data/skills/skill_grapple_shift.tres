@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/skill_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"skill_grapple_shift"
+schema_version = 1
+enabled = true
+designer_note = "岚舟·苇技能 A：钩索转移（PRD §7.4，10 秒）"
+display_name_key = &"SKILL_GRAPPLE_SHIFT"
+effect = &"dash"
+cooldown_seconds = 10.0
+becon_cost = 0
