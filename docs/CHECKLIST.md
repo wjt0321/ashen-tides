@@ -104,16 +104,16 @@
 
 ## 当前下一阶段：M3 Gate Closure + Asset Pipeline
 
-- [ ] C04/C07 标准难度平衡分析与修正
-- [ ] C01–C08 每关 3 套标准构筑验证
-- [ ] 平衡报告与失败原因报告
-- [ ] CJK 字体缩放验证与锁定决定
-- [ ] C01 第一批正式资产替换试验
-- [ ] 已接入资产许可证证据齐全
-- [ ] 标准模式固定 Tick / 1× / 3× 回归
-- [ ] M3 Gate 退出评审
+- [x] C04/C07 标准难度平衡分析与修正（结论：无需改数值，构筑迭代解决；详见 NEXT_PHASE_NOTES §2/§3）
+- [x] C01–C08 每关 3 套标准构筑验证（24/24 win，speed 3× 无辅助；out/balance_*.json × 24）
+- [x] 平衡报告与失败原因报告（fail_reason/leak_by_wave/leak_by_enemy/tower_stats 字段 + NEXT_PHASE_NOTES §3 总表）
+- [x] CJK 字体缩放验证与锁定决定（Ark Pixel 12px zh_cn 锁定为默认 UI 字体；out/font_ark_scales.png/_metrics.json）
+- [x] C01 第一批正式资产替换试验（AT-TER-001 Buch CC0；--asset-trial 开关；结论 trial-only 不默认启用；out/asset_trial_c01_on/off.png）
+- [x] 已接入资产许可证证据齐全（ASSET_LICENSE_LEDGER.csv 16 行：OFL/CC0 原文、sha256、署名文本；无 Indirect/Not verified 接入项）
+- [x] 标准模式固定 Tick / 1× / 3× 回归（C01/C04/C07 steady 1× vs 3× ticks/kills/leaks/完整度全等）
+- [ ] M3 Gate 退出评审（人工门禁，未做）
 - **阶段说明**：[NEXT_PHASE.md](NEXT_PHASE.md)
-- **记录**：2026-09-05 建立下一阶段；当前状态 Planned。先解决 C04/C07 标准难度与资产接入管线，再进入 M4 C09–C24。
+- **记录**：2026-09-05 执行完成 P0 全部项 + P1 可自动化项，详见 [NEXT_PHASE_NOTES.md](NEXT_PHASE_NOTES.md)。剩余人工门禁：M3 Gate 退出评审、手柄实机、低端机性能、5–15 人盲测；正式音频/美术资产仍未宣称完成。
 - **GitHub**：Private 仓库已创建并推送：<https://github.com/wjt0321/ashen-tides>；`main` 首个基线提交 `ae51920`，文档/忽略规则提交 `6d7c019`。
 
 ## 5. M4：全战役 Alpha（C09–C24）
@@ -180,3 +180,4 @@
 | 2026-09-05 | M2 收口：注册 LocalizationService 为 Autoload、project.godot 新增 ui_cancel action；i18n csv 扩到 161 keys；main.gd 集成 PauseMenu/Settings/BattleResult/Tutorial 四个面板；调用 UiPalette.configure_from_settings + SettingsPanel.apply_saved_bindings；硬编码中文字符串全部走 tr_key；C01/C02/C03 smoke + 1×/3× 确定性 + C03 suspend restore 一致性 + perf 144fps 全部通过 | M2 收口执行 | 项目主理人（agent 执行） |
 | 2026-09-05 | 新增 Polish 阶段记录（视觉主题/FX/HUD 增强），未勾任何 M3 正式门禁；M3_POLISH_TODO.md 移入 docs/ | 试玩反馈后的表现增强执行 | 项目主理人（agent 执行） |
 | 2026-09-05 | Polish 阶段完成：C01–C08 主题化地形、塔/敌/英雄辨识度、FX、HUD、录屏与回归证据已落地；正式资产/音频/字体/盲测/低端机仍未完成 | 用户试玩反馈“方向正确但太简陋” | 项目主理人（agent 执行） |
+| 2026-09-05 | NEXT_PHASE 执行：新增 StandardBuilds（C01–C08 × steady/economy/synergy，--build 标准模式与辅助报告分离）、平衡报告字段（fail_reason/leak_by_wave/tower_stats）；24/24 构筑 win（仅构筑迭代，未改数值）；C01/C04/C07 1×/3× tick 全等；Ark Pixel Font（OFL 1.1）接入并锁定为默认 UI 字体（12/15/18px 缩放验证通过）；AT-TER-001（CC0）C01 替换试验完成并决定 trial-only；台账 16 行含 hash/许可证原文。M3 Gate 退出评审等人工门禁保持未勾 | NEXT_PHASE P0/P1 执行 | 项目主理人（agent 执行） |

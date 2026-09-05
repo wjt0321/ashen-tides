@@ -28,6 +28,15 @@ const ROCK_RECTS: Array[Rect2] = [
 
 ## 当前主题关卡（main 会在 setup 前赋值；未 setup 时兜底 C01）。
 var level_id: StringName = &"level_c01"
+## NEXT_PHASE C：资产替换试验开关（AT-TER-001 Buch Outdoor 32×32, CC0）。
+## 仅 --asset-trial 命令行开启；仅作用 C01 顶部岸带与右岸礁岛，试验后决定去留。
+var asset_trial := false
+const TRIAL_SHEET := "res://assets/art/tilesets/buch/sheet_12.png"
+## 候选 tile 源区域（sheet 内 32×32 岩石块）。
+const TRIAL_TILES: Array[Rect2] = [
+	Rect2(0, 0, 32, 32), Rect2(32, 0, 32, 32), Rect2(0, 32, 32, 32),
+]
+var _trial_tex: Texture2D = null
 ## 相位氛围叠加（main 驱动：明潮 VisualTheme.TINT_MINGCHAO / 暮潮 TINT_MUCHAO）。
 ## alpha > 0 时 _draw 末尾整屏叠加，只罩本层地形与后续节点之下。
 var phase_tint := Color(0, 0, 0, 0)
@@ -158,6 +167,9 @@ func _draw() -> void:
 		draw_rect(rect, edge, false, 2.0)
 	# 每关主题小元素
 	_draw_level_flavor(land_a, land_b, edge, accent, glow, foam)
+	# NEXT_PHASE C 资产替换试验：Buch 岩石 tile 覆写 C01 岸带（暗化 tint 贴合夜港调色板）
+	if asset_trial and level_id == &"level_c01":
+		_draw_asset_trial()
 	# 相位氛围（alpha > 0 才画整屏 tint）
 	if phase_tint.a > 0.0:
 		draw_rect(viewport, phase_tint, true)
@@ -243,3 +255,22 @@ func _draw_level_flavor(land_a: Color, land_b: Color, edge: Color, accent: Color
 			var vent := Color(accent.r, accent.g, accent.b, 0.5)
 			draw_circle(Vector2(148, 62), 2.0, vent)
 			draw_circle(Vector2(34, 148), 2.0, vent)
+
+
+## 资产替换试验（NEXT_PHASE C）：在 C01 顶部岸带与右岸礁岛铺 Buch 岩石 tile。
+## modulate 压暗偏夜紫，贴合 C01 黄昏港岸调色板；alpha 0.9 保留底色过渡。
+func _draw_asset_trial() -> void:
+	if _trial_tex == null:
+		_trial_tex = load(TRIAL_SHEET) as Texture2D
+	if _trial_tex == null:
+		return
+	var tint := Color(0.55, 0.50, 0.62, 0.9)
+	var rects: Array[Rect2] = [ROCK_RECTS[0], ROCK_RECTS[3]] # 顶部岸带 + 右岸礁岛
+	for rect: Rect2 in rects:
+		var cols := int(rect.size.x) / CELL
+		var rows := int(rect.size.y) / CELL
+		for row: int in rows:
+			for col: int in cols:
+				var dst := Rect2(rect.position + Vector2(col * CELL, row * CELL), Vector2(CELL, CELL))
+				var src: Rect2 = TRIAL_TILES[(col + row) % TRIAL_TILES.size()]
+				draw_texture_rect_region(_trial_tex, dst, src, tint)

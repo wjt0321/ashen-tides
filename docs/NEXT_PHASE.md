@@ -53,14 +53,14 @@
 
 全部满足后才可将本阶段标记为 Done：
 
-- [ ] C04/C07 标准难度不使用辅助模式可完成
-- [ ] C01–C08 每关至少 3 套标准构筑有记录
-- [ ] 平衡报告与失败原因报告已生成
-- [ ] CJK 字体候选完成实际缩放验证并做出锁定决定
-- [ ] C01 第一批正式资产替换试验完成，许可证证据齐全
-- [ ] 资产台账中所有已接入资产均非 `Indirect` / `Not verified`
-- [ ] 标准模式固定 Tick / 1× / 3× 回归通过
-- [ ] M3 Gate 退出评审完成
+- [x] C04/C07 标准难度不使用辅助模式可完成（3 套构筑全 win，未改数值；NEXT_PHASE_NOTES §2/§3）
+- [x] C01–C08 每关至少 3 套标准构筑有记录（`scripts/boot/standard_builds.gd` + `out/balance_*.json` × 24）
+- [x] 平衡报告与失败原因报告已生成（NEXT_PHASE_NOTES §3 总表 + 每关 fail_reason/leak/tower_stats JSON）
+- [x] CJK 字体候选完成实际缩放验证并做出锁定决定（Ark Pixel 12px zh_cn；NEXT_PHASE_NOTES §5）
+- [x] C01 第一批正式资产替换试验完成，许可证证据齐全（AT-TER-001，trial-only；NEXT_PHASE_NOTES §6）
+- [x] 资产台账中所有已接入资产均非 `Indirect` / `Not verified`（台账 16 行均 Verified/项目自有）
+- [x] 标准模式固定 Tick / 1× / 3× 回归通过（C01/C04/C07 steady 1×=3× 逐 tick 一致）
+- [ ] M3 Gate 退出评审完成（人工门禁，未做；手柄实机/低端机/盲测同为人工门禁）
 
 ## 当前证据与关联文件
 

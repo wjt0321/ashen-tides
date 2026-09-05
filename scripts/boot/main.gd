@@ -139,6 +139,8 @@ var _kills: int = 0
 var _leaks: int = 0
 var _total_damage: float = 0.0
 var _leak_by_enemy: Dictionary = {} ## enemy_id -> 漏怪数（战报，PRD §11.3）
+var _leak_by_wave: Dictionary = {} ## wave_number -> 漏怪数（平衡报告，NEXT_PHASE P0）
+var _fail_reason: String = "" ## 失败原因（平衡报告：integrity_depleted / timeout）
 var _damage_by_type: Dictionary = {} ## damage_type -> 塔/英雄伤害
 var _first_breach_wave: int = 0 ## 第一次漏怪的波次（0 = 未破防）
 var _strategy_done: bool = false ## 策略目标（印记 3）
@@ -156,6 +158,7 @@ var _soak_start_msec: int = 0
 var _soak_battles: int = 0
 var _screenshot_path: String = ""
 var _shot_at_wave: int = 0 ## --shot-at-wave=N：第 N 波开始时窗口模式截图（polish 证据）
+var _build_name: StringName = &"" ## --build=<steady|economy|synergy>：标准构筑（非辅助，NEXT_PHASE P0）
 var _resume_suspend: bool = false
 var _stop_after_wave: int = 0
 var _smoke_plan: Array = []
@@ -169,12 +172,17 @@ var _smoke_repair_demo: bool = false ## C03 装置修复演示（一次性）
 var _resume_start_pending: bool = false ## suspend 恢复后延迟 1 tick 开波（确定性对齐）
 var _record_seconds: float = 0.0 ## --m2-record=<秒>：Movie Maker 录屏模式
 var _m3_mode: bool = false
+var _font_test_prefix: String = "" ## --font-test=<out前缀>：CJK 字体缩放验证（截图+度量 JSON 后退出）
+var _asset_trial: bool = false ## --asset-trial：NEXT_PHASE C 资产替换试验（Buch tile 覆写 C01 岸带）
 
 
 func _ready() -> void:
 	print("[M2] ============================================================")
 	print("[M2] 余烬潮汐 Ashen Tides — M2 release-quality vertical slice (C01-C03)")
 	_parse_cmdline()
+	if not _font_test_prefix.is_empty():
+		_run_font_test()
+		return
 	_rng.randomize()
 	UiPalette.configure_from_settings()
 	SettingsPanel.capture_defaults()
@@ -230,6 +238,7 @@ func _ready() -> void:
 func _build_static_scene() -> void:
 	var greybox := GreyboxMap.new()
 	greybox.name = "GreyboxMap"
+	greybox.asset_trial = _asset_trial
 	add_child(greybox)
 	_greybox = greybox
 	_fx = FXLayer.new()
@@ -465,6 +474,8 @@ func _reset_battle_state() -> void:
 	_leaks = 0
 	_total_damage = 0.0
 	_leak_by_enemy.clear()
+	_leak_by_wave.clear()
+	_fail_reason = ""
 	_damage_by_type.clear()
 	_first_breach_wave = 0
 	_strategy_done = false
@@ -516,6 +527,8 @@ func _reset_battle_state() -> void:
 
 ## 固定 tick 主循环（PRD §18.5）：表现帧累积 -> 60Hz 固定步进，速度档乘算。
 func _process(delta: float) -> void:
+	if not _font_test_prefix.is_empty():
+		return # 字体缩放验证模式：战斗未初始化
 	if _notice_ttl > 0.0:
 		_notice_ttl -= delta
 		if _notice_ttl <= 0.0:
@@ -1041,6 +1054,8 @@ func _on_enemy_died(enemy: GreyboxEnemy) -> void:
 func _on_enemy_reached_goal(enemy: GreyboxEnemy) -> void:
 	_leaks += 1
 	_leak_by_enemy[enemy.data.id] = int(_leak_by_enemy.get(enemy.data.id, 0)) + 1
+	var leak_wave := _director.waves_started()
+	_leak_by_wave[leak_wave] = int(_leak_by_wave.get(leak_wave, 0)) + 1
 	if _first_breach_wave == 0:
 		_first_breach_wave = _director.waves_started()
 	if _invincible:
@@ -1259,6 +1274,7 @@ func _has_splash_or_pierce() -> bool:
 
 func _enter_lose() -> void:
 	_battle_over = true
+	_fail_reason = "integrity_depleted_wave_%d" % _director.waves_started()
 	_fx.flash_screen(VisualTheme.FLASH_LOSE) # Polish：失败红闪
 	_director.enter_lose()
 	_last_result = _build_battle_result(false, {"completed": false, "integrity": false, "strategy": _strategy_done}, 0)
@@ -1538,6 +1554,12 @@ func _parse_cmdline() -> void:
 			_soak_seconds = float(arg.trim_prefix("--m1-soak="))
 		elif arg.begins_with("--shot-at-wave="):
 			_shot_at_wave = int(arg.trim_prefix("--shot-at-wave="))
+		elif arg.begins_with("--build="):
+			_build_name = StringName(arg.trim_prefix("--build="))
+		elif arg.begins_with("--font-test="):
+			_font_test_prefix = arg.trim_prefix("--font-test=")
+		elif arg == "--asset-trial":
+			_asset_trial = true
 
 
 func _build_generated_smoke_plan() -> Array:
@@ -1560,7 +1582,18 @@ func _start_autoplay() -> void:
 	if _m3_mode:
 		# M3 smoke/perf 的验证辅助：不改变固定 tick/伤害/路径，只避免内容审计被漏怪提前截断。
 		_invincible = true
+		if _build_name != &"":
+			push_error("[M1] --build 为标准模式（非辅助），不得与 --m3-smoke/--m3-perf 同用")
 	_smoke_plan = SMOKE_PLANS.get(_level_id, _build_generated_smoke_plan())
+	if _build_name != &"":
+		# 标准构筑（NEXT_PHASE P0）：从 StandardBuilds 选计划，与辅助模式报告彻底分离
+		var level_builds: Dictionary = StandardBuilds.BUILDS.get(_level_id, {})
+		if level_builds.has(_build_name):
+			_smoke_plan = level_builds[_build_name]
+			print("[M1-SMOKE] standard build: %s/%s (%d entries)" % [_level_id, _build_name, _smoke_plan.size()])
+		else:
+			push_error("[M1] unknown build %s for %s — fallback to generated plan" % [_build_name, _level_id])
+			_build_name = &""
 	if _soak_seconds > 0.0:
 		_speed = 3.0
 		_soak_start_msec = Time.get_ticks_msec()
@@ -1612,6 +1645,7 @@ func _autoplay_build() -> void:
 
 func _autoplay_tick() -> void:
 	if _smoke and _sim_seconds > SMOKE_TIMEOUT_SIM_SECONDS:
+		_fail_reason = "timeout_wave_%d" % _director.waves_started()
 		_finish_smoke("timeout", 2)
 		return
 	if _hero == null:
@@ -1689,6 +1723,16 @@ func _finish_smoke(result: String, exit_code: int) -> void:
 		"first_breach_wave": _first_breach_wave,
 		"uncovered_tags": _last_result.get("uncovered_tags", []),
 		"boss_phases_seen": _boss_phase_seen.duplicate(true),
+		# NEXT_PHASE P0 平衡报告字段（标准构筑模式）
+		"build": String(_build_name),
+		"fail_reason": _fail_reason,
+		"leak_by_wave": _leak_by_wave.duplicate(),
+		"leak_by_enemy": _leak_by_enemy.duplicate(),
+		"tower_stats": _towers.map(func(t: GreyboxTower) -> Dictionary: return {
+			"id": String(t.data.id), "node": String(t.node_id), "tier": t.tier,
+			"module": String(t.module.id) if t.module != null else "",
+			"kills": t.total_kills, "invested": t.invested_ember,
+		}),
 	}
 	var out_dir := ProjectSettings.globalize_path("res://out")
 	DirAccess.make_dir_recursive_absolute(out_dir)
@@ -1697,6 +1741,9 @@ func _finish_smoke(result: String, exit_code: int) -> void:
 		suffix += "_resumed"
 	var report_prefix := "m3" if _m3_mode or String(_level_id) >= "level_c04" else "m2"
 	var report_path := out_dir.path_join("%s_smoke_%s%s.json" % [report_prefix, _level_id, suffix])
+	if _build_name != &"":
+		# 标准构筑报告与辅助/常规 smoke 报告彻底分离（NEXT_PHASE P0）
+		report_path = out_dir.path_join("balance_%s_%s%s.json" % [_level_id, _build_name, suffix])
 	var file := FileAccess.open(report_path, FileAccess.WRITE)
 	if file != null:
 		file.store_string(JSON.stringify(report, "  "))
@@ -1781,4 +1828,43 @@ func _capture_screenshot_and_quit() -> void:
 	var image := get_viewport().get_texture().get_image()
 	var err := image.save_png(_screenshot_path)
 	print("[M1] screenshot saved: %s (err=%d)" % [_screenshot_path, err])
+	get_tree().quit()
+
+
+## NEXT_PHASE B：CJK 字体缩放验证。渲染 12/15/18px（≈100%/125%/150%）中英混排样本，
+## 截图 + 输出度量 JSON（字宽/行高），供锁定决定使用。需窗口模式运行（headless 无渲染）。
+func _run_font_test() -> void:
+	var layer := CanvasLayer.new()
+	add_child(layer)
+	var bg := ColorRect.new()
+	bg.color = Color(0.08, 0.09, 0.12)
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	layer.add_child(bg)
+	var vbox := VBoxContainer.new()
+	vbox.position = Vector2(16, 12)
+	layer.add_child(vbox)
+	var sample := "余烬潮汐 Ashen Tides 火种128 完整度20 波次07"
+	var font := ThemeDB.fallback_font
+	var metrics: Dictionary = {"font": "ThemeDB.fallback_font (project default_font)", "sizes": {}}
+	for size: int in [12, 15, 18]:
+		var label := Label.new()
+		label.text = "%dpx: %s" % [size, sample]
+		label.add_theme_font_size_override("font_size", size)
+		vbox.add_child(label)
+		var str_size := font.get_string_size(sample, HORIZONTAL_ALIGNMENT_LEFT, -1, size)
+		metrics["sizes"][str(size)] = {
+			"string_width": snappedf(str_size.x, 0.01),
+			"string_height": snappedf(str_size.y, 0.01),
+			"ascent": snappedf(font.get_ascent(size), 0.01),
+			"descent": snappedf(font.get_descent(size), 0.01),
+		}
+	for i: int in 5:
+		await get_tree().process_frame
+	var image := get_viewport().get_texture().get_image()
+	var err := image.save_png(_font_test_prefix + "_scales.png")
+	var file := FileAccess.open(_font_test_prefix + "_metrics.json", FileAccess.WRITE)
+	if file:
+		file.store_string(JSON.stringify(metrics, "  "))
+		file.close()
+	print("[FONT-TEST] scales.png err=%d metrics=%s" % [err, JSON.stringify(metrics["sizes"])])
 	get_tree().quit()
