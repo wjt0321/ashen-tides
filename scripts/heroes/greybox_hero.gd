@@ -294,7 +294,11 @@ func _draw_silhouette(body: Color, edge: Color) -> void:
 	if data != null:
 		var tex := ArtLibrary.hero_tex(data.id)
 		if tex != null:
-			draw_texture(tex, Vector2(-16.0, -16.0), Color(1, 1, 1) if not is_down else Color(0.4, 0.4, 0.45))
+			var mod := Color(1, 1, 1) if not is_down else Color(0.4, 0.4, 0.45)
+			if UiPalette.high_contrast():
+				mod = mod * Color(1.18, 1.18, 1.18)
+				draw_arc(Vector2.ZERO, 17.0, 0.0, TAU, 24, Color(1, 1, 1, 0.55), 1.5)
+			draw_texture(tex, Vector2(-16.0, -16.0), mod)
 			return
 	if data != null and data.id == &"hero_zhushou_muen":
 		_draw_muen_smith(body, edge)

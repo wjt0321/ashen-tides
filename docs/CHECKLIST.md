@@ -125,6 +125,16 @@
 - [x] 验证：导入 0 error / validate PASS / tests 117/117 / i18n missing=0 / C01 autoplay ticks=7017 与 steady 7080 均与基线一致 / perf 144fps avg
 - **记录**：[M4_ASSET_PIPELINE.md](M4_ASSET_PIPELINE.md)；未做项（其余塔/敌/Boss 精灵、正式音频、色弱贴图重映射、terrain_land_b 未接入）见该文 §6
 
+## M4-B：第一章 C01–C08 正式资产扩展（2026-09-06）
+
+- [x] 盘点 C01–C08 实际使用 id（塔 6 / 英雄 2 / 敌人 11 含 Boss；anchor_crab_guardian 无出场，未生成）
+- [x] 确定性生成器扩展（`tools/gen_chapter1_sprites.py`，固定 seed）：C02–C08 主题地形 ×28 + 单位 ×13 + 色弱变体 ×57
+- [x] 运行时接入（`ArtLibrary._unit_cached()` 三级回退：色弱变体→基础图→程序化剪影；高对比 modulate/外圈；64×64 Boss 居中）
+- [x] 贴图色弱适配（protan/deutan/tritan 变体逐像素生成，矩阵与 `ui_palette.gd` 一致；不改战斗数据）
+- [x] 台账 +41 行并修复 df6b434 遗留列数不一致；[CREDITS.md](CREDITS.md) 与 [M4_ASSET_PIPELINE.md](M4_ASSET_PIPELINE.md) 同步
+- [x] 验证（2026-09-06）：导入 0 error / validate checked=141 errors=0 PASS / tests 117/117 / i18n missing=0 / C01–C08 3× autoplay smoke 全跑通无 ERROR（C01=7017、C03=11558、C08=16661 与基线逐 tick 一致；C04/C07 autoplay lose 为既定难度定位，steady 标准构筑 win 且 ticks=13523/13467 与 NEXT_PHASE 基线逐字段一致）/ perf C01 avg 6.97ms(144fps) 1%low 66fps、C04 144fps/77fps、C08 144fps/76fps / 截图 out/polish_level_c08_wave3.png 目检通过（主题地形+塔精灵渲染正常）
+- **记录**：[M4_ASSET_PIPELINE.md](M4_ASSET_PIPELINE.md) M4-B 段；未做项（guardian 精灵、精英/Boss 阶段变体、FX/UI 色弱变体、正式音频、land_b 未接入）见该文 §6
+
 ## 5. M4：全战役 Alpha（C09–C24）
 
 - [ ] 24 关均可从新档进入和完成
@@ -191,3 +201,4 @@
 | 2026-09-05 | Polish 阶段完成：C01–C08 主题化地形、塔/敌/英雄辨识度、FX、HUD、录屏与回归证据已落地；正式资产/音频/字体/盲测/低端机仍未完成 | 用户试玩反馈“方向正确但太简陋” | 项目主理人（agent 执行） |
 | 2026-09-05 | NEXT_PHASE 执行：新增 StandardBuilds（C01–C08 × steady/economy/synergy，--build 标准模式与辅助报告分离）、平衡报告字段（fail_reason/leak_by_wave/tower_stats）；24/24 构筑 win（仅构筑迭代，未改数值）；C01/C04/C07 1×/3× tick 全等；Ark Pixel Font（OFL 1.1）接入并锁定为默认 UI 字体（12/15/18px 缩放验证通过）；AT-TER-001（CC0）C01 替换试验完成并决定 trial-only；台账 16 行含 hash/许可证原文。M3 Gate 退出评审等人工门禁保持未勾 | NEXT_PHASE P0/P1 执行 | 项目主理人（agent 执行） |
 | 2026-09-05 | M4-A：美术技术规范锁定（M4_ASSET_SPEC.md）；C01 切片 16 张项目自有原创精灵（tools/gen_c01_sprites.py）接入运行时并全部带程序化回退；台账 +16 行、新建 CREDITS.md（Godot MIT + Ark Pixel OFL）；M0 两项历史遗留（字体锁定/资产归档流程）勾销；验证全绿且战斗基线不变 | M4-A 执行（用户确认后） | 项目主理人（agent 执行） |
+| 2026-09-06 | M4-B：第一章 C01–C08 资产扩展——gen_chapter1_sprites.py 生成 28 张主题地形 + 13 张单位精灵 + 57 张色弱变体（项目自有原创，固定 seed 可复现）；ArtLibrary 三级回退（色弱变体→基础图→程序化剪影）+ 高对比 modulate/外圈；台账 +41 行（并修复 df6b434 遗留列数不一致）；导入/validate/tests 117/i18n/8 关 3× smoke/perf 抽查全过，smoke ticks 与基线逐一相同（纯视觉层） | M4-B 执行（用户确认后） | 项目主理人（agent 执行） |

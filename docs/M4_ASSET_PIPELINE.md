@@ -51,3 +51,55 @@
 - 色弱重映射对精灵贴图仅部分生效（modulate 通道）：需在 M4 后续批次做调色板变体或 shader 方案。
 - 手柄实机/低端机/盲测：按 M3 Gate 决议留发行前人工门禁。
 - terrain_land_b 已生成未接入（陆地斑块仍程序化），台账标 staged。
+
+---
+
+# M4-B：第一章 C01–C08 正式资产扩展（2026-09-06）
+
+## 1. 盘点结果（C01–C08 实际使用 id）
+
+- 塔 6：needle_rail / ember_well / echo_pile / wind_nest / tide_anvil / prism_grove
+- 英雄 2：lanzhou_wei / zhushou_muen
+- 敌人 11（waves 实际引用）：salt_shell_walker、mast_rat_swarm、splitfin_dasher、rust_armor_carrier、
+  lamp_leech、tide_back_navigator、brine_spitter、reef_sapper、salt_mender、tideglass_runner、
+  anchor_crab_king（Boss，64×64）
+- `anchor_crab_guardian`：EnemyData 存在但 C01–C08 无 wave 引用（仅剪影分支），**未生成精灵**，记为"数据存在未出场"。
+
+## 2. 生成器与产出
+
+- 新增 `tools/gen_chapter1_sprites.py`（PIL，固定 seed 确定性生成，可复现）。
+- 产出：C02–C08 主题地形 28 张（sea_a/sea_b/land_a/land_b × 7，调色板逐关对齐 `visual_theme.gd` THEMES）；
+  单位 13 张（3 塔 + hero_zhushou_muen + 9 敌含 Boss）；色弱变体 57 张（19 单位 × protan/deutan/tritan，
+  变体矩阵与 `ui_palette.gd` apply() 逐像素一致）。
+- 预览目检：`out/m4b_units_preview.png`（19 单位拼图）、`out/m4b_terrain_preview.png`（8 关 sea_a+land_a）。
+
+## 3. 接入点
+
+- `scripts/core/art_library.gd`：新增 `_unit_cached()`——非 default 色弱预设时先试 `<stem>_<preset>.png`，
+  缺失回退基础图，再缺失回退程序化剪影（三级回退链）。
+- `greybox_enemy.gd`：sprite 分支按纹理尺寸居中（适配 64×64 Boss）；高对比模式 modulate ×1.18 + 白色外圈。
+- `greybox_tower.gd` / `greybox_hero.gd`：sprite 分支同高对比处理。
+- 地形：`greybox_map.gd` 按 level_id 自动取 `tilesets/<chapter>/`，C02–C08 无需改代码。
+- 纯视觉层，不触碰战斗数据与 sim 逻辑。
+
+## 4. 台账
+
+- `ASSET_LICENSE_LEDGER.csv` +41 行（13 单位 base + 28 地形），色弱变体在 notes 注明"同包生成"；
+  land_b 系列与 M4-A 一致标 staged（陆地斑块仍程序化渲染）。
+- 顺手修复 df6b434 基线中 terrain_buch 行 17 列不一致问题（并入 notes），现全表 16 列齐整。
+
+## 5. 验证结果（2026-09-06）
+
+- 编辑器导入 0 error；`validate_data.gd` checked=141 errors=0 PASS；`run_tests.gd` 117/117 PASS；`check_i18n.gd` missing=0。
+- C01–C08 3× autoplay smoke 全跑通无 ERROR：C01=7017 / C03=11558 / C08=16661 与 M2/M3 基线逐 tick 一致——精灵层纯视觉，sim 零变化。
+- C04/C07 autoplay lose 为既定难度定位（非回归）；steady 标准构筑 win 且 ticks=13523/13467、kills/leaks/integrity 与 NEXT_PHASE 基线逐字段一致。
+- perf（3×）：C01 avg 6.97ms(144fps) 1%low 66fps；C04 6.95ms(144fps)/77fps；C08 6.95ms(144fps)/76fps。
+- 截图证据：`out/polish_level_c08_wave3.png`（C08 主题地形 + 塔/敌精灵渲染目检通过）。
+
+## 6. Blockers / 未做（如实保留）
+
+- anchor_crab_guardian：无出场，未生成精灵。
+- 精英/Boss 阶段变体、FX/UI 图标色弱变体：未做（低优先，接入层就绪）。
+- 正式音频：仍运行时合成占位，未宣称完成。
+- terrain_land_b（全章）：staged 未接入。
+- 手柄实机/低端机/盲测：留发行前人工门禁。

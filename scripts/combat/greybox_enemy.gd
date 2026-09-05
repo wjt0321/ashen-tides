@@ -247,7 +247,11 @@ func _draw() -> void:
 		if _hit_flash > 0.0:
 			var f := _hit_flash / HIT_FLASH_TIME
 			mod = mod.lerp(Color(2.6, 2.6, 2.6), f)
-		draw_texture(tex, Vector2(-16.0, -16.0), mod)
+		if UiPalette.high_contrast():
+			# M4-B 高对比：提亮贴图 + 白色外圈（低风险 modulate 方案）
+			mod = mod * Color(1.18, 1.18, 1.18)
+			draw_arc(Vector2.ZERO, tex.get_size().x * 0.5, 0.0, TAU, 24, Color(1, 1, 1, 0.55), 1.5)
+		draw_texture(tex, -tex.get_size() * 0.5, mod)
 	else:
 		_draw_silhouette(s, mid, light, dark, edge)
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)

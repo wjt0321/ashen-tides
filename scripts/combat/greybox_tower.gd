@@ -230,7 +230,12 @@ func _draw() -> void:
 	# M4-A：正式精灵优先（docs/M4_ASSET_SPEC.md §6 程序化回退）
 	var tex := ArtLibrary.tower_tex(data.id)
 	if tex != null:
-		draw_texture(tex, Vector2(-16.0, -16.0))
+		var mod := Color(1.0, 1.0, 1.0)
+		if UiPalette.high_contrast():
+			# M4-B 高对比：提亮贴图 + 白色外圈（低风险 modulate 方案）
+			mod = Color(1.18, 1.18, 1.18)
+			draw_arc(Vector2.ZERO, 17.0, 0.0, TAU, 24, Color(1, 1, 1, 0.55), 1.5)
+		draw_texture(tex, Vector2(-16.0, -16.0), mod)
 	else:
 		match data.id:
 			&"tower_needle_rail":

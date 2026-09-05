@@ -23,16 +23,27 @@ static func _load_cached(path: String) -> Texture2D:
 	return tex
 
 
+## M4-B 色弱适配：非默认预设时优先加载 <stem>_<preset>.png 变体（生成器同矩阵），缺失回退基础图。
+static func _unit_cached(base_path: String) -> Texture2D:
+	var preset := UiPalette.preset()
+	if preset != &"default":
+		var variant := base_path.get_basename() + "_" + String(preset) + ".png"
+		var tex := _load_cached(variant)
+		if tex != null:
+			return tex
+	return _load_cached(base_path)
+
+
 static func tower_tex(tower_id: StringName) -> Texture2D:
-	return _load_cached(TOWER_DIR + "tower_" + String(tower_id).trim_prefix("tower_") + ".png")
+	return _unit_cached(TOWER_DIR + "tower_" + String(tower_id).trim_prefix("tower_") + ".png")
 
 
 static func enemy_tex(enemy_id: StringName) -> Texture2D:
-	return _load_cached(ENEMY_DIR + "enemy_" + String(enemy_id) + ".png")
+	return _unit_cached(ENEMY_DIR + "enemy_" + String(enemy_id) + ".png")
 
 
 static func hero_tex(hero_id: StringName) -> Texture2D:
-	return _load_cached(HERO_DIR + "hero_" + String(hero_id) + ".png")
+	return _unit_cached(HERO_DIR + "hero_" + String(hero_id) + ".png")
 
 
 ## level_id 例：&"level_c01" → tilesets/c01/terrain_<name>.png

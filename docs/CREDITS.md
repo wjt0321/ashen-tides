@@ -1,6 +1,6 @@
 # CREDITS（仅真实接入项）
 
-> 更新：2026-09-05（M4-A）
+> 更新：2026-09-06（M4-B）
 > 规则：PRD §18.6——发布构建必须包含 Godot（MIT）与全部第三方资产归因；本文件只列**已接入运行时**的资产。
 
 ## 引擎
@@ -17,6 +17,9 @@
 
 - C01 切片精灵 16 张（地形 ×4 / 塔 ×3 / 敌人 ×2 / 英雄 ×1 / FX ×2 / UI 图标 ×4）— Ember Tide dev，
   由 `tools/gen_c01_sprites.py` 程序生成，项目自有。明细与 hash 见 `ASSET_LICENSE_LEDGER.csv`。
+- 第一章 C01–C08 精灵 41 张（C02–C08 主题地形 ×28 / 塔 ×3 / 敌人 ×9 含 Boss / 英雄 ×1）+ 全部单位精灵的
+  protan/deutan/tritan 色弱变体 — Ember Tide dev，由 `tools/gen_chapter1_sprites.py` 确定性生成（固定 seed），
+  项目自有。变体矩阵与 `scripts/ui/ui_palette.gd` 的 apply() 逐像素一致；缺失变体自动回退基础图。
 
 ## 试验性资产（不随构建默认启用）
 

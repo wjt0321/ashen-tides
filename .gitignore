@@ -17,3 +17,5 @@ out/
 .claude/settings.local.json
 M3_GATE_COMPLETION_TODO.md
 M4_A_ASSET_SLICE_TODO.md
+M4_B_FIRST_CHAPTER_ART_TODO.md
+tools/__pycache__/
