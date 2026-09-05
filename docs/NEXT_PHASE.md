@@ -60,7 +60,7 @@
 - [x] C01 第一批正式资产替换试验完成，许可证证据齐全（AT-TER-001，trial-only；NEXT_PHASE_NOTES §6）
 - [x] 资产台账中所有已接入资产均非 `Indirect` / `Not verified`（台账 16 行均 Verified/项目自有）
 - [x] 标准模式固定 Tick / 1× / 3× 回归通过（C01/C04/C07 steady 1×=3× 逐 tick 一致）
-- [ ] M3 Gate 退出评审完成（人工门禁，未做；手柄实机/低端机/盲测同为人工门禁）
+- [x] M3 Gate 退出评审完成（条件通过；手柄实机/低端机/盲测保留为后续人工门禁，详见 M3_GATE_REVIEW.md）
 
 ## 当前证据与关联文件
 

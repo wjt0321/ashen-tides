@@ -6,4 +6,4 @@
 - [x] 完成 CJK 字体缩放验证与锁定决定（Ark Pixel 12px zh_cn；out/font_ark_scales.png/_metrics.json）
 - [x] 完成 C01 第一批正式资产替换试验与许可证台账（AT-TER-001 trial-only；台账 16 行）
 - [x] 完成标准模式固定 Tick / 1× / 3× 回归（C01/C04/C07 steady 1×=3×）
-- [ ] 完成 M3 Gate 退出评审（人工门禁；另：手柄实机/低端机/盲测均未做）
+- [x] 完成 M3 Gate 退出评审（条件通过；手柄实机/低端机/盲测保留为后续人工门禁，详见 M3_GATE_REVIEW.md）
