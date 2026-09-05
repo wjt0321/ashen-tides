@@ -34,6 +34,7 @@ window/stretch/mipmap=false
 
 [gui]
 
+theme/default_font="res://assets/fonts/ark-pixel-12px-monospaced-zh_cn.ttf"
 theme/default_font_pixel_snap=true
 
 [input]
