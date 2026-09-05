@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=16 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/level_data.gd" id="1"]
+[ext_resource type="Resource" path="res://data/waves/wave_c11_01.tres" id="w0"]
+[ext_resource type="Resource" path="res://data/waves/wave_c11_02.tres" id="w1"]
+[ext_resource type="Resource" path="res://data/waves/wave_c11_03.tres" id="w2"]
+[ext_resource type="Resource" path="res://data/waves/wave_c11_04.tres" id="w3"]
+[ext_resource type="Resource" path="res://data/waves/wave_c11_05.tres" id="w4"]
+[ext_resource type="Resource" path="res://data/waves/wave_c11_06.tres" id="w5"]
+[ext_resource type="Resource" path="res://data/waves/wave_c11_07.tres" id="w6"]
+[ext_resource type="Resource" path="res://data/waves/wave_c11_08.tres" id="w7"]
+[ext_resource type="Resource" path="res://data/waves/wave_c11_09.tres" id="w8"]
+[ext_resource type="Resource" path="res://data/waves/wave_c11_10.tres" id="w9"]
+[ext_resource type="Resource" path="res://data/waves/wave_c11_11.tres" id="w10"]
+[ext_resource type="Resource" path="res://data/waves/wave_c11_12.tres" id="w11"]
+[ext_resource type="Resource" path="res://data/phase_events/phase_c11_tide_shift_a.tres" id="pe0"]
+[ext_resource type="Resource" path="res://data/phase_events/phase_c11_tide_shift_b.tres" id="pe1"]
+
+[resource]
+script = ExtResource("1")
+id = &"level_c11"
+schema_version = 1
+enabled = true
+designer_note = "M4-C 第二章：C11「倒映之路」——镜像双路 + 双相敌抗性互换 + 铸潮砧塔（PRD §5.3）"
+display_name_key = &"LEVEL_C11"
+map_size_cells = Vector2i(20, 11)
+initial_ember = 1000
+initial_fleet_integrity = 20
+allowed_towers = [&"tower_needle_rail", &"tower_ember_well", &"tower_echo_pile", &"tower_wind_nest", &"tower_tide_anvil", &"tower_prism_grove"]
+route_ids = [&"route_c11_top", &"route_c11_bot"]
+route_points = [PackedVector2Array(0, 72, 256, 72, 256, 200, 640, 200), PackedVector2Array(0, 288, 384, 288, 384, 160, 640, 160)]
+default_active_route = &"route_c11_top"
+initial_active_routes = [&"route_c11_top", &"route_c11_bot"]
+build_node_positions = [Vector2(96, 24), Vector2(448, 24), Vector2(576, 24), Vector2(96, 120), Vector2(192, 120), Vector2(320, 120), Vector2(448, 120), Vector2(576, 120), Vector2(64, 248), Vector2(160, 248), Vector2(320, 248), Vector2(480, 248), Vector2(608, 248), Vector2(128, 336), Vector2(288, 336), Vector2(512, 336)]
+waves = [ExtResource("w0"), ExtResource("w1"), ExtResource("w2"), ExtResource("w3"), ExtResource("w4"), ExtResource("w5"), ExtResource("w6"), ExtResource("w7"), ExtResource("w8"), ExtResource("w9"), ExtResource("w10"), ExtResource("w11")]
+phase_events = [ExtResource("pe0"), ExtResource("pe1")]
+allowed_heroes = [&"hero_lanzhou_wei", &"hero_zhushou_muen"]
+hero_spawn = Vector2(320, 240)
+primary_objective_key = &"OBJ_PRIMARY_SURVIVE"
+strategy_objective_key = &"OBJ_C11_STRATEGY"
+strategy_objective_op = &"use_tide_clock"
+integrity_mark_threshold = 12
+tutorial_id = &""
+chapter_index = 2
+target_tags = [&"phasebound", &"heavy", &"shield"]

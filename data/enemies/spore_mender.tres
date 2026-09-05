@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"spore_mender"
+schema_version = 1
+enabled = true
+designer_note = "M4-C 第二章：C10 治疗敌——集火考核（PRD §5.3 孢光洼地）"
+introduced_in_level = &"level_c10"
+display_name_key = &"ENEMY_SPORE_MENDER"
+max_hp = 170.0
+speed_px_per_sec = 40.0
+armor = 5.0
+glow_resist = 20.0
+leak_damage = 1
+kill_reward_ember = 24
+radius_px = 10.0
+tags = [&"healer"]
+elite = false
+boss = false
+shield_hp = 0.0
+aura_radius = 0.0
+aura_speed_mult = 1.0
+stealthed = false
+heal_radius = 84.0
+heal_per_sec = 10.0
+phase_resist_swap = false
+body_color = Color(0.55, 0.85, 0.55, 1.00)

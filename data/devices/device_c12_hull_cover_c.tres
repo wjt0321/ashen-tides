@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DeviceData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/device_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"device_c12_hull_cover_c"
+schema_version = 1
+enabled = true
+designer_note = "M4-C C12：船壳掩体 C——封锁 A 路前段射界"
+display_name_key = &"DEVICE_C12_HULL_COVER"
+position = Vector2(144, 112)
+radius_px = 24.0
+effect_op = &"cover"
+effect_value = 0.0
+interval_seconds = 99.0
+active_phase = &"both"
+repairable = false
+repair_seconds = 3.0
+max_hp = 180.0
+blocks_projectiles = true

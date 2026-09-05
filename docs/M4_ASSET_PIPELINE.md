@@ -103,3 +103,16 @@
 - 正式音频：仍运行时合成占位，未宣称完成。
 - terrain_land_b（全章）：staged 未接入。
 - 手柄实机/低端机/盲测：留发行前人工门禁。
+
+---
+
+# M4-C：第二章首批 C09–C12 资产扩展（2026-09-06）
+
+- 新增 `tools/gen_chapter2_sprites.py`（复用 gen_chapter1_sprites 的 save/remap/terrain_for 工具函数）：
+  C09–C12 主题地形 16 张（调色板对齐 visual_theme.gd 第二章「玻璃沼泽」新增 4 主题）+
+  3 张新敌人精灵（reed_stalker 隐匿 / spore_mender 治疗 / mirror_shade 双相）+ 9 张色弱变体。
+- `greybox_map.gd._draw_level_flavor` +4 关装饰（玻璃苇丛/荧光孢囊/镜像银纹/断桅藤壶）。
+- 台账 +19 行（16 地形 + 3 单位 base；变体同包注明）；CREDITS 已同步。
+- 预览证据：`out/m4c_sprites_preview.png`、`out/m4c_terrain_preview.png`。
+- 机制层（隐匿/治疗光环/双相抗性/掩体阻挡/侦测与孢子装置）详见 docs/M4_CONTENT_NOTES.md。
+- Blockers 维持：C13–C14 与 Boss 2 未做；正式音频/手柄/盲测门禁不变。

@@ -1,6 +1,7 @@
 extends SceneTree
-## M3 smoke aggregator: verifies C01-C08 report contracts after main.gd runs.
-const LEVELS := ["level_c01", "level_c02", "level_c03", "level_c04", "level_c05", "level_c06", "level_c07", "level_c08"]
+## M3 smoke aggregator: verifies C01-C12 report contracts after main.gd runs.
+const LEVELS := ["level_c01", "level_c02", "level_c03", "level_c04", "level_c05", "level_c06", "level_c07", "level_c08",
+	"level_c09", "level_c10", "level_c11", "level_c12"]
 func _initialize() -> void:
 	var failures: Array[String] = []
 	for level_id: String in LEVELS:

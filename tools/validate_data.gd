@@ -98,6 +98,15 @@ func _check_device(device: DeviceData) -> void:
 		_error("%s: active_phase 非法（%s）" % [where, device.active_phase])
 	if device.repairable and device.repair_seconds <= 0.0:
 		_error("%s: repair_seconds 必须 > 0" % where)
+	# M4-C：装置效果 op 白名单 + 掩体字段
+	if not String(device.effect_op) in ["glow_pulse", "reveal_pulse", "spore_heal", "cover"]:
+		_error("%s: effect_op 非法（%s）" % [where, device.effect_op])
+	if device.max_hp < 0.0:
+		_error("%s: max_hp 不能为负" % where)
+	if device.blocks_projectiles and device.max_hp <= 0.0:
+		_error("%s: 掩体阻挡需要 max_hp > 0" % where)
+	if device.effect_op == &"cover" and not device.blocks_projectiles:
+		_error("%s: cover 装置必须 blocks_projectiles=true" % where)
 	var pos: Vector2 = device.position
 	if pos.x < 0.0 or pos.x > MAP_SIZE.x or pos.y < 0.0 or pos.y > MAP_SIZE.y:
 		_error("%s: position 在地图外 %s" % [where, pos])
@@ -271,6 +280,13 @@ func _check_enemy(enemy: EnemyData) -> void:
 		_error("%s: aura_radius 不能为负" % where)
 	if enemy.aura_radius > 0.0 and enemy.aura_speed_mult <= 0.0:
 		_error("%s: 有光环时 aura_speed_mult 必须 > 0" % where)
+	# M4-C：隐匿/治疗/双相字段
+	if enemy.heal_radius < 0.0 or enemy.heal_per_sec < 0.0:
+		_error("%s: heal_radius/heal_per_sec 不能为负" % where)
+	if enemy.heal_radius > 0.0 and enemy.heal_per_sec <= 0.0:
+		_error("%s: 有治疗光环时 heal_per_sec 必须 > 0" % where)
+	if enemy.heal_per_sec > 0.0 and enemy.heal_radius <= 0.0:
+		_error("%s: 有治疗量时 heal_radius 必须 > 0" % where)
 
 
 func _check_wave(wave: WaveData) -> void:

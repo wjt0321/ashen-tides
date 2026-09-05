@@ -21,7 +21,7 @@ const COLOR_ELITE_EDGE := Color(0.98, 0.80, 0.35) ## 精英金色描边
 const TAG_GLYPHS: Dictionary = {
 	&"basic": "", &"swarm": "群", &"swift": "迅", &"heavy": "甲",
 	&"shield": "盾", &"support": "援", &"glow": "辉", &"healer": "疗",
-	&"engineer": "机", &"boss": "王",
+	&"engineer": "机", &"boss": "王", &"stealth": "匿", &"phasebound": "相",
 }
 
 var data: EnemyData
@@ -31,6 +31,8 @@ var marked_seconds: float = 0.0
 var slow_seconds: float = 0.0
 var slow_mult: float = 0.0 ## 减速比例（0.3 = -30%）
 var silenced_seconds: float = 0.0
+var revealed_seconds: float = 0.0 ## 隐匿敌被揭示的剩余秒数（C09 侦测）
+var current_phase: StringName = &"mingchao" ## 由战斗场景每 tick 注入（C11 双相抗性互换）
 var aura_boost: float = 1.0 ## 由战斗场景每 tick 重置并注入（支援光环）
 var boss_phase: int = 0 ## 0/1/2，由 _update_boss_phase 维护，main 亦读取用于证据记录
 var _boss_speed_mult: float = 1.0
@@ -61,6 +63,7 @@ func setup(p_data: EnemyData, route_points: PackedVector2Array, rng: RandomNumbe
 	slow_seconds = 0.0
 	slow_mult = 0.0
 	silenced_seconds = 0.0
+	revealed_seconds = 0.0
 	aura_boost = 1.0
 	_shred_value = 0.0
 	_shred_seconds = 0.0
@@ -112,6 +115,19 @@ func is_silenced() -> bool:
 	return silenced_seconds > 0.0
 
 
+## 侦测揭示（C09 玻璃芦径：侦测装置脉冲 / 英雄标记均可揭示）。
+func reveal(duration: float) -> void:
+	if not data.stealthed:
+		return
+	revealed_seconds = maxf(revealed_seconds, duration)
+	queue_redraw()
+
+
+## 索敌可见性：隐匿敌在揭示/标记期间才可被塔与英雄选为目标。
+func is_targetable() -> bool:
+	return is_alive() and (not data.stealthed or revealed_seconds > 0.0 or marked_seconds > 0.0)
+
+
 ## 有效速度：基础 × 支援光环 × (1 - 减速)。
 func effective_speed() -> float:
 	var slow_factor := 1.0 - slow_mult if slow_seconds > 0.0 else 1.0
@@ -124,11 +140,17 @@ func take_damage(base: float, damage_type: StringName) -> float:
 	if not bool(SettingsService.get_value("gameplay", "fixed_damage", false)):
 		variance = _rng.randf_range(0.95, 1.05) # 伤害波动 ±5%（PRD §3.3）
 	var resist: float = 0.0
+	# 双相形态（C11 倒映影魅）：暮潮时物理/辉光抗性互换，要求玩家伤害配比（PRD §5.3）
+	var eff_armor := data.armor
+	var eff_glow := data.glow_resist
+	if data.phase_resist_swap and current_phase == &"muchao":
+		eff_armor = data.glow_resist
+		eff_glow = data.armor
 	match damage_type:
 		&"physical":
-			resist = data.armor + _boss_armor_bonus + (20.0 if data.elite and data.elite_affixes.has(&"armored") else 0.0) - _shred_value
+			resist = eff_armor + _boss_armor_bonus + (20.0 if data.elite and data.elite_affixes.has(&"armored") else 0.0) - _shred_value
 		&"glow":
-			resist = data.glow_resist
+			resist = eff_glow
 	var coef: float = 100.0 / (100.0 + maxf(-50.0, resist))
 	var actual: float = base * variance * coef
 	if marked_seconds > 0.0:
@@ -164,6 +186,11 @@ func sim_tick(delta: float) -> void:
 		silenced_seconds -= delta
 		if silenced_seconds <= 0.0:
 			queue_redraw()
+	if revealed_seconds > 0.0:
+		revealed_seconds -= delta
+		if revealed_seconds <= 0.0:
+			revealed_seconds = 0.0
+			queue_redraw() # 重新隐入草丛（视觉）
 	if data.elite and data.elite_affixes.has(&"regenerating"):
 		hp = minf(data.max_hp, hp + data.max_hp * 0.002 * delta)
 	if _shred_seconds > 0.0:
@@ -236,6 +263,13 @@ func _draw() -> void:
 	var light := VisualTheme.shade(mid, 1.16)
 	var dark := VisualTheme.shade(mid, 0.66)
 	var edge := COLOR_ELITE_EDGE if data.elite else VisualTheme.OUTLINE
+	# 隐匿（C09）：未揭示时半透明（敌对我方"可见但不可索敌"的阅读编码）
+	var hidden := data.stealthed and revealed_seconds <= 0.0 and marked_seconds <= 0.0
+	if hidden:
+		mid.a = 0.35
+		light.a = 0.35
+		dark.a = 0.35
+		edge = Color(edge, 0.35)
 	# 剪影（随 facing 旋转；生命条/状态环保持轴对齐，不旋转）
 	draw_set_transform(Vector2.ZERO, facing, Vector2.ONE)
 	# M4-A：正式精灵优先（modulate 表达减速/受击闪白，缺失回退程序化剪影）
@@ -251,6 +285,8 @@ func _draw() -> void:
 			# M4-B 高对比：提亮贴图 + 白色外圈（低风险 modulate 方案）
 			mod = mod * Color(1.18, 1.18, 1.18)
 			draw_arc(Vector2.ZERO, tex.get_size().x * 0.5, 0.0, TAU, 24, Color(1, 1, 1, 0.55), 1.5)
+		if hidden:
+			mod.a = 0.35
 		draw_texture(tex, -tex.get_size() * 0.5, mod)
 	else:
 		_draw_silhouette(s, mid, light, dark, edge)
@@ -430,6 +466,10 @@ func _draw_crab(s: float, mid: Color, light: Color, dark: Color, edge: Color,
 func _draw_status_rings(s: float) -> void:
 	if data.aura_radius > 0.0:
 		draw_arc(Vector2.ZERO, data.aura_radius, 0.0, TAU, 48, Color(0.75, 0.55, 0.95, 0.09), 1.0)
+	if data.heal_radius > 0.0:
+		draw_arc(Vector2.ZERO, data.heal_radius, 0.0, TAU, 48, Color(0.45, 0.95, 0.55, 0.09), 1.0) # 治疗光环（C10）
+	if data.stealthed and revealed_seconds > 0.0:
+		draw_arc(Vector2.ZERO, s + 8.5, 0.0, TAU, 18, Color(0.55, 0.90, 1.0, 0.8), 1.5) # 已揭示标记（C09 侦测）
 	if marked_seconds > 0.0:
 		draw_arc(Vector2.ZERO, s + 4.0, 0.0, TAU, 18, VisualTheme.MARK_RING, 2.0)
 	if shield > 0.0:

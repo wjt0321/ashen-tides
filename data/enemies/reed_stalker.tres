@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"reed_stalker"
+schema_version = 1
+enabled = true
+designer_note = "M4-C 第二章：C09 隐匿敌——侦测考核（PRD §5.3 玻璃芦径）"
+introduced_in_level = &"level_c09"
+display_name_key = &"ENEMY_REED_STALKER"
+max_hp = 130.0
+speed_px_per_sec = 58.0
+armor = 0.0
+glow_resist = 10.0
+leak_damage = 1
+kill_reward_ember = 18
+radius_px = 9.0
+tags = [&"stealth", &"swift"]
+elite = false
+boss = false
+shield_hp = 0.0
+aura_radius = 0.0
+aura_speed_mult = 1.0
+stealthed = true
+heal_radius = 0.0
+heal_per_sec = 0.0
+phase_resist_swap = false
+body_color = Color(0.35, 0.55, 0.40, 1.00)

@@ -25,6 +25,7 @@ var pierce: int = 1
 var armor_shred: float = 0.0
 var source_tower: GreyboxTower = null
 var enemies: Array = [] ## 溅射/穿透判定用，由战斗场景注入（数组按引用共享）
+var blockers: Array = [] ## 可破坏掩体（C12）：阻挡投射物，由战斗场景注入（_devices 引用共享）
 
 var _target: GreyboxEnemy
 var _last_target_pos: Vector2
@@ -76,13 +77,29 @@ func sim_tick(delta: float) -> void:
 		return
 	if is_instance_valid(_target) and _target.is_alive():
 		_last_target_pos = _target.position
+	if _check_blockers():
+		return
 	var step: float = speed * delta
 	if position.distance_to(_last_target_pos) <= step + 4.0:
 		_impact()
 		resolved.emit(self)
 		return
 	position = position.move_toward(_last_target_pos, step)
+	if _check_blockers():
+		return
 	queue_redraw() # 追踪弹体视觉尾迹随转弯刷新（sim tick 驱动）
+
+
+## 掩体阻挡（C12 沉船温室）：投射物进入存活掩体半径即被吸收并削减掩体耐久。
+func _check_blockers() -> bool:
+	for blocker: Variant in blockers:
+		if not (blocker is GreyboxDevice) or blocker.destroyed or not blocker.data.blocks_projectiles:
+			continue
+		if position.distance_to(blocker.position) <= blocker.data.radius_px:
+			blocker.take_damage(damage)
+			resolved.emit(self)
+			return true
+	return false
 
 
 ## 直线穿透弹道：固定方向飞行，命中 corridor 内未命中过的敌人。
@@ -90,8 +107,10 @@ func _sim_tick_pierce(delta: float) -> void:
 	var step: float = speed * delta
 	position += _fly_dir * step
 	_flown += step
+	if _check_blockers():
+		return
 	for enemy: Variant in enemies:
-		if not (enemy is GreyboxEnemy) or not enemy.is_alive() or _hit_set.has(enemy):
+		if not (enemy is GreyboxEnemy) or not enemy.is_targetable() or _hit_set.has(enemy):
 			continue
 		if position.distance_to(enemy.position) <= HIT_CORRIDOR + enemy.data.radius_px:
 			_hit_set.append(enemy)
@@ -117,10 +136,10 @@ func _hit(enemy: GreyboxEnemy) -> void:
 func _impact() -> void:
 	if splash_radius > 0.0:
 		for enemy: Variant in enemies.duplicate():
-			if enemy is GreyboxEnemy and enemy.is_alive():
+			if enemy is GreyboxEnemy and enemy.is_targetable(): # 溅射不波及未揭示隐匿敌（C09）
 				if enemy.position.distance_to(_last_target_pos) <= splash_radius:
 					_hit(enemy)
-	elif is_instance_valid(_target) and _target.is_alive():
+	elif is_instance_valid(_target) and _target.is_targetable():
 		_hit(_target)
 
 

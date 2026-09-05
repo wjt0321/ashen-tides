@@ -273,6 +273,38 @@ func _draw_level_flavor(land_a: Color, land_b: Color, edge: Color, accent: Color
 			var vent := Color(accent.r, accent.g, accent.b, 0.5)
 			draw_circle(Vector2(148, 62), 2.0, vent)
 			draw_circle(Vector2(34, 148), 2.0, vent)
+		&"level_c09":
+			# 玻璃芦径：水面竖几丛玻璃苇（半透明竖茎 + 顶穗）
+			var reed := Color(accent.r, accent.g, accent.b, 0.55)
+			var tip := Color(glow.r, glow.g, glow.b, 0.7)
+			for rp: Vector2 in [Vector2(120, 210), Vector2(500, 130), Vector2(210, 330)]:
+				draw_line(rp, rp + Vector2(0, -12), reed, 2.0)
+				draw_line(rp + Vector2(4, 0), rp + Vector2(4, -9), reed, 1.5)
+				draw_circle(rp + Vector2(0, -13), 1.6, tip)
+				draw_circle(rp + Vector2(4, -10), 1.2, tip)
+		&"level_c10":
+			# 孢光洼地：地表散落荧光孢囊（小圆簇 + 微光晕）
+			var spore := Color(glow.r, glow.g, glow.b, 0.6)
+			var halo := Color(glow.r, glow.g, glow.b, 0.18)
+			for sp: Vector2 in [Vector2(150, 60), Vector2(420, 110), Vector2(540, 300), Vector2(90, 250)]:
+				draw_circle(sp, 5.0, halo)
+				draw_circle(sp, 2.0, spore)
+				draw_circle(sp + Vector2(4, 2), 1.2, spore)
+		&"level_c11":
+			# 倒映之路：水面画镜像银纹（成对的水平亮线，上下对称）
+			var mirror_line := Color(foam.r, foam.g, foam.b, 0.35)
+			for mx: float in [80.0, 240.0, 420.0, 560.0]:
+				draw_line(Vector2(mx, 148), Vector2(mx + 26, 148), mirror_line, 1.2)
+				draw_line(Vector2(mx, 212), Vector2(mx + 26, 212), mirror_line, 1.2)
+		&"level_c12":
+			# 沉船温室：断裂桅杆斜插水中 + 藤壶点
+			var mast := VisualTheme.shade(land_a, 0.85)
+			draw_line(Vector2(96, 208), Vector2(112, 240), mast, 3.0)
+			draw_line(Vector2(96, 208), Vector2(100, 200), VisualTheme.shade(land_a, 1.1), 2.0)
+			draw_line(Vector2(540, 96), Vector2(556, 128), mast, 3.0)
+			var barnacle := Color(edge.r, edge.g, edge.b, 0.6)
+			draw_circle(Vector2(104, 224), 1.4, barnacle)
+			draw_circle(Vector2(548, 112), 1.2, barnacle)
 
 
 ## 资产替换试验（NEXT_PHASE C）：在 C01 顶部岸带与右岸礁岛铺 Buch 岩石 tile。

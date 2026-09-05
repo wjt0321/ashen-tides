@@ -590,7 +590,7 @@ func _sim_tick(dt: float) -> void:
 	_phase_controller.sim_tick(dt)
 	if _hero != null:
 		_hero.sim_tick(dt)
-	_apply_support_auras()
+	_apply_support_auras(dt)
 	for enemy: GreyboxEnemy in _enemies.duplicate():
 		enemy.sim_tick(dt)
 	for tower: GreyboxTower in _towers:
@@ -611,18 +611,27 @@ func _sim_tick(dt: float) -> void:
 		print("[BSYNC] dt=%d kills=%d alive=%d fires=%d pulses=%d rng=%d" % [_tick_count - _dbg_wave_start_tick, _kills, _enemies.size(), _dbg_fires, _echo_system.pulses_total, _rng.state])
 
 
-## 支援光环（潮背导航员）：每 tick 重置后由存活且未沉默的光环源注入（沉默抑制，断响模块反制）。
-func _apply_support_auras() -> void:
+## 支援/治疗光环 + 相位注入（M4-C）：每 tick 重置后由存活且未沉默的光环源注入（沉默抑制，断响模块反制）。
+func _apply_support_auras(dt: float = 0.0) -> void:
 	for enemy: GreyboxEnemy in _enemies:
 		enemy.aura_boost = 1.0
+		enemy.current_phase = _phase_controller.current_phase # C11 双相抗性互换
 	for source: GreyboxEnemy in _enemies:
-		if not source.is_alive() or source.data.aura_radius <= 0.0 or source.is_silenced():
+		if not source.is_alive() or source.is_silenced():
 			continue
-		for ally: GreyboxEnemy in _enemies:
-			if ally == source or not ally.is_alive():
-				continue
-			if ally.position.distance_to(source.position) <= source.data.aura_radius:
-				ally.aura_boost = maxf(ally.aura_boost, source.data.aura_speed_mult)
+		if source.data.aura_radius > 0.0:
+			for ally: GreyboxEnemy in _enemies:
+				if ally == source or not ally.is_alive():
+					continue
+				if ally.position.distance_to(source.position) <= source.data.aura_radius:
+					ally.aura_boost = maxf(ally.aura_boost, source.data.aura_speed_mult)
+		if source.data.heal_radius > 0.0 and dt > 0.0:
+			# C10 治疗光环（孢光医者）：恢复自身以外友军，封顶 max_hp
+			for ally: GreyboxEnemy in _enemies:
+				if ally == source or not ally.is_alive():
+					continue
+				if ally.position.distance_to(source.position) <= source.data.heal_radius:
+					ally.hp = minf(ally.data.max_hp, ally.hp + source.data.heal_per_sec * dt)
 
 
 # ---------------------------------------------------------------------------
@@ -1107,6 +1116,7 @@ func _on_tower_fire(tower: GreyboxTower, target: GreyboxEnemy) -> void:
 	if projectile.get_parent() == null:
 		_battle_root.add_child(projectile)
 		projectile.enemies = _enemies
+		projectile.blockers = _devices # C12 掩体阻挡（数组按引用共享）
 		projectile.resolved.connect(_on_projectile_resolved)
 	_active_projectiles.append(projectile)
 	projectile.setup(tower.position, target, damage, tower.data.damage_type, tower.data.projectile_speed,

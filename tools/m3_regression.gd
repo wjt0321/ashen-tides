@@ -1,6 +1,7 @@
 extends SceneTree
 ## M3 deterministic regression gate: compares standard steady builds at 1x/3x and resumed report.
-const LEVELS := ["level_c04", "level_c05", "level_c06", "level_c07", "level_c08"]
+const LEVELS := ["level_c04", "level_c05", "level_c06", "level_c07", "level_c08",
+	"level_c09", "level_c10", "level_c11", "level_c12"] # M4-C：C09–C12 纳入 1×/3× 确定性门禁
 
 func _read(path: String) -> Dictionary:
 	if not FileAccess.file_exists(path): return {}

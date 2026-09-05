@@ -126,7 +126,6 @@
 - **记录**：[M4_ASSET_PIPELINE.md](M4_ASSET_PIPELINE.md)；未做项（其余塔/敌/Boss 精灵、正式音频、色弱贴图重映射、terrain_land_b 未接入）见该文 §6
 
 ## M4-B：第一章 C01–C08 正式资产扩展（2026-09-06）
-
 - [x] 盘点 C01–C08 实际使用 id（塔 6 / 英雄 2 / 敌人 11 含 Boss；anchor_crab_guardian 无出场，未生成）
 - [x] 确定性生成器扩展（`tools/gen_chapter1_sprites.py`，固定 seed）：C02–C08 主题地形 ×28 + 单位 ×13 + 色弱变体 ×57
 - [x] 运行时接入（`ArtLibrary._unit_cached()` 三级回退：色弱变体→基础图→程序化剪影；高对比 modulate/外圈；64×64 Boss 居中）
@@ -134,6 +133,16 @@
 - [x] 台账 +41 行并修复 df6b434 遗留列数不一致；[CREDITS.md](CREDITS.md) 与 [M4_ASSET_PIPELINE.md](M4_ASSET_PIPELINE.md) 同步
 - [x] 验证（2026-09-06）：导入 0 error / validate checked=141 errors=0 PASS / tests 117/117 / i18n missing=0 / C01–C08 3× autoplay smoke 全跑通无 ERROR（C01=7017、C03=11558、C08=16661 与基线逐 tick 一致；C04/C07 autoplay lose 为既定难度定位，steady 标准构筑 win 且 ticks=13523/13467 与 NEXT_PHASE 基线逐字段一致）/ perf C01 avg 6.97ms(144fps) 1%low 66fps、C04 144fps/77fps、C08 144fps/76fps / 截图 out/polish_level_c08_wave3.png 目检通过（主题地形+塔精灵渲染正常）
 - **记录**：[M4_ASSET_PIPELINE.md](M4_ASSET_PIPELINE.md) M4-B 段；未做项（guardian 精灵、精英/Boss 阶段变体、FX/UI 色弱变体、正式音频、land_b 未接入）见该文 §6
+
+## M4-C：第二章首批 C09–C12 可玩内容切片（2026-09-06）
+
+- [x] 新机制（数据驱动）：隐匿/侦测（`EnemyData.stealthed` + reveal_pulse 装置）、治疗光环（heal_radius/heal_per_sec）、双相抗性互换（phase_resist_swap）、可破坏掩体阻挡投射物（DeviceData cover/blocks_projectiles）；第一章敌人零行为变化
+- [x] C09–C12 数据：4 LevelData + 48 WaveData + 3 新敌人 + 6 装置 + 5 相位事件 + i18n 14 keys（`tools/gen_m4c_data.py` 确定性生成，几何自检内置）
+- [x] 标准构筑：每关 steady/economy/synergy 全 win（标准模式无 simulation_assist）；C10 三轮构筑迭代、C09 synergy 修正误用未开放塔，均未改数值
+- [x] 视觉：visual_theme 第二章 4 主题 + `gen_chapter2_sprites.py` 地形 ×16/敌 ×3/变体 ×9 + 关卡装饰 ×4；台账 +19 行、CREDITS 同步
+- [x] 测试：tests 179/179（新增 test_m4c_content.gd 62 项）；validate checked=207 errors=0；i18n missing=0
+- [x] C09–C12 balance steady 1×/3× 确定性对照与 perf 报告生成（C04–C12 regression/perf 聚合均 failures=0 PASS；见 [M4_CONTENT_NOTES.md](M4_CONTENT_NOTES.md) §5）
+- **记录**：[M4_CONTENT_NOTES.md](M4_CONTENT_NOTES.md)；未做项（C13–C14/Boss 2、autoplay 难度定位、精英敌、掩体仅挡投射物）见该文 §6
 
 ## 5. M4：全战役 Alpha（C09–C24）
 
@@ -202,3 +211,4 @@
 | 2026-09-05 | NEXT_PHASE 执行：新增 StandardBuilds（C01–C08 × steady/economy/synergy，--build 标准模式与辅助报告分离）、平衡报告字段（fail_reason/leak_by_wave/tower_stats）；24/24 构筑 win（仅构筑迭代，未改数值）；C01/C04/C07 1×/3× tick 全等；Ark Pixel Font（OFL 1.1）接入并锁定为默认 UI 字体（12/15/18px 缩放验证通过）；AT-TER-001（CC0）C01 替换试验完成并决定 trial-only；台账 16 行含 hash/许可证原文。M3 Gate 退出评审等人工门禁保持未勾 | NEXT_PHASE P0/P1 执行 | 项目主理人（agent 执行） |
 | 2026-09-05 | M4-A：美术技术规范锁定（M4_ASSET_SPEC.md）；C01 切片 16 张项目自有原创精灵（tools/gen_c01_sprites.py）接入运行时并全部带程序化回退；台账 +16 行、新建 CREDITS.md（Godot MIT + Ark Pixel OFL）；M0 两项历史遗留（字体锁定/资产归档流程）勾销；验证全绿且战斗基线不变 | M4-A 执行（用户确认后） | 项目主理人（agent 执行） |
 | 2026-09-06 | M4-B：第一章 C01–C08 资产扩展——gen_chapter1_sprites.py 生成 28 张主题地形 + 13 张单位精灵 + 57 张色弱变体（项目自有原创，固定 seed 可复现）；ArtLibrary 三级回退（色弱变体→基础图→程序化剪影）+ 高对比 modulate/外圈；台账 +41 行（并修复 df6b434 遗留列数不一致）；导入/validate/tests 117/i18n/8 关 3× smoke/perf 抽查全过，smoke ticks 与基线逐一相同（纯视觉层） | M4-B 执行（用户确认后） | 项目主理人（agent 执行） |
+| 2026-09-06 | M4-C：第二章首批 C09–C12 切片——新增隐匿/治疗光环/双相抗性/掩体阻挡四机制（数据驱动，第一章敌人零变化）；gen_m4c_data.py 生成 4 关+48 波+3 敌+6 装置+5 相位事件+i18n 14 keys；12 套标准构筑全 win（C10 构筑迭代、未改数值）；gen_chapter2_sprites.py 地形 16+敌 3+变体 9；tests 179/179、validate 207 项 0 error；C04–C12 1×/3×确定性与 perf 聚合均 PASS | M4-C 执行（用户确认后） | 项目主理人（agent 执行） |

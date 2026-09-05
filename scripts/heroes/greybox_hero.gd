@@ -236,7 +236,7 @@ func _nearest_enemy(max_range: float) -> GreyboxEnemy:
 	var best: GreyboxEnemy = null
 	var best_dist := max_range
 	for enemy: Variant in enemies:
-		if not (enemy is GreyboxEnemy) or not enemy.is_alive():
+		if not (enemy is GreyboxEnemy) or not enemy.is_targetable(): # 隐匿敌不可被普攻索敌（C09）
 			continue
 		var dist: float = position.distance_to(enemy.position)
 		if dist <= best_dist:

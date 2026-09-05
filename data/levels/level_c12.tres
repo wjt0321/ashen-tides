@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=18 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/level_data.gd" id="1"]
+[ext_resource type="Resource" path="res://data/waves/wave_c12_01.tres" id="w0"]
+[ext_resource type="Resource" path="res://data/waves/wave_c12_02.tres" id="w1"]
+[ext_resource type="Resource" path="res://data/waves/wave_c12_03.tres" id="w2"]
+[ext_resource type="Resource" path="res://data/waves/wave_c12_04.tres" id="w3"]
+[ext_resource type="Resource" path="res://data/waves/wave_c12_05.tres" id="w4"]
+[ext_resource type="Resource" path="res://data/waves/wave_c12_06.tres" id="w5"]
+[ext_resource type="Resource" path="res://data/waves/wave_c12_07.tres" id="w6"]
+[ext_resource type="Resource" path="res://data/waves/wave_c12_08.tres" id="w7"]
+[ext_resource type="Resource" path="res://data/waves/wave_c12_09.tres" id="w8"]
+[ext_resource type="Resource" path="res://data/waves/wave_c12_10.tres" id="w9"]
+[ext_resource type="Resource" path="res://data/waves/wave_c12_11.tres" id="w10"]
+[ext_resource type="Resource" path="res://data/waves/wave_c12_12.tres" id="w11"]
+[ext_resource type="Resource" path="res://data/phase_events/phase_c12_tide_shift.tres" id="pe0"]
+[ext_resource type="Resource" path="res://data/devices/device_c12_hull_cover_a.tres" id="dv0"]
+[ext_resource type="Resource" path="res://data/devices/device_c12_hull_cover_b.tres" id="dv1"]
+[ext_resource type="Resource" path="res://data/devices/device_c12_hull_cover_c.tres" id="dv2"]
+
+[resource]
+script = ExtResource("1")
+id = &"level_c12"
+schema_version = 1
+enabled = true
+designer_note = "M4-C 第二章：C12「沉船温室」——汇流路 + 可破坏船壳掩体阻挡投射物（PRD §5.3）"
+display_name_key = &"LEVEL_C12"
+map_size_cells = Vector2i(20, 11)
+initial_ember = 1050
+initial_fleet_integrity = 20
+allowed_towers = [&"tower_needle_rail", &"tower_ember_well", &"tower_echo_pile", &"tower_wind_nest", &"tower_tide_anvil", &"tower_prism_grove"]
+route_ids = [&"route_c12_a", &"route_c12_b"]
+route_points = [PackedVector2Array(0, 64, 288, 64, 288, 224, 640, 224), PackedVector2Array(0, 320, 416, 320, 416, 224, 640, 224)]
+default_active_route = &"route_c12_a"
+initial_active_routes = [&"route_c12_a"]
+build_node_positions = [Vector2(96, 24), Vector2(400, 24), Vector2(544, 24), Vector2(64, 120), Vector2(160, 120), Vector2(352, 120), Vector2(448, 120), Vector2(544, 120), Vector2(64, 176), Vector2(160, 176), Vector2(352, 176), Vector2(544, 176), Vector2(64, 272), Vector2(160, 272), Vector2(240, 272), Vector2(480, 272), Vector2(576, 272)]
+waves = [ExtResource("w0"), ExtResource("w1"), ExtResource("w2"), ExtResource("w3"), ExtResource("w4"), ExtResource("w5"), ExtResource("w6"), ExtResource("w7"), ExtResource("w8"), ExtResource("w9"), ExtResource("w10"), ExtResource("w11")]
+phase_events = [ExtResource("pe0")]
+allowed_heroes = [&"hero_lanzhou_wei", &"hero_zhushou_muen"]
+hero_spawn = Vector2(320, 272)
+primary_objective_key = &"OBJ_PRIMARY_SURVIVE"
+strategy_objective_key = &"OBJ_C12_STRATEGY"
+strategy_objective_op = &"upgrade_any_tower"
+integrity_mark_threshold = 12
+tutorial_id = &""
+chapter_index = 2
+target_tags = [&"heavy", &"armor", &"support"]
+devices = [ExtResource("dv0"), ExtResource("dv1"), ExtResource("dv2")]

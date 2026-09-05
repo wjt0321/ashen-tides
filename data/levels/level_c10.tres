@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=17 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/level_data.gd" id="1"]
+[ext_resource type="Resource" path="res://data/waves/wave_c10_01.tres" id="w0"]
+[ext_resource type="Resource" path="res://data/waves/wave_c10_02.tres" id="w1"]
+[ext_resource type="Resource" path="res://data/waves/wave_c10_03.tres" id="w2"]
+[ext_resource type="Resource" path="res://data/waves/wave_c10_04.tres" id="w3"]
+[ext_resource type="Resource" path="res://data/waves/wave_c10_05.tres" id="w4"]
+[ext_resource type="Resource" path="res://data/waves/wave_c10_06.tres" id="w5"]
+[ext_resource type="Resource" path="res://data/waves/wave_c10_07.tres" id="w6"]
+[ext_resource type="Resource" path="res://data/waves/wave_c10_08.tres" id="w7"]
+[ext_resource type="Resource" path="res://data/waves/wave_c10_09.tres" id="w8"]
+[ext_resource type="Resource" path="res://data/waves/wave_c10_10.tres" id="w9"]
+[ext_resource type="Resource" path="res://data/waves/wave_c10_11.tres" id="w10"]
+[ext_resource type="Resource" path="res://data/waves/wave_c10_12.tres" id="w11"]
+[ext_resource type="Resource" path="res://data/phase_events/phase_c10_tide_shift.tres" id="pe0"]
+[ext_resource type="Resource" path="res://data/devices/device_c10_spore_zone_a.tres" id="dv0"]
+[ext_resource type="Resource" path="res://data/devices/device_c10_spore_zone_b.tres" id="dv1"]
+
+[resource]
+script = ExtResource("1")
+id = &"level_c10"
+schema_version = 1
+enabled = true
+designer_note = "M4-C 第二章：C10「孢光洼地」——双路 + 孢子扩散区（敌方治疗场）+ 治疗敌（PRD §5.3）"
+display_name_key = &"LEVEL_C10"
+map_size_cells = Vector2i(20, 11)
+initial_ember = 950
+initial_fleet_integrity = 20
+allowed_towers = [&"tower_needle_rail", &"tower_ember_well", &"tower_echo_pile", &"tower_wind_nest", &"tower_prism_grove"]
+route_ids = [&"route_c10_north", &"route_c10_south"]
+route_points = [PackedVector2Array(0, 96, 448, 96, 448, 176, 640, 176), PackedVector2Array(0, 272, 320, 272, 320, 320, 640, 320)]
+default_active_route = &"route_c10_north"
+initial_active_routes = [&"route_c10_north", &"route_c10_south"]
+build_node_positions = [Vector2(64, 40), Vector2(192, 40), Vector2(320, 40), Vector2(448, 40), Vector2(576, 40), Vector2(96, 144), Vector2(224, 144), Vector2(352, 144), Vector2(544, 144), Vector2(624, 144), Vector2(64, 224), Vector2(160, 224), Vector2(256, 224), Vector2(400, 224), Vector2(88, 336), Vector2(216, 336)]
+waves = [ExtResource("w0"), ExtResource("w1"), ExtResource("w2"), ExtResource("w3"), ExtResource("w4"), ExtResource("w5"), ExtResource("w6"), ExtResource("w7"), ExtResource("w8"), ExtResource("w9"), ExtResource("w10"), ExtResource("w11")]
+phase_events = [ExtResource("pe0")]
+allowed_heroes = [&"hero_lanzhou_wei", &"hero_zhushou_muen"]
+hero_spawn = Vector2(320, 136)
+primary_objective_key = &"OBJ_PRIMARY_SURVIVE"
+strategy_objective_key = &"OBJ_C10_STRATEGY"
+strategy_objective_op = &"use_tide_clock"
+integrity_mark_threshold = 12
+tutorial_id = &""
+chapter_index = 2
+target_tags = [&"healer", &"support", &"armor"]
+devices = [ExtResource("dv0"), ExtResource("dv1")]

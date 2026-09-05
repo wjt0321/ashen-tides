@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="PhaseEventData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/phase_event_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"phase_c11_tide_shift_b"
+schema_version = 1
+enabled = true
+designer_note = "M4-C C11：第二次双相切换（回明潮）"
+level_id = &"level_c11"
+starts_at_wave = 9
+from_phase = &"muchao"
+to_phase = &"mingchao"
+activates_routes = []
+deactivates_routes = []
+environment_changes = []
+warning_seconds = 20.0
+player_interruptible = true
+becon_cost = 40

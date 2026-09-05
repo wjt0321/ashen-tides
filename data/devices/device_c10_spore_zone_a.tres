@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DeviceData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/device_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"device_c10_spore_zone_a"
+schema_version = 1
+enabled = true
+designer_note = "M4-C C10：孢子扩散区 A——敌方治疗场，每 2 秒治疗半径内敌军 7 点"
+display_name_key = &"DEVICE_C10_SPORE_ZONE"
+position = Vector2(240, 176)
+radius_px = 88.0
+effect_op = &"spore_heal"
+effect_value = 7.0
+interval_seconds = 2.0
+active_phase = &"both"
+repairable = false
+repair_seconds = 3.0
+max_hp = 0.0
+blocks_projectiles = false

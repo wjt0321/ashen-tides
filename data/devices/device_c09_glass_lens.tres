@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DeviceData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/device_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"device_c09_glass_lens"
+schema_version = 1
+enabled = true
+designer_note = "M4-C C09：玻璃棱镜——侦测脉冲，每 3 秒揭示半径内隐匿敌 5 秒"
+display_name_key = &"DEVICE_C09_GLASS_LENS"
+position = Vector2(320, 240)
+radius_px = 150.0
+effect_op = &"reveal_pulse"
+effect_value = 5.0
+interval_seconds = 3.0
+active_phase = &"both"
+repairable = true
+repair_seconds = 3.0
+max_hp = 0.0
+blocks_projectiles = false

@@ -80,6 +80,37 @@ const THEMES: Dictionary = {
 		"road_bed": Color(0.09, 0.06, 0.09), "road_inner": Color(0.30, 0.18, 0.24),
 		"accent": Color(0.90, 0.25, 0.30), "glow": Color(0.95, 0.35, 0.40),
 	},
+	# ------------------------------------------------------------------
+	# 第二章「玻璃沼泽」（M4-C）
+	# ------------------------------------------------------------------
+	&"level_c09": { # 玻璃芦径：玻璃苇丛青碧
+		"sea_a": Color(0.10, 0.24, 0.22), "sea_b": Color(0.08, 0.19, 0.18),
+		"sea_foam": Color(0.50, 0.75, 0.68), "land_a": Color(0.30, 0.38, 0.28),
+		"land_b": Color(0.25, 0.32, 0.24), "land_edge": Color(0.55, 0.68, 0.50),
+		"road_bed": Color(0.14, 0.19, 0.15), "road_inner": Color(0.45, 0.58, 0.44),
+		"accent": Color(0.55, 0.90, 0.70), "glow": Color(0.65, 0.95, 0.80),
+	},
+	&"level_c10": { # 孢光洼地：孢光荧光绿
+		"sea_a": Color(0.09, 0.20, 0.14), "sea_b": Color(0.07, 0.16, 0.11),
+		"sea_foam": Color(0.45, 0.72, 0.45), "land_a": Color(0.26, 0.34, 0.20),
+		"land_b": Color(0.21, 0.28, 0.17), "land_edge": Color(0.50, 0.62, 0.38),
+		"road_bed": Color(0.13, 0.17, 0.11), "road_inner": Color(0.42, 0.55, 0.35),
+		"accent": Color(0.70, 0.95, 0.45), "glow": Color(0.80, 1.00, 0.55),
+	},
+	&"level_c11": { # 倒映之路：镜面银蓝紫
+		"sea_a": Color(0.12, 0.16, 0.26), "sea_b": Color(0.09, 0.13, 0.21),
+		"sea_foam": Color(0.55, 0.62, 0.78), "land_a": Color(0.30, 0.30, 0.36),
+		"land_b": Color(0.25, 0.25, 0.30), "land_edge": Color(0.55, 0.55, 0.65),
+		"road_bed": Color(0.15, 0.15, 0.20), "road_inner": Color(0.48, 0.48, 0.60),
+		"accent": Color(0.75, 0.80, 1.00), "glow": Color(0.80, 0.85, 1.00),
+	},
+	&"level_c12": { # 沉船温室：幽绿船壳锈棕
+		"sea_a": Color(0.07, 0.16, 0.15), "sea_b": Color(0.05, 0.12, 0.12),
+		"sea_foam": Color(0.35, 0.55, 0.50), "land_a": Color(0.32, 0.26, 0.18),
+		"land_b": Color(0.26, 0.21, 0.15), "land_edge": Color(0.55, 0.45, 0.30),
+		"road_bed": Color(0.14, 0.12, 0.09), "road_inner": Color(0.45, 0.38, 0.26),
+		"accent": Color(0.60, 0.85, 0.60), "glow": Color(0.70, 0.90, 0.65),
+	},
 }
 
 const FALLBACK_THEME := &"level_c01"

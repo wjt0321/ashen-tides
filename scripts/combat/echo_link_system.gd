@@ -111,7 +111,7 @@ func _link_pulse(a: GreyboxTower, b: GreyboxTower) -> void:
 				chain += int(pile.module.effect_value)
 	var hit: Array = []
 	for enemy: Variant in enemies:
-		if not (enemy is GreyboxEnemy) or not enemy.is_alive():
+		if not (enemy is GreyboxEnemy) or not enemy.is_targetable(): # 隐匿敌不可被链路命中（C09）
 			continue
 		if _point_segment_distance(enemy.position, a.position, b.position) <= LINK_BAND_HALF_WIDTH + enemy.data.radius_px * 0.5:
 			hit.append(enemy)
@@ -130,7 +130,7 @@ func _link_pulse(a: GreyboxTower, b: GreyboxTower) -> void:
 			for other: Variant in enemies:
 				if chained.size() >= chain:
 					break
-				if not (other is GreyboxEnemy) or not other.is_alive() or hit.has(other) or chained.has(other):
+				if not (other is GreyboxEnemy) or not other.is_targetable() or hit.has(other) or chained.has(other):
 					continue
 				if other.position.distance_to(enemy.position) <= 48.0:
 					chained.append(other)

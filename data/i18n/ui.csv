@@ -207,3 +207,18 @@ MOD_PRISM_CHARGE,Prism Charge,Prism Charge
 MOD_PRISM_CHARGE_DESC,Prism Charge：M3 校准模块效果,Prism Charge: M3 calibration effect
 HUD_HERO_DOWN,英雄倒地,Hero down
 HUD_WAVE_BANNER,第 %d/%d 波 · %s,Wave %d/%d · %s
+# M4-C：C09–C12 关卡/敌人/装置
+LEVEL_C09,C09 玻璃芦径,C09 Glassreed Passage
+LEVEL_C10,C10 孢光洼地,C10 Sporeglow Hollow
+LEVEL_C11,C11 倒映之路,C11 Mirrorwake Path
+LEVEL_C12,C12 沉船温室,C12 Sunken Greenhouse
+OBJ_C09_STRATEGY,在 C09 内完成一次塔升级,Complete a tower upgrade in C09
+OBJ_C10_STRATEGY,在 C10 内使用一次潮汐仪,Use the tide clock once in C10
+OBJ_C11_STRATEGY,在 C11 相位切换前后使用潮汐仪,Use the tide clock around the phase shifts in C11
+OBJ_C12_STRATEGY,在 C12 内完成一次塔升级,Complete a tower upgrade in C12
+ENEMY_REED_STALKER,芦丛潜行者,Reed Stalker
+ENEMY_SPORE_MENDER,孢光医者,Spore Mender
+ENEMY_MIRROR_SHADE,倒映影魅,Mirror Shade
+DEVICE_C09_GLASS_LENS,玻璃棱镜,Glass Lens
+DEVICE_C10_SPORE_ZONE,孢子扩散区,Spore Bloom
+DEVICE_C12_HULL_COVER,船壳掩体,Hull Cover

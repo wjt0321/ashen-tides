@@ -17,6 +17,8 @@ var enemies: Array = [] ## 由战斗场景注入（数组按引用共享）
 var hero: GreyboxHero = null ## 修复判定用，由战斗场景注入
 var online: bool = true
 var current_phase: StringName = &"mingchao"
+var hp: float = 0.0 ## 可破坏掩体耐久（C12；data.max_hp == 0 时不用）
+var destroyed: bool = false ## 掩体被击破：停止阻挡/脉冲，不可修复
 
 var _pulse_left: float = 0.0
 var _pulse_anim: float = 0.0 ## 脉冲动画 1.0 → 0.0
@@ -27,7 +29,23 @@ func setup(p_data: DeviceData) -> void:
 	data = p_data
 	position = data.position
 	online = true
+	hp = data.max_hp
+	destroyed = false
 	_pulse_left = data.interval_seconds
+
+
+## 掩体承伤（C12）：被阻挡的投射物削减耐久，归零即摧毁。
+func take_damage(amount: float) -> void:
+	if destroyed or data.max_hp <= 0.0:
+		return
+	hp -= amount
+	queue_redraw()
+	if hp <= 0.0:
+		hp = 0.0
+		destroyed = true
+		online = false
+		print("[M4C] cover destroyed: %s" % data.id)
+		EventBus.device_offline.emit(data.id)
 
 
 func set_online(value: bool) -> void:
@@ -46,6 +64,8 @@ func sim_tick(delta: float) -> void:
 	_pulse_anim = maxf(0.0, _pulse_anim - delta * 1.5)
 	if _pulse_anim > 0.0:
 		queue_redraw()
+	if destroyed:
+		return # 掩体残骸：无脉冲、不可修复
 	if online:
 		_repair_left = -1.0
 		if data.active_phase == &"both" or data.active_phase == current_phase:
@@ -58,11 +78,25 @@ func sim_tick(delta: float) -> void:
 
 
 func _pulse() -> void:
-	if data.effect_op == &"glow_pulse":
-		for enemy: Variant in enemies:
-			if enemy is GreyboxEnemy and enemy.is_alive():
-				if enemy.position.distance_to(position) <= data.radius_px:
-					enemy.take_damage(data.effect_value, &"glow")
+	match data.effect_op:
+		&"glow_pulse":
+			for enemy: Variant in enemies:
+				if enemy is GreyboxEnemy and enemy.is_alive():
+					if enemy.position.distance_to(position) <= data.radius_px:
+						enemy.take_damage(data.effect_value, &"glow")
+		&"reveal_pulse":
+			# C09 侦测装置：揭示半径内隐匿敌 effect_value 秒
+			for enemy: Variant in enemies:
+				if enemy is GreyboxEnemy and enemy.is_alive() and enemy.data.stealthed:
+					if enemy.position.distance_to(position) <= data.radius_px:
+						enemy.reveal(data.effect_value)
+		&"spore_heal":
+			# C10 孢子扩散区：敌方区域，每跳治疗半径内敌军
+			for enemy: Variant in enemies:
+				if enemy is GreyboxEnemy and enemy.is_alive():
+					if enemy.position.distance_to(position) <= data.radius_px:
+						enemy.hp = minf(enemy.data.max_hp, enemy.hp + data.effect_value)
+		# cover：无脉冲，仅阻挡投射物
 	_pulse_anim = 1.0
 	queue_redraw()
 
@@ -89,7 +123,7 @@ func _tick_repair(delta: float) -> void:
 
 ## M3 英雄技能快速修复：仍遵循“离线装置”边界，不影响在线装置状态。
 func force_repair() -> void:
-	if online:
+	if online or destroyed:
 		return
 	_repair_left = 0.0
 	set_online(true)
@@ -104,17 +138,25 @@ func repair_ratio() -> float:
 
 
 func get_save_state() -> Dictionary:
-	return {"online": online, "repair_left": _repair_left, "pulse_left": _pulse_left}
+	return {"online": online, "repair_left": _repair_left, "pulse_left": _pulse_left, "hp": hp, "destroyed": destroyed}
 
 
 func restore_save_state(state: Dictionary) -> void:
 	online = bool(state.get("online", true))
 	_repair_left = float(state.get("repair_left", -1.0)) # 修复进度也是确定性状态
 	_pulse_left = float(state.get("pulse_left", data.interval_seconds if online else 0.0))
+	hp = float(state.get("hp", data.max_hp)) # 掩体耐久（C12）也是确定性状态
+	destroyed = bool(state.get("destroyed", false))
 	queue_redraw()
 
 
 func _draw() -> void:
+	if data.effect_op == &"cover":
+		_draw_cover()
+		return
+	if data.effect_op == &"spore_heal":
+		_draw_spore_zone()
+		return
 	# 主体色（无障碍重映射）：在线暖黄 / 离线灰
 	var accent := COLOR_ONLINE if online else COLOR_OFFLINE
 	accent = UiPalette.apply(accent)
@@ -161,3 +203,53 @@ func _draw_lighthouse(accent: Color, pale: Color) -> void:
 		Vector2(-6.5, -1.0), Vector2(-6.5, 5.5), Vector2(6.5, 5.5),
 	])
 	draw_polyline(outline, VisualTheme.OUTLINE, 1.2)
+
+
+## C12 可破坏掩体：沉船船壳板 + 耐久条；摧毁后画暗色残骸（不再阻挡）。
+func _draw_cover() -> void:
+	var r := data.radius_px
+	if destroyed:
+		var wreck := Color(0.22, 0.18, 0.16, 0.8)
+		draw_arc(Vector2.ZERO, r * 0.7, 0.0, TAU, 20, wreck, 3.0)
+		draw_line(Vector2(-r * 0.5, -r * 0.3), Vector2(r * 0.4, r * 0.35), wreck, 2.0)
+		draw_line(Vector2(-r * 0.4, r * 0.35), Vector2(r * 0.5, -r * 0.3), wreck, 2.0)
+		return
+	var hull := UiPalette.apply(Color(0.48, 0.38, 0.28))
+	var rim := VisualTheme.OUTLINE
+	# 阻挡半径（低透明常显，提示投射物会被挡）
+	draw_arc(Vector2.ZERO, r, 0.0, TAU, 32, Color(hull, 0.14), 1.0)
+	# 船壳板：斜置圆角矩形感（六边形厚板 + 铆钉）
+	var plate := PackedVector2Array([
+		Vector2(-r * 0.62, -r * 0.38), Vector2(r * 0.55, -r * 0.5), Vector2(r * 0.68, 0.0),
+		Vector2(r * 0.5, r * 0.45), Vector2(-r * 0.58, r * 0.38), Vector2(-r * 0.7, 0.0),
+	])
+	draw_colored_polygon(plate, hull)
+	_stroke_poly(plate, rim, 1.8)
+	draw_circle(Vector2(-r * 0.3, -r * 0.12), 1.6, VisualTheme.shade(hull, 0.6))
+	draw_circle(Vector2(r * 0.28, r * 0.1), 1.6, VisualTheme.shade(hull, 0.6))
+	# 耐久条
+	var ratio: float = clampf(hp / maxf(data.max_hp, 1.0), 0.0, 1.0)
+	var bw := r * 1.2
+	draw_rect(Rect2(Vector2(-bw / 2.0, -r - 7.0), Vector2(bw, 3.0)), VisualTheme.HP_BAR_BG, true)
+	draw_rect(Rect2(Vector2(-bw / 2.0, -r - 7.0), Vector2(bw * ratio, 3.0)), Color(0.75, 0.62, 0.40), true)
+
+
+## C10 孢子扩散区：敌方治疗场（菌丘 + 孢子点 + 绿色范围环）。
+func _draw_spore_zone() -> void:
+	var mound := UiPalette.apply(Color(0.40, 0.72, 0.42))
+	draw_arc(Vector2.ZERO, data.radius_px, 0.0, TAU, 40, Color(mound, 0.12), 1.0)
+	draw_circle(Vector2.ZERO, 9.0, VisualTheme.shade(mound, 0.7))
+	draw_circle(Vector2(-4.0, -3.0), 3.2, mound)
+	draw_circle(Vector2(4.5, -1.5), 2.6, mound)
+	draw_circle(Vector2(0.5, 4.0), 2.2, VisualTheme.shade(mound, 1.2))
+	draw_arc(Vector2.ZERO, 9.0, 0.0, TAU, 16, VisualTheme.OUTLINE, 1.2)
+	if _pulse_anim > 0.0:
+		draw_arc(Vector2.ZERO, data.radius_px * (1.0 - _pulse_anim * 0.4), 0.0, TAU, 40,
+			Color(mound, _pulse_anim * 0.5), 2.0)
+
+
+## 闭合折线描边辅助（掩体用；敌人的 _stroke 是同类私有辅助）。
+func _stroke_poly(pts: PackedVector2Array, color: Color, width: float) -> void:
+	var loop := pts.duplicate()
+	loop.append(pts[0])
+	draw_polyline(loop, color, width)

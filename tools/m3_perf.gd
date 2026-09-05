@@ -1,6 +1,7 @@
 extends SceneTree
 ## M3 performance gate: checks C04-C08 reports and fixed tick accounting.
-const LEVELS := ["level_c04", "level_c05", "level_c06", "level_c07", "level_c08"]
+const LEVELS := ["level_c04", "level_c05", "level_c06", "level_c07", "level_c08",
+	"level_c09", "level_c10", "level_c11", "level_c12"] # M4-C：C09–C12 纳入性能门禁
 func _initialize() -> void:
 	var failures: Array[String] = []
 	for level_id: String in LEVELS:

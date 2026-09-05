@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/wave_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/data/wave_group.gd" id="2"]
+
+[sub_resource type="Resource" id="WaveGroup_0"]
+script = ExtResource("2")
+enemy_id = &"reef_sapper"
+count = 3
+interval_seconds = 1.0
+entrance_index = 0
+delay_after_prev_seconds = 0.0
+route_id = &""
+
+[sub_resource type="Resource" id="WaveGroup_1"]
+script = ExtResource("2")
+enemy_id = &"salt_shell_walker"
+count = 4
+interval_seconds = 0.8
+entrance_index = 0
+delay_after_prev_seconds = 2.0
+route_id = &""
+
+[resource]
+script = ExtResource("1")
+id = &"wave_c12_02"
+schema_version = 1
+enabled = true
+designer_note = "M4-C C12 波次 02"
+introduced_in_level = &"level_c12"
+wave_index = 2
+pre_delay_seconds = 5.0
+groups = [SubResource("WaveGroup_0"), SubResource("WaveGroup_1")]
+completion_reward_ember = 30
+completion_reward_becon = 6
+intent = &"economy"

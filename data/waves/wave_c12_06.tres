@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="WaveData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/wave_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/data/wave_group.gd" id="2"]
+
+[sub_resource type="Resource" id="WaveGroup_0"]
+script = ExtResource("2")
+enemy_id = &"tide_back_navigator"
+count = 1
+interval_seconds = 0.5
+entrance_index = 0
+delay_after_prev_seconds = 0.0
+route_id = &""
+
+[sub_resource type="Resource" id="WaveGroup_1"]
+script = ExtResource("2")
+enemy_id = &"rust_armor_carrier"
+count = 4
+interval_seconds = 1.0
+entrance_index = 0
+delay_after_prev_seconds = 1.0
+route_id = &""
+
+[sub_resource type="Resource" id="WaveGroup_2"]
+script = ExtResource("2")
+enemy_id = &"salt_shell_walker"
+count = 5
+interval_seconds = 0.7
+entrance_index = 0
+delay_after_prev_seconds = 3.0
+route_id = &"route_c12_b"
+
+[resource]
+script = ExtResource("1")
+id = &"wave_c12_06"
+schema_version = 1
+enabled = true
+designer_note = "M4-C C12 波次 06"
+introduced_in_level = &"level_c12"
+wave_index = 6
+pre_delay_seconds = 8.0
+groups = [SubResource("WaveGroup_0"), SubResource("WaveGroup_1"), SubResource("WaveGroup_2")]
+completion_reward_ember = 40
+completion_reward_becon = 8
+intent = &"coverage"

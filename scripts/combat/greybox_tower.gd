@@ -208,7 +208,7 @@ func _acquire_target() -> GreyboxEnemy:
 	var best: GreyboxEnemy = null
 	var best_progress := -1.0
 	for enemy: Variant in enemies:
-		if not (enemy is GreyboxEnemy) or not enemy.is_alive():
+		if not (enemy is GreyboxEnemy) or not enemy.is_targetable(): # 隐匿敌不可索敌（C09）
 			continue
 		if position.distance_to(enemy.position) > eff_range():
 			continue

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"mirror_shade"
+schema_version = 1
+enabled = true
+designer_note = "M4-C 第二章：C11 双相敌——伤害配比考核（PRD §5.3 倒映之路）"
+introduced_in_level = &"level_c11"
+display_name_key = &"ENEMY_MIRROR_SHADE"
+max_hp = 240.0
+speed_px_per_sec = 46.0
+armor = 90.0
+glow_resist = 10.0
+leak_damage = 2
+kill_reward_ember = 28
+radius_px = 11.0
+tags = [&"phasebound", &"heavy"]
+elite = false
+boss = false
+shield_hp = 0.0
+aura_radius = 0.0
+aura_speed_mult = 1.0
+stealthed = false
+heal_radius = 0.0
+heal_per_sec = 0.0
+phase_resist_swap = true
+body_color = Color(0.60, 0.55, 0.85, 1.00)
