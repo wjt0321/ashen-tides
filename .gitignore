@@ -1,31 +1,23 @@
-# Session-local task notes
-TOWER_DEFENSE_TODO.md
-M1_CORE_SYSTEMS_TODO.md
-M3_FIRST_CHAPTER_TODO.md
-M3_POLISH_TODO.md
-NEXT_PHASE_TODO.md
-!docs/NEXT_PHASE_TODO.md
+# Session-local root task notes (durable plans belong under docs/archive/plans/)
+/*_TODO.md
 
 # Godot import/cache artifacts
 .godot/
 *.import
 
-# Local run evidence and generated captures
+# Local run evidence and generated captures (accepted evidence is copied to docs/evidence/)
 out/
 
 # Agent/editor local settings
 .claude/settings.local.json
-M3_GATE_COMPLETION_TODO.md
-M4_A_ASSET_SLICE_TODO.md
-M4_B_FIRST_CHAPTER_ART_TODO.md
-tools/__pycache__/
-M4_C_C09_C12_TODO.md
-M4_D_C13_C14_TODO.md
-PLAYER_FLOW_FIX_TODO.md
-PROJECT_BASELINE_TODO.md
-OSS_REFERENCE_TODO.md
-M2_FLOW_SHELL_TODO.md
 
-# Godot 误把根目录注册表 CSV 当翻译表的副产物（importer 已锁定为 keep）
+# Python caches
+tools/__pycache__/
+
+# Godot mistakenly importing the root asset registry as translations
 ART_ASSET_REGISTRY.*.translation
 !ART_ASSET_REGISTRY.csv.import
+
+# Downloaded staging packs and local inspection artifacts
+third_party/
+tool_results/

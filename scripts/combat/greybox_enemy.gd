@@ -44,6 +44,8 @@ var _boss_armor_bonus: float = 0.0
 var facing: float = 0.0
 ## 受击闪白剩余秒（视觉，sim_tick 衰减）
 var _hit_flash: float = 0.0
+# C01 第二批动画状态（纯视觉，不进模拟判定；候选非最终美术）：
+var _walk_phase: float = 0.0 ## 步态相位（随移动里程累积，确定性）
 
 var _route: PackedVector2Array
 var _cum_lengths: PackedFloat32Array # 各顶点累计里程
@@ -77,6 +79,7 @@ func setup(p_data: EnemyData, route_points: PackedVector2Array, rng: RandomNumbe
 	_boss_armor_bonus = 0.0
 	_hit_flash = 0.0
 	_summon_timer = data.summon_interval_seconds
+	_walk_phase = 0.0
 	facing = (route_points[1] - route_points[0]).angle() if route_points.size() > 1 else 0.0
 	_cum_lengths = PackedFloat32Array([0.0])
 	_total_length = 0.0
@@ -148,6 +151,8 @@ func effective_speed() -> float:
 
 
 func take_damage(base: float, damage_type: StringName) -> float:
+	if not is_alive():
+		return 0.0 # 同 tick 多段命中不得重复触发死亡
 	var variance: float = 1.0
 	if not bool(SettingsService.get_value("gameplay", "fixed_damage", false)):
 		variance = _rng.randf_range(0.95, 1.05) # 伤害波动 ±5%（PRD §3.3）
@@ -227,6 +232,7 @@ func sim_tick(delta: float) -> void:
 	var move_dir := position - prev_pos
 	if move_dir.length_squared() > 0.0001:
 		facing = move_dir.angle()
+		_walk_phase += move_dir.length() * 0.055 # 步态相位随移动里程累积（确定性，速度无关）
 		need_redraw = true # 剪影朝向随移动逐 tick 更新
 	if need_redraw:
 		queue_redraw()
@@ -288,8 +294,26 @@ func _draw() -> void:
 		light.a = 0.35
 		dark.a = 0.35
 		edge = Color(edge, 0.35)
+	# 步态起伏（move 态）：纵向微挤压 + 上下小弹跳，相位随移动里程累积（确定性）
+	var squash: float = 1.0 + 0.055 * sin(_walk_phase * 2.0)
+	var bob: float = -absf(sin(_walk_phase * 2.0)) * 1.1
+	# C01 primary subjects are real animated raster sprites; gameplay state only modulates color.
+	if data.id == &"salt_shell_walker" or data.id == &"mast_rat_swarm":
+		var sprite_mod := Color.WHITE
+		if slow_seconds > 0.0:
+			sprite_mod = Color(0.68, 0.83, 1.08)
+		if _hit_flash > 0.0:
+			sprite_mod = sprite_mod.lerp(Color(2.4, 2.4, 2.4), _hit_flash / HIT_FLASH_TIME)
+		if hidden:
+			sprite_mod.a = 0.35
+		draw_set_transform(Vector2(0, bob), 0.0, Vector2.ONE)
+		C01SpriteLibrary.draw_enemy(self, data.id, facing, _walk_phase, sprite_mod)
+		draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
+		_draw_status_rings(s)
+		_draw_bars_glyph(s)
+		return
 	# 剪影（随 facing 旋转；生命条/状态环保持轴对齐，不旋转）
-	draw_set_transform(Vector2.ZERO, facing, Vector2.ONE)
+	draw_set_transform(Vector2(0, bob), facing, Vector2(1.0, squash))
 	# M4-A：正式精灵优先（modulate 表达减速/受击闪白，缺失回退程序化剪影）
 	var tex := ArtLibrary.enemy_tex(data.id)
 	if tex != null:
@@ -305,7 +329,13 @@ func _draw() -> void:
 			draw_arc(Vector2.ZERO, tex.get_size().x * 0.5, 0.0, TAU, 24, Color(1, 1, 1, 0.55), 1.5)
 		if hidden:
 			mod.a = 0.35
-		draw_texture(tex, -tex.get_size() * 0.5, mod)
+		var visual_scale := 1.0
+		if data.id == &"salt_shell_walker":
+			visual_scale = 1.48
+		elif data.id == &"mast_rat_swarm":
+			visual_scale = 1.28
+		var draw_size := tex.get_size() * visual_scale
+		draw_texture_rect(tex, Rect2(-draw_size * 0.5, draw_size), false, mod)
 	else:
 		_draw_silhouette(s, mid, light, dark, edge)
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
@@ -318,9 +348,10 @@ func _draw_silhouette(s: float, mid: Color, light: Color, dark: Color, edge: Col
 	match data.id:
 		&"mast_rat_swarm":
 			# 桅鼠群：三只小三角聚散簇，领队居中偏前、两只稍落后两侧
-			_draw_rat(Vector2(0.12 * s, 0.0), s, mid, edge)
-			_draw_rat(Vector2(-0.45 * s, -0.52 * s), s * 0.8, dark, edge)
-			_draw_rat(Vector2(-0.45 * s, 0.52 * s), s * 0.8, dark, edge)
+			# C01 第二批 move 态：每只鼠独立起伏窜动（相位错开，随 _walk_phase）
+			_draw_rat(Vector2(0.12 * s, sin(_walk_phase * 3.0) * 0.09 * s), s, mid, edge)
+			_draw_rat(Vector2(-0.45 * s, -0.52 * s + sin(_walk_phase * 3.0 + 2.1) * 0.09 * s), s * 0.8, dark, edge)
+			_draw_rat(Vector2(-0.45 * s, 0.52 * s + sin(_walk_phase * 3.0 + 4.2) * 0.09 * s), s * 0.8, dark, edge)
 		&"splitfin_dasher":
 			# 裂鳍疾行者：流线鱼雷形 + 分叉尾鳍 + 眼点
 			var fish_body := PackedVector2Array([
@@ -347,13 +378,17 @@ func _draw_silhouette(s: float, mid: Color, light: Color, dark: Color, edge: Col
 			draw_circle(Vector2.ZERO, maxf(0.8, 0.14 * s), Color(light, 0.85))
 		&"salt_shell_walker":
 			# 盐壳行者：圆壳 + 四周步足点
+			# C01 第二批 move 态：步足交替点地（对角步态，随 _walk_phase）
 			var dome := Vector2(0.0, -0.06 * s)
 			draw_circle(dome, 0.8 * s, mid)
 			draw_arc(dome, 0.8 * s, 0.0, TAU, 18, edge, 1.6)
 			draw_arc(dome, 0.62 * s, PI * 0.15, PI * 0.85, 8, light, 1.2)
+			var leg_i := 0
 			for m: float in [-1.0, 1.0]:
 				for lr: float in [-1.0, 1.0]:
-					draw_circle(Vector2(lr * 0.62 * s, m * 0.62 * s), maxf(0.9, 0.13 * s), dark)
+					var step := sin(_walk_phase * 2.0 + float(leg_i) * PI * 0.5) * 0.16 * s
+					draw_circle(Vector2(lr * 0.62 * s, m * 0.62 * s + step), maxf(0.9, 0.13 * s), dark)
+					leg_i += 1
 		&"rust_armor_carrier":
 			# 锈甲运输者：大方甲 + 铆钉点
 			var plate := PackedVector2Array([
@@ -510,7 +545,9 @@ func _draw_bars_glyph(s: float) -> void:
 		var sh_y := top - bar_h - 1.0
 		draw_rect(Rect2(Vector2(-bar_w / 2.0, sh_y), Vector2(bar_w, 2.0)), VisualTheme.HP_BAR_BG, true)
 		draw_rect(Rect2(Vector2(-bar_w / 2.0, sh_y), Vector2(bar_w * shield_ratio, 2.0)), VisualTheme.SHIELD_BAR, true)
-	# 标签文字缩写（三重编码的文字腿）
+	# C01 两类敌人靠壳体/群聚轮廓区分，不叠“群/甲”等调试式文字浮标。
+	if data.id == &"salt_shell_walker" or data.id == &"mast_rat_swarm":
+		return
 	var glyph := ""
 	for tag: Variant in data.tags:
 		glyph += String(TAG_GLYPHS.get(tag, "?"))

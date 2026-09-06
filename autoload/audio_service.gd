@@ -35,8 +35,21 @@ const FALLBACK_EVENT: StringName = &"ui_denied"
 const EVENT_CATALOG: Dictionary = {
 	# —— 塔（PRD §6 / §8）——
 	&"tower_fire": {"bus": &"SFX", "notes": [
-		# 880Hz/60ms 衰减正弦脉冲
 		{"start_ms": 0.0, "dur_ms": 60.0, "f0": 880.0, "wave": WAVE_SINE, "amp": 0.30},
+	]},
+	# C01 第二批：按塔职责分开的确定性合成候选；仅 Integrated candidate，非最终音频。
+	&"tower_needle_attack": {"bus": &"SFX", "notes": [
+		{"start_ms": 0.0, "dur_ms": 42.0, "f0": 1450.0, "f1": 980.0, "wave": WAVE_SQUARE, "amp": 0.18},
+	]},
+	&"tower_ember_attack": {"bus": &"SFX", "notes": [
+		{"start_ms": 0.0, "dur_ms": 120.0, "f0": 210.0, "f1": 95.0, "wave": WAVE_SAW, "amp": 0.20},
+	]},
+	&"tower_echo_pulse": {"bus": &"SFX", "notes": [
+		{"start_ms": 0.0, "dur_ms": 180.0, "f0": 420.0, "f1": 690.0, "wave": WAVE_SINE, "amp": 0.18},
+		{"start_ms": 30.0, "dur_ms": 150.0, "f0": 840.0, "wave": WAVE_SINE, "amp": 0.08},
+	]},
+	&"combat_hit": {"bus": &"SFX", "notes": [
+		{"start_ms": 0.0, "dur_ms": 38.0, "f0": 1180.0, "f1": 520.0, "wave": WAVE_SQUARE, "amp": 0.12},
 	]},
 	&"tower_place": {"bus": &"SFX", "notes": [
 		# 180→110Hz 低沉 thud（tower_placed 信号）
@@ -144,9 +157,22 @@ var _ui_players: Array[AudioStreamPlayer] = []
 var _sfx_cursor: int = 0
 var _ui_cursor: int = 0
 
+# C01 STYLE BIBLE §6 音效映射：UI 事件 -> Kenney .ogg 文件（vendor/kenney/audio/）。
+# 资源缺失时回退占位合成音（per FALLBACK_EVENT）。
+const UI_AUDIO_MAP: Dictionary = {
+	&"ui_select": "res://assets/vendor/c01/kenney/audio/click1.ogg",
+	&"ui_confirm": "res://assets/vendor/c01/kenney/audio/click3.ogg",
+	&"ui_error": "res://assets/vendor/c01/kenney/audio/switch1.ogg",
+	&"ui_transition": "res://assets/vendor/c01/kenney/audio/switch2.ogg",
+	&"ui_cancel": "res://assets/vendor/c01/kenney/audio/mouserelease1.ogg",
+}
+var _ui_audio_players: Array[AudioStreamPlayer] = []
+var _ui_audio_cursor: int = 0
+
 
 func _ready() -> void:
 	_build_pools()
+	_build_ui_audio_players()
 	_connect_event_bus()
 	# 设置变更（含音量滑杆）后重读音量
 	EventBus.settings_applied.connect(_apply_all_bus_volumes)
@@ -165,6 +191,39 @@ func play_event(event_id: StringName) -> void:
 		_ui_cursor = _play_on_pool(_ui_players, _ui_cursor, stream)
 	else:
 		_sfx_cursor = _play_on_pool(_sfx_players, _sfx_cursor, stream)
+
+
+## C01 STYLE BIBLE §6：UI 屏动作 → 实际 Kenney .ogg。
+## action ∈ {ui_select, ui_confirm, ui_cancel, ui_transition, ui_error}。
+## .ogg 缺失 / 未注册 / 资源加载失败时静默回退，不报错。
+func play_ui_event(action: StringName) -> void:
+	if not UI_AUDIO_MAP.has(action):
+		return
+	var path: String = UI_AUDIO_MAP[action]
+	if not ResourceLoader.exists(path):
+		return
+	if _ui_audio_players.is_empty():
+		return
+	# 找空闲播放
+	var idx := _ui_audio_cursor
+	for offset in _ui_audio_players.size():
+		var cand := (_ui_audio_cursor + offset) % _ui_audio_players.size()
+		if not _ui_audio_players[cand].playing:
+			idx = cand
+			break
+	var player := _ui_audio_players[idx]
+	player.stop()
+	player.stream = load(path)
+	player.play()
+	_ui_audio_cursor = (idx + 1) % _ui_audio_players.size()
+
+
+func _build_ui_audio_players() -> void:
+	for _i in 3: # 3 个 UI 短音足够；事件不重叠时
+		var p := AudioStreamPlayer.new()
+		p.bus = &"UI" if AudioServer.get_bus_index(&"UI") >= 0 else &"Master"
+		add_child(p)
+		_ui_audio_players.append(p)
 
 
 ## 把 EventBus 现有信号映射到占位事件（事件 id 见 EVENT_CATALOG）。

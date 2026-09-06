@@ -3,7 +3,7 @@
 
 补齐：其余 3 塔、第二英雄、第一章实际出场的 9 种敌人（含 Boss）、C02–C08 主题地形 tile，
 并为单位精灵生成色弱变体（protan/deutan/tritan，矩阵与 scripts/ui/ui_palette.gd 一致）。
-规范见 docs/M4_ASSET_SPEC.md。运行：python tools/gen_chapter1_sprites.py
+规范见 docs/current/engineering/M4_ASSET_SPEC.md。运行：python tools/gen_chapter1_sprites.py
 """
 import random
 from pathlib import Path

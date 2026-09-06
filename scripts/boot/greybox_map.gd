@@ -50,6 +50,7 @@ var _land_pebble_radii := PackedFloat32Array() # 与上面对齐的半径
 
 
 func _ready() -> void:
+	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	_precompute_decor()
 
 
@@ -124,6 +125,9 @@ func _decor_seed(p_level_id: StringName) -> int:
 
 
 func _draw() -> void:
+	if level_id == &"level_c01":
+		_draw_c01_harbor()
+		return
 	var pal := VisualTheme.palette_for(level_id)
 	var sea_a := UiPalette.apply(pal["sea_a"])
 	var sea_b := UiPalette.apply(pal["sea_b"])
@@ -193,16 +197,15 @@ func _draw() -> void:
 		draw_rect(viewport, phase_tint, true)
 
 
-## 每关 1–2 个独特小元素（简单几笔；坐标按 640×360 视口手摆）。
+
+func _draw_c01_harbor() -> void:
+	C01SpriteLibrary.draw_battle_background(self, phase_tint)
+
 func _draw_level_flavor(land_a: Color, land_b: Color, edge: Color, accent: Color, glow: Color, foam: Color) -> void:
 	match level_id:
 		&"level_c01":
-			# 黄昏港岸：右岸礁岛两根栈桥桩，桩顶锚灯微光
-			var pile := VisualTheme.shade(land_b, 0.75)
-			draw_rect(Rect2(580, 132, 5, 20), pile, true)
-			draw_rect(Rect2(596, 146, 5, 18), pile, true)
-			draw_rect(Rect2(579, 128, 7, 4), glow, true)
-			draw_rect(Rect2(595, 142, 7, 4), glow, true)
+			# C01 已在 _draw_c01_harbor() 中由栅格精灵库完整绘制。
+			pass
 		&"level_c02":
 			# 雾中潮门：主水道两侧残留闸柱，夹住 x=480 上行潮道
 			var pillar := VisualTheme.shade(land_b, 0.7)

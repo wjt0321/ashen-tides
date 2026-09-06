@@ -4,7 +4,7 @@
 产出：C13/C14 主题地形 tile ×8、本批新单位精灵 ×3（雾母载体/雾中医正/沼冠孢王 64×64），
 单位精灵自动带 protan/deutan/tritan 色弱变体（矩阵与 scripts/ui/ui_palette.gd 一致）。
 调色板对齐 scripts/ui/visual_theme.gd THEMES c13/c14。
-规范见 docs/M4_ASSET_SPEC.md。运行：python tools/gen_chapter2b_sprites.py
+规范见 docs/current/engineering/M4_ASSET_SPEC.md。运行：python tools/gen_chapter2b_sprites.py
 """
 from gen_chapter1_sprites import OUTLINE, c8, canvas, noise_dots, poly_outlined, save, terrain_for
 

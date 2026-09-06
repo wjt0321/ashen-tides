@@ -108,11 +108,10 @@ class PhaseWidget extends Control:
 
 	func _draw() -> void:
 		var font := get_theme_default_font()
-		draw_rect(Rect2(Vector2.ZERO, size), Color(0.05, 0.05, 0.08, 0.72), true)
-		draw_rect(Rect2(Vector2.ZERO, size), Color(1, 1, 1, 0.18), false, 1.0)
+		draw_line(Vector2(0, 10), Vector2(size.x, 10), Color(0.55, 0.70, 0.66, 0.28), 2.0)
 		var phase_col: Color = HudExtras.PHASE_COLORS.get(_phase, Color.WHITE)
 		var phase_name: String = LocalizationService.tr_key(HudExtras.PHASE_NAMES.get(_phase, &"PHASE_MINGCHAO"))
-		draw_rect(Rect2(4, 4, 10, 12), phase_col, true)
+		draw_circle(Vector2(8, 10), 4.0, phase_col)
 		draw_string(font, Vector2(18, 14), phase_name, HORIZONTAL_ALIGNMENT_LEFT, -1, 12, phase_col)
 		if _pending_phase != &"":
 			var pend_col: Color = HudExtras.PHASE_COLORS.get(_pending_phase, Color.WHITE)

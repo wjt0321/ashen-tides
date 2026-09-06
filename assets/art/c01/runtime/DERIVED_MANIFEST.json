@@ -1,0 +1,51 @@
+{
+  "generated_on": "2026-09-06",
+  "builder": "tools/build_c01_foozle_assets.py",
+  "source": "Foozle CC0 packs",
+  "files": {
+    "battle_background.png": {
+      "sha256": "3cb484166911ce1015032bf68049c4ea4bd304ece68956d945bdb4eaaff9d923",
+      "bytes": 25253
+    },
+    "briefing_background.png": {
+      "sha256": "da73acfd77bd274dd3e2588703ed2e8a6c6e033f0ca335957c31ac4880952df4",
+      "bytes": 11463
+    },
+    "briefing_map.png": {
+      "sha256": "31a85b01dd3fce91ca683d0e7f2fef1d05ceff3bce1ac3d40b4df5ecd3b4cb51",
+      "bytes": 14110
+    },
+    "campaign_background.png": {
+      "sha256": "7e40dbd5aa6bd3b256371bf5bea30ffa66b083d966776f613385e32b22c48ab8",
+      "bytes": 11343
+    },
+    "enemy_mast_rat.png": {
+      "sha256": "317e63edcce4e85293ba0eb58566492ddeb9f4197aa19a2b548df6fcd2f177ce",
+      "bytes": 10610
+    },
+    "enemy_salt_shell.png": {
+      "sha256": "655f746784c91e25ef6b9eca4230f1865468b50be1fea0f6176695378153febe",
+      "bytes": 9563
+    },
+    "harbor_props.png": {
+      "sha256": "6d4c70fc31a72a98b28f69a36b339174f5f1d694cb7121f2ed84bca5e82f5be5",
+      "bytes": 17062
+    },
+    "result_lose_background.png": {
+      "sha256": "76f42d331a3ca3354199ce4b608a092bcac90ab362134303ff6348db40285ce3",
+      "bytes": 10101
+    },
+    "result_win_background.png": {
+      "sha256": "9284df6b7c47a6056673ead30dc35245fffb17d83c785eda813c144387288b79",
+      "bytes": 10662
+    },
+    "title_background.png": {
+      "sha256": "da73acfd77bd274dd3e2588703ed2e8a6c6e033f0ca335957c31ac4880952df4",
+      "bytes": 11463
+    },
+    "tower_needle_rail.png": {
+      "sha256": "e0523dcf57eb392dfc921641ee590cf5a8be58fdaee486fef7ff25d8fafcddd9",
+      "bytes": 3909
+    }
+  }
+}

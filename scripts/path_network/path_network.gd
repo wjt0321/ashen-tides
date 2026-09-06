@@ -80,6 +80,10 @@ func _build_arrow_tris(points: PackedVector2Array) -> Array[PackedVector2Array]:
 
 
 func _draw() -> void:
+	if level_id == &"level_c01":
+		for route_id: StringName in routes:
+			_draw_c01_route(route_id, 1.0 if active_routes.has(route_id) else 0.24)
+		return
 	var pal := VisualTheme.palette_for(level_id)
 	var bed := UiPalette.apply(pal["road_bed"])
 	var inner := UiPalette.apply(pal["road_inner"])
@@ -93,6 +97,16 @@ func _draw() -> void:
 		if active_routes.has(route_id):
 			_draw_route(route_id, 1.0, bed, inner, accent, glow)
 
+
+func _draw_c01_route(route_id: StringName, alpha: float) -> void:
+	var points: PackedVector2Array = routes[route_id]
+	if points.size() < 2:
+		return
+	draw_polyline(points, Color(0.84, 0.69, 0.42, 0.18 * alpha), 2.0)
+	var entry := points[0]
+	draw_line(entry + Vector2(2, -9), entry + Vector2(20, -9), Color(0.48, 0.86, 0.83, 0.52 * alpha), 2.0)
+	var exit := points[points.size() - 1]
+	draw_rect(Rect2(exit - Vector2(10, 12), Vector2(18, 24)), Color(0.10, 0.14, 0.15, 0.52 * alpha), false, 2.0)
 
 func _draw_route(route_id: StringName, alpha: float, bed: Color, inner: Color, accent: Color, glow: Color) -> void:
 	var points: PackedVector2Array = routes[route_id]

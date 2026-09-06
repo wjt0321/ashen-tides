@@ -322,6 +322,7 @@ func _load_level(level_id: StringName) -> bool:
 		var node := BuildNodeVisual.new()
 		node.name = "BuildNode_%02d" % i
 		node.level_accent = level_accent
+		node.harbor_style = level_id == &"level_c01"
 		_node_manager.add_child(node)
 		var node_id := StringName("buildnode_%s_%02d" % [String(level_id).trim_prefix("level_"), i])
 		node.setup(node_id, _level.build_node_positions[i], BuildNodeVisual.State.FREE)
@@ -348,7 +349,7 @@ func _load_level(level_id: StringName) -> bool:
 	_phase_controller.environment_change_requested.connect(_on_environment_change)
 
 	if _subtitle_label != null:
-		_subtitle_label.text = LocalizationService.tr_key(&"HUD_LEVEL_SUBTITLE") % _level.id
+		_subtitle_label.text = LocalizationService.tr_key(_level.display_name_key)
 	_greybox.setup(level_id) # Polish：地形主题（含装饰确定性重算）
 	_apply_phase_visual()
 	EventBus.level_loaded.emit(level_id)
@@ -396,7 +397,7 @@ func _build_ui_panels() -> void:
 ## 注意：smoke 模式（_smoke=true）跳过提示，避免污染日志。
 func _refresh_localized_texts() -> void:
 	if _subtitle_label != null:
-		_subtitle_label.text = LocalizationService.tr_key(&"HUD_LEVEL_SUBTITLE") % _level.id
+		_subtitle_label.text = LocalizationService.tr_key(_level.display_name_key)
 	if _hint_label != null:
 		_hint_label.text = LocalizationService.tr_key(&"HUD_HINT")
 	if _tutorial_overlay.is_active():
@@ -407,92 +408,73 @@ func _build_hud() -> void:
 	var hud := CanvasLayer.new()
 	hud.name = "HUD"
 	add_child(hud)
-
-	var title := Label.new()
-	title.name = "TitleLabel"
-	title.text = LocalizationService.tr_key(&"GAME_TITLE")
-	title.position = Vector2(8, 4)
-	title.add_theme_font_size_override("font_size", 16)
-	hud.add_child(title)
-
+	var frame := C01BattleHudFrame.new()
+	frame.name = "C01BattleHudFrame"
+	hud.add_child(frame)
 	_subtitle_label = Label.new()
 	_subtitle_label.name = "SubtitleLabel"
-	_subtitle_label.position = Vector2(8, 24)
-	_subtitle_label.add_theme_font_size_override("font_size", 12)
-	_subtitle_label.text = LocalizationService.tr_key(&"HUD_LEVEL_SUBTITLE") % _level.id
+	_subtitle_label.position = Vector2(16, 8)
+	_subtitle_label.size = Vector2(190, 21)
+	_subtitle_label.add_theme_font_size_override("font_size", 15)
+	_subtitle_label.add_theme_color_override("font_color", Color("ef684b"))
 	hud.add_child(_subtitle_label)
-
 	_res_label = Label.new()
 	_res_label.name = "ResourceLabel"
-	_res_label.position = Vector2(8, 42)
-	_res_label.add_theme_font_size_override("font_size", 12)
+	_res_label.position = Vector2(16, 29)
+	_res_label.size = Vector2(198, 22)
+	_res_label.add_theme_font_size_override("font_size", 11)
+	_res_label.add_theme_color_override("font_color", Color("e8ddc8"))
 	hud.add_child(_res_label)
-
-	# M4-A：HUD 资源图标（16×16，缺失时跳过、保留纯文本回退）
-	var res_icons: Array = ["icon_ember", "icon_integrity", "icon_becon"]
-	var icon_x := 8
-	for icon_name: String in res_icons:
-		var icon_tex := ArtLibrary.ui_icon(icon_name)
-		if icon_tex == null:
-			break
-		var tr := TextureRect.new()
-		tr.texture = icon_tex
-		tr.position = Vector2(icon_x, 42)
-		hud.add_child(tr)
-		icon_x += 18
-	if icon_x > 8:
-		_res_label.position.x = icon_x + 2
-
 	_state_label = Label.new()
 	_state_label.name = "StateLabel"
-	_state_label.position = Vector2(8, 58)
-	_state_label.add_theme_font_size_override("font_size", 12)
+	_state_label.position = Vector2(478, 10)
+	_state_label.size = Vector2(145, 40)
+	_state_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	_state_label.add_theme_font_size_override("font_size", 11)
+	_state_label.add_theme_color_override("font_color", Color("d4ddcf"))
 	hud.add_child(_state_label)
-
-	var wave_tex := ArtLibrary.ui_icon("icon_wave")
-	if wave_tex != null:
-		var wave_tr := TextureRect.new()
-		wave_tr.texture = wave_tex
-		wave_tr.position = Vector2(8, 58)
-		hud.add_child(wave_tr)
-		_state_label.position.x = 28
-
 	_hero_label = Label.new()
 	_hero_label.name = "HeroLabel"
-	_hero_label.position = Vector2(8, 74)
-	_hero_label.add_theme_font_size_override("font_size", 12)
+	_hero_label.position = Vector2(446, 318)
+	_hero_label.size = Vector2(186, 20)
+	_hero_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	_hero_label.add_theme_font_size_override("font_size", 10)
 	hud.add_child(_hero_label)
-
 	_tower_label = Label.new()
 	_tower_label.name = "TowerLabel"
-	_tower_label.position = Vector2(8, 90)
-	_tower_label.add_theme_font_size_override("font_size", 12)
+	_tower_label.position = Vector2(154, 340)
+	_tower_label.size = Vector2(274, 18)
+	_tower_label.add_theme_font_size_override("font_size", 10)
+	_tower_label.add_theme_color_override("font_color", Color("d8cfb8"))
+	_tower_label.clip_text = true
 	hud.add_child(_tower_label)
-
 	_message_label = Label.new()
 	_message_label.name = "MessageLabel"
 	_message_label.size = Vector2(640, 40)
-	_message_label.position = Vector2(0, 150)
+	_message_label.position = Vector2(0, 116)
 	_message_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_message_label.add_theme_font_size_override("font_size", 24)
+	_message_label.add_theme_color_override("font_color", Color("fff0d5"))
+	_message_label.add_theme_color_override("font_shadow_color", Color(0,0,0,0.9))
 	_message_label.visible = false
 	hud.add_child(_message_label)
-
 	var hint := Label.new()
 	hint.name = "HintLabel"
 	hint.text = LocalizationService.tr_key(&"HUD_HINT")
-	hint.position = Vector2(4, 340)
-	hint.add_theme_font_size_override("font_size", 11)
+	hint.position = Vector2(8, 340)
+	hint.size = Vector2(142, 18)
+	hint.add_theme_font_size_override("font_size", 10)
+	hint.add_theme_color_override("font_color", Color("aeb9ad"))
+	hint.clip_text = true
 	hud.add_child(hint)
 	_hint_label = hint
-
-	# Polish：相位条 / 波次横幅 / Boss 血条 / 英雄技能坞（独立 CanvasLayer，layer=2）
 	_hud_extras = HudExtras.new()
 	_hud_extras.name = "HudExtras"
 	add_child(_hud_extras)
 
 
 # ---------------------------------------------------------------------------
+# 战斗状态# ---------------------------------------------------------------------------
 # 战斗状态
 # ---------------------------------------------------------------------------
 
@@ -1085,6 +1067,7 @@ func _on_enemy_died(enemy: GreyboxEnemy) -> void:
 	EventBus.enemy_killed.emit(enemy.data.id, enemy.data.kill_reward_ember)
 	EventBus.ember_changed.emit(_ember)
 	_refresh_build_node_states()
+	# 死亡在当前固定 tick 立即退出模拟集合；视觉由独立 kill_burst 承担，不阻塞波次。
 	_remove_enemy(enemy)
 
 
@@ -1115,6 +1098,12 @@ func _remove_enemy(enemy: GreyboxEnemy) -> void:
 
 
 func _on_tower_fire(tower: GreyboxTower, target: GreyboxEnemy) -> void:
+	var attack_audio: StringName = &"tower_fire"
+	match tower.data.id:
+		&"tower_needle_rail": attack_audio = &"tower_needle_attack"
+		&"tower_ember_well": attack_audio = &"tower_ember_attack"
+		&"tower_echo_pile": attack_audio = &"tower_echo_pulse"
+	AudioService.play_event(attack_audio)
 	var damage: float = _rng.randf_range(tower.eff_damage_min(), tower.eff_damage_max())
 	_dbg_fires += 1
 	var projectile := _projectile_pool.acquire() as GreyboxProjectile
@@ -1136,6 +1125,7 @@ func _on_projectile_resolved(projectile: GreyboxProjectile) -> void:
 	_total_damage += projectile.resolved_damage()
 	_damage_by_type[projectile.damage_type] = float(_damage_by_type.get(projectile.damage_type, 0.0)) + projectile.resolved_damage()
 	_fx.hit_spark(projectile.position, projectile.damage_type) # Polish：命中火花
+	AudioService.play_event(&"combat_hit")
 	_active_projectiles.erase(projectile)
 	projectile.visible = false
 	_projectile_pool.release(projectile)
@@ -1224,6 +1214,7 @@ func _on_environment_change(change: Dictionary) -> void:
 func _enter_win() -> void:
 	_battle_over = true
 	_fx.flash_screen(VisualTheme.FLASH_WIN) # Polish：胜利绿闪
+	AudioService.play_event(&"win")
 	# 航标印记（PRD §9.2）：1 通关 / 2 完整度阈值 / 3 策略目标
 	var marks := {
 		"completed": true,
@@ -1315,6 +1306,7 @@ func _enter_lose() -> void:
 	_battle_over = true
 	_fail_reason = "integrity_depleted_wave_%d" % _director.waves_started()
 	_fx.flash_screen(VisualTheme.FLASH_LOSE) # Polish：失败红闪
+	AudioService.play_event(&"lose")
 	_director.enter_lose()
 	_last_result = _build_battle_result(false, {"completed": false, "integrity": false, "strategy": _strategy_done}, 0)
 	_message_label.text = LocalizationService.tr_key(&"HUD_LOSE")
@@ -1486,19 +1478,16 @@ func _flash_notice(text: String) -> void:
 
 
 func _update_hud() -> void:
-	_res_label.text = "火种 %d | 舰队完整度 %d/%d | 航标充能 %d/100" % [
+	_res_label.text = "火种 %d   舰队 %d/%d   航标 %d" % [
 		_ember, _fleet_integrity, _level.initial_fleet_integrity, _becon.current
 	]
 	var state_text: String = LocalizationService.tr_key(STATE_DISPLAY_NAMES[_director.state])
 	if _director.state == WaveDirector.State.PRE_DELAY:
 		state_text += " %.0fs" % _director.pre_delay_remaining()
 	var phase_localized: String = LocalizationService.tr_key(StringName(_phase_controller.current_phase.to_upper().replace("MINGCHAO", "PHASE_MINGCHAO").replace("MUCHAO", "PHASE_MUCHAO")))
-	_state_label.text = "波次 %d/%d | %s | 相位 %s | %.1fx%s%s%s" % [
+	_state_label.text = "第 %d/%d 波  ·  %s\n%s  ×%.1f%s" % [
 		_director.waves_started(), _director.total_waves(), state_text,
-		phase_localized, _speed,
-		" | 已暂停" if _paused else "",
-		" | " + _phase_controller.pending_description() if _phase_controller.has_pending() else "",
-		" | " + _notice if not _notice.is_empty() else "",
+		phase_localized, _speed, "  已暂停" if _paused else "",
 	]
 	if _hero != null:
 		var hero_state := ""

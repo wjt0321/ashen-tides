@@ -29,6 +29,12 @@ const COLOR_EMBER_FLAME := Color(1.0, 0.60, 0.20) ## 余烬火口焰色
 const COLOR_EMBER_INNER := Color(1.0, 0.86, 0.42) ## 火口内焰
 const MUZZLE_FLASH_SECONDS := 0.12 ## 开火闪光时长（视觉走 sim_tick 衰减）
 const WIND_BLADE_RAD_PER_SEC := 1.2 ## 风车叶片角速度（rad/s，固定 tick 累积）
+# C01 第二批：程序动画状态参数（idle/attack，sim_tick 驱动、暂停定格；候选非最终美术）
+const ANIM_RECOIL_SECONDS := 0.18 ## 针轨攻击后座时长
+const EMBER_FLICKER_SPEED := 7.0 ## 余烬待机焰闪烁角速度
+const EMBER_MOTE_PERIOD := 1.6 ## 余烬余烬沫上浮周期（秒/颗）
+const ECHO_PULSE_PERIOD := 2.4 ## 回声桩 idle 脉冲环周期
+const ECHO_PULSE_MAX_R := 15.0 ## 回声桩脉冲环最大半径
 
 var data: TowerData
 var node_id: StringName
@@ -46,6 +52,9 @@ var _cooldown: float = 0.0
 var highlight_range: bool = false
 var _muzzle_flash: float = 0.0 ## 开火闪光余量（0.12 → 0，随固定 tick 衰减）
 var _blade_angle: float = 0.0 ## 风车叶片累积转角（风巢持续动画，sim_tick 驱动）
+# C01 第二批动画状态（纯视觉，不进模拟判定；候选非最终美术）：
+var _anim_time: float = 0.0 ## 待机动画相位累积（秒，sim_tick 驱动）
+var _recoil: float = 0.0 ## 针轨攻击后座包络（1 → 0，随 sim_tick 衰减）
 
 
 ## suspend 存档：开火相位也是确定性状态（PRD §15.2）。
@@ -182,13 +191,20 @@ func eff_kill_becon() -> int:
 
 func sim_tick(delta: float) -> void:
 	## 由战斗场景以固定 tick 驱动（PRD §18.5）。
-	## 视觉动画（风车旋转 / 开火闪光衰减）刻意走 sim_tick：暂停即定格，确定性一致。
+	## 视觉动画（风车旋转 / 开火闪光衰减 / 待机程序动画）刻意走 sim_tick：暂停即定格，确定性一致。
+	_anim_time += delta
+	# C01 第二批：needle/ember/echo 待机程序动画（每 sim tick 重绘；候选非最终美术）
+	if data.id == &"tower_needle_rail" or data.id == &"tower_ember_well" or data.id == &"tower_echo_pile":
+		queue_redraw()
 	if data.id == &"tower_wind_nest":
 		_blade_angle = wrapf(_blade_angle + delta * WIND_BLADE_RAD_PER_SEC, 0.0, TAU)
 		queue_redraw() # 持续动画：每个 sim tick 重绘
 	if _muzzle_flash > 0.0:
 		_muzzle_flash = maxf(0.0, _muzzle_flash - delta)
 		queue_redraw() # 只在闪光持续期间重绘，结束即停（性能）
+	if _recoil > 0.0:
+		_recoil = maxf(0.0, _recoil - delta / ANIM_RECOIL_SECONDS)
+		queue_redraw()
 	if data.pair_link:
 		return # 回声桩阵：伤害由链路系统结算
 	_cooldown -= delta
@@ -200,6 +216,7 @@ func sim_tick(delta: float) -> void:
 		return
 	_cooldown = eff_attack_period()
 	_muzzle_flash = MUZZLE_FLASH_SECONDS
+	_recoil = 1.0 # 攻击动画：针轨后座 / 余烬喷发放包络
 	queue_redraw()
 	fire_requested.emit(self, target)
 
@@ -223,19 +240,35 @@ func _draw() -> void:
 	# 主色过 UiPalette.apply 无障碍重映射。
 	var body := _resolve_body_color()
 	# 射程环：默认常态 alpha 减半，选中/悬停（highlight_range=true）时更清晰
-	if not data.pair_link:
-		var ring_alpha := 0.10 if highlight_range else 0.05
-		var ring_width := 1.5 if highlight_range else 1.0
-		draw_arc(Vector2.ZERO, eff_range(), 0.0, TAU, 48, Color(body, ring_alpha), ring_width)
-	# M4-A：正式精灵优先（docs/M4_ASSET_SPEC.md §6 程序化回退）
+	if not data.pair_link and highlight_range:
+		draw_arc(Vector2.ZERO, eff_range(), 0.0, TAU, 48, Color(body, 0.12), 1.5)
+	if data.id == &"tower_needle_rail":
+		var attack_amount := clampf(_muzzle_flash / MUZZLE_FLASH_SECONDS, 0.0, 1.0)
+		var recoil_off := Vector2(-2.6, 0.0) * sin(_recoil * PI) if _recoil > 0.0 else Vector2.ZERO
+		draw_set_transform(recoil_off, 0.0, Vector2.ONE)
+		C01SpriteLibrary.draw_tower(self, attack_amount)
+		if attack_amount > 0.0:
+			var muzzle := Vector2(0, -35)
+			draw_circle(muzzle, 3.0 + attack_amount * 3.0, Color(1.0, 0.55, 0.27, 0.8 * attack_amount))
+		draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
+		_draw_tier_pips()
+		return
+	# M4-A：正式精灵优先（docs/current/engineering/M4_ASSET_SPEC.md §6 程序化回退）
 	var tex := ArtLibrary.tower_tex(data.id)
+	# C01 第二批：攻击后座包络 → 机身位移（纯视觉；候选非最终美术）
+	var recoil_off := Vector2.ZERO
+	if _recoil > 0.0:
+		recoil_off = Vector2(-2.6, 0.0) * sin(_recoil * PI)
+	draw_set_transform(recoil_off, 0.0, Vector2.ONE)
 	if tex != null:
 		var mod := Color(1.0, 1.0, 1.0)
 		if UiPalette.high_contrast():
 			# M4-B 高对比：提亮贴图 + 白色外圈（低风险 modulate 方案）
 			mod = Color(1.18, 1.18, 1.18)
 			draw_arc(Vector2.ZERO, 17.0, 0.0, TAU, 24, Color(1, 1, 1, 0.55), 1.5)
-		draw_texture(tex, Vector2(-16.0, -16.0), mod)
+		var visual_scale := 1.26 if data.id == &"tower_needle_rail" else 1.0
+		var draw_size := tex.get_size() * visual_scale
+		draw_texture_rect(tex, Rect2(-draw_size * 0.5, draw_size), false, mod)
 	else:
 		match data.id:
 			&"tower_needle_rail":
@@ -252,6 +285,36 @@ func _draw() -> void:
 				_draw_prism_grove(body)
 			_:
 				_draw_legacy_block(body) # 未知 id：回退现状方块
+	# C01 第二批：三塔待机/攻击程序动画（叠加在精灵/剪影之上；候选非最终美术）
+	match data.id:
+		&"tower_needle_rail":
+			# idle：中央轨道亮线呼吸；attack：针轨沿 +x 射出短促亮针
+			var rail_pulse := 0.45 + 0.35 * sin(_anim_time * 2.2)
+			draw_line(Vector2(-8.5, 0), Vector2(8.5, 0), Color(COLOR_LIGHT_STEEL, rail_pulse), 1.2)
+			if _muzzle_flash > 0.0:
+				var kk := _muzzle_flash / MUZZLE_FLASH_SECONDS
+				var tip := Vector2(10.5 + 14.0 * (1.0 - kk), 0)
+				draw_line(Vector2(8.0, 0), tip, Color(COLOR_LIGHT_STEEL, 0.9 * kk), 1.6)
+		&"tower_ember_well":
+			# idle：火口闪烁 + 余烬沫周期性上浮；attack：火焰整体放大增亮
+			var flick := 1.0 + 0.09 * sin(_anim_time * EMBER_FLICKER_SPEED) + 0.05 * sin(_anim_time * 13.7)
+			var flare := 1.0
+			if _muzzle_flash > 0.0:
+				flare = 1.0 + 0.5 * (_muzzle_flash / MUZZLE_FLASH_SECONDS)
+			var fc := Vector2(0, -1.5)
+			draw_circle(fc, 3.6 * flick * flare, Color(COLOR_EMBER_FLAME, 0.85))
+			draw_circle(fc, 1.9 * flick * flare, COLOR_EMBER_INNER)
+			for mote: int in 2:
+				var mp := fmod(_anim_time / EMBER_MOTE_PERIOD + float(mote) * 0.5, 1.0)
+				var mote_pos := fc + Vector2(sin(mp * TAU * 1.5 + mote) * 2.2, -2.0 - mp * 9.0)
+				draw_circle(mote_pos, 0.9, Color(COLOR_EMBER_INNER, 0.75 * (1.0 - mp)))
+		&"tower_echo_pile":
+			# idle：自桩心扩散的辉光脉冲环（双环错半周期；回声桩不开火，攻击态由链路光点表达）
+			for ring: int in 2:
+				var pk := fmod(_anim_time / ECHO_PULSE_PERIOD + float(ring) * 0.5, 1.0)
+				var rr := 5.0 + pk * (ECHO_PULSE_MAX_R - 5.0)
+				draw_arc(Vector2.ZERO, rr, 0.0, TAU, 24, Color(body.r, body.g, body.b, 0.38 * (1.0 - pk)), 1.4)
+	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 	_draw_tier_pips()
 	if _muzzle_flash > 0.0:
 		# M4-A：开火闪光优先用 3 帧条（16×16/帧），缺失回退程序化圆闪

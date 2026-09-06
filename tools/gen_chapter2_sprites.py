@@ -4,7 +4,7 @@
 产出：C09–C12 主题地形 tile ×16、本批新敌人精灵 ×3（芦丛潜行者/孢光医者/倒映影魅），
 单位精灵自动带 protan/deutan/tritan 色弱变体（矩阵与 scripts/ui/ui_palette.gd 一致）。
 调色板对齐 scripts/ui/visual_theme.gd THEMES（第二章「玻璃沼泽」）。
-规范见 docs/M4_ASSET_SPEC.md。运行：python tools/gen_chapter2_sprites.py
+规范见 docs/current/engineering/M4_ASSET_SPEC.md。运行：python tools/gen_chapter2_sprites.py
 """
 import random
 from pathlib import Path

@@ -1,7 +1,7 @@
 class_name ArtLibrary
 extends RefCounted
 ## M4-A 正式资产加载层：按规范路径加载 PNG，缓存；缺失时返回 null（调用方回退程序化绘制）。
-## 规范见 docs/M4_ASSET_SPEC.md §5/§6：命名与数据层 id 一致、必须有程序化回退。
+## 规范见 docs/current/engineering/M4_ASSET_SPEC.md §5/§6：命名与数据层 id 一致、必须有程序化回退。
 
 const TOWER_DIR := "res://assets/art/towers/"
 const ENEMY_DIR := "res://assets/art/enemies/"

@@ -84,21 +84,41 @@ func test_flow_player_path_title_to_result() -> void:
 	SaveService.clear_suspend()
 	var app := _make_app()
 	check_eq(app._state, app.State.TITLE, "启动进 Title")
+	var title_art := app._screen.find_child("C01HarborArt", true, false) as Control
+	check(title_art != null, "Title 使用港口电影海报构图")
+	check(title_art != null and title_art.anchor_right == 1.0 and title_art.anchor_bottom == 1.0 and title_art.offset_right == 0.0 and title_art.offset_bottom == 0.0, "Title 港口栅格背景使用零偏移全画布锚点")
+	check(app._screen.find_child("FlowPanel", true, false) == null, "Title 不再使用中央工具面板")
+	check(app._screen.find_child("TitlePrimaryAction", true, false) != null, "Title 只有一个高饱和主操作")
+	var title_text := ""
+	for node: Node in app._screen.find_children("*", "Label", true, false):
+		title_text += (node as Label).text
+	check(not title_text.contains("M2") and not title_text.contains("Gate") and not title_text.contains("BLOCKED"), "Title 不暴露开发阶段语言")
 	# Title → Slot（新游戏）→ 槽 2 → Campaign
 	app._show_slots(true)
 	check_eq(app._state, app.State.SLOT, "进入选槽")
 	app._new_game_slot(2)
 	check_eq(app._state, app.State.CAMPAIGN, "新档后进战役选关")
 	check_eq(CampaignService.current_slot, 2, "当前槽 = 2")
+	check(app._screen.find_child("CampaignHarborMap", true, false) != null, "Campaign 使用可探索港口画卷")
 	# 锁定列表呈现：c01 可选、c02 锁定且按钮 disabled（PRD §12.3 不可操作显示原因）
 	var c01_btn := app._screen.find_child("Level_level_c01", true, false) as Button
 	var c02_btn := app._screen.find_child("Level_level_c02", true, false) as Button
 	check(c01_btn != null and not c01_btn.disabled, "c01 可选")
 	check(c02_btn != null and c02_btn.disabled, "c02 锁定不可点")
-	check(c02_btn != null and c02_btn.text.contains(LocalizationService.tr_key(&"FLOW_LOCKED")), "锁定原因可见")
+	# 历史成绩不得覆盖锁定原因（例如旧档/回退后的 marks >= 0 但当前仍锁定）。
+	var locked_chart := C01CampaignChart.new()
+	locked_chart.c02_unlocked = false
+	locked_chart.c02_marks = 2
+	locked_chart.build_ports()
+	var locked_c02 := locked_chart.find_child("Level_level_c02", true, false) as Button
+	check(locked_c02 != null and locked_c02.text.contains(LocalizationService.tr_key(&"FLOW_LOCKED")), "有历史印记时锁定原因仍可见")
+	locked_chart.free()
 	# Campaign → Briefing → Battle
 	app._select_level(&"level_c01")
 	check_eq(app._state, app.State.BRIEFING, "进入战前简报")
+	check(app._screen.find_child("BriefingHarborView", true, false) != null, "Briefing 使用不对称港口望景")
+	check(app._screen.find_child("Enemy_salt_shell_walker", true, false) != null, "Briefing 展示盐壳行者轮廓")
+	check(app._screen.find_child("Enemy_mast_rat_swarm", true, false) != null, "Briefing 展示桅鼠群轮廓")
 	app._enter_battle(false)
 	check_eq(app._state, app.State.BATTLE, "进入战斗")
 	check(app._battle != null and app._battle.flow_managed, "战斗由 Flow 托管")
@@ -115,6 +135,8 @@ func test_flow_player_path_title_to_result() -> void:
 	check_eq(finish_count[0], 1, "battle_finished 恰好发出一次")
 	check_eq(write_count[0], 1, "flow 结算写档恰好一次（main 不重复写）")
 	check_eq(app._state, app.State.RESULT, "胜利后进 Result 状态")
+	check(app._screen.find_child("ResultBeacon", true, false) != null, "Result 以重新亮起的航标为主体")
+	check(app._screen.find_child("ResultBigStats", true, false) != null, "Result 使用三个大数字而非统计弹窗")
 	check(bool(app._last_result.get("won", false)), "结果为胜")
 	check_eq(String(app._last_result.get("next_level_id", "")), "level_c02", "结果携带下一关（AppFlow 写档回填）")
 	check(CampaignService.is_unlocked(&"level_c02"), "槽 2 解锁 c02（Flow 路径写档）")
@@ -144,3 +166,20 @@ func test_flow_player_path_title_to_result() -> void:
 	check(CampaignService.select_hero(&"hero_zhushou_muen"), "可切换穆恩")
 	check(not CampaignService.select_hero(&"hero_lanzhou_wei_x"), "非法英雄拒绝")
 	app.free()
+
+func test_c01_raster_sprite_contract() -> void:
+	check(FileAccess.file_exists("res://scripts/ui/c01_sprite_library.gd"), "C01 有集中式栅格精灵库")
+	var enemy_src := FileAccess.get_file_as_string("res://scripts/combat/greybox_enemy.gd")
+	var tower_src := FileAccess.get_file_as_string("res://scripts/combat/greybox_tower.gd")
+	var map_src := FileAccess.get_file_as_string("res://scripts/boot/greybox_map.gd")
+	var harbor_src := FileAccess.get_file_as_string("res://scripts/ui/c01_harbor_art.gd")
+	var campaign_src := FileAccess.get_file_as_string("res://scripts/ui/c01_campaign_chart.gd")
+	check(enemy_src.contains("C01SpriteLibrary"), "C01 敌人主体由栅格精灵绘制")
+	check(tower_src.contains("C01SpriteLibrary"), "C01 防御塔主体由栅格精灵绘制")
+	check(map_src.contains("C01SpriteLibrary"), "C01 战场地形与舰队接入栅格精灵")
+	check(harbor_src.contains("C01SpriteLibrary"), "完整 C01 产品流程复用同一精灵语言")
+	check(not campaign_src.contains("draw_colored_polygon") and not campaign_src.contains("draw_circle("), "Campaign 不再以程序化几何图形主导港图")
+	check(FileAccess.file_exists("res://assets/art/c01/runtime/enemy_salt_shell.png"), "盐壳行者派生精灵表存在")
+	check(FileAccess.file_exists("res://assets/art/c01/runtime/enemy_mast_rat.png"), "桅鼠群派生精灵表存在")
+	check(FileAccess.file_exists("res://assets/art/c01/runtime/tower_needle_rail.png"), "针轨塔派生精灵表存在")
+	check(FileAccess.file_exists("res://assets/art/c01/runtime/harbor_props.png"), "港口环境派生精灵图集存在")

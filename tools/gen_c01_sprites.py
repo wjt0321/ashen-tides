@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """M4-A C01 正式切片精灵生成器（项目自有原创资产）。
 
-全部输出 32×32（或帧条）RGBA PNG，遵循 docs/M4_ASSET_SPEC.md：
+全部输出 32×32（或帧条）RGBA PNG，遵循 docs/current/engineering/M4_ASSET_SPEC.md：
 1px 深色外轮廓、C01 黄昏港岸调色板、剪影优先。
 运行：python tools/gen_c01_sprites.py
 产出：assets/art/{tilesets/c01,towers,enemies,characters,vfx,ui}/*.png

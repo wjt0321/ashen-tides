@@ -1,0 +1,90 @@
+{
+  "downloaded_on": "2026-09-06",
+  "publisher": "Foozle",
+  "license_claim": "CC0 per official pack pages and included license files",
+  "items": [
+    {
+      "slug": "scallywag-water-islands",
+      "source_page": "https://foozlecc.itch.io/scallywag-water-islands",
+      "purchase_url": "https://foozlecc.itch.io/scallywag-water-islands/purchase",
+      "file_name": "Foozle_2DT0014_Scallywag_WaterAndIslands.zip",
+      "archive": "assets/vendor/c01/foozle/source_archives/Foozle_2DT0014_Scallywag_WaterAndIslands.zip",
+      "sha256": "b8ddb4980d0c26b982ad5eb83e1ef1ad164f98fed84fb55c66154e1fdc64bfdc",
+      "bytes": 139418,
+      "upload_id": "9126175",
+      "roles": [
+        "battlefield source texture"
+      ],
+      "used_members": [
+        "Water and Island tiles.png"
+      ]
+    },
+    {
+      "slug": "scallywag-ships",
+      "source_page": "https://foozlecc.itch.io/scallywag-ships",
+      "purchase_url": "https://foozlecc.itch.io/scallywag-ships/purchase",
+      "file_name": "Foozle_2DT0013_Scallywag_Ships.zip",
+      "archive": "assets/vendor/c01/foozle/source_archives/Foozle_2DT0013_Scallywag_Ships.zip",
+      "sha256": "e77d391f969539d71abb2ba6a2b762d5820f9289324dc5f52f1adf7510bd7e40",
+      "bytes": 424382,
+      "upload_id": "9126099",
+      "roles": [
+        "fleet and harbor ship sprites"
+      ],
+      "used_members": [
+        "Ships tiles.png"
+      ]
+    },
+    {
+      "slug": "scallywag-fort",
+      "source_page": "https://foozlecc.itch.io/scallywag-fort",
+      "purchase_url": "https://foozlecc.itch.io/scallywag-fort/purchase",
+      "file_name": "Foozle_2DT0015_Scallywag_Fort.zip",
+      "archive": "assets/vendor/c01/foozle/source_archives/Foozle_2DT0015_Scallywag_Fort.zip",
+      "sha256": "a58c04528bd5aa6396e4e79c01a0972275098a39e4430bf3c328f73eb3267951",
+      "bytes": 94569,
+      "upload_id": "9126216",
+      "roles": [
+        "dock and harbor prop sprites"
+      ],
+      "used_members": [
+        "Fort Tiles.png"
+      ]
+    },
+    {
+      "slug": "spire-tower-pack-1",
+      "source_page": "https://foozlecc.itch.io/spire-tower-pack-1",
+      "purchase_url": "https://foozlecc.itch.io/spire-tower-pack-1/purchase",
+      "file_name": "Foozle_2DS0017_Spire_TowerPack_1.zip",
+      "archive": "assets/vendor/c01/foozle/source_archives/Foozle_2DS0017_Spire_TowerPack_1.zip",
+      "sha256": "e316ccc008ba644a8bf4f980e4828646b81dbb61213d487c9b8ff08bf97fdde5",
+      "bytes": 351342,
+      "upload_id": "6532684",
+      "roles": [
+        "needle-rail tower base and animated weapon"
+      ],
+      "used_members": [
+        "Towers bases/PNGs/Tower 01.png",
+        "Towers Weapons/Tower 01/Spritesheets/Tower 01 - Level 01 - Weapon.png"
+      ]
+    },
+    {
+      "slug": "spire-enemy-pack-2",
+      "source_page": "https://foozlecc.itch.io/spire-enemy-pack-2",
+      "purchase_url": "https://foozlecc.itch.io/spire-enemy-pack-2/purchase",
+      "file_name": "Foozle_2DC0028_Spire_EnemyPack_2_Ground.zip",
+      "archive": "assets/vendor/c01/foozle/source_archives/Foozle_2DC0028_Spire_EnemyPack_2_Ground.zip",
+      "sha256": "a1304713446c7731bc046d966a2b227c6a33dca77e88cd60c0ca7e89bfdee64c",
+      "bytes": 2575787,
+      "upload_id": "6532482",
+      "roles": [
+        "salt-shell walker and mast-rat swarm animation sources"
+      ],
+      "used_members": [
+        "Ground/Spritesheets/Magma Crab.png",
+        "Ground/Spritesheets/Scorpion.png"
+      ]
+    }
+  ],
+  "curation": "Only archives that feed the active C01 raster presentation are retained; the builder reads selected members directly from these archives."
+}

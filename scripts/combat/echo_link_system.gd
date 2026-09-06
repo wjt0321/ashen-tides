@@ -94,6 +94,8 @@ func sim_tick(delta: float) -> void:
 
 func _link_pulse(a: GreyboxTower, b: GreyboxTower) -> void:
 	pulses_total += 1
+	# C01 第二批候选音频：链路脉冲音（回声桩阵不开火，攻击音在这里；candidate 非最终）
+	AudioService.play_event(&"tower_echo_pulse")
 	var damage: float = _rng.randf_range(
 		(a.eff_damage_min() + b.eff_damage_min()) * 0.5, (a.eff_damage_max() + b.eff_damage_max()) * 0.5)
 	var slow_mult := 0.0

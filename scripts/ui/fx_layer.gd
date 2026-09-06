@@ -98,6 +98,12 @@ func _draw() -> void:
 					for d: Vector2 in [Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN]:
 						draw_line(pos + d * 2.0, pos + d * len, c, 1.0)
 			KIND_KILL:
+				# C01 v2：实际接入 Kenney Pirate CC0 explosion 候选；缩至 28px、深海调色，非 64px tile。
+				var kenney_explosion := load("res://assets/vendor/c01/kenney/fx/explosion_01.png") as Texture2D
+				if kenney_explosion != null:
+					var sz := 14.0 + 14.0 * k
+					draw_texture_rect(kenney_explosion, Rect2(pos - Vector2.ONE * sz * 0.5, Vector2.ONE * sz), false,
+						Color(color.r * 0.8 + 0.2, color.g * 0.65 + 0.15, color.b * 0.45 + 0.1, 0.55 * fade))
 				draw_arc(pos, 4.0 + 10.0 * k, 0.0, TAU, 20,
 						Color(color.r, color.g, color.b, 0.8 * fade), 1.5)
 				if not low_fx:

@@ -20,6 +20,7 @@ const STONE_FACE := Color(0.20, 0.19, 0.22) ## 石台上层面
 var node_id: StringName
 var state: State = State.FREE
 ## 主题强调色（main 按当前关卡主题赋值，默认金）
+var harbor_style := false ## C01 环境化炮座，仅视觉
 var level_accent: Color = Color(0.95, 0.78, 0.32)
 
 
@@ -54,7 +55,22 @@ func _stroke_hex(radius: float, color: Color, width: float) -> void:
 	draw_polyline(pts, color, width)
 
 
+func _draw_harbor_emplacement() -> void:
+	var edge: Color = STATE_COLORS[state]
+	var alpha := 0.24 if state == State.FREE else 0.52
+	if state == State.BLOCKED:
+		alpha = 0.42
+	draw_colored_polygon(PackedVector2Array([Vector2(-13,5),Vector2(-9,-9),Vector2(4,-12),Vector2(13,-4),Vector2(11,9),Vector2(-3,13)]),Color("202725",0.92))
+	draw_colored_polygon(PackedVector2Array([Vector2(-9,3),Vector2(-6,-6),Vector2(4,-8),Vector2(9,-2),Vector2(7,6),Vector2(-2,9)]),Color("3b4540",0.86))
+	draw_arc(Vector2.ZERO,10.0,0,TAU,20,Color(edge,alpha),1.4)
+	if state == State.FREE:
+		draw_circle(Vector2(0,-1),2.0,Color(level_accent,0.20))
+
+
 func _draw() -> void:
+	if harbor_style:
+		_draw_harbor_emplacement()
+		return
 	# 状态语义（PRD §3.6 绿/黄/红）+ 台面 tint
 	var edge: Color = STATE_COLORS[state]
 	var face_tint := Color(0.0, 0.0, 0.0, 0.0)

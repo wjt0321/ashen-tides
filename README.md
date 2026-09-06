@@ -2,16 +2,16 @@
 
 一款使用 **Godot 4.7** 开发的 Windows PC 单人 2D 塔防游戏。核心设计围绕固定建造节点、预制分叉路线、明潮/暮潮相位、航标充能、英雄和塔模块展开。
 
-> **当前不是完成品，也不是可发布 Alpha。** 官方阶段为 **M2：C01–C03 发布质量纵向切片，Gate = BLOCKED**。C04–C14 是提前集成的 provisional 内容；当前 `assets/art/` 是程序生成的 `Integrated placeholder`，不是最终商业美术。
+> **当前不是完成品，也不是可发布 Alpha。** 官方阶段仍为 **M2：C01–C03 发布质量纵向切片，Gate = BLOCKED**。C01 产品表现层与栅格美术已完成并于 2026-09-06 被主理人采用为全项目视觉基准；C02–C14 仍包含提前集成的 provisional/placeholder 内容。
 
 ## 当前真实状态
 
-- 已集成：C01–C14 战斗数据、6 座塔、2 名英雄、2 个 Boss、固定 tick、相位/装置/模块、设置、存档与自动化工具。
+- 已集成：C01–C14 战斗数据、6 座塔、2 名英雄、2 个 Boss、固定 tick、相位/装置/模块、设置、存档与自动化工具；C01 已具备完整标题→选关→简报→战斗→结算表现层。
 - 已修复：C01 通关解锁并进入 C02；重开后建造节点可再次放塔。
-- 尚未达到 M2：完整标题/新游戏/继续/选关/战前/战后玩家流程，C01–C03 发布质量美术与动画、正式音频、完整手柄流程、目标机矩阵和 5 人盲测。
+- 尚未达到 M2：C02–C03 尚未按 C01 黄金样板完成发布质量表现；正式音频、完整手柄流程、目标机矩阵和 5 人盲测仍待完成。
 - 暂停扩展：前置 M2/M3 Gate 未通过前，不继续 C15+。
 
-详细审计见 [`docs/PLAYER_EXPERIENCE_AUDIT.md`](docs/PLAYER_EXPERIENCE_AUDIT.md)。
+详细审计见 [`docs/current/quality/PLAYER_EXPERIENCE_AUDIT.md`](docs/current/quality/PLAYER_EXPERIENCE_AUDIT.md)。
 
 ## 运行
 
@@ -20,7 +20,7 @@
 1. 用 Godot Project Manager 导入本目录的 `project.godot`。
 2. 打开项目并运行主场景 `scenes/boot/main.tscn`。
 
-当前默认启动进入灰盒产品外壳：标题页 → 新游戏/继续 → 三存档槽 → 战役选关 → 战前简报/英雄选择 → 战斗 → 结算。首次无障碍设置、删档 UI、难度选择、手柄菜单导航和发布质量视觉仍未完成，因此体验仍属于开发中纵向切片。
+当前默认启动进入产品流程：标题页 → 新游戏/继续 → 三存档槽 → 战役选关 → 战前简报/英雄选择 → 战斗 → 结算。C01 已采用最终视觉方向；首次无障碍设置、删档 UI、难度选择、完整手柄菜单导航，以及 C02–C03 同等级表现仍未完成，因此整体仍属于开发中纵向切片。
 
 ### 开发验证
 
@@ -31,6 +31,8 @@ godot --headless --path . --editor --quit
 godot --headless --path . --script tools/validate_data.gd
 godot --headless --path . --script tools/run_tests.gd
 godot --headless --path . --script tools/check_i18n.gd
+python docs/current/engineering/validate_docs.py
+python tools/validate_c01_assets.py
 ```
 
 测试通过最多证明相应功能已 `Integrated`，不代表 Player-verified、Gate Passed 或 Shipping。
@@ -50,14 +52,14 @@ Specified → Data-only → Integrated → Player-accessible
 
 | 主题 | 文档 |
 |---|---|
-| 产品范围、玩法、里程碑、发布标准 | [`docs/PRD.md`](docs/PRD.md) |
-| 当前唯一执行顺序、依赖与 Gate | [`docs/PROJECT_EXECUTION_BASELINE.md`](docs/PROJECT_EXECUTION_BASELINE.md) |
-| 技术架构与生产方法 | [`docs/RESEARCH_REPORT.md`](docs/RESEARCH_REPORT.md) |
-| 美术风格、候选与许可证政策 | [`docs/ASSET_CATALOG.md`](docs/ASSET_CATALOG.md) |
-| 美术/精灵生产批次与验收 | [`docs/ART_PRODUCTION_PLAN.md`](docs/ART_PRODUCTION_PLAN.md) |
+| 产品范围、玩法、里程碑、发布标准 | [`docs/current/product/PRD.md`](docs/current/product/PRD.md) |
+| 当前唯一执行顺序、依赖与 Gate | [`docs/current/product/PROJECT_EXECUTION_BASELINE.md`](docs/current/product/PROJECT_EXECUTION_BASELINE.md) |
+| 技术架构与生产方法 | [`docs/current/engineering/RESEARCH_REPORT.md`](docs/current/engineering/RESEARCH_REPORT.md) |
+| 美术风格、候选与许可证政策 | [`docs/current/art/ASSET_CATALOG.md`](docs/current/art/ASSET_CATALOG.md) |
+| 美术/精灵生产批次与验收 | [`docs/current/art/ART_PRODUCTION_PLAN.md`](docs/current/art/ART_PRODUCTION_PLAN.md) |
 | 逐项美术状态 | [`ART_ASSET_REGISTRY.csv`](ART_ASSET_REGISTRY.csv) |
-| 当前 M2 Gate 决议 | [`docs/gates/M2-GATE.yaml`](docs/gates/M2-GATE.yaml) |
-| 状态和证据索引 | [`docs/CHECKLIST.md`](docs/CHECKLIST.md) |
+| 当前 M2 Gate 决议 | [`docs/current/quality/gates/M2-GATE.yaml`](docs/current/quality/gates/M2-GATE.yaml) |
+| 状态和证据索引 | [`docs/current/product/CHECKLIST.md`](docs/current/product/CHECKLIST.md) |
 
 历史 `NEXT_PHASE*`、`M3_*` 和 `M4_*_NOTES` 仅用于追溯，不决定当前路线。
 
@@ -83,7 +85,7 @@ Tools & Tests 与玩家 UI 调用同一应用服务
 
 不整体搬运外部仓库，不引入 Mindustry 级 ECS/网络/模组复杂度，不复制 GPL 代码，不改变固定 BuildNode + PathNetwork 与固定 tick 基线。
 
-完整研究、精确 URL 和取舍见 [`docs/OPEN_SOURCE_TD_RESEARCH.md`](docs/OPEN_SOURCE_TD_RESEARCH.md)。
+完整研究、精确 URL 和取舍见 [`docs/current/engineering/OPEN_SOURCE_TD_RESEARCH.md`](docs/current/engineering/OPEN_SOURCE_TD_RESEARCH.md)。
 
 ## 现成开源资源结论
 
@@ -101,7 +103,8 @@ Tools & Tests 与玩家 UI 调用同一应用服务
 
 ```text
 autoload/       跨场景服务
-assets/          字体与当前视觉占位
+assets/art/      自有/派生运行时美术（C01 基准位于 assets/art/c01/runtime）
+assets/vendor/   按关卡和来源归档的第三方源资产与许可
 data/            typed Resource 内容数据
 docs/            PRD、执行基线、研究与 Gate
 scenes/          Godot 场景
@@ -117,7 +120,7 @@ tools/           校验、报告和资产生成工具
 第三方字体和未来候选资产按各自许可证管理，详见：
 
 - [`ASSET_LICENSE_LEDGER.csv`](ASSET_LICENSE_LEDGER.csv)
-- [`docs/CREDITS.md`](docs/CREDITS.md)
+- [`docs/current/art/CREDITS.md`](docs/current/art/CREDITS.md)
 - `licenses/`
 
 代码许可证与资产许可证始终分开判断。
