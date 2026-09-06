@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DeviceData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/device_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"device_c14_spore_nest_c"
+schema_version = 1
+enabled = true
+designer_note = "M4-D C14：孢巢 C——覆盖第二路线前段（根系改道后启用）"
+display_name_key = &"DEVICE_C14_SPORE_NEST"
+position = Vector2(96, 296)
+radius_px = 40.0
+effect_op = &"spore_heal"
+effect_value = 8.0
+interval_seconds = 2.0
+active_phase = &"both"
+repairable = false
+repair_seconds = 3.0
+max_hp = 260.0
+blocks_projectiles = true

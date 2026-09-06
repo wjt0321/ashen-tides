@@ -12,6 +12,7 @@ extends Node2D
 signal died(enemy: GreyboxEnemy)
 signal reached_goal(enemy: GreyboxEnemy)
 signal boss_phase_changed(enemy: GreyboxEnemy, phase_index: int, label: String)
+signal summon_requested(summoner: GreyboxEnemy) ## C13 召唤敌（雾母载体）：固定间隔确定性计时，沉默抑制
 
 const HIT_FLASH_TIME := 0.06 ## 受击闪白持续时间（秒，sim_tick 衰减）
 const SLOW_RGB := Color(0.45, 0.70, 1.0) ## 减速覆色 RGB（alpha 取自 VisualTheme.SLOW_TINT）
@@ -22,6 +23,7 @@ const TAG_GLYPHS: Dictionary = {
 	&"basic": "", &"swarm": "群", &"swift": "迅", &"heavy": "甲",
 	&"shield": "盾", &"support": "援", &"glow": "辉", &"healer": "疗",
 	&"engineer": "机", &"boss": "王", &"stealth": "匿", &"phasebound": "相",
+	&"summon": "召",
 }
 
 var data: EnemyData
@@ -51,9 +53,12 @@ var _rng: RandomNumberGenerator
 var _mark_multiplier: float = 1.25
 var _shred_value: float = 0.0
 var _shred_seconds: float = 0.0
+var _summon_timer: float = 0.0 ## 召唤倒计时（秒，固定 tick 递减，不用 RNG）
 
 
-func setup(p_data: EnemyData, route_points: PackedVector2Array, rng: RandomNumberGenerator) -> void:
+## spawn_progress_px：召唤物沿父路线、从父位置稍后的里程出生（默认 0 = 路线起点）。
+func setup(p_data: EnemyData, route_points: PackedVector2Array, rng: RandomNumberGenerator,
+		spawn_progress_px: float = 0.0) -> void:
 	data = p_data
 	hp = data.max_hp
 	shield = data.shield_hp
@@ -71,18 +76,25 @@ func setup(p_data: EnemyData, route_points: PackedVector2Array, rng: RandomNumbe
 	_boss_speed_mult = 1.0
 	_boss_armor_bonus = 0.0
 	_hit_flash = 0.0
+	_summon_timer = data.summon_interval_seconds
 	facing = (route_points[1] - route_points[0]).angle() if route_points.size() > 1 else 0.0
 	_cum_lengths = PackedFloat32Array([0.0])
 	_total_length = 0.0
 	for i: int in range(1, _route.size()):
 		_total_length += _route[i - 1].distance_to(_route[i])
 		_cum_lengths.append(_total_length)
-	position = _route[0]
+	_progress_px = clampf(spawn_progress_px, 0.0, _total_length)
+	position = _route[0] if _progress_px <= 0.0 else _sample(_progress_px)
 
 
 ## 目标选择用：沿路线的推进里程（"最前" = 最大 progress）。
 func progress_px() -> float:
 	return _progress_px
+
+
+## 召唤物出生用：本单位所沿路线顶点（与父共享，PRD §8.6 同路线召唤）。
+func route_points() -> PackedVector2Array:
+	return _route
 
 
 func is_alive() -> bool:
@@ -193,6 +205,12 @@ func sim_tick(delta: float) -> void:
 			queue_redraw() # 重新隐入草丛（视觉）
 	if data.elite and data.elite_affixes.has(&"regenerating"):
 		hp = minf(data.max_hp, hp + data.max_hp * 0.002 * delta)
+	# C13 召唤（雾母载体）：固定间隔确定性计时，沉默抑制（断响反制，与支援光环同规则）
+	if data.summon_interval_seconds > 0.0 and data.summon_enemy_id != &"" and not is_silenced():
+		_summon_timer -= delta
+		if _summon_timer <= 0.0:
+			_summon_timer += data.summon_interval_seconds
+			summon_requested.emit(self)
 	if _shred_seconds > 0.0:
 		_shred_seconds -= delta
 		if _shred_seconds <= 0.0:

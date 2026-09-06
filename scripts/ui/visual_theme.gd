@@ -111,6 +111,20 @@ const THEMES: Dictionary = {
 		"road_bed": Color(0.14, 0.12, 0.09), "road_inner": Color(0.45, 0.38, 0.26),
 		"accent": Color(0.60, 0.85, 0.60), "glow": Color(0.70, 0.90, 0.65),
 	},
+	&"level_c13": { # 雾母腹地：灰绿迷雾
+		"sea_a": Color(0.12, 0.20, 0.19), "sea_b": Color(0.09, 0.16, 0.15),
+		"sea_foam": Color(0.55, 0.68, 0.62), "land_a": Color(0.28, 0.33, 0.28),
+		"land_b": Color(0.23, 0.28, 0.23), "land_edge": Color(0.50, 0.60, 0.52),
+		"road_bed": Color(0.15, 0.18, 0.15), "road_inner": Color(0.48, 0.56, 0.46),
+		"accent": Color(0.70, 0.62, 0.88), "glow": Color(0.75, 0.70, 0.95),
+	},
+	&"level_c14": { # 沼冠孢王：深沼紫冠
+		"sea_a": Color(0.08, 0.14, 0.12), "sea_b": Color(0.06, 0.11, 0.09),
+		"sea_foam": Color(0.38, 0.55, 0.42), "land_a": Color(0.24, 0.28, 0.20),
+		"land_b": Color(0.19, 0.23, 0.16), "land_edge": Color(0.45, 0.52, 0.36),
+		"road_bed": Color(0.12, 0.13, 0.09), "road_inner": Color(0.40, 0.44, 0.30),
+		"accent": Color(0.72, 0.45, 0.78), "glow": Color(0.80, 0.55, 0.85),
+	},
 }
 
 const FALLBACK_THEME := &"level_c01"

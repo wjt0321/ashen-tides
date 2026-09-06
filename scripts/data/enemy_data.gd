@@ -29,4 +29,6 @@ extends Resource
 @export var heal_radius: float = 0.0 ## 治疗光环半径（C10 孢光洼地；0 = 无治疗）
 @export var heal_per_sec: float = 0.0 ## 治疗光环每秒恢复量（沉默抑制）
 @export var phase_resist_swap: bool = false ## 双相形态（C11 倒映之路）：暮潮时 armor 与 glow_resist 互换
+@export var summon_enemy_id: StringName = &"" ## 召唤目标（C13 雾母载体；空 = 不召唤，PRD §8.6）
+@export var summon_interval_seconds: float = 0.0 ## 召唤间隔（秒，固定 tick 确定性计时；沉默抑制）
 @export var body_color: Color = Color(0.85, 0.72, 0.50) ## 灰盒占位主体色（可读性：色+形+文字三重编码，PRD §3.4）

@@ -1053,8 +1053,28 @@ func _on_spawn_requested(enemy_id: StringName, route_id: StringName) -> void:
 	enemy.died.connect(_on_enemy_died)
 	enemy.reached_goal.connect(_on_enemy_reached_goal)
 	enemy.boss_phase_changed.connect(_on_boss_phase_changed)
+	enemy.summon_requested.connect(_on_enemy_summon_requested)
 	_battle_root.add_child(enemy)
 	_enemies.append(enemy)
+
+
+## C13 召唤敌（雾母载体）：子怪沿召唤者同路线、从其位置稍后 14px 里程出生。
+## 固定 tick 计时、不经 RNG，召唤物击杀/漏怪走正常 died/reached_goal 信号计入报告。
+func _on_enemy_summon_requested(summoner: GreyboxEnemy) -> void:
+	if _battle_over or not is_instance_valid(summoner) or not summoner.is_alive():
+		return
+	var data := _get_enemy_data(summoner.data.summon_enemy_id)
+	if data == null:
+		return
+	var enemy := GreyboxEnemy.new()
+	enemy.setup(data, summoner.route_points(), _rng, maxf(0.0, summoner.progress_px() - 14.0))
+	enemy.died.connect(_on_enemy_died)
+	enemy.reached_goal.connect(_on_enemy_reached_goal)
+	enemy.boss_phase_changed.connect(_on_boss_phase_changed)
+	enemy.summon_requested.connect(_on_enemy_summon_requested)
+	_battle_root.add_child(enemy)
+	_enemies.append(enemy)
+	print("[M4D-SUMMON] %s summons %s at tick=%d" % [summoner.data.id, data.id, _tick_count])
 
 
 func _on_boss_phase_changed(enemy: GreyboxEnemy, phase_index: int, label: String) -> void:
@@ -1450,9 +1470,9 @@ func _try_resume_suspend() -> void:
 		_ember, _fleet_integrity, payload.get("towers", []).size()
 	])
 	if _smoke:
-		# _start_autoplay 在 _ready 中晚于本函数执行，这里需先加载布防计划，
-		# 否则恢复后的第一次 _autoplay_build 面对空计划、漏放波间塔位。
-		_smoke_plan = SMOKE_PLANS.get(_level_id, _build_generated_smoke_plan())
+		# _start_autoplay 在 _ready 中晚于本函数执行，这里需先解析与本次命令完全相同的布防计划；
+		# 标准构筑不能退回 generated plan，否则 plan_cursor 会在错误计划上推进，恢复后漏放/误升塔。
+		_smoke_plan = _resolve_smoke_plan()
 		_autoplay_build()
 		# 不间断运行中下一波在 director.tick 的 wave_completed 信号内启动（当 tick 中段），
 		# 首次 spawn 落在下一 tick；恢复时若在 _ready 直接开波会提前 1 tick，
@@ -1609,6 +1629,21 @@ func _build_generated_smoke_plan() -> Array:
 	return plan
 
 
+func _resolve_smoke_plan() -> Array:
+	var plan: Array = SMOKE_PLANS.get(_level_id, _build_generated_smoke_plan())
+	if _build_name == &"":
+		return plan
+	# 标准构筑（NEXT_PHASE P0）：从 StandardBuilds 选计划，与辅助模式报告彻底分离。
+	var level_builds: Dictionary = StandardBuilds.BUILDS.get(_level_id, {})
+	if level_builds.has(_build_name):
+		plan = level_builds[_build_name]
+		print("[M1-SMOKE] standard build: %s/%s (%d entries)" % [_level_id, _build_name, plan.size()])
+	else:
+		push_error("[M1] unknown build %s for %s — fallback to generated plan" % [_build_name, _level_id])
+		_build_name = &""
+	return plan
+
+
 func _start_autoplay() -> void:
 	if not _resume_suspend:
 		_rng.seed = SMOKE_SEED # 恢复存档时保留存档中的 RNG state（PRD §15.2）
@@ -1617,16 +1652,7 @@ func _start_autoplay() -> void:
 		_invincible = true
 		if _build_name != &"":
 			push_error("[M1] --build 为标准模式（非辅助），不得与 --m3-smoke/--m3-perf 同用")
-	_smoke_plan = SMOKE_PLANS.get(_level_id, _build_generated_smoke_plan())
-	if _build_name != &"":
-		# 标准构筑（NEXT_PHASE P0）：从 StandardBuilds 选计划，与辅助模式报告彻底分离
-		var level_builds: Dictionary = StandardBuilds.BUILDS.get(_level_id, {})
-		if level_builds.has(_build_name):
-			_smoke_plan = level_builds[_build_name]
-			print("[M1-SMOKE] standard build: %s/%s (%d entries)" % [_level_id, _build_name, _smoke_plan.size()])
-		else:
-			push_error("[M1] unknown build %s for %s — fallback to generated plan" % [_build_name, _level_id])
-			_build_name = &""
+	_smoke_plan = _resolve_smoke_plan()
 	if _soak_seconds > 0.0:
 		_speed = 3.0
 		_soak_start_msec = Time.get_ticks_msec()

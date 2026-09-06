@@ -222,3 +222,15 @@ ENEMY_MIRROR_SHADE,倒映影魅,Mirror Shade
 DEVICE_C09_GLASS_LENS,玻璃棱镜,Glass Lens
 DEVICE_C10_SPORE_ZONE,孢子扩散区,Spore Bloom
 DEVICE_C12_HULL_COVER,船壳掩体,Hull Cover
+# M4-D：C13–C14 关卡/敌人/装置
+LEVEL_C13,C13 雾母腹地,C13 Mistmother Deep
+LEVEL_C14,C14 沼冠孢王,C14 Marsh Crown Spore King
+OBJ_C13_STRATEGY,在 C13 内完成一次塔升级,Complete a tower upgrade in C13
+OBJ_C14_STRATEGY,在 C14 内使用一次潮汐仪,Use the tide clock once in C14
+ENEMY_SPORE_MOTHER_CARRIER,雾母载体,Spore Mother Carrier
+ENEMY_MARSH_MIST_PHYSICIAN,雾中医正,Marsh Mist Physician
+ENEMY_BOSS_MARSH_CROWN_SPORE_KING,沼冠孢王,Marsh Crown Spore King
+DEVICE_C13_MIST_LENS,雾透镜,Mist Lens
+DEVICE_C14_SPORE_NEST,孢巢,Spore Nest
+# M4-D：C13–C14 关卡/敌人/装置
+# M4-D：C13–C14 关卡/敌人/装置

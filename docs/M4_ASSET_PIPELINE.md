@@ -116,3 +116,14 @@
 - 预览证据：`out/m4c_sprites_preview.png`、`out/m4c_terrain_preview.png`。
 - 机制层（隐匿/治疗光环/双相抗性/掩体阻挡/侦测与孢子装置）详见 docs/M4_CONTENT_NOTES.md。
 - Blockers 维持：C13–C14 与 Boss 2 未做；正式音频/手柄/盲测门禁不变。
+
+# M4-D：第二章收口 C13–C14 资产扩展（2026-09-06）
+
+- 新增 `tools/gen_chapter2b_sprites.py`（复用 gen_chapter1_sprites 工具函数）：
+  C13/C14 主题地形 8 张（调色板对齐 visual_theme.gd 新增「雾母腹地灰绿雾」「沼冠孢王深沼紫冠」2 主题）+
+  3 张新单位精灵（spore_mother_carrier 召唤 / marsh_mist_physician 精英治疗 / boss_marsh_crown_spore_king 64×64）+ 9 张色弱变体。
+- `greybox_map.gd._draw_level_flavor` +2 关装饰（低垂雾团+孢光点 / 背景巨孢冠剪影+孢囊）。
+- 台账 `ASSET_LICENSE_LEDGER.csv` +11 行（8 地形 + 3 单位 base；变体同包注明）；CREDITS 已同步。
+- 预览证据：`out/m4d_sprites_preview.png`。
+- 机制层（召唤敌/精英再生/Boss 2 暴露核心窗口）详见 docs/M4_CONTENT_NOTES.md M4-D 段。
+- Blockers 维持：C15+ 未做；正式音频/手柄实机/盲测门禁不变；terrain_land_b 仍 staged。

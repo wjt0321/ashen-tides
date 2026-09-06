@@ -63,3 +63,65 @@
 - 精英敌人本章未新增（PRD 精英考核在 C13）。
 - 正式音频/手柄实机/盲测：维持既有门禁状态，不在本轮范围。
 - 固定 Tick 确定性已补齐：C04–C12 steady 1×/3×聚合 `failures=0 PASS`；性能报告也已补齐，C04–C12 聚合 `failures=0 PASS`。证据：`out/m4c_gate_regression.log`、`out/m4c_gate_perf_aggregator.log`。
+
+---
+
+# M4-D：第二章收口 C13–C14 + 精英 + Boss 2（2026-09-06）
+
+## 1. 新增机制（运行时，数据驱动，默认关闭零回归）
+
+- 召唤敌：`EnemyData.summon_enemy_id` + `summon_interval_seconds`（默认 0 = 不召唤，前章敌人零行为变化）。
+  `GreyboxEnemy` 固定 tick 确定性计时（不经 RNG），到点 `summon_requested` 信号；main 处理器让子怪沿
+  召唤者同路线、从其位置稍后 14px 里程出生（`setup()` 新增可选 `spawn_progress_px`，默认 0 不影响既有调用）。
+  击杀本体即停止召唤；沉默抑制召唤（与支援光环同规则，断响反制）。击杀/漏怪走正常信号计入战报。
+- 精英：marsh_mist_physician「雾中医正」——elite + regenerating 词缀 + 强化治疗光环（PRD §8.7 #3 最小实现，无留孢区）。
+- Boss 2 `boss_marsh_crown_spore_king`「沼冠孢王」（PRD §8.8 最小改动三件套）：
+  ①孢巢供疗 = 3 个 spore_heal + blocks_projectiles + max_hp=260 装置（打巢 = 分火，复用 M4-C 掩体管线）；
+  ②根系改道 = wave 6 相位事件激活第二路线（现成机制）；
+  ③短暂暴露核心 = boss_phases 的 armor_bonus 负值窗口（phase 1 −25 / phase 3 −15），无长时间无敌回血。
+
+## 2. 关卡/波次/敌人数据（tools/gen_m4d_data.py，确定性幂等，几何自检内置）
+
+- C13「雾母腹地」：三入口 / 18 节点 / 双雾透镜视野脉冲 / 召唤敌 + 隐匿敌；wave 4 相位开第三入口。考核：本体识别。
+- C14「沼冠孢王」（Boss 场）：双路线 / 16 节点 / 三孢巢分火 / wave 6 根系改道 / wave 12 Boss 2。考核：分火管理。
+- 3 新敌人 + 5 装置 + 2 相位事件 + 24 波次 + 2 LevelData；i18n +9 keys（zh_CN+en）。
+- 调波记录（仅 C14 波次构成，未动任何敌人数值）：v1 w1 即 380hp/70 甲 carrier 开场，三套构筑 w1–4 固定漏 10；
+  v2 改为 spitter/sapper 开场、carrier w3 起少量递进（总量 40→28）。
+
+## 3. 标准构筑（StandardBuilds）
+
+- C13：steady（13267 漏5）/ economy（13349 漏7）/ synergy（14697 漏14）全 win。
+- C14：steady（21015 漏9）/ economy（21386 漏8）/ synergy（21357 漏9）全 win。
+- 构筑迭代记录（均未改敌人数值）：C14 steady v1–v4（v1 物理打 70 甲漏 carrier → v3 喷井辉光主战；
+  b 路 14/15 南侧射击线避开孢巢 C 投射物封锁）；C14 economy v5 补 12 号位喷井；C13 economy v2 补顶排反隐覆盖。
+- C14 autoplay（生成式计划）lose 为既定难度定位（同 C04）：第二章收官 Boss 场；通关凭证为三套标准构筑。
+  m3_smoke 聚合器据此不含 level_c14（注释在 tools/m3_smoke.gd）。
+
+## 4. 视觉（沿用 M4 锁定规范）
+
+- `visual_theme.gd` THEMES +2（雾母腹地灰绿雾 / 沼冠孢王深沼紫冠）。
+- `tools/gen_chapter2b_sprites.py`：地形 ×8 + 单位 ×3（含 64×64 Boss 2）+ 色弱变体 ×9，项目自有原创确定性生成。
+- 台账 +11 行、CREDITS 同步；预览 `out/m4d_sprites_preview.png`。
+
+## 5. 验证记录
+
+- 导入 0 错误；validate checked=243 errors=0（+36：3 敌 + 5 装置 + 2 相位 + 24 波 + 2 关）。
+- 单元测试 234/234 PASS（新增 `tests/unit/test_m4d_content.gd` 55 项：C13/C14 契约、召唤计时确定性、
+  沉默抑制召唤、出生里程、Boss 暴露窗口/护盾回复、Boss 末波出场）。
+- i18n：referenced=202 defined=227 missing=0。
+- 固定 tick 确定性：C13 steady 1×=3×=13267 ticks / 127 杀 / 漏5 / 完整度 15；C14 steady 1×=3×=21015 / 90 / 漏9 / 3——
+  召唤机制逐 tick 一致。
+- C14 suspend/resume：wave 6 中断 + steady 恢复通关（完整度 3，证据 `out/balance_level_c14_steady_speed3.0_resumed.json`）。本轮修复恢复路径错误使用 generated plan 的问题；标准构筑现在通过 `_resolve_smoke_plan()` 在首次运行与恢复时使用同一计划。
+- perf：见下表（--m2-perf 3× 全场）。
+
+| 关卡 | autoplay | steady | economy | synergy | perf avg / 1% low |
+|---|---|---|---|---|---|
+| C13 | win 119杀 漏14 (14631) | win 漏5 (13267) | win 漏7 (13349) | win 漏14 (14697) | 143.7 / 80.3 FPS |
+| C14 | lose（既定，同 C04） | win 漏9 (21015) | win 漏8 (21386) | win 漏9 (21357) | 143.8 / 77.6 FPS |
+
+## 6. Blockers / 未做（如实保留）
+
+- C14 autoplay lose（既定难度定位，见 §3）；C04 autoplay lose 为历史既知，m3_smoke 聚合器该项 FAIL 维持原状。
+- 「雾中医正」未实现留孢区（PRD §8.7 #3 完整语义）；孢巢供疗对 Boss 的加成幅度小（半径 40 接触窗口短）。
+- C15+、第三/四章内容未做；正式音频/手柄实机/盲测维持既有门禁。
+- 台账 M4-C 遗留一行重复记录（sprite_enemy_mirror_shade 双份），待下轮清理，不影响列数校验。

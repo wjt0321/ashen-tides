@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"marsh_mist_physician"
+schema_version = 1
+enabled = true
+designer_note = "M4-D 第二章：精英「雾中医正」——再生词缀 + 治疗光环（PRD §8.7 #3）"
+introduced_in_level = &"level_c14"
+display_name_key = &"ENEMY_MARSH_MIST_PHYSICIAN"
+max_hp = 600.0
+speed_px_per_sec = 36.0
+armor = 10.0
+glow_resist = 30.0
+leak_damage = 2
+kill_reward_ember = 60
+radius_px = 12.0
+tags = [&"healer", &"support"]
+elite = true
+boss = false
+shield_hp = 0.0
+aura_radius = 0.0
+aura_speed_mult = 1.0
+stealthed = false
+heal_radius = 96.0
+heal_per_sec = 14.0
+phase_resist_swap = false
+body_color = Color(0.45, 0.80, 0.65, 1.00)
+elite_affixes = [&"regenerating"]

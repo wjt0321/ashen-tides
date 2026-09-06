@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"spore_mother_carrier"
+schema_version = 1
+enabled = true
+designer_note = "M4-D 第二章：C13 召唤敌——本体识别考核（PRD §5.3 雾母腹地 / §8.6）"
+introduced_in_level = &"level_c13"
+display_name_key = &"ENEMY_SPORE_MOTHER_CARRIER"
+max_hp = 500.0
+speed_px_per_sec = 30.0
+armor = 20.0
+glow_resist = 20.0
+leak_damage = 2
+kill_reward_ember = 40
+radius_px = 14.0
+tags = [&"summon", &"support"]
+elite = false
+boss = false
+shield_hp = 0.0
+aura_radius = 0.0
+aura_speed_mult = 1.0
+stealthed = false
+heal_radius = 0.0
+heal_per_sec = 0.0
+phase_resist_swap = false
+body_color = Color(0.55, 0.45, 0.68, 1.00)
+summon_enemy_id = &"mast_rat_swarm"
+summon_interval_seconds = 6.0

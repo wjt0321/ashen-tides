@@ -1,7 +1,8 @@
 extends SceneTree
 ## M3 smoke aggregator: verifies C01-C12 report contracts after main.gd runs.
 const LEVELS := ["level_c01", "level_c02", "level_c03", "level_c04", "level_c05", "level_c06", "level_c07", "level_c08",
-	"level_c09", "level_c10", "level_c11", "level_c12"]
+	"level_c09", "level_c10", "level_c11", "level_c12", "level_c13"]
+# 注：level_c14（Boss 场）autoplay lose 为既定难度定位（同 level_c04），通关凭证为三套标准构筑——见 docs/M4_CONTENT_NOTES.md
 func _initialize() -> void:
 	var failures: Array[String] = []
 	for level_id: String in LEVELS:

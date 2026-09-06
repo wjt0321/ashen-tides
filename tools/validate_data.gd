@@ -287,6 +287,16 @@ func _check_enemy(enemy: EnemyData) -> void:
 		_error("%s: 有治疗光环时 heal_per_sec 必须 > 0" % where)
 	if enemy.heal_per_sec > 0.0 and enemy.heal_radius <= 0.0:
 		_error("%s: 有治疗量时 heal_radius 必须 > 0" % where)
+	# M4-D：召唤字段（C13 雾母载体）
+	if enemy.summon_interval_seconds < 0.0:
+		_error("%s: summon_interval_seconds 不能为负（%.1f）" % [where, enemy.summon_interval_seconds])
+	if enemy.summon_enemy_id != &"":
+		if enemy.summon_enemy_id == enemy.id:
+			_error("%s: 召唤目标不能是自身" % where)
+		if enemy.summon_interval_seconds <= 0.0:
+			_error("%s: 有召唤目标时 summon_interval_seconds 必须 > 0" % where)
+		if not ResourceLoader.exists("res://data/enemies/%s.tres" % enemy.summon_enemy_id):
+			_error("%s: 召唤目标不存在（%s）" % [where, enemy.summon_enemy_id])
 
 
 func _check_wave(wave: WaveData) -> void:

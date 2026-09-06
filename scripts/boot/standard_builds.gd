@@ -320,4 +320,62 @@ const BUILDS: Dictionary = {
 			[10, &"tower_needle_rail"], [&"upgrade", 10, 1], [&"upgrade", 11, 1],
 		],
 	},
+	# C13「雾母腹地」：三入口 + 召唤敌 + 隐匿敌。w1–3 只有 a/b 两路，w4 相位开 c 路（顶排 0–4 覆盖）。
+	# 召唤载体走 a/b 路，7/8/13 位集火本体；雾透镜揭示 stalker。
+	&"level_c13": {
+		STEADY: [
+			[7, &"tower_needle_rail"], [13, &"tower_needle_rail"], [2, &"tower_needle_rail"],
+			[8, &"tower_needle_rail"], [12, &"tower_ember_well"], [&"upgrade", 7, 1],
+			[1, &"tower_needle_rail"], [14, &"tower_needle_rail"], [&"upgrade", 13, 2],
+			[11, &"tower_needle_rail"], [3, &"tower_needle_rail"], [&"upgrade", 2, 1],
+			[9, &"tower_needle_rail"], [15, &"tower_ember_well"], [&"upgrade", 8, 1],
+			[4, &"tower_needle_rail"], [&"upgrade", 12, 0],
+		],
+		ECONOMY: [ # v2：补顶排 3/4 覆盖 c 路隐匿 stalker（v1 顶排仅 1/2，透镜揭示空窗漏 16）
+			[7, &"tower_needle_rail"], [13, &"tower_needle_rail"], [&"upgrade", 7, 1],
+			[2, &"tower_needle_rail"], [&"upgrade", 13, 2], [3, &"tower_needle_rail"],
+			[&"upgrade", 2, 1], [12, &"tower_ember_well"], [8, &"tower_needle_rail"],
+			[&"upgrade", 3, 1], [14, &"tower_needle_rail"], [&"upgrade", 13, -1],
+			[9, &"tower_needle_rail"], [&"upgrade", 12, 0], [4, &"tower_needle_rail"],
+			[&"upgrade", 8, 1], [1, &"tower_needle_rail"],
+		],
+		SYNERGY: [ # 相位/英雄协同：风巢跨路长程 + 棱镜贯穿 + 回声缓速沉默压制召唤（回声仅支援）
+			[2, &"tower_wind_nest"], [7, &"tower_needle_rail"], [8, &"tower_prism_grove"],
+			[13, &"tower_echo_pile"], [&"upgrade", 2, 1], [12, &"tower_ember_well"],
+			[&"upgrade", 8, 1], [14, &"tower_needle_rail"], [&"upgrade", 7, 1],
+			[9, &"tower_needle_rail"], [&"upgrade", 12, 0], [1, &"tower_needle_rail"],
+			[&"upgrade", 13, 0], [4, &"tower_needle_rail"], [&"upgrade", 9, 1],
+			[15, &"tower_ember_well"], [&"upgrade", 14, 1],
+		],
+	},
+	# C14「沼冠孢王」（Boss 场）：w1–5 仅 a 路，w6 根系改道开 b 路，w12 Boss。
+	# 孢巢 A(352,148)/B(488,216)/C(96,296) 阻挡投射物且供疗——边塔先清巢开射界，8/9/12/13 位集火 Boss 尾段。
+	&"level_c14": {
+		STEADY: [ # v4：b 路换辉光（15/12/13 喷井打 carrier glow_resist=10；v3 弩台物理漏 7 carrier）；a 路 6/7/9 喷井 + 2 砧 + 8 弩
+			[7, &"tower_ember_well"], [6, &"tower_ember_well"], [8, &"tower_needle_rail"],
+			[&"upgrade", 7, 1], [9, &"tower_ember_well"], [15, &"tower_ember_well"],
+			[&"upgrade", 6, 1], [14, &"tower_needle_rail"], [2, &"tower_tide_anvil"],
+			[&"upgrade", 8, 1], [13, &"tower_ember_well"], [12, &"tower_ember_well"],
+			[&"upgrade", 9, 0], [11, &"tower_ember_well"], [&"upgrade", 2, 0],
+			[5, &"tower_ember_well"], [&"upgrade", 14, 1], [&"upgrade", 13, 1],
+			[1, &"tower_ember_well"],
+		],
+		ECONOMY: [ # v4：同思路少塔多升级
+			[7, &"tower_ember_well"], [6, &"tower_ember_well"], [&"upgrade", 7, 1],
+			[8, &"tower_needle_rail"], [&"upgrade", 6, 1], [9, &"tower_ember_well"],
+			[&"upgrade", 7, -1], [15, &"tower_ember_well"], [2, &"tower_tide_anvil"],
+			[&"upgrade", 8, 1], [14, &"tower_needle_rail"], [&"upgrade", 9, 0],
+			[&"upgrade", 2, 0], [13, &"tower_ember_well"], [11, &"tower_ember_well"],
+			[&"upgrade", 13, 1], [12, &"tower_ember_well"], [&"upgrade", 15, 1],
+			[&"upgrade", 6, -1],
+		],
+		SYNERGY: [ # v3 Boss 集火：喷井辉光主战 + 砧塔削甲 + 回声沉默医正（v2 开局出口侧放空，w1 漏 4）
+			[7, &"tower_ember_well"], [6, &"tower_ember_well"], [&"upgrade", 7, 1],
+			[2, &"tower_tide_anvil"], [8, &"tower_needle_rail"], [&"upgrade", 2, 0],
+			[9, &"tower_ember_well"], [14, &"tower_needle_rail"], [15, &"tower_needle_rail"],
+			[&"upgrade", 6, 1], [13, &"tower_ember_well"], [&"upgrade", 9, 0],
+			[11, &"tower_echo_pile"], [12, &"tower_needle_rail"], [&"upgrade", 13, 1],
+			[&"upgrade", 8, 1], [5, &"tower_ember_well"], [&"upgrade", 12, 1],
+		],
+	},
 }

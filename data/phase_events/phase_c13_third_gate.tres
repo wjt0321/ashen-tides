@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="PhaseEventData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/phase_event_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"phase_c13_third_gate"
+schema_version = 1
+enabled = true
+designer_note = "M4-D C13：暮潮激活第三入口"
+level_id = &"level_c13"
+starts_at_wave = 4
+from_phase = &"mingchao"
+to_phase = &"muchao"
+activates_routes = [&"route_c13_c"]
+deactivates_routes = []
+environment_changes = []
+warning_seconds = 20.0
+player_interruptible = true
+becon_cost = 40

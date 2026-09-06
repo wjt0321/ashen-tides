@@ -22,6 +22,8 @@
   项目自有。变体矩阵与 `scripts/ui/ui_palette.gd` 的 apply() 逐像素一致；缺失变体自动回退基础图。
 - 第二章首批 C09–C12 精灵 19 张（主题地形 ×16 / 敌人 ×3：芦丛潜行者/孢光医者/倒映影魅）+ 色弱变体 —
   Ember Tide dev，由 `tools/gen_chapter2_sprites.py` 确定性生成，项目自有。
+- 第二章收口 C13–C14 精灵 11 张（主题地形 ×8 / 敌人 ×3：雾母载体/雾中医正/沼冠孢王 64×64）+ 色弱变体 —
+  Ember Tide dev，由 `tools/gen_chapter2b_sprites.py` 确定性生成，项目自有。
 
 ## 试验性资产（不随构建默认启用）
 

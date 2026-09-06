@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=17 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/level_data.gd" id="1"]
+[ext_resource type="Resource" path="res://data/waves/wave_c13_01.tres" id="w0"]
+[ext_resource type="Resource" path="res://data/waves/wave_c13_02.tres" id="w1"]
+[ext_resource type="Resource" path="res://data/waves/wave_c13_03.tres" id="w2"]
+[ext_resource type="Resource" path="res://data/waves/wave_c13_04.tres" id="w3"]
+[ext_resource type="Resource" path="res://data/waves/wave_c13_05.tres" id="w4"]
+[ext_resource type="Resource" path="res://data/waves/wave_c13_06.tres" id="w5"]
+[ext_resource type="Resource" path="res://data/waves/wave_c13_07.tres" id="w6"]
+[ext_resource type="Resource" path="res://data/waves/wave_c13_08.tres" id="w7"]
+[ext_resource type="Resource" path="res://data/waves/wave_c13_09.tres" id="w8"]
+[ext_resource type="Resource" path="res://data/waves/wave_c13_10.tres" id="w9"]
+[ext_resource type="Resource" path="res://data/waves/wave_c13_11.tres" id="w10"]
+[ext_resource type="Resource" path="res://data/waves/wave_c13_12.tres" id="w11"]
+[ext_resource type="Resource" path="res://data/phase_events/phase_c13_third_gate.tres" id="pe0"]
+[ext_resource type="Resource" path="res://data/devices/device_c13_mist_lens_a.tres" id="dv0"]
+[ext_resource type="Resource" path="res://data/devices/device_c13_mist_lens_b.tres" id="dv1"]
+
+[resource]
+script = ExtResource("1")
+id = &"level_c13"
+schema_version = 1
+enabled = true
+designer_note = "M4-D 第二章：C13「雾母腹地」——三入口 + 视野脉冲 + 召唤敌（本体识别考核，PRD §5.3）"
+display_name_key = &"LEVEL_C13"
+map_size_cells = Vector2i(20, 11)
+initial_ember = 1000
+initial_fleet_integrity = 20
+allowed_towers = [&"tower_needle_rail", &"tower_ember_well", &"tower_echo_pile", &"tower_wind_nest", &"tower_prism_grove"]
+route_ids = [&"route_c13_a", &"route_c13_b", &"route_c13_c"]
+route_points = [PackedVector2Array(0, 120, 288, 120, 288, 208, 640, 208), PackedVector2Array(0, 312, 416, 312, 416, 240, 640, 240), PackedVector2Array(0, 32, 512, 32, 512, 96, 640, 96)]
+default_active_route = &"route_c13_a"
+initial_active_routes = [&"route_c13_a", &"route_c13_b"]
+build_node_positions = [Vector2(64, 72), Vector2(160, 72), Vector2(256, 72), Vector2(352, 72), Vector2(448, 72), Vector2(64, 168), Vector2(160, 168), Vector2(240, 168), Vector2(336, 168), Vector2(432, 168), Vector2(608, 168), Vector2(64, 264), Vector2(160, 264), Vector2(256, 264), Vector2(360, 264), Vector2(544, 264), Vector2(96, 344), Vector2(520, 344)]
+waves = [ExtResource("w0"), ExtResource("w1"), ExtResource("w2"), ExtResource("w3"), ExtResource("w4"), ExtResource("w5"), ExtResource("w6"), ExtResource("w7"), ExtResource("w8"), ExtResource("w9"), ExtResource("w10"), ExtResource("w11")]
+phase_events = [ExtResource("pe0")]
+allowed_heroes = [&"hero_lanzhou_wei", &"hero_zhushou_muen"]
+hero_spawn = Vector2(320, 160)
+primary_objective_key = &"OBJ_PRIMARY_SURVIVE"
+strategy_objective_key = &"OBJ_C13_STRATEGY"
+strategy_objective_op = &"upgrade_any_tower"
+integrity_mark_threshold = 12
+tutorial_id = &""
+chapter_index = 2
+target_tags = [&"summon", &"stealth", &"support"]
+devices = [ExtResource("dv0"), ExtResource("dv1")]

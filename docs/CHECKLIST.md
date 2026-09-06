@@ -142,7 +142,17 @@
 - [x] 视觉：visual_theme 第二章 4 主题 + `gen_chapter2_sprites.py` 地形 ×16/敌 ×3/变体 ×9 + 关卡装饰 ×4；台账 +19 行、CREDITS 同步
 - [x] 测试：tests 179/179（新增 test_m4c_content.gd 62 项）；validate checked=207 errors=0；i18n missing=0
 - [x] C09–C12 balance steady 1×/3× 确定性对照与 perf 报告生成（C04–C12 regression/perf 聚合均 failures=0 PASS；见 [M4_CONTENT_NOTES.md](M4_CONTENT_NOTES.md) §5）
-- **记录**：[M4_CONTENT_NOTES.md](M4_CONTENT_NOTES.md)；未做项（C13–C14/Boss 2、autoplay 难度定位、精英敌、掩体仅挡投射物）见该文 §6
+- **记录**：[M4_CONTENT_NOTES.md](M4_CONTENT_NOTES.md)；本节原未做项 C13–C14/Boss 2/精英敌已在 M4-D 完成。
+
+## M4-D：第二章 C13–C14 与 Boss 2 收口（2026-09-06）
+
+- [x] C13–C14 数据：2 LevelData + 24 WaveData + 3 新敌人（召唤敌/精英/Boss 2）+ 5 装置 + 2 相位事件 + i18n 9 keys
+- [x] 新机制：固定 tick 确定性召唤、沉默抑制、召唤物沿父路线出生；Boss 2 三阶段、孢巢供疗/挡弹、根系改道和核心暴露窗口
+- [x] 标准构筑：C13/C14 steady/economy/synergy 6/6 win，无 simulation_assist；只迭代构筑与 C14 波次构成，未改敌人数值
+- [x] 正式像素基线：C13/C14 地形 ×8，召唤敌/精英/Boss 2 精灵与三套色弱变体；台账和 Credits 同步
+- [x] 验证：validate checked=243 errors=0；tests 234/234；i18n referenced=202 missing=0；C13/C14 steady 1×=3×；C14 suspend/resume win；perf C14 avg 143.8 / 1% low 77.6 FPS
+- [x] 修复标准构筑恢复：resume 现在复用 `StandardBuilds` 计划，不再错误回退 generated plan
+- **记录**：[M4_CONTENT_NOTES.md](M4_CONTENT_NOTES.md) M4-D 段；后续从 C15 开始。C14 autoplay lose 为既定 Boss 难度定位，不影响标准构筑门禁。
 
 ## 5. M4：全战役 Alpha（C09–C24）
 

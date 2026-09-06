@@ -305,6 +305,25 @@ func _draw_level_flavor(land_a: Color, land_b: Color, edge: Color, accent: Color
 			var barnacle := Color(edge.r, edge.g, edge.b, 0.6)
 			draw_circle(Vector2(104, 224), 1.4, barnacle)
 			draw_circle(Vector2(548, 112), 1.2, barnacle)
+		&"level_c13":
+			# 雾母腹地：低垂雾团（半透明椭圆弧）+ 飘浮孢光点
+			var mist := Color(foam.r, foam.g, foam.b, 0.10)
+			draw_arc(Vector2(150, 100), 34.0, PI * 0.9, PI * 2.1, 16, mist, 6.0)
+			draw_arc(Vector2(430, 300), 40.0, PI * 1.1, PI * 2.3, 16, mist, 7.0)
+			draw_arc(Vector2(560, 60), 26.0, PI * 0.8, PI * 2.0, 14, mist, 5.0)
+			var mote := Color(glow.r, glow.g, glow.b, 0.5)
+			draw_circle(Vector2(212, 146), 1.3, mote)
+			draw_circle(Vector2(428, 286), 1.2, mote)
+			draw_circle(Vector2(566, 52), 1.1, mote)
+		&"level_c14":
+			# 沼冠孢王：背景巨大孢冠剪影（Boss 巢）+ 散落孢囊
+			var crown := VisualTheme.shade(land_b, 0.8)
+			draw_arc(Vector2(320, 400), 150.0, PI * 1.15, PI * 1.85, 24, crown, 10.0)
+			draw_arc(Vector2(320, 400), 128.0, PI * 1.2, PI * 1.8, 20, VisualTheme.shade(accent, 0.5), 3.0)
+			var sac := Color(accent.r, accent.g, accent.b, 0.55)
+			draw_circle(Vector2(60, 210), 2.2, sac)
+			draw_circle(Vector2(590, 120), 2.6, sac)
+			draw_circle(Vector2(380, 330), 2.0, sac)
 
 
 ## 资产替换试验（NEXT_PHASE C）：在 C01 顶部岸带与右岸礁岛铺 Buch 岩石 tile。
