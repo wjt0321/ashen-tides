@@ -9,6 +9,7 @@
 - [ASSET_CATALOG.md](ASSET_CATALOG.md) —— 美术风格、资产候选和许可证生命周期。
 - [CHECKLIST.md](CHECKLIST.md) —— 进度证据索引；不单独决定阶段是否通过。
 - [PLAYER_EXPERIENCE_AUDIT.md](PLAYER_EXPERIENCE_AUDIT.md) —— 2026-09-06 当前真实可用范围与缺口审计。
+- [OPEN_SOURCE_TD_RESEARCH.md](OPEN_SOURCE_TD_RESEARCH.md) —— 开源塔防产品、架构和资产许可参照研究。
 - `NEXT_PHASE*` / `M3_*` / `M4_*_NOTES` —— 历史阶段计划与实施证据，不再决定当前执行顺序。
 - `*_DRAFT.md` / `REVIEW_*.md` —— 历史草稿与审查记录，仅用于追溯。
 

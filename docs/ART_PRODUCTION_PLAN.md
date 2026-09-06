@@ -104,11 +104,11 @@ Style Bible 未经一次整屏 mockup 评审通过，不得批量生产。
 
 ### ART-D-CHAPTER1：第一章批量生产
 
-只在 C01–C03 Player-verified 后扩 C04–C08。按“关卡资产包”交付，不按“先画全敌人后再接入”交付。
+只有 `docs/gates/M2-GATE.yaml` 在当前有效 revision 上正式 `PASSED` 后，才能扩 C04–C08；C01–C03 Player-verified 只是必要条件之一。按“关卡资产包”交付，不按“先画全敌人后再接入”交付。
 
 ### ART-E-LATER-CHAPTERS：后续章节
 
-第二、三、四章依次进行：章节概念板 → 章节纵向关 → 章节批量 → Boss 包 → 章节整屏 QA。已有 C09–C14 程序图继续作占位，等待其章节 Gate。
+C09 及以后章节的正式资产生产只有 M3 Gate 在当前有效 revision 上正式 `PASSED` 后才能开始，且后续各章继续受对应前置 Gate 约束。通过后依次进行：章节概念板 → 章节纵向关 → 章节批量 → Boss 包 → 章节整屏 QA。已有 C09–C14 程序图继续作占位，等待其章节 Gate。
 
 ### ART-F-SHIPPING：内容锁定与 Shipping
 

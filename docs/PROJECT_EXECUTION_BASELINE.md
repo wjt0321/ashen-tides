@@ -4,7 +4,7 @@
 > 建立日期：2026-09-06
 > 状态：**Active / 唯一执行顺序来源**
 > 上位依据：[PRD.md](PRD.md)
-> 当前提交基线：`1495fdd`
+> 首次纠偏审计基线：`1495fdd`；本文件自身及后续治理提交不自动改变 M2 `BLOCKED` 结论
 
 ## 1. 本文件解决什么问题
 
@@ -144,7 +144,7 @@ M2 Gate 的产品级验收脚本必须覆盖：
 7. **证据**：自动化、截图/录像和人工名单是否真实存在？
 8. **诚实性**：是否存在 Data-only 被写成完成、占位被写成最终？
 
-八项全部通过才可提交评审；**只有教主（项目人类主理人）可以批准 Gate Passed**。Agent 只能写 `SUBMITTED_FOR_REVIEW` 或 `BLOCKED`。
+八项全部通过才可提交评审；**只有项目人类主理人可以批准 Gate Passed**。Agent 只能写 `SUBMITTED_FOR_REVIEW` 或 `BLOCKED`。
 
 唯一有效的 Gate 决议必须存为 `docs/gates/<gate_id>.yaml`，至少包含：
 
@@ -167,7 +167,7 @@ supersedes: <previous decision id>
 
 ## 8. 变更控制
 
-当前 `PRD.md`、`RESEARCH_REPORT.md`、`ASSET_CATALOG.md` 仍标记为 `Proposed`。它们可以约束“不得超前”和定义待批准目标，但在教主明确批准并记录 revision 前，任何 Gate 均不得写 `PASSED`。
+当前 `PRD.md`、`RESEARCH_REPORT.md`、`ASSET_CATALOG.md` 仍标记为 `Proposed`。它们可以约束“不得超前”和定义待批准目标，但在项目人类主理人明确批准并记录 revision 前，任何 Gate 均不得写 `PASSED`。
 
 - PRD 范围变化：修改 PRD，记录批准人和影响。
 - 执行顺序变化：修改本文件，说明依赖变化。
