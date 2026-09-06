@@ -1,8 +1,12 @@
 # 《余烬潮汐》项目 Checklist
 
-> 用途：项目推进过程中的唯一记录入口。完成一项后将 `[ ]` 改为 `[x]`，并在“记录”栏补日期、证据或链接。
+> 用途：本文件只存放状态与证据索引，完全不具有阶段判定、任务排序、Gate 解锁或状态批准权；任何勾选都不能单独证明完成。
 >
-> 规则：先完成当前阶段退出条件，再进入下一阶段；任何新增需求先标记 Must / Should / Later，并同步 PRD。
+> 当前执行权威：[PROJECT_EXECUTION_BASELINE.md](PROJECT_EXECUTION_BASELINE.md)；美术生产权威：[ART_PRODUCTION_PLAN.md](ART_PRODUCTION_PLAN.md)。
+>
+> 2026-09-06 纠偏：官方阶段回退到 **M2 Gate 未通过**；C04–C14 为提前集成的 provisional 内容。历史勾选保留作实现证据，不等于对应产品阶段 Passed。
+>
+> 规则：只有执行基线定义的当前 Gate 全部通过才能进入下一阶段；任何新增需求先标记 Must / Should / Later，并同步 PRD。
 
 ## 0. 项目决策与文档
 
@@ -55,23 +59,23 @@
 > 这不是 Demo/MVP。C01–C03 是 v1.0 正式前三关，验证通过后直接保留。
 
 - [x] C01–C03 的正式路线、波次和目标规格完成
-- [x] 6 座塔中至少 3 座达到正式质量，每座至少 2 个模块可玩
-- [x] 1 名英雄达到正式质量
-- [x] 6–8 个正式敌人
+- [~] 3 座塔玩法/数据已 Integrated 且模块可玩；正式视觉、动画及 Player-verified 未完成
+- [~] 1 名英雄战斗能力已 Integrated；正式视觉、动画及正式 UI 选择路径未完成
+- [~] 6–8 个敌人的数据与战斗行为已 Integrated；不得称为正式敌人
 - [x] 两种相位模板
 - [x] 中英本地化 key 全流程可用
 - [ ] CJK 字体在 640×360、125%/150% UI 缩放下可读
 - [x] 键鼠完整流程通过
 - [ ] 手柄完整流程通过
 - [x] 基础无障碍：色弱、高对比、低特效、独立音量、重绑定
-- [x] 教程、战报、结算、设置、存档流程完整
+- [~] 战斗内教程/战报/结算/设置/单槽存档部分 Integrated；完整玩家首尾流程未完成
 - [ ] 正式音频混音与关键威胁事件音效完成
-- [x] 目标机器达到 60 FPS，3×速度无状态错误
+- [~] 开发机性能与 3×状态报告存在；PRD 目标机器/显示矩阵未验证
 - [ ] 许可证台账中 C01–C03 使用的资产全部有证据
-- [ ] 15 名盲测者中至少 70% 完成 C03
+- [ ] 5 名有效盲测者中至少 70% 完成 C03（以 PRD §22 M2 Gate 为准）
 - [ ] 至少 1 张商店级截图和 30 秒战斗录屏
 - [ ] M2 退出评审并按实测吞吐重估全项目
-- **记录**：2026-09-05 M2 技术实现收口（agent 执行；人工门禁未通过）。数据层：3 关卡（level_c01/c02/c03）/ 21 波次（6+7+8）/ 3 塔（needle_rail/ember_well/echo_pile）/ 9 模块（每塔 3 个）/ 6 敌（salt_shell_walker / mast_rat_swarm / splitfin_dasher / rust_armor_carrier / lamp_leech / tide_back_navigator）/ 1 英雄（lanzhou_wei）/ 3 技能（grapple_shift/flare_mark/route_sweep）/ 1 装置（device_c03_lighthouse）/ 2 相位事件（phase_c02_tidegate 明→暮改道 / phase_c03_beacon_failure 暮潮装置失效）。关卡硬约束：8–22 BuildNode、PathRoute 与 BuildNode ≥24px 互斥、入口/出口贴地图边缘（validate_data.gd 强制）。系统：固定 tick 60Hz + 0.5/1/2/3× 速度（PRD §18.5）；II 级校准模块三选一模态；潮汐仪 40 充能干预相位 ±10s，与英雄终极技 80 争夺同一账本；suspend save 波次完成时写入，--stop-after-wave → --resume-suspend 验证一致（PASS）。Phase C UI：PauseMenuPanel（继续/设置/重开，Esc 关闭）/ SettingsPanel（5 路音量滑杆 + 4 预色弱/高对比/低特效/自动施放 + 中英切换 + 13 项键鼠重绑定含冲突检测与默认恢复）/ BattleResultPanel（印记 + 漏怪构成 + 伤害构成 + 未覆盖标签 + 复盘建议）/ TutorialOverlay（c01/c02/c03 三套步骤定义，F1 跳过，完成状态持久化）。LocalizationService 注册 Autoload，152→161 keys，0 missing / 27 unused（informational）。AudioService 注册 Autoload，6 总线（Master/Music/SFX/Ambient/UI/Voice）+ 21 事件占位合成音（16-bit PCM → AudioStreamWAV 缓存）+ 总线音量随 SettingsService 同步。UiPalette 静态类：色弱 4 预设 + 高对比/低特效开关。验证证据：tools/validate_data.gd checked=49 errors=0 PASS；tools/run_tests.gd pass=47 fail=0 PASS（5 套件）；tools/check_i18n.gd 0 missing；smoke：C01 1×/3× = ticks=7017 kills=90 leaks=0 marks=3/3；C02 3× = ticks=10047 kills=103 leaks=5 marks=1/3；C03 1×/3× = ticks=11558 kills=119 leaks=10 marks=2/3（含潮汐仪+终极技双消耗与装置修复演示）；C03 3× resume-suspend = suspend_restored=true ticks=8571 marks=2/3；perf C01/C02/C03 3× 全部 ≥140fps 1%low ≥100fps；60s 浸泡 0 ERROR；窗口运行截图 out/m2_screenshot.png、out/m2_screenshot_pause.png 可读。未完成（留 M3+/人工）：CJK 字体锁定（占位 Noto Sans 默认）+ 实际中文字符验证；手柄完整流程（手柄按钮已绑 Space/Pause/Cycle/Xbox Y/E 等，触发器代码就位但未在物理机器验证）；5–15 名盲测（人工门禁）；30 秒战斗录屏（Godot 编辑器可，但 M2 内未执行录制 → 已通过 Movie Maker 模式写好代码 --m2-record=<秒>）；正式资产（C01–C03 的所有 sprite/VFX/UI 仍为灰盒/占位，ASSET_LICENSE_LEDGER 仅记录 Creative 框架）。详见 docs/M2_SLICE_NOTES.md。
+- **记录**：2026-09-05 M2 技术实现收口（agent 执行；人工门禁未通过）。数据层：3 关卡（level_c01/c02/c03）/ 21 波次（6+7+8）/ 3 塔（needle_rail/ember_well/echo_pile）/ 9 模块（每塔 3 个）/ 6 敌（salt_shell_walker / mast_rat_swarm / splitfin_dasher / rust_armor_carrier / lamp_leech / tide_back_navigator）/ 1 英雄（lanzhou_wei）/ 3 技能（grapple_shift/flare_mark/route_sweep）/ 1 装置（device_c03_lighthouse）/ 2 相位事件（phase_c02_tidegate 明→暮改道 / phase_c03_beacon_failure 暮潮装置失效）。关卡硬约束：8–22 BuildNode、PathRoute 与 BuildNode ≥24px 互斥、入口/出口贴地图边缘（validate_data.gd 强制）。系统：固定 tick 60Hz + 0.5/1/2/3× 速度（PRD §18.5）；II 级校准模块三选一模态；潮汐仪 40 充能干预相位 ±10s，与英雄终极技 80 争夺同一账本；suspend save 波次完成时写入，--stop-after-wave → --resume-suspend 验证一致（PASS）。Phase C UI：PauseMenuPanel（继续/设置/重开，Esc 关闭）/ SettingsPanel（5 路音量滑杆 + 4 预色弱/高对比/低特效/自动施放 + 中英切换 + 13 项键鼠重绑定含冲突检测与默认恢复）/ BattleResultPanel（印记 + 漏怪构成 + 伤害构成 + 未覆盖标签 + 复盘建议）/ TutorialOverlay（c01/c02/c03 三套步骤定义，F1 跳过，完成状态持久化）。LocalizationService 注册 Autoload，152→161 keys，0 missing / 27 unused（informational）。AudioService 注册 Autoload，6 总线（Master/Music/SFX/Ambient/UI/Voice）+ 21 事件占位合成音（16-bit PCM → AudioStreamWAV 缓存）+ 总线音量随 SettingsService 同步。UiPalette 静态类：色弱 4 预设 + 高对比/低特效开关。验证证据：tools/validate_data.gd checked=49 errors=0 PASS；tools/run_tests.gd pass=47 fail=0 PASS（5 套件）；tools/check_i18n.gd 0 missing；smoke：C01 1×/3× = ticks=7017 kills=90 leaks=0 marks=3/3；C02 3× = ticks=10047 kills=103 leaks=5 marks=1/3；C03 1×/3× = ticks=11558 kills=119 leaks=10 marks=2/3（含潮汐仪+终极技双消耗与装置修复演示）；C03 3× resume-suspend = suspend_restored=true ticks=8571 marks=2/3；perf C01/C02/C03 3× 全部 ≥140fps 1%low ≥100fps；60s 浸泡 0 ERROR；窗口运行截图 out/m2_screenshot.png、out/m2_screenshot_pause.png 可读。未完成（留 M3+/人工）：CJK 字体锁定（占位 Noto Sans 默认）+ 实际中文字符验证；手柄完整流程（手柄按钮已绑 Space/Pause/Cycle/Xbox Y/E 等，触发器代码就位但未在物理机器验证）；PRD 规定的 5 名有效盲测（人工门禁）；30 秒战斗录屏（Godot 编辑器可，但 M2 内未执行录制 → 已通过 Movie Maker 模式写好代码 --m2-record=<秒>）；正式资产（C01–C03 的所有 sprite/VFX/UI 仍为灰盒/占位，ASSET_LICENSE_LEDGER 仅记录 Creative 框架）。详见 docs/M2_SLICE_NOTES.md。
 
 ## 4. M3：第一章完整生产（C04–C08）
 
@@ -83,8 +87,8 @@
 - [ ] 每关至少 3 套标准构筑可通
 - [ ] 关卡生产速度稳定在预测区间 ±25%
 - [ ] 建立平衡报告与回归报告
-- [x] M3 退出评审（条件通过；见 [M3_GATE_REVIEW.md](M3_GATE_REVIEW.md)）
-- **记录**：2026-09-05 自动化门禁与标准构筑已收口；手柄实机、低端机性能、5–15 人盲测、正式音频和 Shipping 美术仍为后续人工/资产门禁，未伪装为完成。
+- [!] 历史记录：曾记录为“M3 条件通过”，已于 2026-09-06 废止；前置 M2 Gate 未 Passed，因此不产生阶段解锁效力
+- **历史记录**：2026-09-05 自动化与标准构筑证据曾收口；手柄实机、目标机性能、PRD 规定的 5 名有效盲测、正式音频和 Shipping 美术均未通过。
 
 ## M3 阶段记录
 
@@ -92,7 +96,7 @@
 
 ## Polish 阶段记录（表现与可玩性增强，2026-09-05）
 
-> 用户试玩反馈"方向正确但整体太简陋"后的表现增强阶段，已完成，状态 DONE（不含正式资产门禁）。
+> 用户试玩反馈"方向正确但整体太简陋"后的表现增强记录；实现状态为 Integrated provisional，不代表 M2/M3 Gate、Release-ready 或 Shipping。
 > 详见 [M3_POLISH_NOTES.md](M3_POLISH_NOTES.md) 与 [M3_POLISH_TODO.md](M3_POLISH_TODO.md)。
 > 范围：VisualTheme 8 关调色板、地形/路线/塔/敌/英雄程序化剪影、FX 反馈层（命中/击杀/漏怪/建造/升级/相位/震屏，可关）、
 > HUD 增强（相位条/波次横幅/技能坞/Boss 血条）。全部程序化矢量，无第三方资产，未改核心规则与 sim 数值。
@@ -102,7 +106,7 @@
 > 截图证据：out/polish_level_c01_wave2.png / polish_level_c03_wave3.png / polish_level_c06_wave3.png / polish_level_c08_wave12.png。
 > 不勾选任何 M3 正式门禁：正式美术/字体/音频/盲测/低端机验证仍为 blocker。
 
-## 当前下一阶段：M3 Gate Closure + Asset Pipeline
+## 历史计划记录：M3 Gate Closure + Asset Pipeline（已失效，不可执行）
 
 - [x] C04/C07 标准难度平衡分析与修正（结论：无需改数值，构筑迭代解决；详见 NEXT_PHASE_NOTES §2/§3）
 - [x] C01–C08 每关 3 套标准构筑验证（24/24 win，speed 3× 无辅助；out/balance_*.json × 24）
@@ -111,9 +115,9 @@
 - [x] C01 第一批正式资产替换试验（AT-TER-001 Buch CC0；--asset-trial 开关；结论 trial-only 不默认启用；out/asset_trial_c01_on/off.png）
 - [x] 已接入资产许可证证据齐全（ASSET_LICENSE_LEDGER.csv 16 行：OFL/CC0 原文、sha256、署名文本；无 Indirect/Not verified 接入项）
 - [x] 标准模式固定 Tick / 1× / 3× 回归（C01/C04/C07 steady 1× vs 3× ticks/kills/leaks/完整度全等）
-- [ ] M3 Gate 退出评审（人工门禁，未做）
+- [!] 曾生成条件评审记录，但前置 M2 Gate 未通过，且无有效人类 Gate Passed 决议；当前无阶段效力
 - **阶段说明**：[NEXT_PHASE.md](NEXT_PHASE.md)
-- **记录**：2026-09-05 执行完成 P0 全部项 + P1 可自动化项，并完成 M3 Gate 条件退出评审，详见 [NEXT_PHASE_NOTES.md](NEXT_PHASE_NOTES.md) 与 [M3_GATE_REVIEW.md](M3_GATE_REVIEW.md)。剩余人工门禁：手柄实机、低端机性能、5–15 人盲测；正式音频/美术资产仍未宣称完成。
+- **历史记录**：2026-09-05 完成部分自动化与实现证据，并生成过 M3 条件评审；该评审已被当前执行基线废止，不能解锁 M3/M4。人工与发布质量门禁仍未通过。
 - **GitHub**：Public 仓库已创建并推送：<https://github.com/wjt0321/ashen-tides>；`main` 首个基线提交 `ae51920`，文档/忽略规则提交 `6d7c019`；2026-09-05 可见性改为 Public 并推送 `8e2855c`。
 
 ## M4-A：C01 正式资产纵向切片（2026-09-05）
@@ -149,10 +153,10 @@
 - [x] C13–C14 数据：2 LevelData + 24 WaveData + 3 新敌人（召唤敌/精英/Boss 2）+ 5 装置 + 2 相位事件 + i18n 9 keys
 - [x] 新机制：固定 tick 确定性召唤、沉默抑制、召唤物沿父路线出生；Boss 2 三阶段、孢巢供疗/挡弹、根系改道和核心暴露窗口
 - [x] 标准构筑：C13/C14 steady/economy/synergy 6/6 win，无 simulation_assist；只迭代构筑与 C14 波次构成，未改敌人数值
-- [x] 正式像素基线：C13/C14 地形 ×8，召唤敌/精英/Boss 2 精灵与三套色弱变体；台账和 Credits 同步
+- [x] 程序生成视觉基线（Integrated placeholder）：C13/C14 地形 ×8，召唤敌/精英/Boss 2 精灵与三套色弱变体；台账和 Credits 同步
 - [x] 验证：validate checked=243 errors=0；tests 234/234；i18n referenced=202 missing=0；C13/C14 steady 1×=3×；C14 suspend/resume win；perf C14 avg 143.8 / 1% low 77.6 FPS
 - [x] 修复标准构筑恢复：resume 现在复用 `StandardBuilds` 计划，不再错误回退 generated plan
-- **记录**：[M4_CONTENT_NOTES.md](M4_CONTENT_NOTES.md) M4-D 段；后续从 C15 开始。C14 autoplay lose 为既定 Boss 难度定位，不影响标准构筑门禁。
+- **历史记录**：[M4_CONTENT_NOTES.md](M4_CONTENT_NOTES.md) M4-D 段。旧“后续从 C15 开始”方向已废止；只有 M2-GATE 和后续 M3-GATE 均由人类主理人正式批准后，才允许恢复 M4 批量内容。
 
 ## 玩家体验质量纠偏（2026-09-06）
 

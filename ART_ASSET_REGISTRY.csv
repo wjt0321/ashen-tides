@@ -1,0 +1,2 @@
+﻿asset_id,runtime_ids,chapter,first_level,asset_lifecycle_status,art_status,placeholder,active_version,source_hash,export_hash,license_ledger_id,required_animations,completed_animations,visual_qa_evidence,player_test_evidence,approved_by,approval_record,target_build
+PLACEHOLDER_GENERATED_ART,assets/art/**,prologue-chapter2,C01,Implemented,Integrated,true,v1,,,ASSET_LICENSE_LEDGER.csv,"per ART_PRODUCTION_PLAN; not yet itemized",single-frame-baseline,"historical screenshots only",,,,

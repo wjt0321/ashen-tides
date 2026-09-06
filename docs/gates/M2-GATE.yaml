@@ -1,0 +1,20 @@
+gate_id: M2-GATE
+status: BLOCKED
+evaluated_revision: 1495fdd
+build_hash: ""
+criteria_revision: "PRD Proposed v1.0; approval pending"
+submitted_by: BpDpoM
+approved_by: ""
+approved_at: ""
+approval_record: ""
+evidence_manifest: ""
+blockers:
+  - PLAYER_MAIN_FLOW
+  - FINAL_ART_AND_ANIMATION_C01_C03
+  - FINAL_AUDIO_C01_C03
+  - GAMEPAD_END_TO_END
+  - TARGET_MACHINE_AND_DISPLAY_MATRIX
+  - FIVE_PLAYER_BLIND_TEST
+  - STORE_SCREENSHOT_AND_30S_VIDEO
+  - ASSET_VERIFIED_STATUS_C01_C03
+supersedes: "M3 conditional review and later-stage claims are non-authoritative"

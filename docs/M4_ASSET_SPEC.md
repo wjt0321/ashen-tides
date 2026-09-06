@@ -1,7 +1,8 @@
-# M4-A 美术技术规范（v1.0 正式资产基线）
+# M4-A 美术技术接入规范（历史基线）
 
 > 建立日期：2026-09-05
-> 状态：Locked（M4-A）
+> 当前状态：Historical / 技术接入参考；不代表最终视觉冻结或 Shipping
+> 当前美术生产权威：[ART_PRODUCTION_PLAN.md](ART_PRODUCTION_PLAN.md)
 > 依据：PRD §12.4 像素视觉规范、§18.6 许可证；ASSET_CATALOG.md §11–12 落地流程（本规范不修改 catalog，仅作执行细则）
 > 适用范围：C01 正式资产纵向切片及后续全部正式资产生产。任何与本规范冲突的资产不得标记为 Shipping。
 

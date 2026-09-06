@@ -1,7 +1,8 @@
-# 下一阶段：M3 Gate Closure + Asset Pipeline
+# 历史阶段计划：M3 Gate Closure + Asset Pipeline
 
 > 建立日期：2026-09-05
-> 状态：Planned
+> 当前状态：Historical / 已被 `PROJECT_EXECUTION_BASELINE.md` 取代，不再决定执行顺序
+> 原状态：Planned
 > 目标：把现有 C01–C08 从“系统与表现已成型、仍有门禁缺口”推进到“标准难度可评估、正式资产可安全接入、M3 可以退出评审”。
 
 ## 为什么是这一阶段
