@@ -3,6 +3,7 @@ GAME_TITLE,余烬潮汐 Ashen Tides,Ashen Tides
 MENU_CONTINUE,继续,Continue
 MENU_SETTINGS,设置,Settings
 MENU_RESTART,重开本关,Restart Level
+MENU_NEXT_LEVEL,下一关,Next Level
 MENU_CLOSE,关闭,Close
 MENU_SKIP,跳过,Skip
 PAUSE_TITLE,暂停,Paused

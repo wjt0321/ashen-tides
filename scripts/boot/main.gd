@@ -217,9 +217,9 @@ func _ready() -> void:
 	EventBus.phase_changed.connect(_on_phase_visual)
 	EventBus.settings_applied.connect(_refresh_localized_texts)
 	_refresh_localized_texts()
-	# 关卡教程启动
+	# 关卡教程启动（延迟到首帧：保证 overlay._ready 已完成，也避免测试环境手动生命周期下空引用）
 	if not String(_level.tutorial_id).is_empty():
-		_tutorial_overlay.start_for(_level.tutorial_id)
+		_tutorial_overlay.start_for.call_deferred(_level.tutorial_id)
 	print("[M2] level=%s routes=%d build_nodes=%d waves=%d towers=%d hero=%s" % [
 		_level_id, _level.route_ids.size(), _build_nodes.size(), _director.total_waves(),
 		_towers_available.size(), _hero_data.id if _hero_data else "none"
@@ -362,6 +362,7 @@ func _build_ui_panels() -> void:
 	_result_panel.name = "BattleResult"
 	add_child(_result_panel)
 	_result_panel.restart_requested.connect(_on_pause_restart)
+	_result_panel.next_level_requested.connect(_on_next_level_requested)
 	_result_panel.closed.connect(func() -> void:
 		_menu_open = _pause_menu.is_open() or _settings_panel.is_open())
 	_tutorial_overlay = TutorialOverlay.new()
@@ -542,6 +543,11 @@ func _reset_battle_state() -> void:
 	_smoke_ult_used = false
 	_smoke_tide_used = false
 	_smoke_repair_demo = false
+	# S1 修复：上局塔随 _battle_root 清空，节点占用状态必须同步复位——
+	# 否则重开后已建节点永久保持 OCCUPIED（_refresh_build_node_states 跳过占用节点）
+	for node: BuildNodeVisual in _build_nodes:
+		if node.state != BuildNodeVisual.State.FREE:
+			node.set_state(BuildNodeVisual.State.FREE)
 	_refresh_build_node_states()
 	EventBus.ember_changed.emit(_ember)
 	EventBus.fleet_integrity_changed.emit(_fleet_integrity)
@@ -775,6 +781,38 @@ func _on_pause_restart() -> void:
 	_pause_menu.close()
 	_menu_open = false
 	_restart_battle()
+
+
+## 下一关 id（战役推进）：按 data/levels/ 文件名序取当前关之后一关；末关/异常返回空。
+func _next_level_id() -> StringName:
+	var dir := DirAccess.open(LEVEL_DIR)
+	if dir == null:
+		return &""
+	var ids: Array[String] = []
+	for file_name: String in dir.get_files():
+		if file_name.begins_with("level_") and file_name.ends_with(".tres"):
+			ids.append(file_name.trim_suffix(".tres"))
+	ids.sort()
+	var idx := ids.find(String(_level_id))
+	if idx < 0 or idx + 1 >= ids.size():
+		return &""
+	return StringName(ids[idx + 1])
+
+
+## 结算「下一关」（S1 修复：通关后推进）：载入下一关并重置战斗状态；失败则留本关。
+func _on_next_level_requested() -> void:
+	var next_id := StringName(String(_last_result.get("next_level_id", "")))
+	if next_id == &"":
+		return
+	_result_panel.hide_panel()
+	_settings_panel.close()
+	_pause_menu.close()
+	_menu_open = false
+	if not _load_level(next_id):
+		_flash_notice(LocalizationService.tr_key(&"HUD_NO_SUSPEND"))
+		return
+	_reset_battle_state()
+	print("[M2] advance to next level: %s" % next_id)
 
 
 func _change_speed(direction: int) -> void:
@@ -1266,9 +1304,17 @@ func _enter_win() -> void:
 		"best_integrity": maxi(_fleet_integrity, int(prev.get("best_integrity", 0))),
 	}
 	campaign["level_results"] = results
+	# 关卡解锁写入（PRD §7：完成关卡解锁下一关）：按文件名序的下一关记入 unlocked_levels
+	var next_id := String(_next_level_id())
+	if not next_id.is_empty():
+		var unlocked: Array = campaign.get("unlocked_levels", [])
+		if not unlocked.has(next_id):
+			unlocked.append(next_id)
+		campaign["unlocked_levels"] = unlocked
 	campaign["profile_id"] = "default"
 	SaveService.write_campaign_slot(1, campaign)
 	SaveService.clear_suspend()
+	_last_result["next_level_id"] = next_id
 	# Phase C：显示结算/战报面板
 	if _result_panel != null and not _smoke and not _perf_mode:
 		_result_panel.show_result(_last_result)

@@ -5,6 +5,7 @@ extends CanvasLayer
 ## 键盘：R 重开（由 main 处理）/ Esc 关闭；鼠标：按钮。
 
 signal restart_requested
+signal next_level_requested
 signal closed
 
 const PANEL_SIZE := Vector2(460, 320)
@@ -95,6 +96,13 @@ func _rebuild() -> void:
 	var row := HBoxContainer.new()
 	row.alignment = BoxContainer.ALIGNMENT_CENTER
 	_vbox.add_child(row)
+	# S1 修复：通关且有下一关时提供「下一关」推进入口（战役推进，PRD §7/§638）
+	var next_id := String(_result.get("next_level_id", ""))
+	if won and not next_id.is_empty():
+		var next_btn := Button.new()
+		next_btn.text = "%s (%s)" % [LocalizationService.tr_key(&"MENU_NEXT_LEVEL"), next_id]
+		next_btn.pressed.connect(func() -> void: next_level_requested.emit())
+		row.add_child(next_btn)
 	var restart_btn := Button.new()
 	restart_btn.text = LocalizationService.tr_key(&"MENU_RESTART")
 	restart_btn.pressed.connect(func() -> void: restart_requested.emit())

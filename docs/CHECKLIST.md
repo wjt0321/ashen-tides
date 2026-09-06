@@ -154,6 +154,16 @@
 - [x] 修复标准构筑恢复：resume 现在复用 `StandardBuilds` 计划，不再错误回退 generated plan
 - **记录**：[M4_CONTENT_NOTES.md](M4_CONTENT_NOTES.md) M4-D 段；后续从 C15 开始。C14 autoplay lose 为既定 Boss 难度定位，不影响标准构筑门禁。
 
+## 玩家体验质量纠偏（2026-09-06）
+
+- [x] 修复通关后无下一关入口、未写下一关解锁的问题
+- [x] 修复重开后建造节点保持 OCCUPIED、无法再次放塔的问题
+- [x] 新增玩家路径集成测试：放塔→重开→再放塔；C01 胜利→解锁并进入 C02
+- [x] 明确 `assets/art/` 当前为程序生成视觉基线/可替换占位，不是最终商业美术或 Shipping 资产
+- [ ] 主菜单、继续/新游戏、章节/选关、设置、退出的完整玩家入口
+- [ ] 战前简报与英雄选择
+- **记录**：[PLAYER_EXPERIENCE_AUDIT.md](PLAYER_EXPERIENCE_AUDIT.md)。此前以自动化/数据覆盖替代玩家流程验收的口径已废弃；恢复 C15+ 前先补玩家外壳。
+
 ## 5. M4：全战役 Alpha（C09–C24）
 
 - [ ] 24 关均可从新档进入和完成
