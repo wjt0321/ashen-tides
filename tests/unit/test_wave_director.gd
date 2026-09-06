@@ -54,6 +54,7 @@ func test_state_machine_full_run() -> void:
 	check_eq(spawns[0], 5, "总生成数 = 3 + 2")
 	check_eq(completed, [0, 1], "wave_completed 按序发出")
 	check_eq(director.state, WaveDirector.State.WIN, "终态 WIN")
+	director.free() # 未入树的 Node 必须手动释放，避免退出时 ObjectDB 泄漏报告
 
 
 func test_restore_progress() -> void:
@@ -63,6 +64,7 @@ func test_restore_progress() -> void:
 	check_eq(director.state, WaveDirector.State.BUILD, "恢复后回到 BUILD")
 	check_eq(director.waves_started(), 2, "已完成 2 波")
 	check(director.start_wave(), "恢复后可开第 3 波")
+	director.free()
 
 
 func test_debug_finish_wave() -> void:
@@ -72,3 +74,4 @@ func test_debug_finish_wave() -> void:
 	director.start_wave()
 	check(director.debug_finish_wave(), "PRE_DELAY 可跳波")
 	check_eq(director.state, WaveDirector.State.CLEARING, "跳波后进入清场")
+	director.free()

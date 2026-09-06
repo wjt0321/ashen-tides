@@ -235,3 +235,23 @@ DEVICE_C13_MIST_LENS,雾透镜,Mist Lens
 DEVICE_C14_SPORE_NEST,孢巢,Spore Nest
 # M4-D：C13–C14 关卡/敌人/装置
 # M4-D：C13–C14 关卡/敌人/装置
+FLOW_NEW_GAME,新游戏,New Game
+FLOW_EXIT_GAME,退出游戏,Quit
+FLOW_BACK,返回,Back
+FLOW_CANCEL,取消,Cancel
+FLOW_NO_SAVE,无存档,No Save
+FLOW_SLOT_TITLE,选择存档槽,Select Save Slot
+FLOW_SLOT_EMPTY,槽位 %d — 空,Slot %d — Empty
+FLOW_SLOT_META,槽位 %d — 通关 %d 关 | 印记 %d | %s,Slot %d — %d cleared | marks %d | %s
+FLOW_CONFIRM_OVERWRITE,该槽位已有存档，覆盖并开始新档？,Slot occupied — overwrite and start a new game?
+FLOW_CONFIRM_YES,确认覆盖,Overwrite
+FLOW_CAMPAIGN_HEADER,战役（槽位 %d）| 总印记 %d,Campaign (slot %d) | total marks %d
+FLOW_LOCKED,未解锁,Locked
+FLOW_BRIEFING_TITLE,战前简报,Briefing
+FLOW_BRIEFING_INFO,波次 %d | 初始火种 %d | 舰队完整度 %d,Waves %d | ember %d | integrity %d
+FLOW_HERO_SELECT,选择英雄,Select Hero
+FLOW_START_BATTLE,开始战斗,Start Battle
+FLOW_RESUME_BATTLE,继续上次战斗（已完成第 %d 波）,Resume battle (%d waves cleared)
+FLOW_MARKS_FMT,印记 %d/3,marks %d/3
+MENU_EXIT_TO_CAMPAIGN,返回战役,Back to Campaign
+FLOW_SAVE_FAILED,存档写入失败，进度未保存,Save failed - progress not saved

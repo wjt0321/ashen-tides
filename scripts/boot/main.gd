@@ -38,6 +38,13 @@ const STATE_DISPLAY_NAMES: Dictionary = {
 	WaveDirector.State.LOSE: &"STATE_LOSE",
 }
 
+## Flow Shell 对接信号（AppFlow 嵌入时消费；CLI/独立运行时不影响既有行为）
+signal battle_finished(result: Dictionary) ## 一局结束（胜/负），Flow 切到 Result 状态
+signal battle_exit_requested ## 玩家从暂停菜单请求返回战役地图
+
+## AppFlow 嵌入标志：true 时胜负结算不弹内置面板，改发 battle_finished 由 Flow 呈现
+var flow_managed: bool = false
+
 ## 冒烟自动布防：[[BuildNode 索引, 塔 id], ...]，["upgrade", 节点索引, 模块序号] 表示升级并选模块
 const SMOKE_PLANS: Dictionary = {
 	&"level_c01": [
@@ -86,6 +93,7 @@ var _director: WaveDirector
 var _phase_controller: PhaseController
 var _becon: BeconLedger
 var _hero: GreyboxHero = null
+var _session: BattleSession ## 会话状态集中复位（M2 Flow Shell；scripts/boot/battle_session.gd）
 
 # ---- 战斗状态 ----
 var _towers: Array[GreyboxTower] = []
@@ -192,12 +200,37 @@ func _ready() -> void:
 		return
 	_build_hud()
 	_build_ui_panels()
+	_session = BattleSession.new(self)
 	_reset_battle_state()
 	if _resume_suspend:
 		_try_resume_suspend()
 	elif SaveService.has_suspend():
 		_flash_notice(LocalizationService.tr_key(&"HUD_SUSPEND_FOUND"))
 		print("[M2] suspend save detected (C=resume, X=discard)")
+	_bind_event_signals()
+	_refresh_localized_texts()
+	# 关卡教程启动（延迟到首帧：保证 overlay._ready 已完成，也避免测试环境手动生命周期下空引用）
+	if not String(_level.tutorial_id).is_empty():
+		_tutorial_overlay.start_for.call_deferred(_level.tutorial_id)
+	print("[M2] level=%s routes=%d build_nodes=%d waves=%d towers=%d hero=%s" % [
+		_level_id, _level.route_ids.size(), _build_nodes.size(), _director.total_waves(),
+		_towers_available.size(), _hero_data.id if _hero_data else "none"
+	])
+	if _smoke or _soak_seconds > 0.0:
+		_start_autoplay()
+	elif not _screenshot_path.is_empty():
+		_capture_screenshot_and_quit()
+
+
+## EventBus 连接集中绑定（幂等）：EventBus 是常驻 autoload，_ready 被重复调用时
+## （集成测试手动生命周期）命名方法重复 connect 会打引擎 ERROR、lambda 会双触发。
+var _signals_bound: bool = false
+
+
+func _bind_event_signals() -> void:
+	if _signals_bound:
+		return
+	_signals_bound = true
 	EventBus.ultimate_failed_no_becon.connect(func() -> void: _flash_notice(LocalizationService.tr_key(&"HUD_BEACON_INSUF_ULT")))
 	EventBus.tide_clock_failed.connect(func(_reason: StringName) -> void: _flash_notice(LocalizationService.tr_key(&"HUD_BEACON_INSUF_TIDE")))
 	EventBus.tide_clock_shifted.connect(func(_dir: StringName) -> void: _strategy_check(&"use_tide_clock"))
@@ -216,18 +249,6 @@ func _ready() -> void:
 	# Polish：相位氛围（地形 tint + 切换闪光 + 事件横幅）
 	EventBus.phase_changed.connect(_on_phase_visual)
 	EventBus.settings_applied.connect(_refresh_localized_texts)
-	_refresh_localized_texts()
-	# 关卡教程启动（延迟到首帧：保证 overlay._ready 已完成，也避免测试环境手动生命周期下空引用）
-	if not String(_level.tutorial_id).is_empty():
-		_tutorial_overlay.start_for.call_deferred(_level.tutorial_id)
-	print("[M2] level=%s routes=%d build_nodes=%d waves=%d towers=%d hero=%s" % [
-		_level_id, _level.route_ids.size(), _build_nodes.size(), _director.total_waves(),
-		_towers_available.size(), _hero_data.id if _hero_data else "none"
-	])
-	if _smoke or _soak_seconds > 0.0:
-		_start_autoplay()
-	elif not _screenshot_path.is_empty():
-		_capture_screenshot_and_quit()
 
 
 # ---------------------------------------------------------------------------
@@ -261,13 +282,12 @@ func _load_level(level_id: StringName) -> bool:
 	if has_node("PathNetwork"):
 		_teardown_level_nodes()
 	_level_id = level_id
-	_level = load(LEVEL_DIR + String(level_id) + ".tres") as LevelData
+	_level = ContentCatalog.level(level_id) # M2 Flow Shell：资源解析统一走 ContentCatalog
 	if _level == null:
-		push_error("[M1] failed to load level: %s" % level_id)
 		return false
 	_towers_available.clear()
 	for tower_id: Variant in _level.allowed_towers:
-		var tower := load(TOWER_DIR + String(tower_id) + ".tres") as TowerData
+		var tower := ContentCatalog.tower(tower_id)
 		if tower != null:
 			_towers_available.append(tower)
 	if _towers_available.is_empty():
@@ -278,7 +298,7 @@ func _load_level(level_id: StringName) -> bool:
 	_hero_data = null
 	if not _level.allowed_heroes.is_empty():
 		var selected_hero_id: StringName = _hero_override if _level.allowed_heroes.has(_hero_override) else _level.allowed_heroes[0]
-		_hero_data = load(HERO_DIR + String(selected_hero_id) + ".tres") as HeroData
+		_hero_data = ContentCatalog.hero(selected_hero_id)
 
 	_path_network = PathNetwork.new()
 	_path_network.name = "PathNetwork"
@@ -348,10 +368,12 @@ func _build_ui_panels() -> void:
 	# 暂停 / 设置 / 战报 / 教程 四个独立 CanvasLayer（Phase C）
 	_pause_menu = PauseMenuPanel.new()
 	_pause_menu.name = "PauseMenu"
+	_pause_menu.show_exit_to_campaign = flow_managed # Flow Shell：嵌入时才显示「返回战役」
 	add_child(_pause_menu)
 	_pause_menu.resume_requested.connect(_on_pause_resume)
 	_pause_menu.settings_requested.connect(_on_pause_settings)
 	_pause_menu.restart_requested.connect(_on_pause_restart)
+	_pause_menu.exit_to_campaign_requested.connect(_on_pause_exit_to_campaign)
 	_settings_panel = SettingsPanel.new()
 	_settings_panel.name = "Settings"
 	add_child(_settings_panel)
@@ -475,83 +497,9 @@ func _build_hud() -> void:
 # ---------------------------------------------------------------------------
 
 
+## 会话复位集中在 BattleSession（M2 Flow Shell）；此处仅作兼容委托。
 func _reset_battle_state() -> void:
-	for child: Node in _battle_root.get_children():
-		child.queue_free()
-	_towers.clear()
-	_enemies.clear()
-	_active_projectiles.clear()
-	_devices.clear()
-	_projectile_pool = ObjectPool.new(_create_projectile)
-	_echo_system.reset()
-	_director.reset()
-	_becon.set_value_silent(0)
-	_ember = _level.initial_ember
-	_fleet_integrity = _level.initial_fleet_integrity
-	_paused = false
-	_battle_over = false
-	_invincible = false
-	_acc = 0.0
-	_tick_count = 0
-	_sim_seconds = 0.0
-	_kills = 0
-	_leaks = 0
-	_total_damage = 0.0
-	_leak_by_enemy.clear()
-	_leak_by_wave.clear()
-	_fail_reason = ""
-	_damage_by_type.clear()
-	_first_breach_wave = 0
-	_strategy_done = false
-	_modules_selected = 0
-	_boss_phase_seen.clear()
-	_perf_frames.clear()
-	_dbg_fires = 0
-	_set_selected_tower(null)
-	_module_choice_tower = null
-	_phase_controller.setup(_level.phase_events, _path_network, _becon)
-	_path_network.visible = true
-	_apply_phase_visual() # Polish：重开后相位 tint 复位
-	position = Vector2.ZERO
-	_shake_left = 0.0
-	_message_label.visible = false
-	_notice = ""
-	if _hero_data != null:
-		_hero = GreyboxHero.new()
-		_hero.name = "Hero"
-		_hero.position = _level.hero_spawn
-		_hero.enemies = _enemies
-		_battle_root.add_child(_hero)
-		_hero.setup(_hero_data, _becon)
-	else:
-		_hero = null
-	# 环境装置（相位模板 2，PRD §5.3）
-	for device_data: Variant in _level.devices:
-		var device := GreyboxDevice.new()
-		device.name = "Device_%s" % device_data.id
-		device.setup(device_data)
-		device.enemies = _enemies
-		device.hero = _hero
-		device.current_phase = _phase_controller.current_phase
-		_battle_root.add_child(device)
-		_devices.append(device)
-	if _hero != null:
-		_hero.devices = _devices
-	_smoke_plan_cursor = 0
-	_smoke_hero_ab_used = false
-	_smoke_hero_moved = false
-	_smoke_ult_used = false
-	_smoke_tide_used = false
-	_smoke_repair_demo = false
-	# S1 修复：上局塔随 _battle_root 清空，节点占用状态必须同步复位——
-	# 否则重开后已建节点永久保持 OCCUPIED（_refresh_build_node_states 跳过占用节点）
-	for node: BuildNodeVisual in _build_nodes:
-		if node.state != BuildNodeVisual.State.FREE:
-			node.set_state(BuildNodeVisual.State.FREE)
-	_refresh_build_node_states()
-	EventBus.ember_changed.emit(_ember)
-	EventBus.fleet_integrity_changed.emit(_fleet_integrity)
-	EventBus.becon_changed.emit(0, &"reset")
+	_session.reset()
 
 
 ## 固定 tick 主循环（PRD §18.5）：表现帧累积 -> 60Hz 固定步进，速度档乘算。
@@ -783,20 +731,19 @@ func _on_pause_restart() -> void:
 	_restart_battle()
 
 
-## 下一关 id（战役推进）：按 data/levels/ 文件名序取当前关之后一关；末关/异常返回空。
+## Flow Shell：暂停菜单「返回战役」——suspend 已在每个波次完成时写入（PRD §15.2），
+## 这里只关面板并把交还给 AppFlow（由它销毁战斗场景、切回 CAMPAIGN 状态）。
+func _on_pause_exit_to_campaign() -> void:
+	_settings_panel.close()
+	_pause_menu.close()
+	_menu_open = false
+	battle_exit_requested.emit()
+	print("[M2-FLOW] exit to campaign requested (level=%s)" % _level_id)
+
+
+## 下一关 id（战役推进）：官方顺序由 ContentCatalog 决定；末关/异常返回空。
 func _next_level_id() -> StringName:
-	var dir := DirAccess.open(LEVEL_DIR)
-	if dir == null:
-		return &""
-	var ids: Array[String] = []
-	for file_name: String in dir.get_files():
-		if file_name.begins_with("level_") and file_name.ends_with(".tres"):
-			ids.append(file_name.trim_suffix(".tres"))
-	ids.sort()
-	var idx := ids.find(String(_level_id))
-	if idx < 0 or idx + 1 >= ids.size():
-		return &""
-	return StringName(ids[idx + 1])
+	return ContentCatalog.next_level_id(_level_id)
 
 
 ## 结算「下一关」（S1 修复：通关后推进）：载入下一关并重置战斗状态；失败则留本关。
@@ -1126,7 +1073,7 @@ func _on_boss_phase_changed(enemy: GreyboxEnemy, phase_index: int, label: String
 
 func _get_enemy_data(enemy_id: StringName) -> EnemyData:
 	if not _enemy_cache.has(enemy_id):
-		_enemy_cache[enemy_id] = load(ENEMY_DIR + String(enemy_id) + ".tres") as EnemyData
+		_enemy_cache[enemy_id] = ContentCatalog.enemy(enemy_id)
 	return _enemy_cache[enemy_id]
 
 
@@ -1292,31 +1239,24 @@ func _enter_win() -> void:
 	print("[M2] WIN: level=%s waves=%d kills=%d leaks=%d integrity=%d marks=%d/3 ticks=%d sim=%.1fs" % [
 		_level_id, _director.total_waves(), _kills, _leaks, _fleet_integrity, mark_count, _tick_count, _sim_seconds
 	])
-	# 主存档：记录关卡结果与印记（PRD §15.3 level_results / §9.2）
-	var campaign := SaveService.read_campaign_slot(1)
-	var results: Dictionary = campaign.get("level_results", {})
-	var prev: Dictionary = results.get(String(_level_id), {})
-	results[String(_level_id)] = {
-		"completed": true,
-		"integrity": _fleet_integrity,
-		"kills": _kills,
-		"marks": maxi(mark_count, int(prev.get("marks", 0))),
-		"best_integrity": maxi(_fleet_integrity, int(prev.get("best_integrity", 0))),
-	}
-	campaign["level_results"] = results
-	# 关卡解锁写入（PRD §7：完成关卡解锁下一关）：按文件名序的下一关记入 unlocked_levels
-	var next_id := String(_next_level_id())
-	if not next_id.is_empty():
-		var unlocked: Array = campaign.get("unlocked_levels", [])
-		if not unlocked.has(next_id):
-			unlocked.append(next_id)
-		campaign["unlocked_levels"] = unlocked
-	campaign["profile_id"] = "default"
-	SaveService.write_campaign_slot(1, campaign)
+	# 写档唯一入口（M2 Flow Shell 审查修复）：flow 托管时由 AppFlow._on_battle_finished 写，
+	# CLI/standalone 由 main 写。另一方只用 ContentCatalog 查 next_level_id 做展示，不持久化。
+	var next_id: StringName = &""
+	if flow_managed:
+		next_id = ContentCatalog.next_level_id(_level_id)
+	else:
+		next_id = CampaignService.record_battle_result(_level_id, {
+			"won": true, "integrity": _fleet_integrity, "kills": _kills, "mark_count": mark_count,
+		})
+		if CampaignService.last_error != OK:
+			push_warning("[M2] 战役存档写入失败 err=%d（进度未保存）" % CampaignService.last_error)
+			_last_result["save_failed"] = true
 	SaveService.clear_suspend()
-	_last_result["next_level_id"] = next_id
-	# Phase C：显示结算/战报面板
-	if _result_panel != null and not _smoke and not _perf_mode:
+	_last_result["next_level_id"] = String(next_id)
+	# Flow 管理时由 AppFlow 呈现 Result 状态；否则用内置结算/战报面板
+	if flow_managed:
+		battle_finished.emit(_last_result)
+	elif _result_panel != null and not _smoke and not _perf_mode:
 		_result_panel.show_result(_last_result)
 		_menu_open = true
 	if _smoke or _perf_mode:
@@ -1381,7 +1321,9 @@ func _enter_lose() -> void:
 	_message_label.visible = true
 	print("[M2] LOSE: level=%s wave=%d kills=%d leaks=%d" % [_level_id, _director.waves_started(), _kills, _leaks])
 	SaveService.clear_suspend()
-	if _result_panel != null and not _smoke and not _perf_mode:
+	if flow_managed:
+		battle_finished.emit(_last_result)
+	elif _result_panel != null and not _smoke and not _perf_mode:
 		_result_panel.show_result(_last_result)
 		_menu_open = true
 	if _smoke or _perf_mode:

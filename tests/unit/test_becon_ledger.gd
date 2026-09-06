@@ -9,6 +9,7 @@ func test_add_and_cap() -> void:
 	check_eq(ledger.current, 50, "充能累加")
 	ledger.add(80, &"test")
 	check_eq(ledger.current, 100, "充能封顶 100")
+	ledger.free() # 未入树的 Node 必须手动释放（ObjectDB 泄漏报告）
 
 
 func test_spend_and_competition() -> void:
@@ -19,6 +20,7 @@ func test_spend_and_competition() -> void:
 	ledger.add(30, &"test")
 	check(ledger.try_spend(40), "充能 50 后潮汐仪成功")
 	check_eq(ledger.current, 10, "扣费正确")
+	ledger.free()
 
 
 func test_signals() -> void:
@@ -32,3 +34,4 @@ func test_signals() -> void:
 	ledger.try_spend(5)
 	check_eq(changes[0], 2, "value_changed 发两次")
 	check_eq(spent[0], 1, "becon_spent 发一次")
+	ledger.free()

@@ -2,63 +2,20 @@ extends TestBase
 ## S1 修复回归（玩家流程集成测试，非纯数据）：
 ## 1) 重开后建造节点复位——上局占用节点不得黄锁（复现路径：放塔 → _on_pause_restart → 再放塔）；
 ## 2) 通关后解锁并推进下一关（复现路径：_enter_win → 结算「下一关」→ 新关可建造）。
-## 直接实例化主场景驱动真实玩家路径；主存档先备份、测试后恢复，不污染用户存档。
+## 直接实例化战斗场景驱动真实玩家路径；主存档先备份、测试后恢复，不污染用户存档。
+## 生命周期/备份助手在 TestBase（_force_ready_once / _backup_files / _restore_files）。
 
 const MAIN_SCENE := "res://scenes/boot/main.tscn"
-
-## 手动调用 _ready() 不会让引擎置 ready 标记，需自行记录防止二次调用（AudioService 信号重复连接等）
-var _forced_ready: Dictionary = {}
-
-
-func _force_ready_once(n: Node) -> void:
-	var id := n.get_instance_id()
-	if _forced_ready.has(id):
-		return
-	_forced_ready[id] = true
-	if n.has_method(&"_ready"):
-		n._ready()
 
 
 func _make_main() -> Node:
 	var tree := Engine.get_main_loop() as SceneTree
 	var inst := (load(MAIN_SCENE) as PackedScene).instantiate()
 	tree.root.add_child(inst)
-	# 测试运行器在 SceneTree._initialize 内同步执行，add_child 不触发 _ready；手动补齐生命周期。
-	# 先补齐 autoload（LocalizationService._ready 才加载 ui.csv，否则 tr_key 全部 miss）。
-	# AudioService 跳过：headless 下无音频设备，强制 ready 只会产生播放噪音报错，与 S1 断言无关。
-	for c: Node in tree.root.get_children():
-		if c != inst and c.name != &"AudioService":
-			_force_ready_once(c)
+	_force_autoloads_ready()
 	_force_ready_once(inst)
 	_force_descendants_ready(inst)
 	return inst
-
-
-## main._ready 内 new 出来的面板/覆盖层同样收不到 _ready，递归补齐（先自身再子孙，与引擎顺序一致）
-func _force_descendants_ready(n: Node) -> void:
-	for c: Node in n.get_children():
-		_force_ready_once(c)
-		_force_descendants_ready(c)
-
-
-func _read_bytes(path: String) -> PackedByteArray:
-	if not FileAccess.file_exists(path):
-		return PackedByteArray()
-	var f := FileAccess.open(path, FileAccess.READ)
-	var data := f.get_buffer(f.get_length())
-	f.close()
-	return data
-
-
-func _write_bytes(path: String, data: PackedByteArray) -> void:
-	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(path.get_base_dir()))
-	if data.is_empty():
-		if FileAccess.file_exists(path):
-			DirAccess.remove_absolute(path)
-		return
-	var f := FileAccess.open(path, FileAccess.WRITE)
-	f.store_buffer(data)
-	f.close()
 
 
 func test_restart_releases_build_nodes() -> void:
@@ -81,9 +38,7 @@ func test_restart_releases_build_nodes() -> void:
 func test_win_unlocks_and_advances_next_level() -> void:
 	# 备份主存档三件套（write_campaign_slot 原子写会轮转出 .bak1）
 	var slot := SaveService.slot_path(1)
-	var backups := {}
-	for path: String in [slot, slot + ".bak1", slot + ".bak2"]:
-		backups[path] = _read_bytes(path)
+	var backups := _backup_files([slot, slot + ".bak1", slot + ".bak2"])
 	SaveService.clear_suspend()
 	var m := _make_main()
 	check_eq(String(m._level_id), "level_c01", "默认关 c01")
@@ -105,6 +60,7 @@ func test_win_unlocks_and_advances_next_level() -> void:
 	check(m._place_tower_at(m._build_nodes[0], m._towers_available[0]), "c02 可正常放塔")
 	check(not m._battle_over, "新关战斗状态复位")
 	m.free()
-	# 恢复主存档
-	for path: String in backups:
-		_write_bytes(path, backups[path])
+	# 恢复主存档与 CampaignService 运行时状态
+	_restore_files(backups)
+	CampaignService.current_slot = 1
+	CampaignService._loaded = false

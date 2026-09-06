@@ -164,9 +164,22 @@
 - [x] 修复重开后建造节点保持 OCCUPIED、无法再次放塔的问题
 - [x] 新增玩家路径集成测试：放塔→重开→再放塔；C01 胜利→解锁并进入 C02
 - [x] 明确 `assets/art/` 当前为程序生成视觉基线/可替换占位，不是最终商业美术或 Shipping 资产
-- [ ] 主菜单、继续/新游戏、章节/选关、设置、退出的完整玩家入口
-- [ ] 战前简报与英雄选择
+- [~] 主菜单、继续/新游戏、章节/选关、设置、退出的完整玩家入口（Flow Shell 第一批已落地 Title/Slot/Campaign 与退出，见下节；缺首次无障碍快速设置、删档 UI、手柄菜单导航）
+- [~] 战前简报与英雄选择（已落地：简报展示关卡信息 + 双英雄选择 + suspend 恢复入口；缺难度选择——难度系统本身未实现）
 - **记录**：[PLAYER_EXPERIENCE_AUDIT.md](PLAYER_EXPERIENCE_AUDIT.md)。此前以自动化/数据覆盖替代玩家流程验收的口径已废弃；恢复 C15+ 前先补玩家外壳。
+
+## M2 Flow Shell 第一批（2026-09-06）
+
+- [x] ContentCatalog autoload：稳定 level/hero/tower/enemy id、官方顺序、资源解析、next_level（契约测试 test_content_catalog.gd 52 项）
+- [x] CampaignService autoload：3 槽（PRD §15.1）、新档/继续/删槽/槽位元信息、解锁判定、持久化英雄选择、结算推进写档（契约测试 test_campaign_service.gd 30 项）
+- [x] BattleSession：会话状态集中 reset（含 S1 节点占用复位），main._reset_battle_state 委托（test_battle_session.gd 13 项）
+- [x] AppFlow 状态机 Boot/Title/Slot/Campaign/Briefing/Battle/Result：新游戏（覆盖二次确认）、继续、3 槽展示、C01–C14 锁定列表（含锁定原因）、两英雄选择、suspend 恢复入口、进战斗、结果返回战役/下一关/重试；暂停菜单 Flow 模式下有「返回战役」
+- [x] CLI（--m1-smoke/--level 等）直入战斗但经 ContentCatalog 校验 + CampaignService 写档；C01 3× smoke 结果与重构前逐 tick 一致（ticks=7017 kills=90）
+- [x] 测试 431/431 PASS（含流程集成 test_flow_shell.gd 53 项、test_m2_player_flow.gd 34 项）；import 0 错误；validate 243/0；i18n 247 keys missing=0；Title 截图 out/m2_flow_title.png
+- [ ] 首次启动无障碍快速设置（FirstRun 状态）
+- [ ] suspend 三选项正式对话框（当前简报仅「继续上次战斗」单键 + 战斗内 C/X 键）
+- [ ] 删档 UI、难度选择、手柄菜单焦点导航（§26.4 手柄全流程仍不满足）
+- **口径**：本批为程序化 Control UI，状态上限 Player-accessible（自动测试仅证明 Integrated）；未做任何美术/数值/C15+；M2 Gate 不因此通过
 
 ## 5. M4：全战役 Alpha（C09–C24）
 
@@ -236,3 +249,4 @@
 | 2026-09-05 | M4-A：美术技术规范锁定（M4_ASSET_SPEC.md）；C01 切片 16 张项目自有原创精灵（tools/gen_c01_sprites.py）接入运行时并全部带程序化回退；台账 +16 行、新建 CREDITS.md（Godot MIT + Ark Pixel OFL）；M0 两项历史遗留（字体锁定/资产归档流程）勾销；验证全绿且战斗基线不变 | M4-A 执行（用户确认后） | 项目主理人（agent 执行） |
 | 2026-09-06 | M4-B：第一章 C01–C08 资产扩展——gen_chapter1_sprites.py 生成 28 张主题地形 + 13 张单位精灵 + 57 张色弱变体（项目自有原创，固定 seed 可复现）；ArtLibrary 三级回退（色弱变体→基础图→程序化剪影）+ 高对比 modulate/外圈；台账 +41 行（并修复 df6b434 遗留列数不一致）；导入/validate/tests 117/i18n/8 关 3× smoke/perf 抽查全过，smoke ticks 与基线逐一相同（纯视觉层） | M4-B 执行（用户确认后） | 项目主理人（agent 执行） |
 | 2026-09-06 | M4-C：第二章首批 C09–C12 切片——新增隐匿/治疗光环/双相抗性/掩体阻挡四机制（数据驱动，第一章敌人零变化）；gen_m4c_data.py 生成 4 关+48 波+3 敌+6 装置+5 相位事件+i18n 14 keys；12 套标准构筑全 win（C10 构筑迭代、未改数值）；gen_chapter2_sprites.py 地形 16+敌 3+变体 9；tests 179/179、validate 207 项 0 error；C04–C12 1×/3×确定性与 perf 聚合均 PASS | M4-C 执行（用户确认后） | 项目主理人（agent 执行） |
+| 2026-09-06 | M2 Flow Shell 第一批：ContentCatalog/CampaignService autoload、BattleSession 集中 reset、AppFlow 状态机（Title/Slot/Campaign/Briefing/Battle/Result）、CLI 与玩家 UI 共用服务入口；独立审查后修复 Flow 双重写档、空壳存档误判和测试槽污染，复验 tests 443/443、validate 243、i18n missing=0；M2 Gate 不因此通过 | M2 Flow Shell 第一批执行（用户指令） | 项目主理人（agent 执行） |

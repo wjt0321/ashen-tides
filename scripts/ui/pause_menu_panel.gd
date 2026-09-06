@@ -1,10 +1,14 @@
 class_name PauseMenuPanel
 extends CanvasLayer
-## 暂停菜单（M2）：继续 / 设置 / 重开。Esc 开关；打开时不强制 _paused（main 控制模拟暂停）。
+## 暂停菜单（M2）：继续 / 设置 / 重开（/ 返回战役，Flow 嵌入时）。Esc 开关；打开时不强制 _paused（main 控制模拟暂停）。
 
 signal resume_requested
 signal settings_requested
 signal restart_requested
+signal exit_to_campaign_requested ## Flow Shell：仅 flow_managed 时按钮可见
+
+## AppFlow 嵌入战斗时置 true，显示「返回战役」按钮（须在 add_child 前设置）
+var show_exit_to_campaign: bool = false
 
 var _panel: PanelContainer
 var _title_label: Label
@@ -20,7 +24,7 @@ func _ready() -> void:
 	add_child(dim)
 	_panel = PanelContainer.new()
 	_panel.position = Vector2(230, 110)
-	_panel.size = Vector2(180, 140)
+	_panel.size = Vector2(180, 170 if show_exit_to_campaign else 140)
 	add_child(_panel)
 	var vbox := VBoxContainer.new()
 	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
@@ -31,7 +35,10 @@ func _ready() -> void:
 	_title_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_title_label.add_theme_font_size_override("font_size", 18)
 	vbox.add_child(_title_label)
-	for id: StringName in [&"MENU_CONTINUE", &"MENU_SETTINGS", &"MENU_RESTART"]:
+	var ids: Array[StringName] = [&"MENU_CONTINUE", &"MENU_SETTINGS", &"MENU_RESTART"]
+	if show_exit_to_campaign:
+		ids.append(&"MENU_EXIT_TO_CAMPAIGN")
+	for id: StringName in ids:
 		var btn := Button.new()
 		btn.name = String(id)
 		vbox.add_child(btn)
@@ -42,6 +49,8 @@ func _ready() -> void:
 				btn.pressed.connect(func() -> void: settings_requested.emit())
 			&"MENU_RESTART":
 				btn.pressed.connect(func() -> void: restart_requested.emit())
+			&"MENU_EXIT_TO_CAMPAIGN":
+				btn.pressed.connect(func() -> void: exit_to_campaign_requested.emit())
 		_menu_buttons[id] = btn
 	refresh_texts()
 

@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="AshenTides"
-config/description="《余烬潮汐》(Ashen Tides) — M0 project skeleton"
-run/main_scene="res://scenes/boot/main.tscn"
+config/description="《余烬潮汐》(Ashen Tides) — M2 flow shell + vertical slice"
+run/main_scene="res://scenes/app/app.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,8 @@ SaveService="*res://autoload/save_service.gd"
 SettingsService="*res://autoload/settings_service.gd"
 AudioService="*res://autoload/audio_service.gd"
 LocalizationService="*res://autoload/localization_service.gd"
+ContentCatalog="*res://autoload/content_catalog.gd"
+CampaignService="*res://autoload/campaign_service.gd"
 
 [display]
 
