@@ -46,3 +46,12 @@ git diff --check
 ## Diagnostic Note
 
 The C01 performance run exited successfully but Godot printed `6 ObjectDB instances were leaked at exit`. This is an engine-shutdown diagnostic, distinct from the smoke report's `0` enemy leaks. It does not invalidate the gameplay, data, asset, documentation, or performance results above, but remains visible here rather than being silently omitted.
+
+## 2026-09-08 Addendum（v2 自绘表现层）
+
+- 依 owner 工作单『C01 也不好看，重做两关』，上述 7 张证据图已于 2026-09-08 对 **v2 自绘像素表现层**
+  （`C01_V2_HANDAUTHORED_PRESENTATION`，见 `ART_ASSET_REGISTRY.csv`）重新截取；Foozle 栅格基线降级为历史来源。
+- 重截后复核：`tools/validate_c01_assets.py` errors=0（evidence=7）；`tools/run_tests.gd` pass=529 fail=0；
+  `tools/validate_data.gd` checked=243 errors=0；C01 smoke 仍为 win 6/6 波、90 击杀、0 漏怪、7017 ticks。
+- 工程注意：替换 `assets/art/c01/runtime/*.png` 后，**游戏模式不会重新导入**，preload 仍读 `.godot` 旧缓存；
+  必须先跑 `--headless --editor --quit` 再截图，否则证据图会是旧纹理（本次曾因此截到旧基线画面）。

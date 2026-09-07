@@ -73,9 +73,9 @@ with LEDGER.open(encoding="utf-8-sig", newline="") as handle:
 
 with REGISTRY.open(encoding="utf-8-sig", newline="") as handle:
     rows = {row["asset_id"]: row for row in csv.DictReader(handle)}
-row = rows.get("C01_FOOZLE_RASTER_PRESENTATION")
+row = rows.get("C01_V2_HANDAUTHORED_PRESENTATION")
 if row is None:
-    errors.append("registry row missing: C01_FOOZLE_RASTER_PRESENTATION")
+    errors.append("registry row missing: C01_V2_HANDAUTHORED_PRESENTATION")
 else:
     if row["placeholder"].lower() != "false" or row["art_status"] != "Integrated":
         errors.append("C01 final presentation registry state is not Integrated/non-placeholder")

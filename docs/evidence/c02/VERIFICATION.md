@@ -49,3 +49,12 @@ C01-ASSETS ... errors=0
 
 - **实现 / 自动化：通过。**
 - **人类玩家确认：待项目 owner 亲自走一遍 C01→C02、暂停/恢复、潮汐仪提前切换与 C02 结算。**
+
+## 2026-09-08 附注（v2 自绘资产重截）
+
+- 依 owner 工作单『C01 也不好看，重做两关』，C02 运行时精灵已由 `tools/build_v2_assets.py`（自绘 v2）重新生成，
+  上述 `briefing.png` / `battle-wave4.png` / `battle-wave5.png` / `result-win.png` 与 `assets-montage.png`
+  已于 2026-09-08 对 v2 资产重新截取/合成。
+- 重截后复核：C02 smoke 仍为 `result=win`、7/7 波、94 击杀、2 漏怪、完整度 16、9275 ticks；
+  `tools/run_tests.gd` pass=529 fail=0；`tools/validate_data.gd` checked=243 errors=0。
+- 已知遗留：C02 简报左侧地图面板仍复用 C01 briefing_map（v2 契约未含 C02 简报地图），待后续工作单处理。

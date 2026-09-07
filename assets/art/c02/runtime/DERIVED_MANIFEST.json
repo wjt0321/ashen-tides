@@ -1,199 +1,199 @@
 {
-  "generated_on": "2026-09-07",
-  "builder": "tools/gen_c02_sprites.py",
-  "source": "Ember Tide dev deterministic pixel art",
+  "generated_on": "2026-09-08",
+  "builder": "tools/build_v2_assets.py",
+  "source": "Ember Tide dev v2 hand-authored pixel art (tools/pixel_v2.py)",
   "files": {
     "enemy_mast_rat_swarm.png": {
-      "sha256": "9515bf3a9166eb429c06ff84b298f0ede6bc307d85896cf560e6b430f6ba5d12",
-      "bytes": 619
+      "sha256": "baea756cc13adbb68a51ef4af1f092e9ceab2b6ce85825dd7055e22aa07d61dd",
+      "bytes": 302
     },
     "enemy_mast_rat_swarm_deutan.png": {
-      "sha256": "f7e255e55511a9d37977594118e40e78de689bb6393438c5c01e47b79c312963",
-      "bytes": 620
+      "sha256": "f5e6d24713480efe167a4511f485049d6102fa6166669e08e420954fba8d01c9",
+      "bytes": 297
     },
     "enemy_mast_rat_swarm_protan.png": {
-      "sha256": "f7e255e55511a9d37977594118e40e78de689bb6393438c5c01e47b79c312963",
-      "bytes": 620
+      "sha256": "f5e6d24713480efe167a4511f485049d6102fa6166669e08e420954fba8d01c9",
+      "bytes": 297
     },
     "enemy_mast_rat_swarm_tritan.png": {
-      "sha256": "bbd37c16a95eeb68fa1c5d42372fc5d5103cbfa3b0858a8fa1872cbe34be5a68",
-      "bytes": 621
+      "sha256": "baea756cc13adbb68a51ef4af1f092e9ceab2b6ce85825dd7055e22aa07d61dd",
+      "bytes": 302
     },
     "enemy_rust_armor_carrier.png": {
-      "sha256": "077f23f20e77e42a931d1d73b68e2fa311dd1830b3b07125e20ff5ef24844cad",
-      "bytes": 785
+      "sha256": "8d392dceae9a6f48887e1b988f3c0dc74ddcd6417e2270983746a49bd84a4bc8",
+      "bytes": 378
     },
     "enemy_rust_armor_carrier_deutan.png": {
-      "sha256": "72eceeb2dc708d68d6bd6782b1ed4fa454fa7ceb8a767f78c4e083bec39f5b61",
-      "bytes": 790
+      "sha256": "97a1b456436411ebc634b378e0316c66b803c0bc7773c859aedbb96bb322a4a6",
+      "bytes": 387
     },
     "enemy_rust_armor_carrier_protan.png": {
-      "sha256": "72eceeb2dc708d68d6bd6782b1ed4fa454fa7ceb8a767f78c4e083bec39f5b61",
-      "bytes": 790
+      "sha256": "97a1b456436411ebc634b378e0316c66b803c0bc7773c859aedbb96bb322a4a6",
+      "bytes": 387
     },
     "enemy_rust_armor_carrier_tritan.png": {
-      "sha256": "5a78aadb8a4756a59025e44626b88377be1badbcc979b266776cde348e319bf2",
-      "bytes": 786
+      "sha256": "8d392dceae9a6f48887e1b988f3c0dc74ddcd6417e2270983746a49bd84a4bc8",
+      "bytes": 378
     },
     "enemy_splitfin_dasher.png": {
-      "sha256": "cb3b24ae96c714b83738bb19bd1d9c50f359d28da6823d1218754ff5b8ee4114",
-      "bytes": 741
+      "sha256": "e04cc346658727b78e1be327e69ff3457686fdeb008a6606fd2c51426f06ee94",
+      "bytes": 383
     },
     "enemy_splitfin_dasher_deutan.png": {
-      "sha256": "7d0266d2691a1559cfb07bf0010d0b427f81033b54834c44cee6b387286884dc",
-      "bytes": 745
+      "sha256": "e04cc346658727b78e1be327e69ff3457686fdeb008a6606fd2c51426f06ee94",
+      "bytes": 383
     },
     "enemy_splitfin_dasher_protan.png": {
-      "sha256": "7d0266d2691a1559cfb07bf0010d0b427f81033b54834c44cee6b387286884dc",
-      "bytes": 745
+      "sha256": "e04cc346658727b78e1be327e69ff3457686fdeb008a6606fd2c51426f06ee94",
+      "bytes": 383
     },
     "enemy_splitfin_dasher_tritan.png": {
-      "sha256": "2dcbfc670810265bce3547bb174559b1d20b5bbff192427a087c562b1ff36ba5",
-      "bytes": 735
+      "sha256": "5c853eede6c28c8038333e40edf3da4768a81217becfe228f74c8167b19ae61f",
+      "bytes": 383
     },
     "fx_tide_gate_strip3.png": {
-      "sha256": "b54e5bce6cb03f0e48cb0b56062741076153b0f792b8d461dda76a2e53c7ed94",
-      "bytes": 526
+      "sha256": "87353f1804a40e41b7be76c40e5e1f1cfd78a88ebe2b71ec7f4505c3d13220f9",
+      "bytes": 401
     },
     "projectile_ember_burst.png": {
-      "sha256": "839f6e1e1b775acc28fc449eb43264faf6802b8d423bd5a6cb579e2acff6c4f9",
-      "bytes": 189
+      "sha256": "37ae984bee9506ba132dfbcdbe6627ac82680598bedcf0e36f02fb1958383ee0",
+      "bytes": 146
     },
     "tide_gate_closed.png": {
-      "sha256": "3ac339f045416994af1a0c3fdbc50818e81feeac9ee9990167a02fcb8b7612b1",
-      "bytes": 1597
+      "sha256": "8a08ec3cf48c61173928c23129475a13a9777005e39ff30e7d2df54d8d02e2be",
+      "bytes": 1064
     },
     "tide_gate_open.png": {
-      "sha256": "cf1bed7a82573a3d98c041507cbf4c3e639bea013b048ac2a4858c77707c5982",
-      "bytes": 1686
+      "sha256": "00f7048297dff9e7d28ec9cd33ba942df5b8b06a9b82bbd6c6f545c52a55bfad",
+      "bytes": 1100
     },
     "tower_ember_well_tier1.png": {
-      "sha256": "31d0f53d34d6a7ac7642ad45427e75aed891e0a6b5a6a596b4b8521b756ecacc",
-      "bytes": 862
+      "sha256": "ff17cc31966ea46e1b139f6085d441c31d49dbd9d7da7c4df5f0f4e935a1e311",
+      "bytes": 402
     },
     "tower_ember_well_tier1_deutan.png": {
-      "sha256": "c8aafa93c9c3f880c3862dc4c3ebb1e1aa689ce19cd1da19efd71547fccba108",
-      "bytes": 866
+      "sha256": "ca9f29929c21cf452e1330330a0c0d64c77ce6db61c28023ee25fa694f8c0b25",
+      "bytes": 401
     },
     "tower_ember_well_tier1_protan.png": {
-      "sha256": "c8aafa93c9c3f880c3862dc4c3ebb1e1aa689ce19cd1da19efd71547fccba108",
-      "bytes": 866
+      "sha256": "ca9f29929c21cf452e1330330a0c0d64c77ce6db61c28023ee25fa694f8c0b25",
+      "bytes": 401
     },
     "tower_ember_well_tier1_tritan.png": {
-      "sha256": "31d0f53d34d6a7ac7642ad45427e75aed891e0a6b5a6a596b4b8521b756ecacc",
-      "bytes": 862
+      "sha256": "ff17cc31966ea46e1b139f6085d441c31d49dbd9d7da7c4df5f0f4e935a1e311",
+      "bytes": 402
     },
     "tower_ember_well_tier2.png": {
-      "sha256": "31d0f53d34d6a7ac7642ad45427e75aed891e0a6b5a6a596b4b8521b756ecacc",
-      "bytes": 862
+      "sha256": "5475bb69a548269cb26cb144fc59fcab3f379d21cb3ef8031f75ac987997293a",
+      "bytes": 431
     },
     "tower_ember_well_tier2_deutan.png": {
-      "sha256": "c8aafa93c9c3f880c3862dc4c3ebb1e1aa689ce19cd1da19efd71547fccba108",
-      "bytes": 866
+      "sha256": "4bf8f0f246aea3a0b057cf1258fe1f3e8b9334a89687815e1842f795aa5e5b4a",
+      "bytes": 429
     },
     "tower_ember_well_tier2_protan.png": {
-      "sha256": "c8aafa93c9c3f880c3862dc4c3ebb1e1aa689ce19cd1da19efd71547fccba108",
-      "bytes": 866
+      "sha256": "4bf8f0f246aea3a0b057cf1258fe1f3e8b9334a89687815e1842f795aa5e5b4a",
+      "bytes": 429
     },
     "tower_ember_well_tier2_tritan.png": {
-      "sha256": "31d0f53d34d6a7ac7642ad45427e75aed891e0a6b5a6a596b4b8521b756ecacc",
-      "bytes": 862
+      "sha256": "5475bb69a548269cb26cb144fc59fcab3f379d21cb3ef8031f75ac987997293a",
+      "bytes": 431
     },
     "tower_ember_well_tier3.png": {
-      "sha256": "0cf10a1f0710b33bb8856501699e950937f9227fd2a9dd2a05d037745feab3a2",
-      "bytes": 854
+      "sha256": "a7138593b614424a5c7a38b673b586435f82a1e6a1e346f9db5bfdd45319092a",
+      "bytes": 499
     },
     "tower_ember_well_tier3_deutan.png": {
-      "sha256": "02adfe8bacf2d9ee47de7bcfc083738479329fecaec66f2c8d1ada495307e424",
-      "bytes": 855
+      "sha256": "bdfe4582af067025d3b3bc4fc8593deba115317efcec8895fbe185c58d5f77d2",
+      "bytes": 498
     },
     "tower_ember_well_tier3_protan.png": {
-      "sha256": "02adfe8bacf2d9ee47de7bcfc083738479329fecaec66f2c8d1ada495307e424",
-      "bytes": 855
+      "sha256": "bdfe4582af067025d3b3bc4fc8593deba115317efcec8895fbe185c58d5f77d2",
+      "bytes": 498
     },
     "tower_ember_well_tier3_tritan.png": {
-      "sha256": "0cf10a1f0710b33bb8856501699e950937f9227fd2a9dd2a05d037745feab3a2",
-      "bytes": 854
+      "sha256": "a7138593b614424a5c7a38b673b586435f82a1e6a1e346f9db5bfdd45319092a",
+      "bytes": 499
     },
     "tower_ember_well_tier4.png": {
-      "sha256": "a53cbfacfa66c21fb8bfdc854a732701862d9f1b87d9c825a907f43175cfba2a",
-      "bytes": 875
+      "sha256": "52c2332cd7bccb5aa79b98aaebe2ec6aedd7cb895d84381fdb9cf933e1418294",
+      "bytes": 529
     },
     "tower_ember_well_tier4_deutan.png": {
-      "sha256": "8d79ab87859b0763d3b20da012cd8599bea6a2d1010b4a3c29a19b424243eb35",
-      "bytes": 879
+      "sha256": "889c16ba6243dc15a1d380d1a5ba337d89db2d8e756114fba4b682399d143f56",
+      "bytes": 524
     },
     "tower_ember_well_tier4_protan.png": {
-      "sha256": "8d79ab87859b0763d3b20da012cd8599bea6a2d1010b4a3c29a19b424243eb35",
-      "bytes": 879
+      "sha256": "889c16ba6243dc15a1d380d1a5ba337d89db2d8e756114fba4b682399d143f56",
+      "bytes": 524
     },
     "tower_ember_well_tier4_tritan.png": {
-      "sha256": "a53cbfacfa66c21fb8bfdc854a732701862d9f1b87d9c825a907f43175cfba2a",
-      "bytes": 875
+      "sha256": "52c2332cd7bccb5aa79b98aaebe2ec6aedd7cb895d84381fdb9cf933e1418294",
+      "bytes": 529
     },
     "tower_needle_rail_tier1.png": {
-      "sha256": "7a7b72daff3277eb7abdca29a0a36151c6af1f536bde62f7947fbaff17a04ad5",
-      "bytes": 657
+      "sha256": "215477651f325ab4307c0ebc25b49a81ecc7e28859c03195313ecf2a6570bce5",
+      "bytes": 443
     },
     "tower_needle_rail_tier1_deutan.png": {
-      "sha256": "7a7b72daff3277eb7abdca29a0a36151c6af1f536bde62f7947fbaff17a04ad5",
-      "bytes": 657
+      "sha256": "1fb844ccfb059906e8a14c1ad7f9db5e4f79d8ea307d4e5b0ff4c79a69780e92",
+      "bytes": 444
     },
     "tower_needle_rail_tier1_protan.png": {
-      "sha256": "7a7b72daff3277eb7abdca29a0a36151c6af1f536bde62f7947fbaff17a04ad5",
-      "bytes": 657
+      "sha256": "1fb844ccfb059906e8a14c1ad7f9db5e4f79d8ea307d4e5b0ff4c79a69780e92",
+      "bytes": 444
     },
     "tower_needle_rail_tier1_tritan.png": {
-      "sha256": "9de15ff8dac60c352c3b5a3a40e51088316c35eee1a54ece869ea0d721e5f4c2",
-      "bytes": 664
+      "sha256": "215477651f325ab4307c0ebc25b49a81ecc7e28859c03195313ecf2a6570bce5",
+      "bytes": 443
     },
     "tower_needle_rail_tier2.png": {
-      "sha256": "9e9c79a1d5d77c6d32362a8678c9a3f294c6f8e1e852adaffca72052ce1d931d",
-      "bytes": 704
+      "sha256": "176679e582917cba747353316e9c922fae51f2fc7ddbcb18582302768732e37e",
+      "bytes": 464
     },
     "tower_needle_rail_tier2_deutan.png": {
-      "sha256": "34d2e4b1dfa4a0f8d3d0b72f7442aea4e0fa89c63415525748bc007260932218",
-      "bytes": 709
+      "sha256": "12319fbb6a4ece0fa7a2320ebaa987643dfeef17417554e2e515d101068626ea",
+      "bytes": 466
     },
     "tower_needle_rail_tier2_protan.png": {
-      "sha256": "34d2e4b1dfa4a0f8d3d0b72f7442aea4e0fa89c63415525748bc007260932218",
-      "bytes": 709
+      "sha256": "12319fbb6a4ece0fa7a2320ebaa987643dfeef17417554e2e515d101068626ea",
+      "bytes": 466
     },
     "tower_needle_rail_tier2_tritan.png": {
-      "sha256": "9e6828306c582d8cd69d964983a195ebf040009d2e025e0858084c2c13d66779",
-      "bytes": 710
+      "sha256": "176679e582917cba747353316e9c922fae51f2fc7ddbcb18582302768732e37e",
+      "bytes": 464
     },
     "tower_needle_rail_tier3.png": {
-      "sha256": "1c3df96576575f3f00a4c9c4dedb58b16f143b4afba71a586808044584619578",
-      "bytes": 717
+      "sha256": "c2765ed62f7814f6afaa4a186fe0319e4ac290db57aa76af95a62fed6313c0d7",
+      "bytes": 496
     },
     "tower_needle_rail_tier3_deutan.png": {
-      "sha256": "8dbcc33356a449203cec76e8941e1f25982fef489d125b240e4bf5e7123237dc",
-      "bytes": 713
+      "sha256": "9a37b2158830030e336ce3aca0e5fe5b402bb281a3059b91822f50e904c02615",
+      "bytes": 502
     },
     "tower_needle_rail_tier3_protan.png": {
-      "sha256": "8dbcc33356a449203cec76e8941e1f25982fef489d125b240e4bf5e7123237dc",
-      "bytes": 713
+      "sha256": "9a37b2158830030e336ce3aca0e5fe5b402bb281a3059b91822f50e904c02615",
+      "bytes": 502
     },
     "tower_needle_rail_tier3_tritan.png": {
-      "sha256": "ad3d4c668b5019792829e58c66ff8eddfa708adedb2d7a8cc4aed1c532c2ec21",
-      "bytes": 718
+      "sha256": "c2765ed62f7814f6afaa4a186fe0319e4ac290db57aa76af95a62fed6313c0d7",
+      "bytes": 496
     },
     "tower_needle_rail_tier4.png": {
-      "sha256": "10e6984904eb5917350bb0ddac538dcdc27223b1d07cfd6a7d378907b92620d7",
-      "bytes": 715
+      "sha256": "f6358900653796e1d15f76f7ff3eb37f52db9e3c3a31e59cb6072ac24d452ee3",
+      "bytes": 539
     },
     "tower_needle_rail_tier4_deutan.png": {
-      "sha256": "cc49125e4aabe170d8760a81e4bc0c5c46298098fea369090f987adde2687f4e",
-      "bytes": 712
+      "sha256": "fcc06c839ecec4eaddee61d670f77948a5126ff0db9f850983d2eb2e4bac9483",
+      "bytes": 539
     },
     "tower_needle_rail_tier4_protan.png": {
-      "sha256": "cc49125e4aabe170d8760a81e4bc0c5c46298098fea369090f987adde2687f4e",
-      "bytes": 712
+      "sha256": "fcc06c839ecec4eaddee61d670f77948a5126ff0db9f850983d2eb2e4bac9483",
+      "bytes": 539
     },
     "tower_needle_rail_tier4_tritan.png": {
-      "sha256": "66e6f2bc0eeb841706130e69ec1958bfa3510df1753b36553d78c182d3310e05",
-      "bytes": 719
+      "sha256": "f6358900653796e1d15f76f7ff3eb37f52db9e3c3a31e59cb6072ac24d452ee3",
+      "bytes": 539
     }
   }
 }

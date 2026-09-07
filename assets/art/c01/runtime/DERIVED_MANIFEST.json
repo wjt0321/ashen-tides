@@ -1,51 +1,51 @@
 {
-  "generated_on": "2026-09-06",
-  "builder": "tools/build_c01_foozle_assets.py",
-  "source": "Foozle CC0 packs",
+  "generated_on": "2026-09-08",
+  "builder": "tools/build_v2_assets.py",
+  "source": "Ember Tide dev v2 hand-authored pixel art (tools/pixel_v2.py)",
   "files": {
     "battle_background.png": {
-      "sha256": "3cb484166911ce1015032bf68049c4ea4bd304ece68956d945bdb4eaaff9d923",
-      "bytes": 25253
+      "sha256": "0545956da2d34b1c6a24117737d2ef55589909f9fd185a59b0101b0d9a9024ae",
+      "bytes": 15186
     },
     "briefing_background.png": {
-      "sha256": "da73acfd77bd274dd3e2588703ed2e8a6c6e033f0ca335957c31ac4880952df4",
-      "bytes": 11463
+      "sha256": "cc27dc0a19b20c5e474d2f2544785b1b030cbbb75b2acc9be4583deb0793c50e",
+      "bytes": 24234
     },
     "briefing_map.png": {
-      "sha256": "31a85b01dd3fce91ca683d0e7f2fef1d05ceff3bce1ac3d40b4df5ecd3b4cb51",
-      "bytes": 14110
+      "sha256": "a64199e23fe12687665a17499d81f5f1aa3dae67dbf7af5c4faa2b5adbaad1d7",
+      "bytes": 4045
     },
     "campaign_background.png": {
-      "sha256": "7e40dbd5aa6bd3b256371bf5bea30ffa66b083d966776f613385e32b22c48ab8",
-      "bytes": 11343
+      "sha256": "21cbafabbb772de1f308b8ef01d90dce0a870d05faf73042fbf9d7d52e9faeaf",
+      "bytes": 15439
     },
     "enemy_mast_rat.png": {
-      "sha256": "317e63edcce4e85293ba0eb58566492ddeb9f4197aa19a2b548df6fcd2f177ce",
-      "bytes": 10610
+      "sha256": "47670ad0cda357759d50a9748590262788f49ef4aa0c9e2002e018195d50bace",
+      "bytes": 2095
     },
     "enemy_salt_shell.png": {
-      "sha256": "655f746784c91e25ef6b9eca4230f1865468b50be1fea0f6176695378153febe",
-      "bytes": 9563
+      "sha256": "ec85efa84045fdbe460d83ebb78be9bdaafe1c174667811e3bb60a32ad33f767",
+      "bytes": 2448
     },
     "harbor_props.png": {
-      "sha256": "6d4c70fc31a72a98b28f69a36b339174f5f1d694cb7121f2ed84bca5e82f5be5",
-      "bytes": 17062
+      "sha256": "52553771b018da38d73a9e92835099a084f46b6bd159a5b201a36c4132236b6c",
+      "bytes": 2658
     },
     "result_lose_background.png": {
-      "sha256": "76f42d331a3ca3354199ce4b608a092bcac90ab362134303ff6348db40285ce3",
-      "bytes": 10101
+      "sha256": "4579a3006960593a0690abf05d93edbf56420900506d52ba2a411b00112266da",
+      "bytes": 16807
     },
     "result_win_background.png": {
-      "sha256": "9284df6b7c47a6056673ead30dc35245fffb17d83c785eda813c144387288b79",
-      "bytes": 10662
+      "sha256": "035ac22364e42dce0857ce0d06db06edfb45b2353982b22bf5f06f7f86a25bd0",
+      "bytes": 15426
     },
     "title_background.png": {
-      "sha256": "da73acfd77bd274dd3e2588703ed2e8a6c6e033f0ca335957c31ac4880952df4",
-      "bytes": 11463
+      "sha256": "2ddd25077c8347af4bb865ffd11defc2a6c45f600e46ef07d7ec431026e47793",
+      "bytes": 15706
     },
     "tower_needle_rail.png": {
-      "sha256": "e0523dcf57eb392dfc921641ee590cf5a8be58fdaee486fef7ff25d8fafcddd9",
-      "bytes": 3909
+      "sha256": "dad5bd31e8f2b09cd955140227fb6630a45674107cda69c08b4f209cf065c809",
+      "bytes": 1334
     }
   }
 }
