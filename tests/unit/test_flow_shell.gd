@@ -215,3 +215,25 @@ func test_slot_overwrite_confirmation_nodes_are_reachable() -> void:
 	check(confirm_label != null and confirm_label.visible, "overwrite confirmation label is visible")
 	check(confirm_row != null and confirm_row.visible, "overwrite confirmation buttons are visible")
 	app.free()
+
+
+func test_flow_battle_left_click_places_tower() -> void:
+	# 回归：AppFlow 根 Control 铺满全画布，若保留默认 MOUSE_FILTER_STOP 会吞掉
+	# 战斗内全部鼠标点击（键盘不受 mouse_filter 影响，故只有鼠标失效）。
+	# harness 在 _initialize 无 Viewport 输入管线，故分两层断言：根不吞鼠标 +
+	# 点击坐标到达 main 的左键处理即可放塔。
+	CampaignService.new_game(2)
+	SaveService.clear_suspend()
+	var app := _make_app()
+	check_eq(app._screen.mouse_filter, Control.MOUSE_FILTER_STOP, "菜单屏根消费鼠标（按钮可点）")
+	check_eq(app.mouse_filter, Control.MOUSE_FILTER_IGNORE, "App 根 Control 不吞鼠标")
+	check(CampaignService.select_level(&"level_c01"), "槽 2 选中 c01")
+	app._enter_battle(false)
+	check(app._screen == null, "战斗中无菜单屏残留")
+	_force_ready_once(app._battle)
+	_force_descendants_ready(app._battle)
+	check_eq(app._battle._towers.size(), 0, "开局无塔")
+	var node: BuildNodeVisual = app._battle._build_nodes[0]
+	app._battle._on_left_click(node.position)
+	check_eq(app._battle._towers.size(), 1, "左键点击建造位可放塔")
+	app.free()

@@ -29,6 +29,10 @@ var _flow_shot_level: StringName = &"level_c01" ## flow 截图指定关卡主题
 
 
 func _ready() -> void:
+	# 本 Control 铺满全画布且位于战斗场景之前：若保留默认 MOUSE_FILTER_STOP，
+	# 战斗内所有鼠标点击会被这层透明根吞掉（键盘事件不受 mouse_filter 影响，
+	# 表现为"只有鼠标失效"）。菜单屏根 Control 自带 STOP，不依赖这里。
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	print("[M2-FLOW] AppFlow boot user_args=%s" % [OS.get_cmdline_user_args()])
 	for arg: String in OS.get_cmdline_user_args():
 		if arg.begins_with("--flow-screenshot="):
