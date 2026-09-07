@@ -125,6 +125,7 @@ var _hero_label: Label
 var _tower_label: Label
 var _subtitle_label: Label
 var _message_label: Label
+var _notice_label: Label
 var _hint_label: Label
 var _notice: String = ""
 var _notice_ttl: float = 0.0
@@ -451,13 +452,25 @@ func _build_hud() -> void:
 	_message_label = Label.new()
 	_message_label.name = "MessageLabel"
 	_message_label.size = Vector2(640, 40)
-	_message_label.position = Vector2(0, 116)
+	_message_label.position = Vector2(0, 84)
 	_message_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_message_label.add_theme_font_size_override("font_size", 24)
+	_message_label.add_theme_font_size_override("font_size", 18)
 	_message_label.add_theme_color_override("font_color", Color("fff0d5"))
 	_message_label.add_theme_color_override("font_shadow_color", Color(0,0,0,0.9))
 	_message_label.visible = false
 	hud.add_child(_message_label)
+	_notice_label = Label.new()
+	_notice_label.name = "NoticeLabel"
+	_notice_label.position = Vector2(210, 48)
+	_notice_label.size = Vector2(300, 20)
+	_notice_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_notice_label.add_theme_font_size_override("font_size", 11)
+	_notice_label.add_theme_color_override("font_color", Color("f2d59a"))
+	_notice_label.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.85))
+	_notice_label.add_theme_constant_override("shadow_offset_x", 1)
+	_notice_label.add_theme_constant_override("shadow_offset_y", 1)
+	_notice_label.visible = false
+	hud.add_child(_notice_label)
 	var hint := Label.new()
 	hint.name = "HintLabel"
 	hint.text = LocalizationService.tr_key(&"HUD_HINT")
@@ -927,7 +940,7 @@ func _place_tower_at(node: BuildNodeVisual, tower_data: TowerData, free_of_charg
 		_ember -= tower_data.base_cost
 		EventBus.ember_changed.emit(_ember)
 	var tower := GreyboxTower.new()
-	tower.setup(tower_data, node.node_id)
+	tower.setup(tower_data, node.node_id, _level_id)
 	tower.position = node.position
 	tower.enemies = _enemies
 	tower.invested_ember = 0 if free_of_charge else tower_data.base_cost
@@ -1016,7 +1029,7 @@ func _on_spawn_requested(enemy_id: StringName, route_id: StringName) -> void:
 	if actual_route == &"" or not _path_network.is_route_active(actual_route):
 		actual_route = _level.default_active_route
 	var enemy := GreyboxEnemy.new()
-	enemy.setup(data, _path_network.routes[actual_route], _rng)
+	enemy.setup(data, _path_network.routes[actual_route], _rng, 0.0, _level_id)
 	enemy.died.connect(_on_enemy_died)
 	enemy.reached_goal.connect(_on_enemy_reached_goal)
 	enemy.boss_phase_changed.connect(_on_boss_phase_changed)
@@ -1164,7 +1177,9 @@ func _on_all_waves_completed() -> void:
 func _apply_phase_visual() -> void:
 	if _greybox == null or _phase_controller == null:
 		return
-	_greybox.phase_tint = VisualTheme.TINT_MUCHAO if _phase_controller.current_phase == PhaseController.MUCHAO else VisualTheme.TINT_MINGCHAO
+	var muchao := _phase_controller.current_phase == PhaseController.MUCHAO
+	_greybox.phase_tint = VisualTheme.TINT_MUCHAO if muchao else VisualTheme.TINT_MINGCHAO
+	_greybox.tide_gate_open = _level_id == &"level_c02" and muchao
 	_greybox.queue_redraw()
 
 
@@ -1224,7 +1239,7 @@ func _enter_win() -> void:
 	var mark_count: int = int(marks["completed"]) + int(marks["integrity"]) + int(marks["strategy"])
 	_last_result = _build_battle_result(true, marks, mark_count)
 	_message_label.text = LocalizationService.tr_key(&"HUD_WIN") % [
-		_level.id, mark_count, _fleet_integrity, _level.initial_fleet_integrity
+		LocalizationService.tr_key(_level.display_name_key), mark_count, _fleet_integrity, _level.initial_fleet_integrity
 	]
 	_message_label.visible = true
 	print("[M2] WIN: level=%s waves=%d kills=%d leaks=%d integrity=%d marks=%d/3 ticks=%d sim=%.1fs" % [
@@ -1478,6 +1493,9 @@ func _flash_notice(text: String) -> void:
 
 
 func _update_hud() -> void:
+	if _notice_label != null:
+		_notice_label.text = _notice
+		_notice_label.visible = not _notice.is_empty() and _notice_ttl > 0.0
 	_res_label.text = "火种 %d   舰队 %d/%d   航标 %d" % [
 		_ember, _fleet_integrity, _level.initial_fleet_integrity, _becon.current
 	]
@@ -1684,6 +1702,9 @@ func _autoplay_tick() -> void:
 		_fail_reason = "timeout_wave_%d" % _director.waves_started()
 		_finish_smoke("timeout", 2)
 		return
+	# 潮汐仪不依赖英雄：C02 无英雄也必须在预告窗口自动演示策略目标。
+	if not _smoke_tide_used and _phase_controller.has_pending() and _becon.current >= 40:
+		_smoke_tide_used = _phase_controller.request_shift(true)
 	if _hero == null:
 		return
 	# 英雄移动演示：第 1 波开始后就位到路线中段（证明右键移动链路可用）
@@ -1700,9 +1721,6 @@ func _autoplay_tick() -> void:
 		else:
 			_hero.use_skill_b()
 			_hero.use_skill_a(Vector2(320, 240))
-	# 潮汐仪：有待切换事件且充能足够时提前一次（证明航标充能竞争）
-	if not _smoke_tide_used and _phase_controller.has_pending() and _becon.current >= 40:
-		_smoke_tide_used = _phase_controller.request_shift(true)
 	# 终极技：充能足够时放一次
 	if not _smoke_ult_used and _becon.current >= 80:
 		_smoke_ult_used = _hero.use_ultimate()

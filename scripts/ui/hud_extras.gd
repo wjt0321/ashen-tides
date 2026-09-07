@@ -33,10 +33,10 @@ func _ready() -> void:
 	_boss_bar.size = Vector2(212, 20)
 	add_child(_boss_bar)
 	_banner = Label.new()
-	_banner.size = Vector2(640, 30)
-	_banner.position = Vector2(0, 110)
+	_banner.size = Vector2(640, 22)
+	_banner.position = Vector2(0, 72)
 	_banner.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_banner.add_theme_font_size_override("font_size", 20)
+	_banner.add_theme_font_size_override("font_size", 15)
 	_banner.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.9))
 	_banner.add_theme_constant_override("shadow_offset_x", 1)
 	_banner.add_theme_constant_override("shadow_offset_y", 1)
@@ -116,7 +116,7 @@ class PhaseWidget extends Control:
 		if _pending_phase != &"":
 			var pend_col: Color = HudExtras.PHASE_COLORS.get(_pending_phase, Color.WHITE)
 			var pend_name: String = LocalizationService.tr_key(HudExtras.PHASE_NAMES.get(_pending_phase, &"PHASE_MUCHAO"))
-			var text := "→ 第%d波 %s" % [_pending_wave, pend_name]
+			var text := "→ 第%d波 %s · 相位预告" % [_pending_wave, pend_name]
 			draw_string(font, Vector2(62, 14), text, HORIZONTAL_ALIGNMENT_LEFT, -1, 11, pend_col)
 			# 潮汐仪可干预标记
 			draw_circle(Vector2(58, 10), 2.0, Color(1.0, 0.9, 0.4))

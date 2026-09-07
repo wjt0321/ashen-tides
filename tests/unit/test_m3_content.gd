@@ -49,3 +49,39 @@ func test_m3_runtime_contract() -> void:
 	check(enemy_script != null, "enemy schema loads")
 	check(FileAccess.file_exists("res://tools/m3_smoke.gd"), "M3 smoke tool exists")
 	check(FileAccess.file_exists("res://tools/m3_perf.gd"), "M3 perf tool exists")
+
+
+func test_c02_presentation_assets_contract() -> void:
+	var paths := [
+		"res://assets/art/c02/runtime/tide_gate_closed.png",
+		"res://assets/art/c02/runtime/tide_gate_open.png",
+		"res://assets/art/c02/runtime/enemy_splitfin_dasher.png",
+		"res://assets/art/c02/runtime/enemy_mast_rat_swarm.png",
+		"res://assets/art/c02/runtime/enemy_rust_armor_carrier.png",
+		"res://assets/art/c02/runtime/tower_ember_well_tier1.png",
+		"res://assets/art/c02/runtime/tower_ember_well_tier2.png",
+		"res://assets/art/c02/runtime/tower_ember_well_tier3.png",
+		"res://assets/art/c02/runtime/tower_ember_well_tier4.png",
+		"res://assets/art/c02/runtime/tower_needle_rail_tier1.png",
+		"res://assets/art/c02/runtime/tower_needle_rail_tier4.png",
+		"res://assets/art/c02/runtime/projectile_ember_burst.png",
+		"res://assets/art/c02/runtime/fx_tide_gate_strip3.png",
+	]
+	for path: String in paths:
+		check(ResourceLoader.exists(path), "C02 presentation asset exists: " + path)
+	check(ArtLibrary.c02_landmark_tex("tide_gate_closed") != null, "C02 gate asset resolves through ArtLibrary")
+	check(ArtLibrary.c02_enemy_tex(&"splitfin_dasher") != null, "C02 dasher asset resolves through ArtLibrary")
+	check(ArtLibrary.c02_enemy_tex(&"mast_rat_swarm") != null, "C02 rat asset resolves through ArtLibrary")
+	check(ArtLibrary.c02_enemy_tex(&"rust_armor_carrier") != null, "C02 armor asset resolves through ArtLibrary")
+	check(ArtLibrary.c02_tower_tex(&"tower_ember_well", 2) != null, "C02 tiered tower asset resolves through ArtLibrary")
+
+
+func test_c02_level_objective_contract() -> void:
+	var level := load(ROOT + "levels/level_c02.tres") as LevelData
+	check(level != null, "C02 level resource loads")
+	if level == null:
+		return
+	check_eq(String(level.display_name_key), "LEVEL_C02", "C02 display name key")
+	check_eq(String(level.strategy_objective_key), "OBJ_C02_STRATEGY", "C02 strategy objective key")
+	check_eq(String(level.strategy_objective_op), "use_tide_clock", "C02 strategy operation")
+	check(level.phase_events.size() == 1, "C02 has one tide gate phase event")

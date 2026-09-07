@@ -38,6 +38,7 @@ const ECHO_PULSE_MAX_R := 15.0 ## 回声桩脉冲环最大半径
 
 var data: TowerData
 var node_id: StringName
+var level_id: StringName = &"level_c01"
 ## 由战斗场景注入的敌人列表引用（数组按引用共享）。
 var enemies: Array = []
 
@@ -66,9 +67,10 @@ func set_cooldown(value: float) -> void:
 	_cooldown = value
 
 
-func setup(p_data: TowerData, p_node_id: StringName) -> void:
+func setup(p_data: TowerData, p_node_id: StringName, p_level_id: StringName = &"level_c01") -> void:
 	data = p_data
 	node_id = p_node_id
+	level_id = p_level_id
 
 
 # ---------------------------------------------------------------------------
@@ -242,7 +244,7 @@ func _draw() -> void:
 	# 射程环：默认常态 alpha 减半，选中/悬停（highlight_range=true）时更清晰
 	if not data.pair_link and highlight_range:
 		draw_arc(Vector2.ZERO, eff_range(), 0.0, TAU, 48, Color(body, 0.12), 1.5)
-	if data.id == &"tower_needle_rail":
+	if data.id == &"tower_needle_rail" and level_id == &"level_c01":
 		var attack_amount := clampf(_muzzle_flash / MUZZLE_FLASH_SECONDS, 0.0, 1.0)
 		var recoil_off := Vector2(-2.6, 0.0) * sin(_recoil * PI) if _recoil > 0.0 else Vector2.ZERO
 		draw_set_transform(recoil_off, 0.0, Vector2.ONE)
@@ -253,8 +255,9 @@ func _draw() -> void:
 		draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 		_draw_tier_pips()
 		return
-	# M4-A：正式精灵优先（docs/current/engineering/M4_ASSET_SPEC.md §6 程序化回退）
-	var tex := ArtLibrary.tower_tex(data.id)
+	# C02 主题精灵：余烬喷井随等级变化，直接让玩家看出升级收益。
+	var use_c02_art := level_id == &"level_c02" and (data.id == &"tower_ember_well" or data.id == &"tower_needle_rail")
+	var tex: Texture2D = ArtLibrary.c02_tower_tex(data.id, tier) if use_c02_art else ArtLibrary.tower_tex(data.id)
 	# C01 第二批：攻击后座包络 → 机身位移（纯视觉；候选非最终美术）
 	var recoil_off := Vector2.ZERO
 	if _recoil > 0.0:
@@ -266,7 +269,7 @@ func _draw() -> void:
 			# M4-B 高对比：提亮贴图 + 白色外圈（低风险 modulate 方案）
 			mod = Color(1.18, 1.18, 1.18)
 			draw_arc(Vector2.ZERO, 17.0, 0.0, TAU, 24, Color(1, 1, 1, 0.55), 1.5)
-		var visual_scale := 1.26 if data.id == &"tower_needle_rail" else 1.0
+		var visual_scale := 1.26 if data.id == &"tower_needle_rail" and level_id == &"level_c01" else (0.64 if level_id == &"level_c02" else 1.0)
 		var draw_size := tex.get_size() * visual_scale
 		draw_texture_rect(tex, Rect2(-draw_size * 0.5, draw_size), false, mod)
 	else:

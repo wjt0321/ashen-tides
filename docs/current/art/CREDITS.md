@@ -25,6 +25,8 @@
 - 第二章收口 C13–C14 精灵 11 张（主题地形 ×8 / 敌人 ×3：雾母载体/雾中医正/沼冠孢王 64×64）+ 色弱变体 —
   Ember Tide dev，由 `tools/gen_chapter2b_sprites.py` 确定性生成，项目自有。
 
+- C02「潮门初启」专属像素资产 48 张（潮门开/闭、针轨弩台与余烬喷井 I–IV 级、裂鳍疾行者/桅鼠群/锈甲载体、余烬弹体 FX 及 protan/deutan/tritan 变体）— Ember Tide dev，由 `tools/gen_c02_sprites.py` 确定性生成，项目自有；导出清单见 `assets/art/c02/runtime/DERIVED_MANIFEST.json`，运行时由 `scripts/core/art_library.gd` 统一加载。
+
 ## 试验性资产（不随构建默认启用）
 
 - **Buch – Outdoor 32×32 Tileset** — Michele "Buch" Bucelli，CC0 1.0（`licenses/CC0-1.0.txt`）。

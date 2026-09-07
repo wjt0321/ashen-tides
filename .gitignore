@@ -21,3 +21,6 @@ ART_ASSET_REGISTRY.*.translation
 # Downloaded staging packs and local inspection artifacts
 third_party/
 tool_results/
+
+# Godot mistakenly importing the root asset ledger as translations
+ASSET_LICENSE_LEDGER.*.translation

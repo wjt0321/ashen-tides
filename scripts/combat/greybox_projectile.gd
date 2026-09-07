@@ -178,6 +178,11 @@ func _draw_steel_needle() -> void:
 
 ## 余烬火球：外橙内黄双圆 + 1px 尾焰。
 func _draw_fireball(dir: Vector2) -> void:
+	var burst := ArtLibrary.c02_vfx_tex("projectile_ember_burst")
+	if burst != null:
+		draw_texture_rect(burst, Rect2(-Vector2(8, 8), Vector2(16, 16)), false)
+		draw_line(Vector2.ZERO, -dir * 6.0, Color(COLOR_EMBER_OUT, 0.45), 1.0)
+		return
 	draw_circle(Vector2.ZERO, 3.4, COLOR_EMBER_OUT)
 	draw_circle(Vector2.ZERO, 2.0, COLOR_EMBER_IN)
 	draw_circle(Vector2.ZERO, 0.9, Color(1.0, 0.97, 0.85))

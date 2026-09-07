@@ -9,6 +9,7 @@ const HERO_DIR := "res://assets/art/characters/"
 const TERRAIN_DIR := "res://assets/art/tilesets/"
 const VFX_DIR := "res://assets/art/vfx/"
 const UI_DIR := "res://assets/art/ui/"
+const C02_DIR := "res://assets/art/c02/runtime/"
 
 static var _cache: Dictionary = {}
 
@@ -58,3 +59,21 @@ static func vfx_tex(strip_name: String) -> Texture2D:
 
 static func ui_icon(icon_name: String) -> Texture2D:
 	return _load_cached(UI_DIR + icon_name + ".png")
+
+
+## C02 专属主题资产：潮门、潮汐敌与余烬喷井等级图。
+## 仍遵循 unit 变体优先 + 缺失回退程序绘制的 M4 资产契约。
+static func c02_tower_tex(tower_id: StringName, tier: int) -> Texture2D:
+	return _unit_cached(C02_DIR + "tower_" + String(tower_id).trim_prefix("tower_") + "_tier%d.png" % tier)
+
+
+static func c02_enemy_tex(enemy_id: StringName) -> Texture2D:
+	return _unit_cached(C02_DIR + "enemy_" + String(enemy_id) + ".png")
+
+
+static func c02_landmark_tex(name: String) -> Texture2D:
+	return _load_cached(C02_DIR + name + ".png")
+
+
+static func c02_vfx_tex(name: String) -> Texture2D:
+	return _load_cached(C02_DIR + name + ".png")

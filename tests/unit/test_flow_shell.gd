@@ -183,3 +183,35 @@ func test_c01_raster_sprite_contract() -> void:
 	check(FileAccess.file_exists("res://assets/art/c01/runtime/enemy_mast_rat.png"), "桅鼠群派生精灵表存在")
 	check(FileAccess.file_exists("res://assets/art/c01/runtime/tower_needle_rail.png"), "针轨塔派生精灵表存在")
 	check(FileAccess.file_exists("res://assets/art/c01/runtime/harbor_props.png"), "港口环境派生精灵图集存在")
+
+
+func test_c02_briefing_uses_level_data_and_hides_cross_level_suspend() -> void:
+	CampaignService.new_game(2)
+	CampaignService.record_battle_result(&"level_c01", {"won": true, "integrity": 20, "kills": 90, "mark_count": 3})
+	check(CampaignService.select_level(&"level_c02"), "C02 can be selected after C01")
+	SaveService.write_suspend({"schema_version": SaveService.SCHEMA_VERSION, "level_id": "level_c01", "completed_waves": 1})
+	var app := _make_app()
+	app._show_briefing()
+	var art := app._screen.find_child("C01HarborArt", true, false) as C01HarborArt
+	check(art != null and art.level_id == &"level_c02", "C02 briefing uses the tide gate theme")
+	check(app._screen.find_child("Enemy_splitfin_dasher", true, false) != null, "C02 briefing highlights splitfin dasher")
+	check(app._screen.find_child("ResumeBattle", true, false) == null, "C01 suspend cannot be resumed from C02 briefing")
+	var labels: Array = app._screen.find_children("*", "Label", true, false)
+	var objective_seen := false
+	for label: Node in labels:
+		if (label as Label).text.contains("潮汐仪"):
+			objective_seen = true
+	check(objective_seen, "C02 briefing renders strategy objective from LevelData")
+	app.free()
+
+
+func test_slot_overwrite_confirmation_nodes_are_reachable() -> void:
+	CampaignService.new_game(2)
+	var app := _make_app()
+	app._show_slots(true)
+	app._ask_overwrite(2)
+	var confirm_label := app._screen.find_child("ConfirmLabel", true, false) as Label
+	var confirm_row := app._screen.find_child("ConfirmRow", true, false) as Control
+	check(confirm_label != null and confirm_label.visible, "overwrite confirmation label is visible")
+	check(confirm_row != null and confirm_row.visible, "overwrite confirmation buttons are visible")
+	app.free()

@@ -25,6 +25,7 @@ var _pending_overwrite_slot: int = 0 ## 覆盖二次确认中的槽位（PRD §1
 var _last_result: Dictionary = {}
 var _flow_shot_path: String = "" ## --flow-screenshot=<path>：玩家外壳截图证据后退出
 var _flow_shot_screen: StringName = &"title" ## --flow-screen=title|slot|campaign|briefing|result
+var _flow_shot_level: StringName = &"level_c01" ## flow 截图指定关卡主题
 
 
 func _ready() -> void:
@@ -34,6 +35,10 @@ func _ready() -> void:
 			_flow_shot_path = arg.trim_prefix("--flow-screenshot=")
 		elif arg.begins_with("--flow-screen="):
 			_flow_shot_screen = StringName(arg.trim_prefix("--flow-screen=").to_lower())
+		elif arg.begins_with("--flow-level="):
+			var requested_flow_level := StringName(arg.trim_prefix("--flow-level="))
+			if ContentCatalog.is_valid_level(requested_flow_level):
+				_flow_shot_level = requested_flow_level
 	if _cli_wants_battle():
 		_enter_battle_cli()
 		return
@@ -94,13 +99,14 @@ func _set_screen(screen: Control, state: State) -> void:
 
 ## C01 Style Bible 屏根：背景 + 居中内容容器。
 ## 背景固定在 z=0，screen 在 z=1 居中。
-func _make_screen(mode: int = C01HarborArt.Mode.TITLE) -> Control:
+func _make_screen(mode: int = C01HarborArt.Mode.TITLE, p_level_id: StringName = &"level_c01") -> Control:
 	var root := Control.new()
 	root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	root.mouse_filter = Control.MOUSE_FILTER_STOP
 	var art := C01HarborArt.new()
 	art.name = "C01HarborArt"
 	art.mode = mode
+	art.level_id = p_level_id
 	root.add_child(art)
 	# 页面内容直接叠在港口构图上；不再创建中央 FlowPanel。
 	var content := VBoxContainer.new()
@@ -406,8 +412,8 @@ func _make_slot_card(slot: int, new_mode: bool) -> PanelContainer:
 
 func _ask_overwrite(slot: int) -> void:
 	_pending_overwrite_slot = slot
-	var confirm_label := _screen.get_node_or_null("ConfirmLabel") as Label
-	var confirm_row := _screen.get_node_or_null("ConfirmRow") as Control
+	var confirm_label := _screen_content().get_node_or_null("ConfirmLabel") as Label
+	var confirm_row := _screen_content().get_node_or_null("ConfirmRow") as Control
 	if confirm_label != null:
 		confirm_label.text = LocalizationService.tr_key(&"FLOW_CONFIRM_OVERWRITE")
 		confirm_label.visible = true
@@ -433,7 +439,7 @@ func _continue_slot(slot: int) -> void:
 ## 选槽页保存/读取失败提示：停留当前安全页面（PRD §12.3 不可静默失败）。
 func _show_slot_save_error() -> void:
 	_show_slots(_slot_mode_new)
-	var confirm_label := _screen.get_node_or_null("ConfirmLabel") as Label
+	var confirm_label := _screen_content().get_node_or_null("ConfirmLabel") as Label
 	if confirm_label != null:
 		confirm_label.text = LocalizationService.tr_key(&"FLOW_SAVE_FAILED")
 		confirm_label.visible = true
@@ -484,7 +490,7 @@ func _show_briefing() -> void:
 	if level == null:
 		_show_campaign()
 		return
-	var screen := _make_screen(C01HarborArt.Mode.BRIEFING)
+	var screen := _make_screen(C01HarborArt.Mode.BRIEFING, level.id)
 	_set_screen(screen, State.BRIEFING)
 	var stage := _poster_stage("BriefingPoster")
 	_screen_content().add_child(stage)
@@ -492,7 +498,8 @@ func _show_briefing() -> void:
 	view_marker.name = "BriefingHarborView"
 	stage.add_child(view_marker)
 	stage.add_child(_poster_label(LocalizationService.tr_key(level.display_name_key), Vector2(0, 0), Vector2(360, 38), 24, StyleManager.COLOR_PARCHMENT))
-	stage.add_child(_poster_label("出航前，最后一次望向港口。", Vector2(2, 32), Vector2(330, 24), 12, Color("c3cbc0")))
+	var briefing_subtitle := "潮门将改写航路，先认清第二条潮道。" if level.id == &"level_c02" else "出航前，最后一次望向港口。"
+	stage.add_child(_poster_label(briefing_subtitle, Vector2(2, 32), Vector2(350, 24), 12, Color("c3cbc0")))
 	var map := C01BriefingVisual.new()
 	map.name = "C01BattlefieldSketch"
 	map.kind = C01BriefingVisual.Kind.MAP
@@ -501,7 +508,8 @@ func _show_briefing() -> void:
 	stage.add_child(map)
 	# 右侧信息只保留可行动的关键信息。
 	stage.add_child(_poster_label("护航命令", Vector2(372, 0), Vector2(180, 28), 15, StyleManager.COLOR_CORAL))
-	stage.add_child(_poster_label("守住舰队完整度\n%d 波敌潮\n至少完成一次升级" % level.waves.size(), Vector2(372, 28), Vector2(184, 72), 13, StyleManager.COLOR_PARCHMENT))
+	var objective_text := LocalizationService.tr_key(level.strategy_objective_key)
+	stage.add_child(_poster_label("守住舰队完整度\n%d 波敌潮\n策略：%s" % [level.waves.size(), objective_text], Vector2(372, 28), Vector2(184, 72), 13, StyleManager.COLOR_PARCHMENT))
 	var enemy_ids: Array[StringName] = []
 	for w: Variant in level.waves:
 		var wave := w as WaveData
@@ -509,11 +517,17 @@ func _show_briefing() -> void:
 			var group := g as WaveGroup
 			if not enemy_ids.has(group.enemy_id):
 				enemy_ids.append(group.enemy_id)
+	if level.id == &"level_c02":
+		# 简报优先展示 C02 的识别重点，而不是只按波次顺序落到两个旧单位。
+		var c02_focus: Array[StringName] = [&"salt_shell_walker", &"splitfin_dasher"]
+		enemy_ids = c02_focus.filter(func(id: StringName) -> bool: return enemy_ids.has(id))
 	var enemy_x := 370.0
 	for enemy_id: StringName in enemy_ids.slice(0, 2):
 		var portrait := C01BriefingVisual.new()
 		portrait.name = "Enemy_%s" % enemy_id
 		portrait.kind = C01BriefingVisual.Kind.WALKER if enemy_id == &"salt_shell_walker" else C01BriefingVisual.Kind.RATS
+		portrait.level_id = level.id
+		portrait.subject_id = enemy_id
 		portrait.position = Vector2(enemy_x, 105)
 		portrait.size = Vector2(82, 72)
 		stage.add_child(portrait)
@@ -524,6 +538,9 @@ func _show_briefing() -> void:
 	var tower_visual := C01BriefingVisual.new()
 	tower_visual.name = "AvailableTowerVisual"
 	tower_visual.kind = C01BriefingVisual.Kind.TOWER
+	tower_visual.level_id = level.id
+	if not level.allowed_towers.is_empty():
+		tower_visual.subject_id = level.allowed_towers[0]
 	tower_visual.position = Vector2(372, 195)
 	tower_visual.size = Vector2(72, 55)
 	stage.add_child(tower_visual)
@@ -548,12 +565,16 @@ func _show_briefing() -> void:
 				_refresh_hero_buttons(screen, level))
 			stage.add_child(hero_btn)
 			hero_x += 92.0
-	if SaveService.has_suspend():
+	var suspend_payload := SaveService.read_suspend() if SaveService.has_suspend() else {}
+	var can_resume := not suspend_payload.is_empty() and StringName(String(suspend_payload.get("level_id", ""))) == level.id
+	if can_resume:
 		var resume_btn := _poster_button(LocalizationService.tr_key(&"FLOW_RESUME_SUSPEND"), Vector2(370, 268), Vector2(88, 36), true)
 		resume_btn.name = "ResumeBattle"
 		_wire_ui_audio(resume_btn, &"ui_confirm")
 		resume_btn.pressed.connect(func() -> void: _enter_battle(true))
 		stage.add_child(resume_btn)
+	elif not suspend_payload.is_empty():
+		stage.add_child(_poster_label("另一个关卡有未完成战斗", Vector2(370, 268), Vector2(88, 36), 10, Color("aebcb2"), HORIZONTAL_ALIGNMENT_CENTER))
 	var start_btn := _poster_button(LocalizationService.tr_key(&"FLOW_START_BATTLE"), Vector2(464, 268), Vector2(92, 36), true)
 	start_btn.name = "StartBattle"
 	_wire_ui_audio(start_btn, &"ui_confirm")
@@ -604,9 +625,10 @@ func _on_battle_finished(result: Dictionary) -> void:
 	_last_result = result
 	# Flow 托管：结算写档唯一入口（main._enter_win 在 flow_managed 下不写档）。
 	# CampaignService 推进解锁与印记（PRD §15.1），返回的下一关 id 写入结果供 Result 屏「下一关」展示。
+	var result_level := StringName(String(result.get("level_id", CampaignService.selected_level)))
 	var selected_level := CampaignService.selected_level
-	if selected_level != &"" and bool(result.get("won", false)):
-		var next_id := CampaignService.record_battle_result(selected_level, result)
+	if result_level != &"" and result_level == selected_level and bool(result.get("won", false)):
+		var next_id := CampaignService.record_battle_result(result_level, result)
 		if CampaignService.last_error == OK:
 			_last_result["next_level_id"] = String(next_id)
 		else:
@@ -628,18 +650,24 @@ func _on_battle_exit() -> void:
 func _show_result() -> void:
 	var won := bool(_last_result.get("won", false))
 	var mode := C01HarborArt.Mode.RESULT_WIN if won else C01HarborArt.Mode.RESULT_LOSE
-	var screen := _make_screen(mode)
+	var result_level_id := StringName(String(_last_result.get("level_id", CampaignService.selected_level)))
+	if result_level_id == &"":
+		result_level_id = CampaignService.selected_level
+	var screen := _make_screen(mode, result_level_id)
 	_set_screen(screen, State.RESULT)
 	var stage := _poster_stage("ResultPoster")
 	_screen_content().add_child(stage)
 	var beacon_marker := Control.new()
 	beacon_marker.name = "ResultBeacon"
 	stage.add_child(beacon_marker)
-	stage.add_child(_poster_label("航标重燃" if won else "暮潮越港", Vector2(0, 5), Vector2(310, 46), 28, StyleManager.COLOR_PARCHMENT if won else Color("a8c7c3")))
-	stage.add_child(_poster_label("舰队已穿过最后一道港火。" if won else "航标熄灭，舰队完整度耗尽。", Vector2(2, 48), Vector2(330, 30), 13, Color("c6cec0")))
+	var result_title := ("潮门已开启" if result_level_id == &"level_c02" else "航标重燃") if won else ("潮门失守" if result_level_id == &"level_c02" else "暮潮越港")
+	var result_subtitle := ("舰队已穿过潮门，第二航路正式开放。" if result_level_id == &"level_c02" else "舰队已穿过最后一道港火。") if won else ("潮门关闭前仍有敌潮越过防线。" if result_level_id == &"level_c02" else "航标熄灭，舰队完整度耗尽。")
+	stage.add_child(_poster_label(result_title, Vector2(0, 5), Vector2(310, 46), 28, StyleManager.COLOR_PARCHMENT if won else Color("a8c7c3")))
+	stage.add_child(_poster_label(result_subtitle, Vector2(2, 48), Vector2(350, 30), 13, Color("c6cec0")))
 	var marks_visual := C01BriefingVisual.new()
 	marks_visual.name = "ResultMarks"
 	marks_visual.kind = C01BriefingVisual.Kind.MARKS
+	marks_visual.level_id = result_level_id
 	marks_visual.mark_count = int(_last_result.get("mark_count", 0))
 	marks_visual.position = Vector2(0, 88)
 	marks_visual.size = Vector2(142, 48)
@@ -670,7 +698,7 @@ func _show_result() -> void:
 		stage.add_child(_poster_label(LocalizationService.tr_key(&"FLOW_SAVE_FAILED"), Vector2(0, 250), Vector2(350, 22), 11, StyleManager.COLOR_DANGER))
 	var next_id := StringName(String(_last_result.get("next_level_id", "")))
 	if won and next_id != &"":
-		var next_btn := _poster_button("前往潮门", Vector2(382, 217), Vector2(174, 42), true)
+		var next_btn := _poster_button("前往潮门" if result_level_id == &"level_c01" else "再探潮门", Vector2(382, 217), Vector2(174, 42), true)
 		next_btn.name = "NextLevel"
 		_wire_ui_audio(next_btn, &"ui_confirm")
 		next_btn.pressed.connect(func() -> void:
@@ -696,14 +724,15 @@ func _show_flow_shot_screen() -> void:
 		&"campaign":
 			_show_campaign()
 		&"briefing":
-			CampaignService.selected_level = &"level_c01"
+			CampaignService.selected_level = _flow_shot_level
 			_show_briefing()
 		&"result":
-			_last_result = {"won": true, "mark_count": 3, "integrity": 20, "kills": 90, "leaks": 0, "sim_seconds": 117.0,
-				"marks": {"completed": true, "integrity": true, "strategy": true}, "next_level_id": "level_c02"}
+			var next_level := "level_c02" if _flow_shot_level == &"level_c01" else "level_c03"
+			_last_result = {"level_id": String(_flow_shot_level), "won": true, "mark_count": 3, "integrity": 20, "kills": 90, "leaks": 0, "sim_seconds": 117.0,
+				"marks": {"completed": true, "integrity": true, "strategy": true}, "next_level_id": next_level}
 			_show_result()
 		&"result_lose":
-			_last_result = {"won": false, "mark_count": 0, "integrity": 0, "kills": 37, "leaks": 20, "sim_seconds": 64.0, "marks": {}}
+			_last_result = {"level_id": String(_flow_shot_level), "won": false, "mark_count": 0, "integrity": 0, "kills": 37, "leaks": 20, "sim_seconds": 64.0, "marks": {}}
 			_show_result()
 		_:
 			_show_title()

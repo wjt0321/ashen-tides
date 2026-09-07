@@ -27,6 +27,7 @@ const TAG_GLYPHS: Dictionary = {
 }
 
 var data: EnemyData
+var level_id: StringName = &"level_c01"
 var hp: float = 1.0
 var shield: float = 0.0
 var marked_seconds: float = 0.0
@@ -60,8 +61,9 @@ var _summon_timer: float = 0.0 ## 召唤倒计时（秒，固定 tick 递减，�
 
 ## spawn_progress_px：召唤物沿父路线、从父位置稍后的里程出生（默认 0 = 路线起点）。
 func setup(p_data: EnemyData, route_points: PackedVector2Array, rng: RandomNumberGenerator,
-		spawn_progress_px: float = 0.0) -> void:
+		spawn_progress_px: float = 0.0, p_level_id: StringName = &"level_c01") -> void:
 	data = p_data
+	level_id = p_level_id
 	hp = data.max_hp
 	shield = data.shield_hp
 	_route = route_points
@@ -298,7 +300,7 @@ func _draw() -> void:
 	var squash: float = 1.0 + 0.055 * sin(_walk_phase * 2.0)
 	var bob: float = -absf(sin(_walk_phase * 2.0)) * 1.1
 	# C01 primary subjects are real animated raster sprites; gameplay state only modulates color.
-	if data.id == &"salt_shell_walker" or data.id == &"mast_rat_swarm":
+	if level_id == &"level_c01" and (data.id == &"salt_shell_walker" or data.id == &"mast_rat_swarm"):
 		var sprite_mod := Color.WHITE
 		if slow_seconds > 0.0:
 			sprite_mod = Color(0.68, 0.83, 1.08)
@@ -314,8 +316,9 @@ func _draw() -> void:
 		return
 	# 剪影（随 facing 旋转；生命条/状态环保持轴对齐，不旋转）
 	draw_set_transform(Vector2(0, bob), facing, Vector2(1.0, squash))
-	# M4-A：正式精灵优先（modulate 表达减速/受击闪白，缺失回退程序化剪影）
-	var tex := ArtLibrary.enemy_tex(data.id)
+	# C02 主题精灵：裂鳍疾行者拥有专属鱼雷状像素剪影；未生成资产时仍回退通用素材。
+	var use_c02_art := level_id == &"level_c02" and (data.id == &"splitfin_dasher" or data.id == &"mast_rat_swarm" or data.id == &"rust_armor_carrier")
+	var tex: Texture2D = ArtLibrary.c02_enemy_tex(data.id) if use_c02_art else ArtLibrary.enemy_tex(data.id)
 	if tex != null:
 		var mod := Color(1.0, 1.0, 1.0)
 		if slow_seconds > 0.0:
@@ -334,6 +337,10 @@ func _draw() -> void:
 			visual_scale = 1.48
 		elif data.id == &"mast_rat_swarm":
 			visual_scale = 1.28
+		elif data.id == &"splitfin_dasher":
+			visual_scale = 0.52
+		elif level_id == &"level_c02":
+			visual_scale = 0.52 if data.id == &"mast_rat_swarm" else 0.58
 		var draw_size := tex.get_size() * visual_scale
 		draw_texture_rect(tex, Rect2(-draw_size * 0.5, draw_size), false, mod)
 	else:
@@ -546,7 +553,7 @@ func _draw_bars_glyph(s: float) -> void:
 		draw_rect(Rect2(Vector2(-bar_w / 2.0, sh_y), Vector2(bar_w, 2.0)), VisualTheme.HP_BAR_BG, true)
 		draw_rect(Rect2(Vector2(-bar_w / 2.0, sh_y), Vector2(bar_w * shield_ratio, 2.0)), VisualTheme.SHIELD_BAR, true)
 	# C01 两类敌人靠壳体/群聚轮廓区分，不叠“群/甲”等调试式文字浮标。
-	if data.id == &"salt_shell_walker" or data.id == &"mast_rat_swarm":
+	if level_id == &"level_c01" and (data.id == &"salt_shell_walker" or data.id == &"mast_rat_swarm"):
 		return
 	var glyph := ""
 	for tag: Variant in data.tags:

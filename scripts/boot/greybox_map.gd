@@ -40,6 +40,8 @@ var _trial_tex: Texture2D = null
 ## 相位氛围叠加（main 驱动：明潮 VisualTheme.TINT_MINGCHAO / 暮潮 TINT_MUCHAO）。
 ## alpha > 0 时 _draw 末尾整屏叠加，只罩本层地形与后续节点之下。
 var phase_tint := Color(0, 0, 0, 0)
+## C02 潮门状态：暮潮开启第二路线，视觉与规则保持一致。
+var tide_gate_open := false
 
 # —— 预计算装饰缓存（setup/_ready 填充，_draw 只遍历）——
 var _sea_dashes := PackedVector2Array() # 浪尖短划线起点
@@ -207,12 +209,23 @@ func _draw_level_flavor(land_a: Color, land_b: Color, edge: Color, accent: Color
 			# C01 已在 _draw_c01_harbor() 中由栅格精灵库完整绘制。
 			pass
 		&"level_c02":
-			# 雾中潮门：主水道两侧残留闸柱，夹住 x=480 上行潮道
-			var pillar := VisualTheme.shade(land_b, 0.7)
-			draw_rect(Rect2(458, 84, 6, 96), pillar, true)
-			draw_rect(Rect2(496, 84, 6, 96), pillar, true)
-			draw_rect(Rect2(456, 82, 10, 3), VisualTheme.shade(land_a, 0.8), true)
-			draw_rect(Rect2(494, 82, 10, 3), VisualTheme.shade(land_a, 0.8), true)
+			# 雾中潮门：用专属像素地标把“主水道→上行潮道”读成一个可理解的空间。
+			var gate := ArtLibrary.c02_landmark_tex("tide_gate_open" if tide_gate_open else "tide_gate_closed")
+			if gate != null:
+				draw_texture_rect(gate, Rect2(400, 80, 160, 112), false)
+			var gate_fx := ArtLibrary.c02_vfx_tex("fx_tide_gate_strip3")
+			if gate_fx != null:
+				var fx_frame := 2 if tide_gate_open else 0
+				draw_texture_rect_region(gate_fx, Rect2(464, 120, 32, 32), Rect2(fx_frame * 32, 0, 32, 32), Color.WHITE, false)
+			else:
+				var pillar := VisualTheme.shade(land_b, 0.7)
+				draw_rect(Rect2(458, 84, 6, 96), pillar, true)
+				draw_rect(Rect2(496, 84, 6, 96), pillar, true)
+				draw_rect(Rect2(456, 82, 10, 3), VisualTheme.shade(land_a, 0.8), true)
+				draw_rect(Rect2(494, 82, 10, 3), VisualTheme.shade(land_a, 0.8), true)
+			# 开启后加一圈潮汐脉冲，关闭时只留低亮预告点，避免误读为已通行。
+			var gate_col := Color(0.45, 0.92, 0.82, 0.48 if tide_gate_open else 0.22)
+			draw_arc(Vector2(480, 136), 42.0 + sin(Time.get_ticks_msec() * 0.002) * 2.0, PI, TAU, 24, gate_col, 1.5)
 			# 海雾带：上缘一段淡色雾弧
 			var fog := Color(foam.r, foam.g, foam.b, 0.10)
 			draw_arc(Vector2(300, -60), 220.0, 0.0, PI, 24, fog, 3.0)

@@ -6,7 +6,7 @@
 [sub_resource type="Resource" id="WaveGroup_1"]
 script = ExtResource("2")
 enemy_id = &"rust_armor_carrier"
-count = 4
+count = 3
 interval_seconds = 1.6
 entrance_index = 0
 delay_after_prev_seconds = 0.0
@@ -15,7 +15,7 @@ route_id = &"route_c02_main"
 [sub_resource type="Resource" id="WaveGroup_2"]
 script = ExtResource("2")
 enemy_id = &"mast_rat_swarm"
-count = 10
+count = 8
 interval_seconds = 0.6
 entrance_index = 0
 delay_after_prev_seconds = 4.0

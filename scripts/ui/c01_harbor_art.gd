@@ -19,6 +19,7 @@ const GOLD := Color("e1b35e")
 const DANGER := Color("2b8f94")
 
 var mode: Mode = Mode.TITLE
+var level_id: StringName = &"level_c01"
 var _time := 0.0
 
 func _ready() -> void:
@@ -36,13 +37,66 @@ func set_mode(value: Mode) -> void:
 	queue_redraw()
 
 func _draw() -> void:
-	C01SpriteLibrary.draw_harbor_background(self, int(mode), size)
-	# Raster art carries the world; only atmosphere remains procedural.
-	var fog_y := size.y * 0.55 + sin(_time * 0.22) * 2.0
-	for i: int in 4:
-		draw_rect(Rect2(0, fog_y + i * 7.0, size.x, 3.0), Color(MOON, 0.025 + i * 0.01))
+	if level_id == &"level_c02":
+		_draw_c02_background()
+	else:
+		C01SpriteLibrary.draw_harbor_background(self, int(mode), size)
+		# Raster art carries the world; only atmosphere remains procedural.
+		var fog_y := size.y * 0.55 + sin(_time * 0.22) * 2.0
+		for i: int in 4:
+			draw_rect(Rect2(0, fog_y + i * 7.0, size.x, 3.0), Color(MOON, 0.025 + i * 0.01))
 	_draw_grain()
 	_draw_vignette()
+
+
+func _draw_c02_background() -> void:
+	# 潮门章节的外壳：深海青底、冷雾、双路线和可读的像素潮门。
+	for i: int in 24:
+		var k := float(i) / 23.0
+		draw_rect(Rect2(0, i * 8.0, size.x, 9.0), Color("13282f").lerp(Color("31575b"), k), true)
+	var horizon := size.y * 0.48
+	for i: int in 16:
+		var y := horizon + float(i) * 12.0
+		draw_rect(Rect2(0, y, size.x, 13), Color("25484d").lerp(Color("10282f"), float(i) / 18.0), true)
+	for i: int in 8:
+		var y2 := horizon + 10.0 + i * 19.0
+		draw_line(Vector2(8, y2), Vector2(size.x - 18, y2 - 4), Color("78c8bd", 0.12), 1.0)
+	# 双路线航迹，避免“只有一张背景图”的空洞感。
+	var main_route := PackedVector2Array([Vector2(18, 192), Vector2(230, 192), Vector2(320, 320), Vector2(616, 320)])
+	var tide_route := PackedVector2Array([Vector2(18, 192), Vector2(350, 192), Vector2(480, 112), Vector2(616, 112)])
+	draw_polyline(main_route, Color("a4d9c5", 0.18), 7.0)
+	draw_polyline(main_route, Color("315e60", 0.82), 3.0)
+	draw_polyline(tide_route, Color("6ed5c4", 0.22), 7.0)
+	draw_polyline(tide_route, Color("1e5159", 0.90), 3.0)
+	# 潮门置于路线分叉处，关闭/开启状态由 mode 表达。
+	var gate_name := "tide_gate_open" if mode == Mode.RESULT_WIN else "tide_gate_closed"
+	var gate := ArtLibrary.c02_landmark_tex(gate_name)
+	if gate != null:
+		draw_texture_rect(gate, Rect2(400, 80, 160, 112), false)
+	else:
+		draw_rect(Rect2(458, 92, 6, 86), Color("90b6aa"), true)
+		draw_rect(Rect2(496, 92, 6, 86), Color("90b6aa"), true)
+	if mode == Mode.BRIEFING:
+		# 简报右栏是“作战桌”而非透明叠字，保证策略目标与按钮在潮门背景上仍清晰。
+		draw_rect(Rect2(356, 0, size.x - 356, 296), Color("071820", 0.42), true)
+		draw_line(Vector2(356, 12), Vector2(356, 292), Color("78c8bd", 0.24), 1.0)
+	# 页面模式对应不同氛围焦点。
+	match mode:
+		Mode.TITLE:
+			draw_circle(Vector2(480, 136), 48.0 + sin(_time * 1.2) * 2.0, Color("6ee0cb", 0.10))
+			draw_circle(Vector2(480, 136), 3.0, Color("ffe7a5"))
+			draw_colored_polygon(PackedVector2Array([Vector2(0, 300), Vector2(200, 268), Vector2(340, 360), Vector2(0, 360)]), Color("0c1b22", 0.86))
+		Mode.SLOT:
+			draw_colored_polygon(PackedVector2Array([Vector2(0, 360), Vector2(0, 284), Vector2(175, 256), Vector2(286, 360)]), Color("0c1b22", 0.82))
+		Mode.CAMPAIGN:
+			draw_circle(Vector2(535, 136), 22.0, Color("8de0cf", 0.14))
+		Mode.BRIEFING:
+			draw_colored_polygon(PackedVector2Array([Vector2(0, 360), Vector2(0, 292), Vector2(150, 262), Vector2(306, 360)]), Color("0c1b22", 0.76))
+		Mode.RESULT_WIN:
+			draw_circle(Vector2(480, 136), 56.0, Color("74e2c9", 0.12))
+		Mode.RESULT_LOSE:
+			draw_rect(Rect2(0, 212, size.x, 148), Color("08151c", 0.30), true)
+			draw_line(Vector2(390, 94), Vector2(550, 184), Color("ef684b", 0.30), 2.0)
 
 func _draw_sky_and_sea() -> void:
 	for i: int in 24:
