@@ -108,7 +108,7 @@
 
 ## C01 最终美术基线（2026-09-06）
 
-> 项目主理人已采用 C01 当前 Foozle CC0 派生栅格像素风格，并要求 C02 及后续全部关卡沿用。唯一视觉权威为 [ART_STYLE_BASELINE.md](../art/ART_STYLE_BASELINE.md)；C01 实现见 [C01_STYLE_BIBLE.md](../art/C01_STYLE_BIBLE.md)，资源来源见 [C01_RESOURCE_DECISIONS.md](../art/C01_RESOURCE_DECISIONS.md)。单项成熟度只看 `ART_ASSET_REGISTRY.csv`，不据此宣称项目 Release-ready 或 Shipping。
+> 项目主理人已采用 C01 当前 Foozle CC0 派生栅格像素风格，并要求 C02 及后续全部关卡沿用。唯一视觉权威为 [ART_STYLE_BASELINE.md](../art/ART_STYLE_BASELINE.md)；C01 实现见 [C01_STYLE_BIBLE.md](../art/C01_STYLE_BIBLE.md)，资源来源见 [C01_RESOURCE_DECISIONS.md](../../archive/art/C01_RESOURCE_DECISIONS.md)（已归档，现行来源为 sourced-cc0-ccby-v1，见 [ASSET_CATALOG.md](../art/ASSET_CATALOG.md) §4.6）。单项成熟度只看 `ART_ASSET_REGISTRY.csv`，不据此宣称项目 Release-ready 或 Shipping。
 
 - [x] C01 Title / Campaign / Briefing / Battle / Result 统一栅格表现
 - [x] 盐壳行者 / 桅鼠群 / 针轨弩台接入真实像素动画主体

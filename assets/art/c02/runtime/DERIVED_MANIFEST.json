@@ -1,199 +1,1065 @@
 {
-  "generated_on": "2026-09-08",
-  "builder": "tools/build_v2_assets.py",
-  "source": "Ember Tide dev v2 hand-authored pixel art (tools/pixel_v2.py)",
+  "derived_at": "2026-09-08",
   "files": {
     "enemy_mast_rat_swarm.png": {
-      "sha256": "baea756cc13adbb68a51ef4af1f092e9ceab2b6ce85825dd7055e22aa07d61dd",
-      "bytes": 302
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 615,
+      "derived_at": "2026-09-08",
+      "sha256": "5825b16fe562ba0f477a07585c8eb9fb5e49b83aa1db9c0446569ff157b13f82",
+      "size": [
+        64,
+        62
+      ],
+      "sources": [
+        {
+          "author": "Sevarihk",
+          "license": "CC-BY-4.0",
+          "path": "assets/vendor/hunt/oga-enemies/06_lpc_animals_2022/.../mice 32x32.png",
+          "title": "LPC animals 2022 - mice"
+        }
+      ]
     },
     "enemy_mast_rat_swarm_deutan.png": {
-      "sha256": "f5e6d24713480efe167a4511f485049d6102fa6166669e08e420954fba8d01c9",
-      "bytes": 297
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 619,
+      "derived_at": "2026-09-08",
+      "sha256": "ac2e570e84087bf5b346c4407baa18366f1b010cb326aa434be0b77a9282f01b",
+      "size": [
+        64,
+        62
+      ],
+      "sources": [
+        {
+          "author": "Sevarihk",
+          "license": "CC-BY-4.0",
+          "path": "assets/vendor/hunt/oga-enemies/06_lpc_animals_2022/.../mice 32x32.png",
+          "title": "LPC animals 2022 - mice"
+        }
+      ]
     },
     "enemy_mast_rat_swarm_protan.png": {
-      "sha256": "f5e6d24713480efe167a4511f485049d6102fa6166669e08e420954fba8d01c9",
-      "bytes": 297
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 619,
+      "derived_at": "2026-09-08",
+      "sha256": "ac2e570e84087bf5b346c4407baa18366f1b010cb326aa434be0b77a9282f01b",
+      "size": [
+        64,
+        62
+      ],
+      "sources": [
+        {
+          "author": "Sevarihk",
+          "license": "CC-BY-4.0",
+          "path": "assets/vendor/hunt/oga-enemies/06_lpc_animals_2022/.../mice 32x32.png",
+          "title": "LPC animals 2022 - mice"
+        }
+      ]
     },
     "enemy_mast_rat_swarm_tritan.png": {
-      "sha256": "baea756cc13adbb68a51ef4af1f092e9ceab2b6ce85825dd7055e22aa07d61dd",
-      "bytes": 302
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 616,
+      "derived_at": "2026-09-08",
+      "sha256": "20a1a0602d4232fa9d36055034df9b79ac03a90aed7c902d31e1198ec7119583",
+      "size": [
+        64,
+        62
+      ],
+      "sources": [
+        {
+          "author": "Sevarihk",
+          "license": "CC-BY-4.0",
+          "path": "assets/vendor/hunt/oga-enemies/06_lpc_animals_2022/.../mice 32x32.png",
+          "title": "LPC animals 2022 - mice"
+        }
+      ]
     },
     "enemy_rust_armor_carrier.png": {
-      "sha256": "8d392dceae9a6f48887e1b988f3c0dc74ddcd6417e2270983746a49bd84a4bc8",
-      "bytes": 378
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 1224,
+      "derived_at": "2026-09-08",
+      "sha256": "1d6a527cb7fd8602521e7966f24bd0ffd575d255cd99cdd7e69d58b9c42f6e56",
+      "size": [
+        64,
+        62
+      ],
+      "sources": [
+        {
+          "author": "alizard",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-enemies/02_crab_topdown/extracted/Crab/Crab_Walk.png",
+          "title": "Crab (top-down walk)"
+        }
+      ]
     },
     "enemy_rust_armor_carrier_deutan.png": {
-      "sha256": "97a1b456436411ebc634b378e0316c66b803c0bc7773c859aedbb96bb322a4a6",
-      "bytes": 387
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 1220,
+      "derived_at": "2026-09-08",
+      "sha256": "52c27e35bd2a8a24a8916070ecd4b1cc8f4d2e84f78ee5d16bc36614507696cb",
+      "size": [
+        64,
+        62
+      ],
+      "sources": [
+        {
+          "author": "alizard",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-enemies/02_crab_topdown/extracted/Crab/Crab_Walk.png",
+          "title": "Crab (top-down walk)"
+        }
+      ]
     },
     "enemy_rust_armor_carrier_protan.png": {
-      "sha256": "97a1b456436411ebc634b378e0316c66b803c0bc7773c859aedbb96bb322a4a6",
-      "bytes": 387
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 1220,
+      "derived_at": "2026-09-08",
+      "sha256": "52c27e35bd2a8a24a8916070ecd4b1cc8f4d2e84f78ee5d16bc36614507696cb",
+      "size": [
+        64,
+        62
+      ],
+      "sources": [
+        {
+          "author": "alizard",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-enemies/02_crab_topdown/extracted/Crab/Crab_Walk.png",
+          "title": "Crab (top-down walk)"
+        }
+      ]
     },
     "enemy_rust_armor_carrier_tritan.png": {
-      "sha256": "8d392dceae9a6f48887e1b988f3c0dc74ddcd6417e2270983746a49bd84a4bc8",
-      "bytes": 378
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 1252,
+      "derived_at": "2026-09-08",
+      "sha256": "954a1ca2284312838f7c2c1dc6db483293878ce2a590a4b3e0474bfd630a8819",
+      "size": [
+        64,
+        62
+      ],
+      "sources": [
+        {
+          "author": "alizard",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-enemies/02_crab_topdown/extracted/Crab/Crab_Walk.png",
+          "title": "Crab (top-down walk)"
+        }
+      ]
     },
     "enemy_splitfin_dasher.png": {
-      "sha256": "e04cc346658727b78e1be327e69ff3457686fdeb008a6606fd2c51426f06ee94",
-      "bytes": 383
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 454,
+      "derived_at": "2026-09-08",
+      "sha256": "bdd06a7bf1f04a46766f8e5dd5bc7ea71de0d4c09cd3d981a7639a7b8ce3d07b",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "Sevarihk",
+          "license": "CC-BY-4.0",
+          "path": "assets/vendor/hunt/oga-enemies/06_lpc_animals_2022/.../shark 160x160 (Sevarihk).png",
+          "title": "LPC animals 2022 - shark"
+        }
+      ]
     },
     "enemy_splitfin_dasher_deutan.png": {
-      "sha256": "e04cc346658727b78e1be327e69ff3457686fdeb008a6606fd2c51426f06ee94",
-      "bytes": 383
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 452,
+      "derived_at": "2026-09-08",
+      "sha256": "83dbd710557e35476c17f10027d54f5ac8c38dfeb3a85a5ed3b3c7310ae7312f",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "Sevarihk",
+          "license": "CC-BY-4.0",
+          "path": "assets/vendor/hunt/oga-enemies/06_lpc_animals_2022/.../shark 160x160 (Sevarihk).png",
+          "title": "LPC animals 2022 - shark"
+        }
+      ]
     },
     "enemy_splitfin_dasher_protan.png": {
-      "sha256": "e04cc346658727b78e1be327e69ff3457686fdeb008a6606fd2c51426f06ee94",
-      "bytes": 383
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 452,
+      "derived_at": "2026-09-08",
+      "sha256": "83dbd710557e35476c17f10027d54f5ac8c38dfeb3a85a5ed3b3c7310ae7312f",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "Sevarihk",
+          "license": "CC-BY-4.0",
+          "path": "assets/vendor/hunt/oga-enemies/06_lpc_animals_2022/.../shark 160x160 (Sevarihk).png",
+          "title": "LPC animals 2022 - shark"
+        }
+      ]
     },
     "enemy_splitfin_dasher_tritan.png": {
-      "sha256": "5c853eede6c28c8038333e40edf3da4768a81217becfe228f74c8167b19ae61f",
-      "bytes": 383
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 455,
+      "derived_at": "2026-09-08",
+      "sha256": "5c2ce93487ae769757b02b3ed81176cb4c385e957a04c8c489653cac91815c51",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "Sevarihk",
+          "license": "CC-BY-4.0",
+          "path": "assets/vendor/hunt/oga-enemies/06_lpc_animals_2022/.../shark 160x160 (Sevarihk).png",
+          "title": "LPC animals 2022 - shark"
+        }
+      ]
     },
     "fx_tide_gate_strip3.png": {
+      "builder": "tools/build_v2_assets.py",
+      "bytes": 401,
+      "derived_at": "2026-09-08",
       "sha256": "87353f1804a40e41b7be76c40e5e1f1cfd78a88ebe2b71ec7f4505c3d13220f9",
-      "bytes": 401
+      "size": [
+        96,
+        32
+      ],
+      "sources": [
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "note": "hand-authored v2 (tools/build_v2_assets.py)",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "projectile_ember_burst.png": {
-      "sha256": "37ae984bee9506ba132dfbcdbe6627ac82680598bedcf0e36f02fb1958383ee0",
-      "bytes": 146
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 454,
+      "derived_at": "2026-09-08",
+      "sha256": "a4c3106a703c2cf56a418d16c876711f2196ed74d362d6217dbd0c7db70c1dc9",
+      "size": [
+        16,
+        16
+      ],
+      "sources": [
+        {
+          "author": "Clint Bellanger",
+          "license": "CC-BY-3.0",
+          "path": "assets/vendor/hunt/oga-towers/06_sparks_fire_ice_blood/sparks.png",
+          "title": "Sparks / Fire / Ice / Blood"
+        }
+      ]
     },
     "tide_gate_closed.png": {
+      "builder": "tools/build_v2_assets.py",
+      "bytes": 1064,
+      "derived_at": "2026-09-08",
       "sha256": "8a08ec3cf48c61173928c23129475a13a9777005e39ff30e7d2df54d8d02e2be",
-      "bytes": 1064
+      "size": [
+        160,
+        112
+      ],
+      "sources": [
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "note": "hand-authored v2 (tools/build_v2_assets.py)",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tide_gate_open.png": {
+      "builder": "tools/build_v2_assets.py",
+      "bytes": 1100,
+      "derived_at": "2026-09-08",
       "sha256": "00f7048297dff9e7d28ec9cd33ba942df5b8b06a9b82bbd6c6f545c52a55bfad",
-      "bytes": 1100
+      "size": [
+        160,
+        112
+      ],
+      "sources": [
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "note": "hand-authored v2 (tools/build_v2_assets.py)",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_ember_well_tier1.png": {
-      "sha256": "ff17cc31966ea46e1b139f6085d441c31d49dbd9d7da7c4df5f0f4e935a1e311",
-      "bytes": 402
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 490,
+      "derived_at": "2026-09-08",
+      "sha256": "578484a0e0b60afb049593edaa92958c3ddfc0286044f10352fd4315e19c0c4a",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "benhickling",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/04_animated_fire/fire1_64.png",
+          "title": "Animated Fire"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_ember_well_tier1_deutan.png": {
-      "sha256": "ca9f29929c21cf452e1330330a0c0d64c77ce6db61c28023ee25fa694f8c0b25",
-      "bytes": 401
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 489,
+      "derived_at": "2026-09-08",
+      "sha256": "725595ece0ac51d99a10cb82031a4f937b662598bfcb270af86bf5d0ea23366c",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "benhickling",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/04_animated_fire/fire1_64.png",
+          "title": "Animated Fire"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_ember_well_tier1_protan.png": {
-      "sha256": "ca9f29929c21cf452e1330330a0c0d64c77ce6db61c28023ee25fa694f8c0b25",
-      "bytes": 401
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 489,
+      "derived_at": "2026-09-08",
+      "sha256": "725595ece0ac51d99a10cb82031a4f937b662598bfcb270af86bf5d0ea23366c",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "benhickling",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/04_animated_fire/fire1_64.png",
+          "title": "Animated Fire"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_ember_well_tier1_tritan.png": {
-      "sha256": "ff17cc31966ea46e1b139f6085d441c31d49dbd9d7da7c4df5f0f4e935a1e311",
-      "bytes": 402
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 491,
+      "derived_at": "2026-09-08",
+      "sha256": "587d6edc63d8abd1f0fa9c927005d4af5c83efac500b5b924a5d92138e63bd5b",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "benhickling",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/04_animated_fire/fire1_64.png",
+          "title": "Animated Fire"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_ember_well_tier2.png": {
-      "sha256": "5475bb69a548269cb26cb144fc59fcab3f379d21cb3ef8031f75ac987997293a",
-      "bytes": 431
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 538,
+      "derived_at": "2026-09-08",
+      "sha256": "750507feb46bc1fea9eb75c9782199d77026f1dc96ee37631c644aa3888dde5a",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "benhickling",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/04_animated_fire/fire1_64.png",
+          "title": "Animated Fire"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_ember_well_tier2_deutan.png": {
-      "sha256": "4bf8f0f246aea3a0b057cf1258fe1f3e8b9334a89687815e1842f795aa5e5b4a",
-      "bytes": 429
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 541,
+      "derived_at": "2026-09-08",
+      "sha256": "8ed572dcee9a8b12184101ba058bf9806eec1956c0cdc88dec3dead0cfb73cb2",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "benhickling",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/04_animated_fire/fire1_64.png",
+          "title": "Animated Fire"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_ember_well_tier2_protan.png": {
-      "sha256": "4bf8f0f246aea3a0b057cf1258fe1f3e8b9334a89687815e1842f795aa5e5b4a",
-      "bytes": 429
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 541,
+      "derived_at": "2026-09-08",
+      "sha256": "8ed572dcee9a8b12184101ba058bf9806eec1956c0cdc88dec3dead0cfb73cb2",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "benhickling",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/04_animated_fire/fire1_64.png",
+          "title": "Animated Fire"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_ember_well_tier2_tritan.png": {
-      "sha256": "5475bb69a548269cb26cb144fc59fcab3f379d21cb3ef8031f75ac987997293a",
-      "bytes": 431
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 541,
+      "derived_at": "2026-09-08",
+      "sha256": "7e10f1b023b3da9d50248c3836771597a2a906ff398b71cefe8c9eb6d2e97640",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "benhickling",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/04_animated_fire/fire1_64.png",
+          "title": "Animated Fire"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_ember_well_tier3.png": {
-      "sha256": "a7138593b614424a5c7a38b673b586435f82a1e6a1e346f9db5bfdd45319092a",
-      "bytes": 499
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 610,
+      "derived_at": "2026-09-08",
+      "sha256": "3b5272d38626e188d28331fa515d1739c1b35a3b78f244e68514c4c128d036af",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "benhickling",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/04_animated_fire/fire1_64.png",
+          "title": "Animated Fire"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_ember_well_tier3_deutan.png": {
-      "sha256": "bdfe4582af067025d3b3bc4fc8593deba115317efcec8895fbe185c58d5f77d2",
-      "bytes": 498
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 620,
+      "derived_at": "2026-09-08",
+      "sha256": "fc71f49b0e81deb46b4aec427866aefe4a9327a2fc3eb2bfc1e1919142760c93",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "benhickling",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/04_animated_fire/fire1_64.png",
+          "title": "Animated Fire"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_ember_well_tier3_protan.png": {
-      "sha256": "bdfe4582af067025d3b3bc4fc8593deba115317efcec8895fbe185c58d5f77d2",
-      "bytes": 498
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 620,
+      "derived_at": "2026-09-08",
+      "sha256": "fc71f49b0e81deb46b4aec427866aefe4a9327a2fc3eb2bfc1e1919142760c93",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "benhickling",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/04_animated_fire/fire1_64.png",
+          "title": "Animated Fire"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_ember_well_tier3_tritan.png": {
-      "sha256": "a7138593b614424a5c7a38b673b586435f82a1e6a1e346f9db5bfdd45319092a",
-      "bytes": 499
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 613,
+      "derived_at": "2026-09-08",
+      "sha256": "e541317b8115d8f49998ea49efe56ba653c759fe779d361fa909ef9861d72058",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "benhickling",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/04_animated_fire/fire1_64.png",
+          "title": "Animated Fire"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_ember_well_tier4.png": {
-      "sha256": "52c2332cd7bccb5aa79b98aaebe2ec6aedd7cb895d84381fdb9cf933e1418294",
-      "bytes": 529
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 672,
+      "derived_at": "2026-09-08",
+      "sha256": "24ec3b97f90623f6395636200f7e34dfba675a107a5cc23722e3496117ccae6a",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "benhickling",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/04_animated_fire/fire1_64.png",
+          "title": "Animated Fire"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_ember_well_tier4_deutan.png": {
-      "sha256": "889c16ba6243dc15a1d380d1a5ba337d89db2d8e756114fba4b682399d143f56",
-      "bytes": 524
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 669,
+      "derived_at": "2026-09-08",
+      "sha256": "d1baed40fed4495af8596b53170d2bf6669eb5d97b0d1a08d49760724ec965d8",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "benhickling",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/04_animated_fire/fire1_64.png",
+          "title": "Animated Fire"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_ember_well_tier4_protan.png": {
-      "sha256": "889c16ba6243dc15a1d380d1a5ba337d89db2d8e756114fba4b682399d143f56",
-      "bytes": 524
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 669,
+      "derived_at": "2026-09-08",
+      "sha256": "d1baed40fed4495af8596b53170d2bf6669eb5d97b0d1a08d49760724ec965d8",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "benhickling",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/04_animated_fire/fire1_64.png",
+          "title": "Animated Fire"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_ember_well_tier4_tritan.png": {
-      "sha256": "52c2332cd7bccb5aa79b98aaebe2ec6aedd7cb895d84381fdb9cf933e1418294",
-      "bytes": 529
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 671,
+      "derived_at": "2026-09-08",
+      "sha256": "eec93f7f60e38c033951be2aea9419ed2137d0da8047ccf0922e049495f3ee60",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "benhickling",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/04_animated_fire/fire1_64.png",
+          "title": "Animated Fire"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_needle_rail_tier1.png": {
-      "sha256": "215477651f325ab4307c0ebc25b49a81ecc7e28859c03195313ecf2a6570bce5",
-      "bytes": 443
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 601,
+      "derived_at": "2026-09-08",
+      "sha256": "540853acaf37d1547eb0538c75b1860e9582099aea04cebb479252a6bd5df726",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "zerohero",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/01_pixel_turret_animation/",
+          "title": "Pixel Turret Animation"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_needle_rail_tier1_deutan.png": {
-      "sha256": "1fb844ccfb059906e8a14c1ad7f9db5e4f79d8ea307d4e5b0ff4c79a69780e92",
-      "bytes": 444
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 594,
+      "derived_at": "2026-09-08",
+      "sha256": "aaacd6f35a83d9ae25ffdd82f3d6a9b8630de0969886613c371301ce2c7439a1",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "zerohero",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/01_pixel_turret_animation/",
+          "title": "Pixel Turret Animation"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_needle_rail_tier1_protan.png": {
-      "sha256": "1fb844ccfb059906e8a14c1ad7f9db5e4f79d8ea307d4e5b0ff4c79a69780e92",
-      "bytes": 444
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 594,
+      "derived_at": "2026-09-08",
+      "sha256": "aaacd6f35a83d9ae25ffdd82f3d6a9b8630de0969886613c371301ce2c7439a1",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "zerohero",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/01_pixel_turret_animation/",
+          "title": "Pixel Turret Animation"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_needle_rail_tier1_tritan.png": {
-      "sha256": "215477651f325ab4307c0ebc25b49a81ecc7e28859c03195313ecf2a6570bce5",
-      "bytes": 443
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 604,
+      "derived_at": "2026-09-08",
+      "sha256": "57f75feb66e21e47624ef33591536ba8b156a95e147d818f066163443e5e4cb9",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "zerohero",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/01_pixel_turret_animation/",
+          "title": "Pixel Turret Animation"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_needle_rail_tier2.png": {
-      "sha256": "176679e582917cba747353316e9c922fae51f2fc7ddbcb18582302768732e37e",
-      "bytes": 464
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 628,
+      "derived_at": "2026-09-08",
+      "sha256": "42107d24d47f8e6a14885f4f2c20753216f4d5d82476ac472c0538e02ad7898e",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "zerohero",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/01_pixel_turret_animation/",
+          "title": "Pixel Turret Animation"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_needle_rail_tier2_deutan.png": {
-      "sha256": "12319fbb6a4ece0fa7a2320ebaa987643dfeef17417554e2e515d101068626ea",
-      "bytes": 466
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 622,
+      "derived_at": "2026-09-08",
+      "sha256": "8c0df5dddaa65515b4f63b8f7fc420d1f2ee9cbec206e31dabf7a484861f9b8a",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "zerohero",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/01_pixel_turret_animation/",
+          "title": "Pixel Turret Animation"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_needle_rail_tier2_protan.png": {
-      "sha256": "12319fbb6a4ece0fa7a2320ebaa987643dfeef17417554e2e515d101068626ea",
-      "bytes": 466
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 622,
+      "derived_at": "2026-09-08",
+      "sha256": "8c0df5dddaa65515b4f63b8f7fc420d1f2ee9cbec206e31dabf7a484861f9b8a",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "zerohero",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/01_pixel_turret_animation/",
+          "title": "Pixel Turret Animation"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_needle_rail_tier2_tritan.png": {
-      "sha256": "176679e582917cba747353316e9c922fae51f2fc7ddbcb18582302768732e37e",
-      "bytes": 464
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 630,
+      "derived_at": "2026-09-08",
+      "sha256": "d1d24155473bc303b775729916ff004b397cd9d2f7c0d841820a8c11a354fad5",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "zerohero",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/01_pixel_turret_animation/",
+          "title": "Pixel Turret Animation"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_needle_rail_tier3.png": {
-      "sha256": "c2765ed62f7814f6afaa4a186fe0319e4ac290db57aa76af95a62fed6313c0d7",
-      "bytes": 496
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 670,
+      "derived_at": "2026-09-08",
+      "sha256": "fe25c03a9e73d3c6d5680c5c9502aa11776afb879910904c61caf8d748acadbb",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "zerohero",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/01_pixel_turret_animation/",
+          "title": "Pixel Turret Animation"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_needle_rail_tier3_deutan.png": {
-      "sha256": "9a37b2158830030e336ce3aca0e5fe5b402bb281a3059b91822f50e904c02615",
-      "bytes": 502
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 656,
+      "derived_at": "2026-09-08",
+      "sha256": "060289e142ce5a10f3106e079e2f412c97171bdfdb7d333c292356adc8a69683",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "zerohero",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/01_pixel_turret_animation/",
+          "title": "Pixel Turret Animation"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_needle_rail_tier3_protan.png": {
-      "sha256": "9a37b2158830030e336ce3aca0e5fe5b402bb281a3059b91822f50e904c02615",
-      "bytes": 502
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 656,
+      "derived_at": "2026-09-08",
+      "sha256": "060289e142ce5a10f3106e079e2f412c97171bdfdb7d333c292356adc8a69683",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "zerohero",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/01_pixel_turret_animation/",
+          "title": "Pixel Turret Animation"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_needle_rail_tier3_tritan.png": {
-      "sha256": "c2765ed62f7814f6afaa4a186fe0319e4ac290db57aa76af95a62fed6313c0d7",
-      "bytes": 496
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 670,
+      "derived_at": "2026-09-08",
+      "sha256": "fec34c9e7b893270f1b4ac42c3f39623a89d229bc9b993436bdaa6d2e06cc669",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "zerohero",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/01_pixel_turret_animation/",
+          "title": "Pixel Turret Animation"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_needle_rail_tier4.png": {
-      "sha256": "f6358900653796e1d15f76f7ff3eb37f52db9e3c3a31e59cb6072ac24d452ee3",
-      "bytes": 539
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 706,
+      "derived_at": "2026-09-08",
+      "sha256": "017549058da8c4e22918dbd959ad5eb9eaf887f14d61a09599af2c8eb08cef09",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "zerohero",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/01_pixel_turret_animation/",
+          "title": "Pixel Turret Animation"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_needle_rail_tier4_deutan.png": {
-      "sha256": "fcc06c839ecec4eaddee61d670f77948a5126ff0db9f850983d2eb2e4bac9483",
-      "bytes": 539
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 699,
+      "derived_at": "2026-09-08",
+      "sha256": "4eab2f26fe614f8139c55db0e85e5bb95f6a885e5687d6e83dec933f303feb75",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "zerohero",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/01_pixel_turret_animation/",
+          "title": "Pixel Turret Animation"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_needle_rail_tier4_protan.png": {
-      "sha256": "fcc06c839ecec4eaddee61d670f77948a5126ff0db9f850983d2eb2e4bac9483",
-      "bytes": 539
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 699,
+      "derived_at": "2026-09-08",
+      "sha256": "4eab2f26fe614f8139c55db0e85e5bb95f6a885e5687d6e83dec933f303feb75",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "zerohero",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/01_pixel_turret_animation/",
+          "title": "Pixel Turret Animation"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_needle_rail_tier4_tritan.png": {
-      "sha256": "f6358900653796e1d15f76f7ff3eb37f52db9e3c3a31e59cb6072ac24d452ee3",
-      "bytes": 539
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 709,
+      "derived_at": "2026-09-08",
+      "sha256": "1b2b1aa488c67c07d4a8997f5cd06d6b38083ad25904f00725db746d115ffdd4",
+      "size": [
+        64,
+        64
+      ],
+      "sources": [
+        {
+          "author": "zerohero",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/01_pixel_turret_animation/",
+          "title": "Pixel Turret Animation"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     }
-  }
+  },
+  "generated_by": "tools/build_sourced_assets.py"
 }

@@ -1,0 +1,66 @@
+# AT-CHA-009 — [LPC] bears, deer, lions and more（含 Sevarihk 派生条目）
+
+> Page URL: https://opengameart.org/content/lpc-bears-deer-lions-and-more
+> Asset ID: AT-CHA-009
+> Recorded in ASSET_LICENSE_LEDGER.csv: 2026-09-08
+> Asset_role: 敌人 — 桅鼠群（C01 giant rat + C02 mice）+ 裂鳍疾行者（C02 shark）
+> Vendor path: assets/vendor/hunt/oga-enemies/06_lpc_animals_2022/lpc_animals_2022_v1.1.zip + shark_underwater_160x160_sevarihk.png
+> Source SHA-256 (source.zip / lpc_animals_2022_v1.1.zip): a4ea2c5b33061858e02a60dda34adb30bc8c4a334030bdcc7fafef32c810c002 (421287 bytes)
+> Source SHA-256 (shark_underwater_160x160_sevarihk.png): f4ab67118034e8629c70c8bd38522fe8c94c144818751e7cd823c2ed59618083 (7411 bytes)
+
+---
+
+## License declaration (OGA page metadata)
+
+- License(s): **CC-BY 4.0** (https://creativecommons.org/licenses/by/4.0/)
+- Pack author (OGA 元数据): **tapatilorenzo** (https://opengameart.org/users/tapatilorenzo)
+- 派生条目作者（猎手报告 + 派生管线 + 项目台账）: **Sevarihk**（含 giant rat 80×64、mice 32×32、shark 160×160）
+- 派生管线 `tools/build_sourced_assets.py` 登记:
+  - `SRC["rat"]` → Sevarihk / LPC animals 2022 - giant rat
+  - `SRC["mice"]` → Sevarihk / LPC animals 2022 - mice
+  - `SRC["shark"]` → Sevarihk / LPC animals 2022 - shark
+
+> 研究者备注 (2026-09-08)：
+> Sevarihk 与 tapatilorenzo 在 OGA "Sevarihk's Artwork" collection 下联合发布；本项目实际使用的 giant rat / mice / shark 三件 Sevarihk 派生条目，由 Sevarihk 直接贡献。
+> 鉴于 LPC pack 的 CC-BY 4.0 要求"署名贡献者"，本项目台账在 author 列登记为 **Sevarihk (LPC animals 2022, CC-BY 4.0)**，并在 CREDITS.md 与游戏内致谢同时归功 tapatilorenzo（pack 作者）和 Sevarihk（派生条目作者）。
+> Shark PNG 文件名直接以 Sevarihk 署名（shark_underwater_160x160_sevarihk.png），是 Sevarihk 直接贡献的最强证据。
+
+## Allowed uses (per CC-BY 4.0)
+
+- 商业使用 ✓
+- 修改 ✓
+- 复制 ✓
+- 分发 ✓
+- 再许可（必须同 CC-BY 4.0）✓
+- **署名要求 ✓（必填）**
+
+### 署名要求（CC-BY 4.0 §3）
+
+发布或分发本作品（含派生作品）必须包含：
+1. **作者署名**："Sevarihk (LPC animals 2022, derived from [LPC] bears, deer, lions and more by tapatilorenzo)"
+2. **许可证链接**：https://creativecommons.org/licenses/by/4.0/
+3. **派生说明**：indicate if changes were made
+4. **许可证文本**：随分发包含 CC-BY 4.0 完整文本或链接
+
+## 派生管线
+
+- 入口：`tools/build_sourced_assets.py` 中 `SRC["rat"]` / `SRC["mice"]` / `SRC["shark"]`
+- 用法：
+  - giant rat → C01 `assets/art/c01/runtime/enemy_mast_rat.png` (512×192)
+  - mice → C02 `assets/art/c02/runtime/enemy_mast_rat_swarm.png` (64×62) + _deutan/_protan/_tritan 色弱变体
+  - shark → C02 `assets/art/c02/runtime/enemy_splitfin_dasher.png` (64×64) + _deutan/_protan/_tritan 色弱变体
+- 派生文件 SHA-256 见 `assets/art/c01/runtime/DERIVED_MANIFEST.json` 与 `assets/art/c02/runtime/DERIVED_MANIFEST.json`
+
+## 抓取证据
+
+- 页面抓取日期：2026-09-08
+- 页面 URL：https://opengameart.org/content/lpc-bears-deer-lions-and-more
+- 抓取方式：curl -sL --max-time 30 -A "Mozilla/5.0"
+- License 字段原样：
+
+  > License(s): <a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'><img src='https://opengameart.org/sites/default/files/license_images/cc-by_0.png' alt='' title=''><div class='license-name'>CC-BY 4.0</div></a>
+
+## CC-BY 4.0 法律文本
+
+完整 CC-BY 4.0 法律工具（Legal Code）随仓库分发参考：
+https://creativecommons.org/licenses/by/4.0/legalcode

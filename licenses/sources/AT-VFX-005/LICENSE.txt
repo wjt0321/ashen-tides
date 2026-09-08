@@ -1,0 +1,83 @@
+# AT-VFX-005 — Explosion Animations by Jetrel (Frogatto), CC-BY 3.0
+
+> Page URL: https://opengameart.org/content/explosion-animations
+> Frogatto LICENSE URL: https://github.com/frogatto/frogatto/blob/master/LICENSE
+> Asset ID: AT-VFX-005
+> Recorded in ASSET_LICENSE_LEDGER.csv: 2026-09-08（合规复核更新：2026-09-08）
+> Asset_role: VFX — 开火闪光（C01 fx_muzzle_flash_strip3 + 色弱变体；脚本 `scripts/combat/greybox_tower.gd` 通过 `ArtLibrary.vfx_tex("fx_muzzle_flash_strip3")` 调用）
+> Vendor path: assets/vendor/hunt/oga-towers/11_explosion_animations/explosion3.png
+> Source SHA-256 (source.png): cb828967d849c932b7ba645cdccf316540790e36ebf278fc689be21501a9facc (17428 bytes)
+
+---
+
+## License declaration — 2026-09-08 合规更正（已采纳）
+
+经本轮台账复核，**正式 license_name = CC-BY 3.0**，author = **Jetrel (Frogatto)**：
+
+- OGA 页面 metadata 同时挂 CC0 1.0 徽标，且 `dcterms.creator = Jetrel`；
+- **OGA 页面正文有作者本人亲自发布的更正声明**（必须遵守）：
+  > License is **incorrect!** Engine itself is under CC0 but data are under **CC-BY-3.0**
+  > https://github.com/frogatto/frogatto/blob/master/LICENSE
+- 本项目在 2026-09-08 第一轮登记时，沿用猎手报告 `HUNT_REPORT_oga-towers_zh.md` §2 #6 的归属（dvh / b3l7 / artificialintelligence CC0）；同时 `tools/build_sourced_assets.py` 的 `SRC["explosion"]` 错标为 Clint Bellanger CC-BY 3.0（与 `SRC["sparks"]` 复制粘贴残留）；
+- 本轮复核统一更正为 **作者在 OGA 页面亲自发布的最终意图**：**Jetrel / CC-BY 3.0**，attribution_required=yes。
+
+## 抓取证据
+
+- 页面抓取日期：2026-09-08
+- 页面 URL：https://opengameart.org/content/explosion-animations
+- 抓取方式：curl -sL --max-time 30 -A "Mozilla/5.0"
+- License 徽标字段原样：
+
+  > License(s): <a href='http://creativecommons.org/publicdomain/zero/1.0/' target='_blank'><img src='https://opengameart.org/sites/default/files/license_images/cc0.png' alt='' title=''><div class='license-name'>CC0</div></a>
+
+- License 正文原样（页面 body，作者本人更正，必须遵守）：
+
+  > License is **incorrect!** Engine itself is under CC0 but data are under CC-BY-3.0
+  > https://github.com/frogatto/frogatto/blob/master/LICENSE
+
+- Author 字段原样：
+
+  > <a href="/users/jetrel">Jetrel</a>
+  > <meta name="dcterms.creator" content="Jetrel" />
+
+## Allowed uses（CC-BY 3.0）
+
+- 商业使用 ✓
+- 修改 ✓
+- 复制 ✓
+- 分发 ✓
+- 再许可（必须同 CC-BY 3.0）✓
+- **署名要求 ✓（必填）**
+
+### 署名要求（CC-BY 3.0 §4）
+
+发布或分发本作品（含派生作品）必须包含：
+1. **作者署名**："Explosion Animations from Frogatto by Jetrel, CC-BY 3.0"
+2. **来源链接**：https://opengameart.org/content/explosion-animations
+3. **Frogatto LICENSE 引用**：https://github.com/frogatto/frogatto/blob/master/LICENSE
+4. **派生说明**：indicate if changes were made
+5. **许可证文本**：随分发包含 CC-BY 3.0 完整文本或链接
+
+## 派生管线
+
+- 入口：`tools/build_sourced_assets.py` 中 `SRC["explosion"]`
+- 用法：C01 `assets/art/vfx/fx_muzzle_flash_strip3.png` + _deutan/_protan/_tritan 色弱变体
+- 派生文件 SHA-256 见 `out/sourced_assets_lineage.json`
+- **2026-09-08 合规复核**：将 `SRC["explosion"]` 的 author 从错误归属 "Clint Bellanger" 改为 **"Jetrel (Frogatto)"**，license 保持 **CC-BY 3.0**。复核后重新执行 `python tools/build_sourced_assets.py`，4 张运行时 PNG（fx_muzzle_flash_strip3.png + 3 张色弱变体）SHA-256 与字节大小完全不变（PNG bytes=573/568/568/573 与 sha256=65ba289d…/e92fbaab…/a4e7f132… 与复核前完全一致），确认 author 字段仅影响元数据，不影响位图产物。
+
+## 合规更正时间线
+
+| 日期 | 状态 | 备注 |
+|---|---|---|
+| 2026-09-08 第一轮 | 登记 dvh/b3l7/artificialintelligence / CC0（沿用猎手报告） | 同期识别作者/许可证疑点，写入 LICENSE.txt 与建议项 |
+| 2026-09-08 第二轮（本次） | **正式采纳**为 Jetrel (Frogatto) / **CC-BY 3.0**（attribution REQUIRED），对齐 OGA 页面正文作者亲自发布更正版与 Frogatto LICENSE | ASSET_LICENSE_LEDGER.csv 第 184 行 / `tools/build_sourced_assets.py` `SRC["explosion"]` / `docs/current/art/CREDITS.md` "美术（CC0 / CC-BY 第三方素材派生表现层）"段、AT-VFX-005/LICENSE.txt 本文件 同步更新 |
+
+## Frogatto 数据 LICENSE 引用
+
+Frogatto 引擎 LICENSE：https://github.com/frogatto/frogatto/blob/master/LICENSE
+（assets/data 子目录按 CC-BY-3.0 条款使用）
+
+## CC-BY 3.0 法律文本
+
+完整 CC-BY 3.0 法律工具（Legal Code）参考：
+https://creativecommons.org/licenses/by/3.0/legalcode

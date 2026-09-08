@@ -1,0 +1,703 @@
+[
+  {
+    "author": "mutterpixel-studio",
+    "slug": "free-shark-enemy-pack-animated-pixel-art",
+    "url": "https://mutterpixel-studio.itch.io/free-shark-enemy-pack-animated-pixel-art",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page",
+      "got_session_url",
+      "got_upload_ids",
+      "got_cdn_urls",
+      "downloaded"
+    ],
+    "files": [
+      {
+        "upload_id": "17468453",
+        "url": "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/4555518/17468453?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T015631Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=f9276813dbc88b219a653244bc61c01996b6a2ad536516c77f5cf03b148895e5",
+        "path": "D:/mydev/games/Tower Defense/assets/vendor/hunt/itch\\01_shark_pack\\17468453.zip",
+        "size": 77093
+      }
+    ],
+    "error": null,
+    "license_text": "📜 TERMS OF USE — MutterPixel Studio\n\nBy purchasing and downloading any MutterPixel Studio assets, you agree to the following license terms:\n\n✅ PERMITTED USE\n\nCommercial & Non-Commercial Use\nYou may use these assets in personal or commercial projects, including games, apps, and prototypes.\n\nModify Assets\nYou are free to edit, recolor, or adapt the assets to fit your project.\n\nPromotion\nYou may use the assets in screenshots, videos, and other promotional materials related to your project.\n\n❌ PROHIBITED USE\n\nNo Reselling or Redistribution\nYou may not sell, share, or redistribute these assets (edited or unedited) as standalone files or as part of another asset pack, whether free or paid.\n\nNo Use in Asset Packs or Marketplaces\nYou may not include these assets in any asset pack or upload them to marketplaces (such as itch.io, Unity Asset Store, or Unreal Marketplace), even if modified.\n\nNo NFT or AI Training Use\nThese assets may not be used for NFTs, blockchain-related projects, or as training data for AI models or generators.\n\n⚖️ OWNERSHIP\n\nAll assets remain the intellectual property of MutterPixel Studio.\nPurchasing this product grants you a license to use the assets — it does not transfer ownership.\n\n🙌 ATTRIBUTION\n\nAttribution is not required, but is greatly appreciated.\n\nExample:\nArt by MutterPixel Studio\n\n⚠️ DISCLAIMER\n\nThese assets are provided “as-is” without warranty of any kind.\nMutterPixel Studio is not responsible for any issues arising from use in third-party software, engines, or projects.",
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": true,
+    "free_uncertain": false,
+    "included_files": [
+      "Free Shark Enemy Pack – Animated Pixel Art.zip"
+    ],
+    "session_url": "https://mutterpixel-studio.itch.io/free-shark-enemy-pack-animated-pixel-art/download/eyJpZCI6NDU1NTUxOCwiZXhwaXJlcyI6MTc4ODgzMjU5N30%3d%2eYq%2brGOVRLJ9kBX%2fyGq2xmvobHjM%3d",
+    "upload_ids": [
+      "17468453"
+    ],
+    "cdn_urls": [
+      "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/4555518/17468453?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T015631Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=f9276813dbc88b219a653244bc61c01996b6a2ad536516c77f5cf03b148895e5"
+    ]
+  },
+  {
+    "author": "mythical-the-dev",
+    "slug": "ballista-pixel-sprite",
+    "url": "https://mythical-the-dev.itch.io/ballista-pixel-sprite",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page",
+      "got_session_url",
+      "got_upload_ids",
+      "got_cdn_urls",
+      "downloaded"
+    ],
+    "files": [
+      {
+        "upload_id": "15720657",
+        "url": "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/4087762/15720657?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T015646Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=5a1b877642492e8a07c705e98d86b0d5192b74adf49a9e973cb21ccf0694154a",
+        "path": "D:/mydev/games/Tower Defense/assets/vendor/hunt/itch\\13_ballista\\15720657.png",
+        "size": 2115
+      },
+      {
+        "upload_id": "15720658",
+        "url": "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/4087762/15720658?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T015647Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=532b3a12bbcd60da9dce4cbe9f2eaa5af83f3b73bb865af78b439a2e36da15e7",
+        "path": "D:/mydev/games/Tower Defense/assets/vendor/hunt/itch\\13_ballista\\15720658.png",
+        "size": 15681
+      }
+    ],
+    "error": null,
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": true,
+    "free_uncertain": false,
+    "included_files": [
+      "New Piskel-1.png (98).png",
+      "New Piskel (18).png"
+    ],
+    "session_url": "https://mythical-the-dev.itch.io/ballista-pixel-sprite/download/eyJpZCI6NDA4Nzc2MiwiZXhwaXJlcyI6MTc4ODgzMjYxMX0%3d%2eVmT1FEo6er%2bff1G0NfRqNgRorMI%3d",
+    "upload_ids": [
+      "15720657",
+      "15720658"
+    ],
+    "cdn_urls": [
+      "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/4087762/15720657?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T015646Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=5a1b877642492e8a07c705e98d86b0d5192b74adf49a9e973cb21ccf0694154a",
+      "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/4087762/15720658?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T015647Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=532b3a12bbcd60da9dce4cbe9f2eaa5af83f3b73bb865af78b439a2e36da15e7"
+    ]
+  },
+  {
+    "author": "frostwindz",
+    "slug": "pixel-art-vfx-fire-explosions-free-version",
+    "url": "https://frostwindz.itch.io/pixel-art-vfx-fire-explosions-free-version",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page",
+      "got_session_url",
+      "got_upload_ids",
+      "got_cdn_urls",
+      "downloaded"
+    ],
+    "files": [
+      {
+        "upload_id": "17284198",
+        "url": "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/4507634/17284198?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T015704Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=34af1ee7913097869524f7392d177dc6502bed7c87665d01e189d3816a11dcd1",
+        "path": "D:/mydev/games/Tower Defense/assets/vendor/hunt/itch\\25_vfx_fire_expl_free\\17284198.zip",
+        "size": 287087
+      }
+    ],
+    "error": null,
+    "license_text": "PK\u0003\u0004\u0014\u0000\b\u0000\b\u0000نYZ\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u000b\u0000\u0000\u0000_rels/.rels;\u000e0\u0010DbmO6P AHip\u00008Ql=.(\b\u001cۙy(Y\u000eۢ\u0004FV:5Yҟ7\u0007hꪣE#\u0011\u001b9)#b#\u0019\u0011\u000b\u0011)ˠ\u000b9\u000bM+=O\u0006\u0017ASpwArjȦ\"〵uתܭz\u001bI\nQ\u0001\f\nW3\u0017PK\u0007\bO<\u0000\u0000\u0000\u001c\u0001\u0000\u0000PK\u0003\u0004\u0014\u0000\b\u0000\b\u0000نYZ\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u001c\u0000\u0000\u0000word/_rels/document.xml.rels՘N\u0003!\u0010_e3w\u0005VSڋ३\u000f..ljKRcX\u0013v̑\u000f\f\u0003٦kw8+\u0005dh+%.0N\u0016تf!K&6Hhb\u001f\u0018\u000bNhH|bjJTL\u0014ň}\u001fp3[*_c|q%JxDVݻ\u0014Rʻ\u0010?-?s\u0013u\u001b \u0012J\u0017%mAsUe4>:#I|k\n2vV]woTyO\"nI\u0013/\u0013ul.Y\u001dV\\S\u001dQ`o)\nA\u0012lA\t\u0007T\u0012_\u0012Bܶ\u0018~U*gML\u0018\u0003)F\u001fS太\u0014A*:dRZ5\u0012p\u0000;~\u0001PK\u0007\bޥSE\u0001\u0000\u0000\u0011\u0000\u0000PK\u0003\u0004\u0014\u0000\b\u0000\b\u0000نYZ\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0011\u0000\u0000\u0000word/document.xml]r۶\u0012~\u0015nz:ȖS43=9ęs\n\u0011$X\u0000^5z}\u000b\u0014X6\t$/\u0012H\n[`~S4Vt0\u001e\u001d\u000e\u0013-T>?\u001d|8ـYsSA%~\\\b\u001d\u000bdu:X8W\u001c\u001cd!3nG9|6&\u000eޚJ\u001bQ\u0018HkYz09<|rq\u000fS-*5-x\u00022T¥\t\tW'|椩_\n\u001flɀ\u001dWT.QkΐL\u0019~8=K\u000e\u0012=ԇMx\u0000J-mW.S\tgod)񒋳^Ab/;*ugV?󷝆\u0012j<\u0017/?^\nʁ\b/\u001e6GC\u000b!m/T\u000f_ЊЈԿOxSBV\u001chV0s]F\u0018A\u0011\tt)}ft7\u0005SJv67R\"5gQ<툰}k߬\u0005V\u001f\u001f\u0001M&;0Bo_X0\tKݘlEeqS\u001azܷ\ba}Y/\u0011K|Fd+/eiMUxeIieN\u0010\u0018e\u0016^t^-|Z4\u0007k_CY>7\u000bѓ%Ͳ9+6U\u0010boE\u000f\u0000Z\u0005,zY\u0006sm\u0000\u0017Yk2\u0019`~\u0002>\u001cӹ\u001fu\u000e\u0015F.\u0013g#\u001aոsT%\u0007i`<\u001dL9)ȬF*̻1Ӭɮ]\tB͕\u000b/J\u0000jC7癴C*x[|]\u0014hwk&@x\u001d!9t\f\u0007\n0-l\u0011F\"$BYy=\u0010Ut\u0016-\u0016jV1\u000eifKpaN&A\fA^@\f\u001e񅩜yDG7E\u001d\\4\\\u001adg -OeF.e^\u0012R\u0014\u0010%t\u0011Ɵw:\u0012F+1\u000f>}t\u0002Bx!\u0010#HCOJC^3gaF\u0017j|.\u001d9R%RVֱ)jsA\u0004,f.Mձ-\u0005(ow\u0018<VB!.\u0011\u0013\u001f\u0003b\u001aiaBNs8ӟZĭ[|\u000eWQ\u0018dd<jYTn\u0012\u001cҜ\u001dלWR;K%@m\u0006l(;.:k\u0001ȁo1{/i\nJ\u0019\ni\\<&$Y@~I \u000eP_G@\u0014\t\u0007\u0001UL}\u0014a\u001aEs\u0006ߣ1n%eu\u0012\u0003\u0002p:S\u001dBR\u001f[Oٚaz֍KR>M%C%\u000b>\n\u0017GfN8\u001d\b{-`DB6ӧp׽KmF!\td\n;j\u001c߫Wx\u001b['\u000eB\u001er<hZ1F5ѩ\u0011j\u000f\bSͅ\u0003^Z\u001fYX\u001b]L\u0007\\cƤ11{1CoR\u001a\u0013\u0014\u0017LXe>ԡk\u00191;iT(.1يG\u0011{\u000b\u001c.\u0012\u0010֐<v\u0016b#<ј=߬\u0012F:\u0000u(ewy>\u0002K\u001b#vs_|I~JRrVڤblJeuR/\u001flB>\u0018`Cܽv\u000b֯\u0019ya1\nQ fԃ\u0019M/XB}'\"A&A\u0006Ȳu\t^$H\u000e}ԑl?m\u001a\u001f5\u0004}lK}I}H}X}0\u0016:\u0014h\u0014U'L% Nyc18b\u001fZ8oI0\u000e9\ns\u00142^l\u00011\u001b\"7\u0016\u0005Pޭ_\u0014\u0004F;M[\u000b\u0000\"3W:߸X+zQyM\u0012{k\u0013@s\u001d'\u001dS/;BY\u0014\u0003i[a7ꐱ\fs_)ܙ\u001c\u001e4\u000b|1@t\u0010贬\b\u0005'\u0015ȠC\u000309\u0012pq{b\f7P\u0003}3\u0014W>\u0011珿ˆ\\MwNGP?roNkЌ\u0019mf|˰;-\u0005Vn\u0011*A\u0011y1X\u001a\u0007;\u000f+G+\u001d\b&#-޿k V\tiG|\u0000\u0013\u001dl'|}]Es\\̚d|+@\u0010c$5_3$\u001fotu+gB)\u00057NɺT\buk0\n4\u00018G̗˪W|xS{d$tێnͤQ,\u000fd&vz\u001c^%\u001fGS\u000f7\u0015>\\\u0015\u00175\u000f\u0014\u00021x\u0002 \u001dqzQ\u0006%W\u0015)N)\u0005\b'\u0003-\u0018)\u000fZ0`8a=\u0001MW\t{\u0000C\u0001\u0007G\u0015!)В\u0014\u000e\u0014eF.c4\u001bv9\u0014|\u0015\u0002)ܱ*Lz=ct!\u000eΘӤ<yE)Ny\u0010qA0\u0011w*ǻ\u001962?\u001b\u0013uM\u0010\u001cV>!'7td:V\fĹRc$u x\u0002_p\u00153\u0001\n]\u0016\\=Vag6Mש:M<;\u0000:\u0014y\u001d\u00071aLE\u001a\f\u001a/0@h:͘\th\bhH\u001e;/Q\fVXZC$F\nk!vzRm\u001eRU(6\u0004?bg]\u0004|\"B\u001b,\u001f\u001c\u001a>\f[wvT0&gvǭ\f͝6\u00175ޠ\u001c9 \u0007g\u001fu܋\u0018EV?R*\u001dkLb1Xq \"\u0013WZFɮbp&R>\u001e!\u000fc7\u0000'؊3\u001do*>\u001a{\u0006{\\l#>*N\u0007w(:}x\u0019\u000eL\n\u001c\u0018EMYљ\t-Ú3<3Ta\u0003Rߨ͘ܐG}t\"\u0003\u0010\u0014t$\u000e\u001cטl#S*ذ\u001e\u0015{lr\u0005CCCYԉ<\u001e\u001b\"͍\n?teQS,rQ\u001b|A\u0012R'\u0015\u001e\u001cr\u000bLy%G!\u0016)+\u0016^OJ\u001c9m\b\u0013\u0006+sf\u000b`\\2ywR4ׂgй\u000b8ɈN)\u000fS=\u0004|\\/GZHgSs\u0011\u0012a\u0016x\u00148\u000fDvz\u001b\u0012\f\nِû\u0005PnjWm\u000fۂp`Ldz0\u0012G5\u001c2T,\u0015\u0016\u000bZq#\u001dC\n#%0 $)im<J)\u0013S\u001eĦz#:\u00172ѥ󆒸9LH\u000etE\u001eZj'\u0019\\\u001fN\u001c}=\u000f\u000b7'F6\u0013|v$Te2|+nV\u0012\"nU2T&o5瀵.AE(KbPK\".x2bd*N@C\u0019|b(1\u0010[\fol\u0006|\u00063\u0002\u001e(\u001d\u0002P\"r\u0001Qeڶ\u0006\u00063nW\u0010ty*-x국\u0018K:Ny\u0010\\e'l#m\u001f\u000fb+w\n`G5jzA1`HN^`ܻL`>wkcy\u0011_9\f0w)CG\u0010QQ\fAT:Y\u0017\u001b\n\u000b\u001f\t\u0011b/qH\u0017 \u000bqV0z:bgB;=OiwcM\"%\u001e\u0007;11`\\boH}p2ۦ\u001dńܺ\u0015\u0002x]z\u0015\"6B\u0012ĚhLЦ&N&䕑Wڳi[DtٴڷCȤP|ʪL\u0001_bɂo-K5\u0002E䩶텆Vx!Z\u001d|n]Ӄ_$)l$yD+Ny\u0010&kģ\u001c\u0007\"2<q\u0010ٺ%x`D:k5Y+R6\u001fѺ\fg[i\u0001\tTDRmtQ$.Bw\u0010ek*,-\u0003O\na62\u0002u,\u001f\thOIU)ѯ{A\u0015<~/:b/E\u00193}Bm#\n4=<<\u0003\f;\u0002Z\u001aqIgsz\u0014ܭ>45\u0015)\u000b]\\x4jM:D\u00018WxCR[e\u001b'\u001bFӪND*iFD*Ny\u0010A7\u0013\u0012\u0011\"f(d\nF*]2\u001aE\u0016|Q_19mÔ\u0006d%\n\f!n\u0017\u001em\u0007|j\u000eT1e\u001aJr_S\u001bqz<(>\u0013aܳ\u0011;\u0003'QH1r3$݀(_ǷRwB&!VAl#u*#|/ȋ\"\n\\ɺm0\u001a>\u0017!YQ~\u0002\u001fGcG9\b\u0007v;?\u0002\bM@\u0014\u0002Z\u001cx\u0014ӈl_ \u0005CeYV2CW6Lk#ߟ'\u001fsJ:W\u0018+Ÿh<de.$\"D>?e*TMKm5\u0007.Tʿ\u0010*PK\u0007\b\u0007ߑ\u000f\u0000\u0000sF\u0001\u0000PK\u0003\u0004\u0014\u0000\b\u0000\b\u0000نYZ\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0012\u0000\u0000\u0000word/numbering.xml͕Mn \u0010F]\u0003&mqMW\u0001M\u0013K0XzN-'J.\u0015b>idզ7BF\u0019DAa\n\u000e\u0019}o\u001f ڂt^u)4&W\u000e\u0011\u0000>2z\fN\u0019Q\u0019gVهuF\u0006ܺ\u0003+kg\u000b=F3\u0019Y\u0001)s\u001f,[cnWf\u000fGt1p9U\u0005\u0012K\t%lۚs5oVa\u0010ݫ\u000b:l-\t-&\u001e6U]\tF\u001f]yjc#\u0005|<\u0006>\u0006񅊀/A%\u00110I\"DDs=\u001dvX\u0001PK\u0007\bܣÃ \u0001\u0000\u0000k\u0006\u0000\u0000PK\u0003\u0004\u0014\u0000\b\u0000\b\u0000نYZ\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u000f\u0000\u0000\u0000word/styles.xml\nA\u000e \u0010\u0000BnA\u000fƐ|>ڒn\u0012d23\u0017$&\u0007ɀB\n\u001c\u0013m\u000eޯ\u0001J3\u0013:8Q`]n\u0019Ev\u0007{kZ\u0007p\u001fŷuӝk<*\u0007\u0014\u0019͘.>\u0011(\u0001PK\u0007\bSAy\u0000\u0000\u0000\u0000\u0000\u0000PK\u0003\u0004\u0014\u0000\b\u0000\b\u0000نYZ\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0013\u0000\u0000\u0000[Content_Types].xmlN0\u0010_rb\u0007\nP+)x\u0000co\u0012'sܽ=\u0004@H\bJ{f\u001bٝcGhch9ah㻮ٟ\u0013 #k{)Q\u0015 Ug\u001edR\u00067u}+u\f\u0005B<w#jr={fpjY-W)9U!]\u001eA\t\u0007G\f_\u0011\u001fB{D=yϘMQ\u0003\";)^ٰ_i\u001a`o*\u0017#\fLQq&[`9;WXn|K\u0005PK\u0007\bbk\u0000\u0000\u0000]\u0002\u0000\u0000PK\u0001\u0002-\u0000\u0014\u0000\b\u0000\b\u0000نYZO<\u0000\u0000\u0000\u001c\u0001\u0000\u0000\u000b\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000_rels/.relsPK\u0001\u0002-\u0000\u0014\u0000\b\u0000\b\u0000نYZޥSE\u0001\u0000\u0000\u0011\u0000\u0000\u001c\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000word/_rels/document.xml.relsPK\u0001\u0002-\u0000\u0014\u0000\b\u0000\b\u0000نYZ\u0007ߑ\u000f\u0000\u0000sF\u0001\u0000\u0011\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000n\u0002\u0000\u0000word/document.xmlPK\u0001\u0002-\u0000\u0014\u0000\b\u0000\b\u0000نYZܣÃ \u0001\u0000\u0000k\u0006\u0000\u0000\u0012\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000>\u0012\u0000\u0000word/numbering.xmlPK\u0001\u0002-\u0000\u0014\u0000\b\u0000\b\u0000نYZSAy\u0000\u0000\u0000\u0000\u0000\u0000\u000f\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0013\u0000\u0000word/styles.xmlPK\u0001\u0002-\u0000\u0014\u0000\b\u0000\b\u0000نYZbk\u0000\u0000\u0000]\u0002\u0000\u0000\u0013\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000T\u0014\u0000\u0000[Content_Types].xmlPK\u0005\u0006\u0000\u0000\u0000\u0000\u0006\u0000\u0006\u0000\u0001\u0000\u0000\u0015\u0000\u0000\u0000\u0000",
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": true,
+    "free_uncertain": false,
+    "included_files": [
+      "Pixel Art VFX - Fire Explosions - FREE Version.zip"
+    ],
+    "session_url": "https://frostwindz.itch.io/pixel-art-vfx-fire-explosions-free-version/download/eyJpZCI6NDUwNzYzNCwiZXhwaXJlcyI6MTc4ODgzMjYzMH0%3d%2ejGTlZuBT%2bQlaBoAvZiZxvesmNX4%3d",
+    "upload_ids": [
+      "17284198"
+    ],
+    "cdn_urls": [
+      "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/4507634/17284198?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T015704Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=34af1ee7913097869524f7392d177dc6502bed7c87665d01e189d3816a11dcd1"
+    ]
+  },
+  {
+    "author": "guilhermelaso",
+    "slug": "coast-top-down-tiles",
+    "url": "https://guilhermelaso.itch.io/coast-top-down-tiles",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page",
+      "got_session_url",
+      "got_upload_ids",
+      "got_cdn_urls",
+      "downloaded"
+    ],
+    "files": [
+      {
+        "upload_id": "13171140",
+        "url": "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/3419778/13171140?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T015719Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=3fd73f0af33a416c617d8ebb27d97c22bb3408142bd90449b83b80b989a03bea",
+        "path": "D:/mydev/games/Tower Defense/assets/vendor/hunt/itch\\09_coast_tiles\\13171140.zip",
+        "size": 457763
+      }
+    ],
+    "error": null,
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": true,
+    "free_uncertain": false,
+    "included_files": [
+      "Coast Topdown Tiles - Assets Store - Guilherme Laso.zip"
+    ],
+    "session_url": "https://guilhermelaso.itch.io/coast-top-down-tiles/download/eyJpZCI6MzQxOTc3OCwiZXhwaXJlcyI6MTc4ODgzMjY0NX0%3d%2eDrz%2bQz5GhglbqG%2fML%2fwFgqY%2bajg%3d",
+    "upload_ids": [
+      "13171140"
+    ],
+    "cdn_urls": [
+      "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/3419778/13171140?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T015719Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=3fd73f0af33a416c617d8ebb27d97c22bb3408142bd90449b83b80b989a03bea"
+    ]
+  },
+  {
+    "author": "gamedeveloperstudio",
+    "slug": "top-down-sea-level-creator-set",
+    "url": "https://gamedeveloperstudio.itch.io/top-down-sea-level-creator-set",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "nacl1234",
+    "slug": "top-down-underwater-coral-reef-2d-mega-pack",
+    "url": "https://nacl1234.itch.io/top-down-underwater-coral-reef-2d-mega-pack",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page",
+      "got_session_url",
+      "got_upload_ids",
+      "got_cdn_urls",
+      "downloaded"
+    ],
+    "files": [
+      {
+        "upload_id": "19067397",
+        "url": "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/4964196/19067397?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T015742Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=783b96d75212bcbd16eabd25fec1ad4bb855da4ec7134021f94954c8f26a1646",
+        "path": "D:/mydev/games/Tower Defense/assets/vendor/hunt/itch\\11_coral_reef\\19067397.zip",
+        "size": 27281723
+      }
+    ],
+    "error": null,
+    "license_text": "UNDERWATER CORAL REEF 2D MEGA PROPS PACK COMMERCIAL LICENSE\n\nCopyright (c) 2026 nacl1234\n\nPermitted:\n1. Use the assets in personal and commercial games and interactive projects.\n2. Modify the assets for use inside those projects.\n3. Distribute the assets only as an embedded part of a compiled or otherwise\n   substantially transformed end product.\n\nNot permitted:\n1. Resell, sublicense, share, or redistribute the assets as standalone files.\n2. Include the assets in another asset pack, template, stock library, or\n   competing collection.\n3. Make the original or lightly modified source files available for download.\n4. Claim exclusive ownership of the underlying unmodified asset collection.\n\nNo warranty:\nThe assets are provided as-is, without warranty. The seller is not liable for\ndamages arising from use of the assets.\n",
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": true,
+    "free_uncertain": false,
+    "included_files": [
+      "UnderwaterCoralReef2DMegaPropsPack_v1.0.zip"
+    ],
+    "session_url": "https://nacl1234.itch.io/top-down-underwater-coral-reef-2d-mega-pack/download/eyJpZCI6NDk2NDE5NiwiZXhwaXJlcyI6MTc4ODgzMjY2Nn0%3d%2eJXWrRfqjZ8n5o1JJ928On56tFxM%3d",
+    "upload_ids": [
+      "19067397"
+    ],
+    "cdn_urls": [
+      "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/4964196/19067397?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T015742Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=783b96d75212bcbd16eabd25fec1ad4bb855da4ec7134021f94954c8f26a1646"
+    ]
+  },
+  {
+    "author": "gemau-cymru",
+    "slug": "pixel-art-pirate-ship-boat-asset",
+    "url": "https://gemau-cymru.itch.io/pixel-art-pirate-ship-boat-asset",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "kaiswerkstatt",
+    "slug": "high-seas-pirate-ship-tiles-decorations",
+    "url": "https://kaiswerkstatt.itch.io/high-seas-pirate-ship-tiles-decorations",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "dwaidev",
+    "slug": "pixel-sail-ships",
+    "url": "https://dwaidev.itch.io/pixel-sail-ships",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "muchopixels",
+    "slug": "pirate-ship-tileset-pack",
+    "url": "https://muchopixels.itch.io/pirate-ship-tileset-pack",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "free-game-assets",
+    "slug": "pirate-bay-tileset-pixel-art",
+    "url": "https://free-game-assets.itch.io/pirate-bay-tileset-pixel-art",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "free-game-assets",
+    "slug": "pirate-bay-bosses-pixel-art-pack",
+    "url": "https://free-game-assets.itch.io/pirate-bay-bosses-pixel-art-pack",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "godboyhappy",
+    "slug": "haunted-ghost-ship-pixel-tileset-pack",
+    "url": "https://godboyhappy.itch.io/haunted-ghost-ship-pixel-tileset-pack",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "valendremus",
+    "slug": "tower-defense-towers-projectiles",
+    "url": "https://valendremus.itch.io/tower-defense-towers-projectiles",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page",
+      "got_session_url",
+      "got_upload_ids",
+      "got_cdn_urls",
+      "downloaded"
+    ],
+    "files": [
+      {
+        "upload_id": "12187216",
+        "url": "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/3161782/12187216?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T015841Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=9e532283e94f224ae67e4736b7cfefab40e7e3a25e9160f970cf899588991bb1",
+        "path": "D:/mydev/games/Tower Defense/assets/vendor/hunt/itch\\22_td_towers_proj\\12187216.zip",
+        "size": 41562
+      }
+    ],
+    "error": null,
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": true,
+    "free_uncertain": false,
+    "included_files": [
+      "Tower Defense Sprites.zip"
+    ],
+    "session_url": "https://valendremus.itch.io/tower-defense-towers-projectiles/download/eyJpZCI6MzE2MTc4MiwiZXhwaXJlcyI6MTc4ODgzMjcyN30%3d%2ed7gTylOJaUfRW1wnb%2bJmvAsKyVo%3d",
+    "upload_ids": [
+      "12187216"
+    ],
+    "cdn_urls": [
+      "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/3161782/12187216?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T015841Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=9e532283e94f224ae67e4736b7cfefab40e7e3a25e9160f970cf899588991bb1"
+    ]
+  },
+  {
+    "author": "auteddy",
+    "slug": "tower-defense-tower-set-v1",
+    "url": "https://auteddy.itch.io/tower-defense-tower-set-v1",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "free-game-assets",
+    "slug": "free-archer-towers-pixel-art-for-tower-defense",
+    "url": "https://free-game-assets.itch.io/free-archer-towers-pixel-art-for-tower-defense",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page",
+      "got_session_url",
+      "got_upload_ids",
+      "got_cdn_urls",
+      "downloaded"
+    ],
+    "files": [
+      {
+        "upload_id": "8474829",
+        "url": "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/2211178/8474829?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T015902Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=d4fbfa539b785f70d88c5667200702543f1a7c7672b7d666b79ff769d9285b1b",
+        "path": "D:/mydev/games/Tower Defense/assets/vendor/hunt/itch\\14_archer_towers\\8474829.zip",
+        "size": 472852
+      }
+    ],
+    "error": null,
+    "license_text": "https://craftpix.net/file-licenses/",
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": true,
+    "free_uncertain": false,
+    "included_files": [
+      "free-archer-towers-pixel-art-for-tower-defense.zip"
+    ],
+    "session_url": "https://free-game-assets.itch.io/free-archer-towers-pixel-art-for-tower-defense/download/eyJleHBpcmVzIjoxNzg4ODMyNzQ4LCJpZCI6MjIxMTE3OH0%3d%2esej9NPUZM5BKik8KyWIDURoFyS4%3d",
+    "upload_ids": [
+      "8474829"
+    ],
+    "cdn_urls": [
+      "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/2211178/8474829?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T015902Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=d4fbfa539b785f70d88c5667200702543f1a7c7672b7d666b79ff769d9285b1b"
+    ]
+  },
+  {
+    "author": "free-game-assets",
+    "slug": "guardian-towers-pixel-art-for-tower-defense",
+    "url": "https://free-game-assets.itch.io/guardian-towers-pixel-art-for-tower-defense",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "free-game-assets",
+    "slug": "mage-towers-pixel-art-for-tower-defense",
+    "url": "https://free-game-assets.itch.io/mage-towers-pixel-art-for-tower-defense",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "free-game-assets",
+    "slug": "catapult-towers-pixel-art-for-tower-defense",
+    "url": "https://free-game-assets.itch.io/catapult-towers-pixel-art-for-tower-defense",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "free-game-assets",
+    "slug": "free-field-enemies-pixel-art-for-tower-defense",
+    "url": "https://free-game-assets.itch.io/free-field-enemies-pixel-art-for-tower-defense",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page",
+      "got_session_url",
+      "got_upload_ids",
+      "got_cdn_urls",
+      "downloaded"
+    ],
+    "files": [
+      {
+        "upload_id": "8474795",
+        "url": "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/2211175/8474795?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T015934Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=3e4f10960e9377e437b6aca18179273376693495d6024943ff6fea339c5a5744",
+        "path": "D:/mydev/games/Tower Defense/assets/vendor/hunt/itch\\18_field_enemies\\8474795.zip",
+        "size": 430006
+      }
+    ],
+    "error": null,
+    "license_text": "https://craftpix.net/file-licenses/",
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": true,
+    "free_uncertain": false,
+    "included_files": [
+      "free-field-enemies-pixel-art-for-tower-defense.zip"
+    ],
+    "session_url": "https://free-game-assets.itch.io/free-field-enemies-pixel-art-for-tower-defense/download/eyJpZCI6MjIxMTE3NSwiZXhwaXJlcyI6MTc4ODgzMjc4MH0%3d%2ewC%2f91ejkbYkGcFC70jllTLqq4%2fk%3d",
+    "upload_ids": [
+      "8474795"
+    ],
+    "cdn_urls": [
+      "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/2211175/8474795?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T015934Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=3e4f10960e9377e437b6aca18179273376693495d6024943ff6fea339c5a5744"
+    ]
+  },
+  {
+    "author": "free-game-assets",
+    "slug": "top-down-pixel-monster-sprites-for-tower-defense",
+    "url": "https://free-game-assets.itch.io/top-down-pixel-monster-sprites-for-tower-defense",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "jedimeisterx",
+    "slug": "32-pixel-explosion-effects-pack-animated-48x48-vfx-9-frames",
+    "url": "https://jedimeisterx.itch.io/32-pixel-explosion-effects-pack-animated-48x48-vfx-9-frames",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "godboyhappy",
+    "slug": "pyre-pixel-vfx-sprite-sheets",
+    "url": "https://godboyhappy.itch.io/pyre-pixel-vfx-sprite-sheets",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "free-game-assets",
+    "slug": "11-free-pixel-art-explosion-sprites",
+    "url": "https://free-game-assets.itch.io/11-free-pixel-art-explosion-sprites",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page",
+      "got_session_url",
+      "got_upload_ids",
+      "got_cdn_urls",
+      "downloaded"
+    ],
+    "files": [
+      {
+        "upload_id": "5612056",
+        "url": "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/1487251/5612056?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T020006Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=8ce27495a4c64d1fdbe94a844df1bc3b808620dc8a09f754bce454d8983b68d2",
+        "path": "D:/mydev/games/Tower Defense/assets/vendor/hunt/itch\\28_11_free_explosions\\5612056.zip",
+        "size": 552731
+      }
+    ],
+    "error": null,
+    "license_text": "https://craftpix.net/file-licenses/",
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": true,
+    "free_uncertain": false,
+    "included_files": [
+      "Free Pixel Art Explosions.zip"
+    ],
+    "session_url": "https://free-game-assets.itch.io/11-free-pixel-art-explosion-sprites/download/eyJpZCI6MTQ4NzI1MSwiZXhwaXJlcyI6MTc4ODgzMjgxMn0%3d%2e%2fNSxFo3mtxYQHgxLes3pY8cyB0E%3d",
+    "upload_ids": [
+      "5612056"
+    ],
+    "cdn_urls": [
+      "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/1487251/5612056?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T020006Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=8ce27495a4c64d1fdbe94a844df1bc3b808620dc8a09f754bce454d8983b68d2"
+    ]
+  },
+  {
+    "author": "pimen",
+    "slug": "explosion-effect",
+    "url": "https://pimen.itch.io/explosion-effect",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "combosmooth",
+    "slug": "vfx-pack",
+    "url": "https://combosmooth.itch.io/vfx-pack",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page",
+      "got_session_url",
+      "got_upload_ids",
+      "got_cdn_urls",
+      "downloaded"
+    ],
+    "files": [
+      {
+        "upload_id": "2610155",
+        "url": "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/732591/2610155?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T020027Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=c7df5fded3beb2c3e0943a2eb96dd1325dcc03bc3d35789d940e276a4d6219f6",
+        "path": "D:/mydev/games/Tower Defense/assets/vendor/hunt/itch\\30_combosmooth_vfx\\2610155.zip",
+        "size": 655412
+      }
+    ],
+    "error": null,
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": true,
+    "free_uncertain": false,
+    "included_files": [
+      "FX Bundle.zip"
+    ],
+    "session_url": "https://combosmooth.itch.io/vfx-pack/download/eyJpZCI6NzMyNTkxLCJleHBpcmVzIjoxNzg4ODMyODMzfQ%3d%3d%2e9PMB9U5j2AAgZ%2fmyNtAipJEEcEI%3d",
+    "upload_ids": [
+      "2610155"
+    ],
+    "cdn_urls": [
+      "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/732591/2610155?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T020027Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=c7df5fded3beb2c3e0943a2eb96dd1325dcc03bc3d35789d940e276a4d6219f6"
+    ]
+  },
+  {
+    "author": "pewas",
+    "slug": "pixel-rpg-vfx-pack-free-animated-effects",
+    "url": "https://pewas.itch.io/pixel-rpg-vfx-pack-free-animated-effects",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "icemaan",
+    "slug": "epic-explosions-pixel-vfx",
+    "url": "https://icemaan.itch.io/epic-explosions-pixel-vfx",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "gyrossteelball",
+    "slug": "top-down-bomb-imp-pixel-art-enemy4-directions-explosion-vfx",
+    "url": "https://gyrossteelball.itch.io/top-down-bomb-imp-pixel-art-enemy4-directions-explosion-vfx",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page",
+      "got_session_url",
+      "got_upload_ids",
+      "got_cdn_urls",
+      "downloaded"
+    ],
+    "files": [
+      {
+        "upload_id": "16744043",
+        "url": "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/4361666/16744043?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T020054Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=3da3fae09abb5fc52cc40a7256d5262a776a4fd07fcfaae4e1e1aa721dbe8d9b",
+        "path": "D:/mydev/games/Tower Defense/assets/vendor/hunt/itch\\33_bomb_imp\\16744043.zip",
+        "size": 48434
+      }
+    ],
+    "error": null,
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": true,
+    "free_uncertain": false,
+    "included_files": [
+      "KamikazeImp.zip"
+    ],
+    "session_url": "https://gyrossteelball.itch.io/top-down-bomb-imp-pixel-art-enemy4-directions-explosion-vfx/download/eyJleHBpcmVzIjoxNzg4ODMyODU5LCJpZCI6NDM2MTY2Nn0%3d%2etMhoBgnDUxPSW26AZz12hOHMRQc%3d",
+    "upload_ids": [
+      "16744043"
+    ],
+    "cdn_urls": [
+      "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/4361666/16744043?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T020054Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=3da3fae09abb5fc52cc40a7256d5262a776a4fd07fcfaae4e1e1aa721dbe8d9b"
+    ]
+  },
+  {
+    "author": "infectedtribe",
+    "slug": "pixel-explosion",
+    "url": "https://infectedtribe.itch.io/pixel-explosion",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  }
+]

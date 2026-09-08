@@ -1,0 +1,56 @@
+# AT-VFX-002 — Sparks (Fire, Ice, Blood) by Clint Bellanger
+
+> Page URL: https://opengameart.org/content/sparks-fire-ice-blood
+> Asset ID: AT-VFX-002
+> Recorded in ASSET_LICENSE_LEDGER.csv: 2026-09-08
+> Asset_role: VFX — 命中火花（C01 fx_hit_spark_strip4 + 色弱变体）+ C02 余烬弹体（projectile_ember_burst.png）
+> Vendor path: assets/vendor/hunt/oga-towers/06_sparks_fire_ice_blood/sparks.zip + sparks.png
+> Source SHA-256 (source.zip):    9d1fa0b60139a19c61cb57ac3d56f30a36c4c6ec2948789156048bfef926a52a (111890 bytes)
+> Source SHA-256 (source.png):    393a2d0f7fb016566b37d5b4ee4fc247e84e4db345126c9b234ecbcc2e358e20 (23150 bytes)
+
+---
+
+## License declaration (OGA page metadata)
+
+- License(s): **CC-BY 3.0** (http://creativecommons.org/licenses/by/3.0/)
+- Author: **Clint Bellanger** (https://opengameart.org/users/clint-bellanger)
+- 派生管线 `tools/build_sourced_assets.py` 中 `SRC["sparks"]` 登记作者为 **Clint Bellanger**，与 OGA 页面元数据一致。
+
+## Allowed uses (per CC-BY 3.0)
+
+- 商业使用 ✓
+- 修改 ✓
+- 复制 ✓
+- 分发 ✓
+- 再许可（必须同 CC-BY 3.0）✓
+- **署名要求 ✓（必填）**
+
+### 署名要求（CC-BY 3.0 §4）
+
+发布或分发本作品（含派生作品）必须包含：
+1. **作者署名**："Sparks (Fire, Ice, Blood) by Clint Bellanger, CC-BY 3.0"
+2. **许可证链接**：https://creativecommons.org/licenses/by/3.0/
+3. **派生说明**：indicate if changes were made
+4. **许可证文本**：随分发包含 CC-BY 3.0 完整文本或链接
+
+## 派生管线
+
+- 入口：`tools/build_sourced_assets.py` 中 `SRC["sparks"]`
+- 用法：
+  - C01 `assets/art/vfx/fx_hit_spark_strip4.png` + _deutan/_protan/_tritan 色弱变体（脚本 `scripts/ui/fx_layer.gd` 通过 `ArtLibrary.vfx_tex("fx_hit_spark_strip4")` 调用）
+  - C02 `assets/art/c02/runtime/projectile_ember_burst.png` (16×16)（脚本 `scripts/combat/greybox_projectile.gd` 通过 `ArtLibrary.c02_vfx_tex("projectile_ember_burst")` 调用）
+- 派生文件 SHA-256 见 `out/sourced_assets_lineage.json` 与 `assets/art/c02/runtime/DERIVED_MANIFEST.json`
+
+## 抓取证据
+
+- 页面抓取日期：2026-09-08
+- 页面 URL：https://opengameart.org/content/sparks-fire-ice-blood
+- 抓取方式：curl -sL --max-time 30 -A "Mozilla/5.0"
+- License 字段原样：
+
+  > License(s): <a href='http://creativecommons.org/licenses/by/3.0/' target='_blank'><img src='https://opengameart.org/sites/default/files/license_images/cc-by.png' alt='' title=''><div class='license-name'>CC-BY 3.0</div></a>
+
+## CC-BY 3.0 法律文本
+
+完整 CC-BY 3.0 法律工具（Legal Code）参考：
+https://creativecommons.org/licenses/by/3.0/legalcode

@@ -1,0 +1,69 @@
+[
+  {
+    "author": "kenney-assets",
+    "slug": "tower-defense-kit",
+    "url": "https://kenney-assets.itch.io/tower-defense-kit",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page",
+      "got_session_url",
+      "got_upload_ids",
+      "got_cdn_urls",
+      "downloaded"
+    ],
+    "files": [
+      {
+        "upload_id": "12993747",
+        "url": "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/1164088/12993747?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T025327Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=5773a9ba396ab5a66b5e30e6d718dc72350ea248317e3356745abafb013abac0",
+        "path": "D:/mydev/games/Tower Defense/assets/vendor/hunt/itch\\41_kenney_tower_defense\\12993747.zip",
+        "size": 5404433
+      }
+    ],
+    "error": null,
+    "license_text": "\t\n\n\tTower Defense Kit (2.1)\n\n\tCreated/distributed by Kenney (www.kenney.nl)\n\tCreation date: 16-09-2024 09:24\n\t\n\t\t\t------------------------------\n\n\tLicense: (Creative Commons Zero, CC0)\n\thttp://creativecommons.org/publicdomain/zero/1.0/\n\n\tYou can use this content for personal, educational, and commercial purposes.\n\n\tSupport by crediting 'Kenney' or 'www.kenney.nl' (this is not a requirement)\n\n\t\t\t------------------------------\n\n\t• Website : www.kenney.nl\n\t• Donate  : www.kenney.nl/donate\n\n\t• Patreon : patreon.com/kenney\n\t\n\tFollow on social media for updates:\n\n\t• Twitter:   twitter.com/KenneyNL\n\t• Instagram: instagram.com/kenney_nl\n\t• Mastodon:  mastodon.gamedev.place/@kenney",
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": true,
+    "free_uncertain": false,
+    "included_files": [
+      "kenney_tower-defense-kit.zip"
+    ],
+    "session_url": "https://kenney-assets.itch.io/tower-defense-kit/download/eyJpZCI6MTE2NDA4OCwiZXhwaXJlcyI6MTc4ODgzNjAxM30%3d%2eGRS7X%2bqUtGqtA7BYjXvb5Wr09%2b8%3d",
+    "upload_ids": [
+      "12993747"
+    ],
+    "cdn_urls": [
+      "https://itchio-mirror.cb031a832f44726753d6267436f3b414.r2.cloudflarestorage.com/upload2/game/1164088/12993747?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=3edfcce40115d057d0b5606758e7e9ee%2F20260908%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260908T025327Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=5773a9ba396ab5a66b5e30e6d718dc72350ea248317e3356745abafb013abac0"
+    ]
+  },
+  {
+    "author": "gamedeveloperstudio",
+    "slug": "animated-top-down-sea-life",
+    "url": "https://gamedeveloperstudio.itch.io/animated-top-down-sea-life",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  },
+  {
+    "author": "gegx",
+    "slug": "boats-ships",
+    "url": "https://gegx.itch.io/boats-ships",
+    "steps": [
+      "got_game_page",
+      "got_purchase_page"
+    ],
+    "files": [],
+    "error": "not PWYW free (no 'No thanks' link, no free indicator)",
+    "license_text": null,
+    "page_description": "",
+    "actual_price": null,
+    "is_pwyw_free": false
+  }
+]

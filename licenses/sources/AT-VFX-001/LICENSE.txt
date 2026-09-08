@@ -1,0 +1,47 @@
+# AT-VFX-001 — Animated Fire by BenHickling
+
+> Page URL: https://opengameart.org/content/animated-fire
+> Asset ID: AT-VFX-001
+> Recorded in ASSET_LICENSE_LEDGER.csv: 2026-09-08
+> Asset_role: VFX — 余烬喷井火焰（C02 tower_ember_well_tier1..tier4 + 色弱变体）
+> Vendor path: assets/vendor/hunt/oga-towers/04_animated_fire/fire1_64.png (本轮派生主源) + fire2..fire8 全套 8 张
+> Source SHA-256 (fire1_64.png): c3dba736f2866e5abd7008f5aae4f548c0a8ebaf61894f75071fe337d2c5b1bc (37827 bytes)
+
+---
+
+## License declaration (OGA page metadata)
+
+- License(s): **CC0 1.0 Universal** (http://creativecommons.org/publicdomain/zero/1.0/)
+- Author: **BenHickling** (https://opengameart.org/users/benhickling)
+- 派生管线 `tools/build_sourced_assets.py` 中 `SRC["fire"]` 登记作者为 **benhickling**，与 OGA 页面元数据一致。
+
+## Allowed uses (per CC0 1.0)
+
+- 商业使用 ✓
+- 修改 ✓
+- 复制 ✓
+- 分发 ✓
+- 再许可（无附加条件）✓
+- 署名要求 ✗（项目自愿保留 courtesy credit，见 CREDITS.md）
+
+## 派生管线
+
+- 入口：`tools/build_sourced_assets.py` 中 `SRC["fire"]`
+- 用法：
+  - C02 `assets/art/c02/runtime/tower_ember_well_tier1.png` ... tier4.png (各 64×64) + _deutan/_protan/_tritan 色弱变体
+  - 与 tools/pixel_v2.py 项目自有塔基合成
+- 派生文件 SHA-256 见 `assets/art/c02/runtime/DERIVED_MANIFEST.json`
+
+## 抓取证据
+
+- 页面抓取日期：2026-09-08
+- 页面 URL：https://opengameart.org/content/animated-fire
+- 抓取方式：curl -sL --max-time 30 -A "Mozilla/5.0"
+- License 字段原样：
+
+  > License(s): <a href='http://creativecommons.org/publicdomain/zero/1.0/' target='_blank'><img src='https://opengameart.org/sites/default/files/license_images/cc0.png' alt='' title=''><div class='license-name'>CC0</div></a>
+
+## CC0 法律文本
+
+完整 CC0 1.0 法律工具（Legal Code）副本随仓库分发：`licenses/CC0-1.0.txt`
+（CC0 Public Domain Dedication；https://creativecommons.org/publicdomain/zero/1.0/legalcode）

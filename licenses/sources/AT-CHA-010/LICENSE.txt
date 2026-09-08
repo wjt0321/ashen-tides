@@ -1,0 +1,73 @@
+# AT-CHA-010 — [LPC] Ship by bluecarrot16
+
+> Page URL: https://opengameart.org/content/lpc-ship
+> Asset ID: AT-CHA-010
+> Recorded in ASSET_LICENSE_LEDGER.csv: 2026-09-08
+> Asset_role: 港岸/船 — harbor_props 部分格（船配件 + 船炮）
+> Vendor path: assets/vendor/hunt/oga-terrain/lpc-ship_bluecarrot16/lpc-ship.zip
+> Source SHA-256 (source.zip): 18e837d2af4fce8a4bdebd69db966e78587e3f99037692c0aa607d0b43269464 (954467 bytes)
+
+---
+
+## License declaration (OGA page metadata)
+
+- License(s)（页面同时挂四个，发布者任选其一）:
+  1. **CC-BY 4.0** (https://creativecommons.org/licenses/by/4.0/)
+  2. **GPL 3.0** (https://www.gnu.org/licenses/gpl-3.0.html)
+  3. **GPL 2.0** (https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+  4. **OGA-BY 3.0** (https://opengameart.org/content/oga-by-30-faq)
+- Author: **bluecarrot16** (https://opengameart.org/users/bluecarrot16)
+- 派生管线 `tools/build_sourced_assets.py` 登记:
+  - `SRC["ship_acc"]` → bluecarrot16 / [LPC] Ship accessories
+  - `SRC["ship_cannon"]` → bluecarrot16 / [LPC] Ship cannon
+- 项目台账选用的许可证: **OGA-BY 3.0 / CC-BY 3.0**（避开 GPL 的传染性，且 OGA-BY 3.0 / CC-BY 3.0 是 OGA 历史兼容许可条款）
+
+> 研究者备注 (2026-09-08)：
+> OGA 页面 metadata 现挂 **CC-BY 4.0**（而非页面文字或猎手报告所写 3.0），本项目台账沿用现有派生管线和任务描述的 **CC-BY 3.0 / OGA-BY 3.0** 选择，二者均满足 attribution 强制要求，选用 CC-BY 3.0 不违反页面条款。
+> GPL 选项被规避，理由见项目政策文档 §14.1（避免 GPL 强传染）。
+> 鉴于 CC-BY 3.0 要求"署名作者 + 许可证链接"，本项目台账在 attribution_required 列置为 **yes**。
+
+## Allowed uses (per CC-BY 3.0 / OGA-BY 3.0)
+
+- 商业使用 ✓
+- 修改 ✓
+- 复制 ✓
+- 分发 ✓
+- **署名要求 ✓（必填）**
+
+### 署名要求（CC-BY 3.0 §4）
+
+发布或分发本作品（含派生作品）必须包含：
+1. **作者署名**："bluecarrot16 ([LPC] Ship, https://opengameart.org/content/lpc-ship)"
+2. **许可证链接**：https://creativecommons.org/licenses/by/3.0/（或 OGA-BY 3.0 FAQ）
+3. **派生说明**：indicate if changes were made
+4. **许可证文本**：随分发包含 CC-BY 3.0 完整文本或链接
+
+## 派生管线
+
+- 入口：`tools/build_sourced_assets.py` 中 `SRC["ship_acc"]` / `SRC["ship_cannon"]`
+- 用法：C01 `assets/art/c01/runtime/harbor_props.png` (1024×128)
+  - 选自 `extracted/lpc-ship/lpc-ship-accessories.png`（船配件）
+  - 选自 `extracted/lpc-ship/ship-cannon.png`（船炮）
+  - 与 tools/pixel_v2.py 项目自有基底合成
+- 派生文件 SHA-256 见 `assets/art/c01/runtime/DERIVED_MANIFEST.json`
+
+## 抓取证据
+
+- 页面抓取日期：2026-09-08
+- 页面 URL：https://opengameart.org/content/lpc-ship
+- 抓取方式：curl -sL --max-time 30 -A "Mozilla/5.0"
+- License 字段原样：
+
+  > License(s):
+  > - <a href='https://creativecommons.org/licenses/by/4.0/' target='_blank'>CC-BY 4.0</a>
+  > - <a href='http://www.gnu.org/licenses/gpl-3.0.html' target='_blank'>GPL 3.0</a>
+  > - <a href='http://www.gnu.org/licenses/old-licenses/gpl-2.0.html' target='_blank'>GPL 2.0</a>
+  > - <a href='http://opengameart.org/content/oga-by-30-faq' target='_blank'>OGA-BY 3.0</a>
+
+## CC-BY 3.0 法律文本
+
+完整 CC-BY 3.0 法律工具（Legal Code）参考：
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+OGA-BY 3.0 FAQ：https://opengameart.org/content/oga-by-30-faq

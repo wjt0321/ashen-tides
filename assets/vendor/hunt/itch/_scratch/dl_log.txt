@@ -1,0 +1,5 @@
+[mutterpixel-studio/free-shark-enemy-pack-animated-pixel-art] purchase_url = https://mutterpixel-studio.itch.io/free-shark-enemy-pack-animated-pixel-art/purchase
+[mutterpixel-studio/free-shark-enemy-pack-animated-pixel-art] no csrf token (likely login-required or page not PWYW)
+[mutterpixel-studio/free-shark-enemy-pack-animated-pixel-art] purchase_url = https://mutterpixel-studio.itch.io/free-shark-enemy-pack-animated-pixel-art/purchase
+[mutterpixel-studio/free-shark-enemy-pack-animated-pixel-art] included files: ['Free Shark Enemy Pack – Animated Pixel Art.zip']
+[mutterpixel-studio/free-shark-enemy-pack-animated-pixel-art] no direct download URL after POST (response saved)

@@ -1,5 +1,7 @@
 # C01 Style Bible（最终样板实现）
 
+> **【历史参考 · 2026-09-08】** C01 具体实现细节以 `ART_STYLE_BASELINE.md` §10 黄金参考 + 现行 sourced 资产（`ART_ASSET_REGISTRY.csv` 的 `C01_SOURCED_PRESENTATION` 行）为准。本文描述的 Foozle 派生栅格资产已先后被 v2 自绘与 sourced-cc0-ccby-v1 取代；色板（§1）与构图规则仍然有效。
+>
 > **全局视觉权威**：`docs/current/art/ART_STYLE_BASELINE.md`。
 > **用途**：本文只记录 C01 如何实现全局基线，不再重复维护全项目风格规则。
 > **批准记录**：2026-09-06，项目主理人采用当前 C01 栅格像素风格，并指定后续关卡全部沿用。

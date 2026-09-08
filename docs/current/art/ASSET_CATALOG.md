@@ -1,7 +1,7 @@
 # 《余烬潮汐》资产目录(ASSET_CATALOG)
 
-> **文档状态**：v1.1（视觉方向已批准；候选资产与单项 Shipping 白名单仍按生命周期管理）
-> **撰写日期**：2026-09-04；视觉基线批准：2026-09-06
+> **文档状态**：v1.2（视觉方向已批准；C01/C02 战斗主体已接入 sourced-cc0-ccby-v1,见 §4.6 / §9；候选资产与单项 Shipping 白名单仍按生命周期管理）
+> **撰写日期**：2026-09-04；视觉基线批准：2026-09-06；sourced 路线批准：2026-09-08
 > **Owner**:技术主理人(美术 / 音频)
 > **Approver**:项目主理人
 > **视觉权威**：`ART_STYLE_BASELINE.md`；本文负责候选来源、许可证和资产生命周期。视觉描述冲突时以该基线为准。
@@ -205,6 +205,22 @@ Research  →  Proposed  →  Approved  →  Implemented  →  Verified  →  Sh
 
 **【Policy / 重要】** 免费 UI 资产在风格上**均不适合本项目**;所有 UI 主视觉必须原创(可能是 9-slice 黄铜边框 + 海图底纹)。
 
+### 4.6 2026-09-08 已入库来源(sourced-cc0-ccby-v1)
+
+> 经项目主理人 2026-09-08 批准,C01/C02 战斗主体资产改走"外部 CC0/CC-BY 素材 + 确定性派生管线"路线(见 §9.1 附注)。以下 7 行已写入 `ASSET_LICENSE_LEDGER.csv`(第 178–184 行,status=Implemented),许可证据在 `licenses/sources/<asset_id>/`,派生归因在 `out/sourced_assets_lineage.json`。
+
+| 台账 asset_id | 名称 | 作者 | 许可证 | 署名 | 用途 |
+|---|---|---|---|---|---|
+| AT-CHA-008 | Crab (top-down) | alizard(OGA 提交者 malekith97) | CC0 | 否 | 盐壳行者 |
+| AT-CHA-009 | LPC animals 2022(巨鼠/小鼠/鲨鱼) | Sevarihk / tapatilorenzo | CC-BY 4.0 | **是** | 桅鼠群、裂鳍疾行者 |
+| AT-CHA-010 | [LPC] Ship | bluecarrot16 | OGA-BY 3.0 / CC-BY 3.0 | **是** | 港区道具、船件 |
+| AT-TWR-007 | Pixel Turret Animation | zerohero(OGA 提交者 zonked) | CC0 | 否 | 针轨弩台炮头 |
+| AT-VFX-001 | Animated Fire | BenHickling | CC0 | 否 | 余烬喷井火焰 |
+| AT-VFX-002 | Sparks (Fire, Ice, Blood) | Clint Bellanger | CC-BY 3.0 | **是** | 命中火花、余烬弹体 |
+| AT-VFX-005 | Explosion Animations(Frogatto) | Jetrel | CC-BY 3.0 | **是** | 开火闪光帧条 |
+
+**【合规经验】** AT-VFX-005 的 OGA 页面元数据标 CC0,但作者 Jetrel 在页面正文声明"License is incorrect,实为 CC-BY 3.0"(Frogatto 仓库 LICENSE)。**来源页元数据可能与作者声明不一致,一律以作者正文声明为准**;本轮已按作者最终意图登记 CC-BY 3.0 需署名。
+
 ---
 
 ## 5. 字体候选表
@@ -294,25 +310,27 @@ Research  →  Proposed  →  Approved  →  Implemented  →  Verified  →  Sh
 
 | 类别 | ID | 数量 | 风格/规格 | 候选 | 状态 |
 |---|---|---|---|---|---|
-| 地形 | sea_ground / rocky_shore / path_stone | 1 set | 32×32,夜蓝 + 灰 | AT-TER-001(灰盒)→ AT-TER-007(正式) | 缺口 |
-| 敌人 | salt_shell_walker / mast_rat | 2 类 | 32×32,4 方向 × 4 状态 | AT-CHA-007(原创) | 缺口 |
-| 塔 | needle_rail I / II / III | 1 塔 3 档 | 32×32,夜蓝金属 | AT-TWR-006(原创) | 缺口 |
-| 投射物 | needle_bolt | 1 | 8×8,夜蓝 | AT-TWR-006 衍生 | 缺口 |
-| 状态效果 | slow / pierce | 2 | 32×32,VFX 帧 | AT-VFX-004(原创) | 缺口 |
+| 地形 | sea_ground / rocky_shore / path_stone | 1 set | 32×32,夜蓝 + 灰 | AT-TER-001(灰盒)→ AT-TER-007(正式) | v2 自绘战斗背景在用；sourced 轮未覆盖地形 |
+| 敌人 | salt_shell_walker / mast_rat | 2 类 | 32×32,4 方向 × 4 状态 | AT-CHA-008(螃蟹 CC0)+ AT-CHA-009(LPC 巨鼠 CC-BY 4.0) | **已接入(sourced,2026-09-08)** |
+| 塔 | needle_rail I / II / III | 1 塔 3 档 | 32×32,夜蓝金属 | AT-TWR-007(炮头 CC0)+ 合成底座 | **已接入(sourced,2026-09-08)** |
+| 投射物 | needle_bolt | 1 | 8×8,夜蓝 | AT-TWR-006 衍生 | 缺口(仍程序化绘制) |
+| 状态效果 | slow / pierce | 2 | 32×32,VFX 帧 | AT-VFX-001/002/005 | 部分接入(命中火花/开火闪光已 sourced;slow/pierce 仍缺口) |
 | 英雄 | lanzhou_wei(可选)C01 可不带英雄 | 1 | 32×32,海风帆布 | AT-CHA-007(原创) | 缺口 |
 | UI | HUD / 暂停 / 关卡选择 / 结算 | 4 屏 | 潮汐航海仪器 | AT-UI-004(原创) | 缺口 |
 | 字体 | 标题 + HUD 数值 + CJK | 3 套 | 见 §5 / §10 | FT-LAT-001/002 + FT-CJK-??? | 缺口 |
 | BGM | 序章战斗 | 1 首 | 8-bit 短循环 | MU-001/002 | 候选 |
 | SFX | 命中/敌人死亡/塔开火/UI 点击/波次提示/舰队扣血 | ≥ 6 | 8-bit | SF-001/002/003/005 | 候选 |
 
+> **2026-09-08 路线变更(项目主理人批准)**:C01/C02 战斗主体资产的实际路线从"原创(AT-xxx-007/006)"调整为"**CC0/CC-BY 外部素材 + 确定性派生管线**(`tools/build_sourced_assets.py`,裁帧/重组/统一调色/色弱变体/SHA-256 清单)"。§4.2/4.3 中"塔、英雄、Boss 主视觉必须原创"的 Policy 对**塔与普通敌人**按本轮决议放宽为"允许风格双评分 ≥ 3 且 License Confidence = 5 的外部像素素材经派生后接入";英雄、Boss 与 UI 主视觉仍维持原创路线。现行接入清单见 §4.6 与 `ART_ASSET_REGISTRY.csv` 的 `C01/C02_SOURCED_PRESENTATION` 行。
+
 ### 9.2 C02「潮门初启」资产新增
 
 | 类别 | ID | 数量 | 风格/规格 | 状态 |
 |---|---|---|---|---|
-| 敌人 | splitfin_dasher(迅捷) | +1 | 32×32 | 缺口 |
-| 塔 | needle_rail IV + ember_well I/II/III | +1 塔 + 1 塔 3 档 | 32×32,余烬喷井琥珀光 | 缺口 |
-| 投射物 | ember_burst | +1 | 8×8 | 缺口 |
-| 状态效果 | burn | +1 | VFX | 缺口 |
+| 敌人 | splitfin_dasher(迅捷) | +1 | 32×32 | **已接入(sourced,2026-09-08,LPC 鲨鱼派生 + 色弱变体)** |
+| 塔 | needle_rail IV + ember_well I/II/III | +1 塔 + 1 塔 3 档 | 32×32,余烬喷井琥珀光 | **已接入(sourced,2026-09-08,tier1–4 全档;喷井火焰 = Animated Fire CC0 派生)** |
+| 投射物 | ember_burst | +1 | 8×8 | **已接入(sourced,2026-09-08,16×16 sparks 派生)** |
+| 状态效果 | burn | +1 | VFX | 缺口(AT-VFX-001 Animated Fire 已入库,可直接派生) |
 | 视觉 | 暮潮配色切换 | +1 palette | 蓝紫 → 黑紫 | 缺口 |
 | BGM | 第一章战斗层 | 1 首 | 8-bit | MU-002/003 候选 |
 
@@ -320,8 +338,10 @@ Research  →  Proposed  →  Approved  →  Implemented  →  Verified  →  Sh
 
 | 类别 | ID | 数量 | 风格/规格 | 状态 |
 |---|---|---|---|---|
-| 敌人 | rust_armor_carrier(重甲) | +1 | 32×32,厚甲轮廓 | 缺口 |
-| 塔 | 6 塔骨架补齐到 I/II | +4 塔 | 32×32 | 缺口 |
+| 敌人 | rust_armor_carrier(重甲) | +1 | 32×32,厚甲轮廓 | **已接入(sourced,2026-09-08,随 C02 提前完成)** |
+| 敌人 | lamp_leech(护盾) / tide_back_navigator(支援光环) | +2 | 32×32,功能轮廓可辨 | 缺口(2026-09-08 核对 level_c03.tres 实际波次发现,本表原遗漏) |
+| 塔 | 回声桩阵 echo_pile 接入 + 6 塔骨架补齐到 I/II | +4 塔 | 32×32 | 缺口(level_c03 实际可用塔 = needle_rail / ember_well / echo_pile,前两者已有 sourced 素材) |
+| 装置/地标 | device_c03_lighthouse 灯塔 + beacon_failure 相位视觉 | +1 | 灯塔亮/灭双态 | 缺口(level_c03.tres devices / phase_events) |
 | 英雄 | lanzhou_wei(正式登场) | 1 | 32×32 + 4 技能 | 缺口 |
 | 投射物 | per tower 1 | +5 | 各异 | 缺口 |
 | 状态效果 | armor_break | +1 | VFX | 缺口 |
@@ -518,6 +538,8 @@ AT-TER-001,Buch Outdoor 32x32 Tileset,tileset,Michele Bucelli,https://opengamear
 
 **【Policy】** 以下条目处于 Indirect 证据等级, **不进入 shipping**,仅作 spike 或调研参考:
 
+> **2026-09-08 可达性更新**:itch.io 经本地代理 `127.0.0.1:10808`(SOCKS5)已可达,当轮补货 10 包至 `assets/vendor/hunt/itch/`(详见 `HUNT_REPORT_itch_zh.md`);其中 13_ballista、22_td_towers_proj、33_bomb_imp、09_coast_tiles、30_combosmooth_vfx 共 5 个**无 LICENSE 文件,许可待核**,入库或接入前必须取得作者/页面许可证据。下表中历史"itch 页不可达"条目保留作时间记录,如需翻案可按代理路径重核。
+
 | 资产 | 间接核实原因 |
 |---|---|
 | AT-TER-003 rgsdev Top-Down Tileset Template | itch 页不可达,仅 OGA 镜像 |
@@ -555,6 +577,15 @@ AT-TER-001,Buch Outdoor 32x32 Tileset,tileset,Michele Bucelli,https://opengamear
 - [BenHickling – Animated Fire](https://opengameart.org/content/animated-fire)
 - [Clint Bellanger – Sparks (Fire, Ice, Blood)](https://opengameart.org/content/sparks-fire-ice-blood)
 - [Kenney – Particle Pack](https://kenney.nl/assets/particle-pack)
+
+### 已入库来源(2026-09-08 sourced,详见 §4.6)
+- [Crab (top-down) — alizard, CC0](https://opengameart.org/content/crab)
+- [LPC animals 2022 — Sevarihk / tapatilorenzo, CC-BY 4.0](https://opengameart.org/content/lpc-bears-deer-lions-and-more)
+- [[LPC] Ship — bluecarrot16, OGA-BY 3.0 / CC-BY 3.0](https://opengameart.org/content/lpc-ship)
+- [Pixel Turret Animation — zerohero, CC0](https://opengameart.org/content/pixel-turret-animation)
+- [Animated Fire — BenHickling, CC0](https://opengameart.org/content/animated-fire)
+- [Sparks (Fire, Ice, Blood) — Clint Bellanger, CC-BY 3.0](https://opengameart.org/content/sparks-fire-ice-blood)
+- [Explosion Animations — Jetrel (Frogatto), CC-BY 3.0(作者更正)](https://opengameart.org/content/explosion-animations)
 
 ### UI
 - [Kenney – Pixel UI Pack](https://kenney.nl/assets/pixel-ui-pack)

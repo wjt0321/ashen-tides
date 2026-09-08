@@ -14,7 +14,8 @@
 
 - [ART_STYLE_BASELINE.md](current/art/ART_STYLE_BASELINE.md) — 2026-09-06 主理人批准的最终视觉方向；C01 是后续所有关卡的黄金样板。
 - [C01_STYLE_BIBLE.md](current/art/C01_STYLE_BIBLE.md) — C01 栅格化呈现的具体实现与复用规范。
-- [C01_RESOURCE_DECISIONS.md](current/art/C01_RESOURCE_DECISIONS.md) — C01 资源选型、替换与保留决策。
+- [C01_RESOURCE_DECISIONS.md](archive/art/C01_RESOURCE_DECISIONS.md) — 【已归档 2026-09-08】C01 资源选型决策（Foozle 基线，已被 sourced-cc0-ccby-v1 取代）。
+- [C03_KICKOFF.md](current/art/C03_KICKOFF.md) — C03「失火灯塔」入场上下文：现状、需求、素材库存、管线手册与合规红线。
 - [ASSET_CATALOG.md](current/art/ASSET_CATALOG.md) — 资产来源、候选与许可证生命周期。
 - [ART_PRODUCTION_PLAN.md](current/art/ART_PRODUCTION_PLAN.md) — 后续美术生产批次、规格与验收门禁。
 - [CREDITS.md](current/art/CREDITS.md) — 第三方资源许可证和归因。

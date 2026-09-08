@@ -102,6 +102,8 @@ Style Bible 未经一次整屏 mockup 评审通过，不得批量生产。
 
 **2026-09-06 状态**：C01 Foozle CC0 派生栅格表现层已达到 `Integrated` 且 `placeholder=false`，视觉方向已获主理人批准；当前仍需外部玩家识别测试、完整 Visual-QA 和正式音频，不能误报为 `Player-verified`、`Release-ready` 或 `Shipping`。
 
+**2026-09-08 更新**：C01/C02 战斗主体资产（敌人/塔/弹体/命中与开火 VFX/部分港区道具）已由 sourced-cc0-ccby-v1 取代（外部 CC0/CC-BY 素材 + `tools/build_sourced_assets.py` 确定性派生管线，项目主理人批准）；Foozle 派生层与 v2 自绘层均标记 superseded。地形/战斗背景、UI、英雄、BGM 仍为缺口或维持原路线，同上条状态不变。详见 `ASSET_CATALOG.md` §4.6 与 `ART_ASSET_REGISTRY.csv`。
+
 ### ART-C-C02-C03-SLICE：C02–C03 纵向切片完成
 
 复用并补齐 C02/C03 的塔、敌、英雄、装置、相位视觉和音频。完成后冻结：比例、光向、轮廓、主色板、动画时序、UI 组件和导出模板。

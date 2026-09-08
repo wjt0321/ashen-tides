@@ -1,0 +1,47 @@
+[mutterpixel-studio/free-shark-enemy-pack-animated-pixel-art] OK    77093 bytes  upload_id=17468453  -> 17468453.zip
+[mutterpixel-studio/free-shark-enemy-pack-animated-pixel-art] extracted: 17468453.zip
+[mutterpixel-studio/free-shark-enemy-pack-animated-pixel-art] license file: README.txt
+[mythical-the-dev/ballista-pixel-sprite] OK     2115 bytes  upload_id=15720657  -> 15720657.png
+[mythical-the-dev/ballista-pixel-sprite] OK    15681 bytes  upload_id=15720658  -> 15720658.png
+[frostwindz/pixel-art-vfx-fire-explosions-free-version] OK   287087 bytes  upload_id=17284198  -> 17284198.zip
+[frostwindz/pixel-art-vfx-fire-explosions-free-version] extracted: 17284198.zip
+[frostwindz/pixel-art-vfx-fire-explosions-free-version] license file: Frostwindz Asset License Agreement.docx
+[guilhermelaso/coast-top-down-tiles] OK   457763 bytes  upload_id=13171140  -> 13171140.zip
+[guilhermelaso/coast-top-down-tiles] extracted: 13171140.zip
+[gamedeveloperstudio/top-down-sea-level-creator-set] not PWYW free (no 'No thanks' link, no free indicator)
+[nacl1234/top-down-underwater-coral-reef-2d-mega-pack] OK 27281723 bytes  upload_id=19067397  -> 19067397.zip
+[nacl1234/top-down-underwater-coral-reef-2d-mega-pack] extracted: 19067397.zip
+[nacl1234/top-down-underwater-coral-reef-2d-mega-pack] license file: LICENSE.txt
+[gemau-cymru/pixel-art-pirate-ship-boat-asset] not PWYW free (no 'No thanks' link, no free indicator)
+[kaiswerkstatt/high-seas-pirate-ship-tiles-decorations] not PWYW free (no 'No thanks' link, no free indicator)
+[dwaidev/pixel-sail-ships] not PWYW free (no 'No thanks' link, no free indicator)
+[muchopixels/pirate-ship-tileset-pack] not PWYW free (no 'No thanks' link, no free indicator)
+[free-game-assets/pirate-bay-tileset-pixel-art] not PWYW free (no 'No thanks' link, no free indicator)
+[free-game-assets/pirate-bay-bosses-pixel-art-pack] not PWYW free (no 'No thanks' link, no free indicator)
+[godboyhappy/haunted-ghost-ship-pixel-tileset-pack] not PWYW free (no 'No thanks' link, no free indicator)
+[valendremus/tower-defense-towers-projectiles] OK    41562 bytes  upload_id=12187216  -> 12187216.zip
+[valendremus/tower-defense-towers-projectiles] extracted: 12187216.zip
+[auteddy/tower-defense-tower-set-v1] not PWYW free (no 'No thanks' link, no free indicator)
+[free-game-assets/free-archer-towers-pixel-art-for-tower-defense] OK   472852 bytes  upload_id=8474829  -> 8474829.zip
+[free-game-assets/free-archer-towers-pixel-art-for-tower-defense] extracted: 8474829.zip
+[free-game-assets/free-archer-towers-pixel-art-for-tower-defense] license file: License.txt
+[free-game-assets/guardian-towers-pixel-art-for-tower-defense] not PWYW free (no 'No thanks' link, no free indicator)
+[free-game-assets/mage-towers-pixel-art-for-tower-defense] not PWYW free (no 'No thanks' link, no free indicator)
+[free-game-assets/catapult-towers-pixel-art-for-tower-defense] not PWYW free (no 'No thanks' link, no free indicator)
+[free-game-assets/free-field-enemies-pixel-art-for-tower-defense] OK   430006 bytes  upload_id=8474795  -> 8474795.zip
+[free-game-assets/free-field-enemies-pixel-art-for-tower-defense] extracted: 8474795.zip
+[free-game-assets/free-field-enemies-pixel-art-for-tower-defense] license file: License.txt
+[free-game-assets/top-down-pixel-monster-sprites-for-tower-defense] not PWYW free (no 'No thanks' link, no free indicator)
+[jedimeisterx/32-pixel-explosion-effects-pack-animated-48x48-vfx-9-frames] not PWYW free (no 'No thanks' link, no free indicator)
+[godboyhappy/pyre-pixel-vfx-sprite-sheets] not PWYW free (no 'No thanks' link, no free indicator)
+[free-game-assets/11-free-pixel-art-explosion-sprites] OK   552731 bytes  upload_id=5612056  -> 5612056.zip
+[free-game-assets/11-free-pixel-art-explosion-sprites] extracted: 5612056.zip
+[free-game-assets/11-free-pixel-art-explosion-sprites] license file: License.txt
+[pimen/explosion-effect] not PWYW free (no 'No thanks' link, no free indicator)
+[combosmooth/vfx-pack] OK   655412 bytes  upload_id=2610155  -> 2610155.zip
+[combosmooth/vfx-pack] extracted: 2610155.zip
+[pewas/pixel-rpg-vfx-pack-free-animated-effects] not PWYW free (no 'No thanks' link, no free indicator)
+[icemaan/epic-explosions-pixel-vfx] not PWYW free (no 'No thanks' link, no free indicator)
+[gyrossteelball/top-down-bomb-imp-pixel-art-enemy4-directions-explosion-vfx] OK    48434 bytes  upload_id=16744043  -> 16744043.zip
+[gyrossteelball/top-down-bomb-imp-pixel-art-enemy4-directions-explosion-vfx] extracted: 16744043.zip
+[infectedtribe/pixel-explosion] not PWYW free (no 'No thanks' link, no free indicator)

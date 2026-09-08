@@ -8,7 +8,7 @@
 - **C02–C14**：战斗内容和数据已存在，但尚未按 C01 最终美术基线逐关重制与验收。
 - **项目整体**：仍不是 Release-ready 或 Shipping；外部玩家识别测试、完整视觉 QA、正式音频、手柄与目标机验证等门禁仍未完成。
 
-最终视觉规则见 [`ART_STYLE_BASELINE.md`](../art/ART_STYLE_BASELINE.md)；C01 实现见 [`C01_STYLE_BIBLE.md`](../art/C01_STYLE_BIBLE.md)；资源来源见 [`C01_RESOURCE_DECISIONS.md`](../art/C01_RESOURCE_DECISIONS.md)。
+最终视觉规则见 [`ART_STYLE_BASELINE.md`](../art/ART_STYLE_BASELINE.md)；C01 实现见 [`C01_STYLE_BIBLE.md`](../art/C01_STYLE_BIBLE.md)；资源来源见 [`C01_RESOURCE_DECISIONS.md`](../../archive/art/C01_RESOURCE_DECISIONS.md)（已归档，现行来源见 [`ASSET_CATALOG.md`](../art/ASSET_CATALOG.md) §4.6）。
 
 ## 当前玩家可达范围
 

@@ -1,5 +1,7 @@
 # M4-A 记录：C01 正式资产纵向切片 + 美术技术规范锁定
 
+> **【状态注记 · 2026-09-08】** 本文记录的 gen_*_sprites.py 程序化生成管线已不再是 C01/C02 的运行时来源；现行来源为 `tools/build_sourced_assets.py`（外部 CC0/CC-BY 素材派生），见 `docs/current/art/C03_KICKOFF.md` §4。本文保留作管线沿革记录。
+>
 > 建立：2026-09-05
 > 前置：M3 Gate 有条件通过（docs/archive/reviews/M3_GATE_REVIEW.md）；NEXT_PHASE 收口（docs/archive/milestones/NEXT_PHASE_NOTES.md）
 > 约束执行：不改 PRD/RESEARCH_REPORT/ASSET_CATALOG；不做手柄/多人/盲测；不扩展 C09–C24；不 push。

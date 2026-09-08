@@ -1,0 +1,51 @@
+# AT-CHA-008 — Crab (top-down walk) by alizard
+
+> Page URL: https://opengameart.org/content/crab
+> Asset ID: AT-CHA-008
+> Recorded in ASSET_LICENSE_LEDGER.csv: 2026-09-08
+> Asset_role: 敌人 — 俯视螃蟹（盐壳行者 / 锈甲载体）
+> Vendor path: assets/vendor/hunt/oga-enemies/02_crab_topdown/Crab.zip
+> Source SHA-256 (source.zip): d2f39ecd1305849809428c9ccd49cace3f56b5a0882f469b33d3621dee768ecc (51520 bytes)
+> Extracted SHA-256 (Crab/Crab_Walk.png): 480177633ae835c58719d41ffd97f074e5499dc560ffa19edd566edc362072a9
+
+---
+
+## License declaration (OGA page metadata)
+
+- License(s): **CC0 1.0 Universal** (http://creativecommons.org/publicdomain/zero/1.0/)
+- Author: 猎手报告与项目台账登记为 **alizard**；OGA 页面元数据显示提交者为 **malekith97**（https://opengameart.org/users/malekith97）。
+- 派生管线 `tools/build_sourced_assets.py` 中 `SRC["crab"]` 登记作者为 **alizard**，与猎手报告 `HUNT_REPORT_OpenGameArt_enemy_hunter_zh.md` 一致。
+
+> 研究者备注 (2026-09-08)：
+> OGA 页面元数据的 "Author: malekith97" 是该作品在 OGA 平台的提交者/上传账户。
+> 原始创作者 alizard 与上传账户 malekith97 是否同人，本项目无法独立核实。
+> 鉴于 CC0 许可证不强制署名要求，登记沿用猎手报告与现有派生管线使用的 **alizard** 署名以维持内部一致性；如有进一步核实结果，应在下一轮台账复核时统一替换为 malekith97 或同时保留两者。
+
+## Allowed uses (per CC0 1.0)
+
+- 商业使用 ✓
+- 修改 ✓
+- 复制 ✓
+- 分发 ✓
+- 再许可（无附加条件）✓
+- 署名要求 ✗
+
+## 派生管线
+
+- 入口：`tools/build_sourced_assets.py` 中 `SRC["crab"]`
+- 用法：盐壳行者（C01 enemy_salt_shell_walker → enemy_salt_shell.png）+ 锈甲载体（C02 enemy_rust_armor_carrier.png + _deutan/_protan/_tritan 色弱变体）
+- 派生文件 SHA-256 见 `assets/art/c01/runtime/DERIVED_MANIFEST.json`（enemy_salt_shell.png）与 `assets/art/c02/runtime/DERIVED_MANIFEST.json`（enemy_rust_armor_carrier.png 等）
+
+## 抓取证据
+
+- 页面抓取日期：2026-09-08
+- 页面 URL：https://opengameart.org/content/crab
+- 抓取方式：curl -sL --max-time 30 -A "Mozilla/5.0"
+- License 字段原样：
+
+  > License(s): <a href='http://creativecommons.org/publicdomain/zero/1.0/' target='_blank'><img src='https://opengameart.org/sites/default/files/license_images/cc0.png' alt='' title=''><div class='license-name'>CC0</div></a>
+
+## CC0 法律文本
+
+完整 CC0 1.0 法律工具（Legal Code）副本随仓库分发：`licenses/CC0-1.0.txt`
+（CC0 Public Domain Dedication；https://creativecommons.org/publicdomain/zero/1.0/legalcode）

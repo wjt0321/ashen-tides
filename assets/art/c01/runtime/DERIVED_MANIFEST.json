@@ -1,51 +1,229 @@
 {
-  "generated_on": "2026-09-08",
-  "builder": "tools/build_v2_assets.py",
-  "source": "Ember Tide dev v2 hand-authored pixel art (tools/pixel_v2.py)",
+  "derived_at": "2026-09-08",
   "files": {
     "battle_background.png": {
+      "builder": "tools/build_v2_assets.py",
+      "bytes": 15186,
+      "derived_at": "2026-09-08",
       "sha256": "0545956da2d34b1c6a24117737d2ef55589909f9fd185a59b0101b0d9a9024ae",
-      "bytes": 15186
+      "size": [
+        640,
+        360
+      ],
+      "sources": [
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "note": "hand-authored v2 (tools/build_v2_assets.py)",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "briefing_background.png": {
+      "builder": "tools/build_v2_assets.py",
+      "bytes": 24234,
+      "derived_at": "2026-09-08",
       "sha256": "cc27dc0a19b20c5e474d2f2544785b1b030cbbb75b2acc9be4583deb0793c50e",
-      "bytes": 24234
+      "size": [
+        640,
+        360
+      ],
+      "sources": [
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "note": "hand-authored v2 (tools/build_v2_assets.py)",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "briefing_map.png": {
+      "builder": "tools/build_v2_assets.py",
+      "bytes": 4045,
+      "derived_at": "2026-09-08",
       "sha256": "a64199e23fe12687665a17499d81f5f1aa3dae67dbf7af5c4faa2b5adbaad1d7",
-      "bytes": 4045
+      "size": [
+        320,
+        180
+      ],
+      "sources": [
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "note": "hand-authored v2 (tools/build_v2_assets.py)",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "campaign_background.png": {
+      "builder": "tools/build_v2_assets.py",
+      "bytes": 15439,
+      "derived_at": "2026-09-08",
       "sha256": "21cbafabbb772de1f308b8ef01d90dce0a870d05faf73042fbf9d7d52e9faeaf",
-      "bytes": 15439
+      "size": [
+        640,
+        360
+      ],
+      "sources": [
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "note": "hand-authored v2 (tools/build_v2_assets.py)",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "enemy_mast_rat.png": {
-      "sha256": "47670ad0cda357759d50a9748590262788f49ef4aa0c9e2002e018195d50bace",
-      "bytes": 2095
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 9529,
+      "derived_at": "2026-09-08",
+      "sha256": "5a1cf286bcdc6d18d8dc11ac75946a10c0187e29c9119bf4d35db79fa03033de",
+      "size": [
+        512,
+        192
+      ],
+      "sources": [
+        {
+          "author": "Sevarihk",
+          "license": "CC-BY-4.0",
+          "path": "assets/vendor/hunt/oga-enemies/06_lpc_animals_2022/.../giant rat 80x64 (Sevarihk).png",
+          "title": "LPC animals 2022 - giant rat"
+        }
+      ]
     },
     "enemy_salt_shell.png": {
-      "sha256": "ec85efa84045fdbe460d83ebb78be9bdaafe1c174667811e3bb60a32ad33f767",
-      "bytes": 2448
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 9129,
+      "derived_at": "2026-09-08",
+      "sha256": "e6047bfc586f6e25ea85425407653923e63969143c01f2e7ccdbd985cd3916e7",
+      "size": [
+        512,
+        192
+      ],
+      "sources": [
+        {
+          "author": "alizard",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-enemies/02_crab_topdown/extracted/Crab/Crab_Walk.png",
+          "title": "Crab (top-down walk)"
+        }
+      ]
     },
     "harbor_props.png": {
-      "sha256": "52553771b018da38d73a9e92835099a084f46b6bd159a5b201a36c4132236b6c",
-      "bytes": 2658
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 8760,
+      "derived_at": "2026-09-08",
+      "sha256": "9fb3511f3f238564924500d7a5b8aa15c31a413bb776b704dc25d32ecd90d6a3",
+      "size": [
+        1024,
+        128
+      ],
+      "sources": [
+        {
+          "author": "bluecarrot16",
+          "license": "OGA-BY-3.0 / CC-BY-3.0",
+          "path": "assets/vendor/hunt/oga-terrain/lpc-ship_bluecarrot16/extracted/lpc-ship/lpc-ship-accessories.png",
+          "title": "[LPC] Ship accessories"
+        },
+        {
+          "author": "bluecarrot16",
+          "license": "OGA-BY-3.0 / CC-BY-3.0",
+          "path": "assets/vendor/hunt/oga-terrain/lpc-ship_bluecarrot16/extracted/lpc-ship/ship-cannon.png",
+          "title": "[LPC] Ship cannon"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "result_lose_background.png": {
+      "builder": "tools/build_v2_assets.py",
+      "bytes": 16807,
+      "derived_at": "2026-09-08",
       "sha256": "4579a3006960593a0690abf05d93edbf56420900506d52ba2a411b00112266da",
-      "bytes": 16807
+      "size": [
+        640,
+        360
+      ],
+      "sources": [
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "note": "hand-authored v2 (tools/build_v2_assets.py)",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "result_win_background.png": {
+      "builder": "tools/build_v2_assets.py",
+      "bytes": 15426,
+      "derived_at": "2026-09-08",
       "sha256": "035ac22364e42dce0857ce0d06db06edfb45b2353982b22bf5f06f7f86a25bd0",
-      "bytes": 15426
+      "size": [
+        640,
+        360
+      ],
+      "sources": [
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "note": "hand-authored v2 (tools/build_v2_assets.py)",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "title_background.png": {
+      "builder": "tools/build_v2_assets.py",
+      "bytes": 15706,
+      "derived_at": "2026-09-08",
       "sha256": "2ddd25077c8347af4bb865ffd11defc2a6c45f600e46ef07d7ec431026e47793",
-      "bytes": 15706
+      "size": [
+        640,
+        360
+      ],
+      "sources": [
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "note": "hand-authored v2 (tools/build_v2_assets.py)",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     },
     "tower_needle_rail.png": {
-      "sha256": "dad5bd31e8f2b09cd955140227fb6630a45674107cda69c08b4f209cf065c809",
-      "bytes": 1334
+      "builder": "tools/build_sourced_assets.py",
+      "bytes": 1876,
+      "derived_at": "2026-09-08",
+      "sha256": "db6bc4b67fdcc4380390a4f19db5d8a8ddf9e1fb8df6cd47b505daf955c8bf18",
+      "size": [
+        576,
+        96
+      ],
+      "sources": [
+        {
+          "author": "zerohero",
+          "license": "CC0-1.0",
+          "path": "assets/vendor/hunt/oga-towers/01_pixel_turret_animation/",
+          "title": "Pixel Turret Animation"
+        },
+        {
+          "author": "Ember Tide dev",
+          "license": "project-internal",
+          "path": "tools/pixel_v2.py",
+          "title": "Ember Tide v2 hand-authored pixel art"
+        }
+      ]
     }
-  }
+  },
+  "generated_by": "tools/build_sourced_assets.py"
 }
